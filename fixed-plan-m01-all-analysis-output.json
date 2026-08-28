@@ -1,0 +1,535 @@
+﻿{
+  "source_as_of": "2026-07-31",
+  "range": {
+    "start": "2025-02",
+    "end": "2026-07"
+  },
+  "ports": [
+    "CC",
+    "SS",
+    "LP",
+    "student",
+    "other"
+  ],
+  "rows": [
+    {
+      "month": "2025-02",
+      "new_students": 1048,
+      "bound_students": 432,
+      "binding_rate": 0.4122137404580153,
+      "port_counts": {
+        "CC": 76,
+        "SS": 353,
+        "LP": 0,
+        "student": 44,
+        "other": 38
+      },
+      "rates": {
+        "CC": 0.07251908396946564,
+        "SS": 0.3368320610687023,
+        "LP": 0.0,
+        "student": 0.04198473282442748,
+        "other": 0.03625954198473282
+      },
+      "touch_sum": 511,
+      "touch_sum_rate": 0.48759541984732824,
+      "overlap_touches": 79,
+      "overlap_rate": 0.07538167938931298,
+      "multi_port_students": 68,
+      "multi_port_student_rate": 0.0648854961832061,
+      "union_efficiency": 0.8454011741682974
+    },
+    {
+      "month": "2025-03",
+      "new_students": 1446,
+      "bound_students": 657,
+      "binding_rate": 0.45435684647302904,
+      "port_counts": {
+        "CC": 149,
+        "SS": 523,
+        "LP": 2,
+        "student": 104,
+        "other": 86
+      },
+      "rates": {
+        "CC": 0.10304287690179806,
+        "SS": 0.36168741355463346,
+        "LP": 0.0013831258644536654,
+        "student": 0.07192254495159059,
+        "other": 0.059474412171507604
+      },
+      "touch_sum": 864,
+      "touch_sum_rate": 0.5975103734439834,
+      "overlap_touches": 207,
+      "overlap_rate": 0.14315352697095435,
+      "multi_port_students": 182,
+      "multi_port_student_rate": 0.12586445366528354,
+      "union_efficiency": 0.7604166666666666
+    },
+    {
+      "month": "2025-04",
+      "new_students": 1368,
+      "bound_students": 606,
+      "binding_rate": 0.44298245614035087,
+      "port_counts": {
+        "CC": 184,
+        "SS": 428,
+        "LP": 30,
+        "student": 106,
+        "other": 109
+      },
+      "rates": {
+        "CC": 0.13450292397660818,
+        "SS": 0.3128654970760234,
+        "LP": 0.021929824561403508,
+        "student": 0.07748538011695906,
+        "other": 0.07967836257309942
+      },
+      "touch_sum": 857,
+      "touch_sum_rate": 0.6264619883040936,
+      "overlap_touches": 251,
+      "overlap_rate": 0.1834795321637427,
+      "multi_port_students": 216,
+      "multi_port_student_rate": 0.15789473684210525,
+      "union_efficiency": 0.7071178529754959
+    },
+    {
+      "month": "2025-05",
+      "new_students": 1106,
+      "bound_students": 512,
+      "binding_rate": 0.4629294755877034,
+      "port_counts": {
+        "CC": 133,
+        "SS": 322,
+        "LP": 126,
+        "student": 77,
+        "other": 81
+      },
+      "rates": {
+        "CC": 0.12025316455696203,
+        "SS": 0.2911392405063291,
+        "LP": 0.11392405063291139,
+        "student": 0.06962025316455696,
+        "other": 0.07323688969258589
+      },
+      "touch_sum": 739,
+      "touch_sum_rate": 0.6681735985533453,
+      "overlap_touches": 227,
+      "overlap_rate": 0.20524412296564196,
+      "multi_port_students": 185,
+      "multi_port_student_rate": 0.16726943942133815,
+      "union_efficiency": 0.6928281461434371
+    },
+    {
+      "month": "2025-06",
+      "new_students": 1416,
+      "bound_students": 580,
+      "binding_rate": 0.4096045197740113,
+      "port_counts": {
+        "CC": 170,
+        "SS": 297,
+        "LP": 192,
+        "student": 65,
+        "other": 66
+      },
+      "rates": {
+        "CC": 0.12005649717514125,
+        "SS": 0.2097457627118644,
+        "LP": 0.13559322033898305,
+        "student": 0.04590395480225989,
+        "other": 0.046610169491525424
+      },
+      "touch_sum": 790,
+      "touch_sum_rate": 0.557909604519774,
+      "overlap_touches": 210,
+      "overlap_rate": 0.1483050847457627,
+      "multi_port_students": 166,
+      "multi_port_student_rate": 0.1172316384180791,
+      "union_efficiency": 0.7341772151898734
+    },
+    {
+      "month": "2025-07",
+      "new_students": 1610,
+      "bound_students": 652,
+      "binding_rate": 0.4049689440993789,
+      "port_counts": {
+        "CC": 174,
+        "SS": 286,
+        "LP": 263,
+        "student": 87,
+        "other": 96
+      },
+      "rates": {
+        "CC": 0.10807453416149068,
+        "SS": 0.17763975155279504,
+        "LP": 0.16335403726708075,
+        "student": 0.05403726708074534,
+        "other": 0.05962732919254658
+      },
+      "touch_sum": 906,
+      "touch_sum_rate": 0.5627329192546584,
+      "overlap_touches": 254,
+      "overlap_rate": 0.1577639751552795,
+      "multi_port_students": 206,
+      "multi_port_student_rate": 0.12795031055900621,
+      "union_efficiency": 0.7196467991169978
+    },
+    {
+      "month": "2025-08",
+      "new_students": 1366,
+      "bound_students": 515,
+      "binding_rate": 0.37701317715959004,
+      "port_counts": {
+        "CC": 145,
+        "SS": 221,
+        "LP": 200,
+        "student": 71,
+        "other": 70
+      },
+      "rates": {
+        "CC": 0.1061493411420205,
+        "SS": 0.1617862371888726,
+        "LP": 0.14641288433382138,
+        "student": 0.05197657393850659,
+        "other": 0.05124450951683748
+      },
+      "touch_sum": 707,
+      "touch_sum_rate": 0.5175695461200586,
+      "overlap_touches": 192,
+      "overlap_rate": 0.14055636896046853,
+      "multi_port_students": 162,
+      "multi_port_student_rate": 0.11859443631039532,
+      "union_efficiency": 0.7284299858557284
+    },
+    {
+      "month": "2025-09",
+      "new_students": 1414,
+      "bound_students": 641,
+      "binding_rate": 0.4533239038189533,
+      "port_counts": {
+        "CC": 196,
+        "SS": 276,
+        "LP": 237,
+        "student": 116,
+        "other": 76
+      },
+      "rates": {
+        "CC": 0.13861386138613863,
+        "SS": 0.19519094766619519,
+        "LP": 0.1676096181046676,
+        "student": 0.08203677510608204,
+        "other": 0.05374823196605375
+      },
+      "touch_sum": 901,
+      "touch_sum_rate": 0.6371994342291372,
+      "overlap_touches": 260,
+      "overlap_rate": 0.18387553041018387,
+      "multi_port_students": 212,
+      "multi_port_student_rate": 0.14992927864214992,
+      "union_efficiency": 0.7114317425083241
+    },
+    {
+      "month": "2025-10",
+      "new_students": 1269,
+      "bound_students": 661,
+      "binding_rate": 0.5208825847123719,
+      "port_counts": {
+        "CC": 201,
+        "SS": 312,
+        "LP": 239,
+        "student": 126,
+        "other": 108
+      },
+      "rates": {
+        "CC": 0.15839243498817968,
+        "SS": 0.2458628841607565,
+        "LP": 0.18833727344365642,
+        "student": 0.09929078014184398,
+        "other": 0.0851063829787234
+      },
+      "touch_sum": 986,
+      "touch_sum_rate": 0.77698975571316,
+      "overlap_touches": 325,
+      "overlap_rate": 0.256107171000788,
+      "multi_port_students": 261,
+      "multi_port_student_rate": 0.20567375886524822,
+      "union_efficiency": 0.6703853955375254
+    },
+    {
+      "month": "2025-11",
+      "new_students": 1290,
+      "bound_students": 627,
+      "binding_rate": 0.48604651162790696,
+      "port_counts": {
+        "CC": 193,
+        "SS": 317,
+        "LP": 193,
+        "student": 102,
+        "other": 89
+      },
+      "rates": {
+        "CC": 0.1496124031007752,
+        "SS": 0.24573643410852714,
+        "LP": 0.1496124031007752,
+        "student": 0.07906976744186046,
+        "other": 0.06899224806201551
+      },
+      "touch_sum": 894,
+      "touch_sum_rate": 0.6930232558139535,
+      "overlap_touches": 267,
+      "overlap_rate": 0.2069767441860465,
+      "multi_port_students": 213,
+      "multi_port_student_rate": 0.16511627906976745,
+      "union_efficiency": 0.7013422818791947
+    },
+    {
+      "month": "2025-12",
+      "new_students": 1383,
+      "bound_students": 645,
+      "binding_rate": 0.46637744034707157,
+      "port_counts": {
+        "CC": 234,
+        "SS": 315,
+        "LP": 182,
+        "student": 119,
+        "other": 141
+      },
+      "rates": {
+        "CC": 0.16919739696312364,
+        "SS": 0.227765726681128,
+        "LP": 0.13159797541576285,
+        "student": 0.08604483007953724,
+        "other": 0.1019522776572668
+      },
+      "touch_sum": 991,
+      "touch_sum_rate": 0.7165582067968185,
+      "overlap_touches": 346,
+      "overlap_rate": 0.2501807664497469,
+      "multi_port_students": 262,
+      "multi_port_student_rate": 0.18944323933477947,
+      "union_efficiency": 0.6508577194752775
+    },
+    {
+      "month": "2026-01",
+      "new_students": 1091,
+      "bound_students": 487,
+      "binding_rate": 0.4463794683776352,
+      "port_counts": {
+        "CC": 157,
+        "SS": 231,
+        "LP": 154,
+        "student": 92,
+        "other": 70
+      },
+      "rates": {
+        "CC": 0.14390467461044912,
+        "SS": 0.21173235563703025,
+        "LP": 0.14115490375802017,
+        "student": 0.0843263061411549,
+        "other": 0.06416131989000917
+      },
+      "touch_sum": 704,
+      "touch_sum_rate": 0.6452795600366636,
+      "overlap_touches": 217,
+      "overlap_rate": 0.19890009165902842,
+      "multi_port_students": 171,
+      "multi_port_student_rate": 0.15673693858845097,
+      "union_efficiency": 0.6917613636363636
+    },
+    {
+      "month": "2026-02",
+      "new_students": 912,
+      "bound_students": 363,
+      "binding_rate": 0.3980263157894737,
+      "port_counts": {
+        "CC": 112,
+        "SS": 150,
+        "LP": 146,
+        "student": 56,
+        "other": 51
+      },
+      "rates": {
+        "CC": 0.12280701754385964,
+        "SS": 0.16447368421052633,
+        "LP": 0.1600877192982456,
+        "student": 0.06140350877192982,
+        "other": 0.05592105263157895
+      },
+      "touch_sum": 515,
+      "touch_sum_rate": 0.5646929824561403,
+      "overlap_touches": 152,
+      "overlap_rate": 0.16666666666666666,
+      "multi_port_students": 119,
+      "multi_port_student_rate": 0.13048245614035087,
+      "union_efficiency": 0.7048543689320388
+    },
+    {
+      "month": "2026-03",
+      "new_students": 1242,
+      "bound_students": 693,
+      "binding_rate": 0.5579710144927537,
+      "port_counts": {
+        "CC": 238,
+        "SS": 236,
+        "LP": 294,
+        "student": 100,
+        "other": 81
+      },
+      "rates": {
+        "CC": 0.19162640901771336,
+        "SS": 0.19001610305958133,
+        "LP": 0.23671497584541062,
+        "student": 0.08051529790660225,
+        "other": 0.06521739130434782
+      },
+      "touch_sum": 949,
+      "touch_sum_rate": 0.7640901771336553,
+      "overlap_touches": 256,
+      "overlap_rate": 0.20611916264090177,
+      "multi_port_students": 209,
+      "multi_port_student_rate": 0.1682769726247987,
+      "union_efficiency": 0.7302423603793466
+    },
+    {
+      "month": "2026-04",
+      "new_students": 1649,
+      "bound_students": 868,
+      "binding_rate": 0.5263796240145543,
+      "port_counts": {
+        "CC": 299,
+        "SS": 357,
+        "LP": 356,
+        "student": 137,
+        "other": 144
+      },
+      "rates": {
+        "CC": 0.18132201334141904,
+        "SS": 0.21649484536082475,
+        "LP": 0.21588841722255914,
+        "student": 0.08308065494238932,
+        "other": 0.08732565191024863
+      },
+      "touch_sum": 1293,
+      "touch_sum_rate": 0.7841115827774409,
+      "overlap_touches": 425,
+      "overlap_rate": 0.25773195876288657,
+      "multi_port_students": 325,
+      "multi_port_student_rate": 0.19708914493632504,
+      "union_efficiency": 0.671307037896365
+    },
+    {
+      "month": "2026-05",
+      "new_students": 1836,
+      "bound_students": 1025,
+      "binding_rate": 0.5582788671023965,
+      "port_counts": {
+        "CC": 348,
+        "SS": 469,
+        "LP": 334,
+        "student": 199,
+        "other": 134
+      },
+      "rates": {
+        "CC": 0.1895424836601307,
+        "SS": 0.25544662309368193,
+        "LP": 0.18191721132897604,
+        "student": 0.10838779956427015,
+        "other": 0.07298474945533769
+      },
+      "touch_sum": 1484,
+      "touch_sum_rate": 0.8082788671023965,
+      "overlap_touches": 459,
+      "overlap_rate": 0.25,
+      "multi_port_students": 366,
+      "multi_port_student_rate": 0.19934640522875818,
+      "union_efficiency": 0.6907008086253369
+    },
+    {
+      "month": "2026-06",
+      "new_students": 2146,
+      "bound_students": 1074,
+      "binding_rate": 0.5004659832246039,
+      "port_counts": {
+        "CC": 426,
+        "SS": 479,
+        "LP": 299,
+        "student": 214,
+        "other": 187
+      },
+      "rates": {
+        "CC": 0.19850885368126747,
+        "SS": 0.22320596458527492,
+        "LP": 0.13932898415657036,
+        "student": 0.09972041006523766,
+        "other": 0.08713886300093196
+      },
+      "touch_sum": 1605,
+      "touch_sum_rate": 0.7479030754892824,
+      "overlap_touches": 531,
+      "overlap_rate": 0.24743709226467847,
+      "multi_port_students": 411,
+      "multi_port_student_rate": 0.19151910531220875,
+      "union_efficiency": 0.6691588785046729
+    },
+    {
+      "month": "2026-07",
+      "new_students": 1960,
+      "bound_students": 955,
+      "binding_rate": 0.4872448979591837,
+      "port_counts": {
+        "CC": 371,
+        "SS": 420,
+        "LP": 275,
+        "student": 158,
+        "other": 175
+      },
+      "rates": {
+        "CC": 0.18928571428571428,
+        "SS": 0.21428571428571427,
+        "LP": 0.14030612244897958,
+        "student": 0.08061224489795918,
+        "other": 0.08928571428571429
+      },
+      "touch_sum": 1399,
+      "touch_sum_rate": 0.7137755102040816,
+      "overlap_touches": 444,
+      "overlap_rate": 0.22653061224489796,
+      "multi_port_students": 338,
+      "multi_port_student_rate": 0.17244897959183675,
+      "union_efficiency": 0.6826304503216584
+    }
+  ],
+  "target": {
+    "total": 0.65,
+    "baseline_period": "2026-07",
+    "baseline": {
+      "CC": 0.18928571428571428,
+      "SS": 0.21428571428571427,
+      "LP": 0.14030612244897958,
+      "student": 0.08061224489795918,
+      "other": 0.08928571428571429,
+      "total": 0.4872448979591837,
+      "touch_sum": 0.7137755102040816,
+      "union_efficiency": 0.6826304503216584
+    },
+    "exact": {
+      "CC": 0.2722642295133037,
+      "SS": 0.3082236560527966,
+      "LP": 0.20181310812980732
+    },
+    "recommended": {
+      "CC": 0.25,
+      "SS": 0.27,
+      "LP": 0.23
+    },
+    "auxiliary_rate": 0.16989795918367345,
+    "estimated_total": 0.6279503581275255
+  },
+  "quality": {
+    "valid_binding_rows": 142346,
+    "pay_students": 67455,
+    "latest_touch_sum": 1399,
+    "latest_bound_students": 955,
+    "latest_overlap_touches": 444
+  }
+}
