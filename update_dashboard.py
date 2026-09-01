@@ -1227,11 +1227,11 @@ function renderMain(){
 renderShell(); renderMain();
 </script>
 <script src="fixed-plan-data.js?v=20260813"></script>
-<script src="fixed-plan-latest-data.js?v=20260828-overall1"></script>
+<script src="fixed-plan-latest-data.js?v=20260830-830"></script>
 <script src="fixed-plan-m01-all-data.js?v=20260813"></script>
 <script src="fixed-plan-user-data.js?v=20260813"></script>
 <script src="fixed-plan-ticket-data.js?v=20260813"></script>
-<script src="fixed-plan.js?v=20260828-overall1"></script>
+<script src="fixed-plan.js?v=20260830-830"></script>
 <script src="course-history-data.js?v=20260814"></script>
 <script src="course-history.js?v=20260814"></script>
 <script src="core-overview-data.js?v=20260825"></script>

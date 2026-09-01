@@ -1,16 +1,16 @@
 window.LP_CORE_OVERVIEW_DATA = {
-  asOf: "2026-08-28",
+  asOf: "2026-08-30",
   period: "2026年8月",
   metrics: [
-    { id: "upgrade", name: "升舱率", value: 0.209, yesterday: null, lastMonthSameDay: null, target: 0.27, source: "BI / 港澳LP看板 / 升舱率", note: "LP汇总行升舱率" },
-    { id: "courseOverall", name: "课耗（整体预计完课率）", value: 0.7631, yesterday: null, lastMonthSameDay: null, target: 0.85, source: "BI / 港澳LP看板 / 课耗", note: "LP小组汇总行预计达标率" },
-    { id: "courseNew", name: "课耗（新生预计完课率）", value: 0.8215, yesterday: null, lastMonthSameDay: null, target: 0.88, source: "BI / 港澳LP看板 / 课耗", note: "LP小组-新生课耗汇总行预计达标率" },
-    { id: "fixedPlan", name: "固定计划绑定率", value: 0.4551, yesterday: null, lastMonthSameDay: null, target: 0.55, source: "BI / 港澳LP看板 / 固定计划", note: "LP小组汇总行固定占比" },
-    { id: "iur", name: "IUR占比", value: 479 / 1023, yesterday: null, lastMonthSameDay: null, target: 0.40, source: "飞书 / HKLP2026学员管理表", note: "202606：V列非空数字479人 / 学员1023人" },
+    { id: "upgrade", name: "升舱率", value: 0.223, yesterday: null, lastMonthSameDay: null, target: 0.27, source: "BI / 港澳LP看板 / 升舱率", note: "LP汇总行升舱率" },
+    { id: "courseOverall", name: "课耗（整体预计完课率）", value: 0.7989, yesterday: null, lastMonthSameDay: null, target: 0.85, source: "BI / 港澳LP看板 / 课耗", note: "LP小组汇总行预计达标率" },
+    { id: "courseNew", name: "课耗（新生预计完课率）", value: 0.8547, yesterday: null, lastMonthSameDay: null, target: 0.88, source: "BI / 港澳LP看板 / 课耗", note: "LP小组-新生课耗汇总行预计达标率" },
+    { id: "fixedPlan", name: "固定计划绑定率", value: 0.4598, yesterday: null, lastMonthSameDay: null, target: 0.55, source: "BI / 港澳LP看板 / 固定计划", note: "LP小组汇总行固定占比" },
+    { id: "iur", name: "IUR占比", value: 485 / 1023, yesterday: null, lastMonthSameDay: null, target: 0.40, source: "飞书 / HKLP2026学员管理表", note: "202606：V列非空数字485人 / 学员1023人" },
     { id: "groupRate", name: "建群率", target: null, source: "飞书 / HKLP2026学员管理表", note: "K列为WA、企微或微信计入已建群；分别按M0和M1学员数计算",
       segments: [
-        { label: "M0 · 202608", value: (41 + 312 + 4) / 539, yesterday: null, lastMonthSameDay: null, target: 0.85 },
-        { label: "M1 · 202607", value: (90 + 623 + 6) / 791, yesterday: null, lastMonthSameDay: null, target: 0.90 }
+        { label: "M0 · 202608", value: (43 + 341 + 4) / 562, yesterday: null, lastMonthSameDay: null, target: 0.85 },
+        { label: "M1 · 202607", value: (88 + 626 + 6) / 791, yesterday: null, lastMonthSameDay: null, target: 0.90 }
       ] }
   ],
   details: [
@@ -31,9 +31,9 @@ window.LP_CORE_OVERVIEW_DATA = {
         { key: "lastMonthGap", label: "环比上月同期差距", type: "pp" }
       ],
       rows: [
-        { group: "HK-GZLP01小组", students: 650, upgrades: 135, rate: 0.208, target: 0.27, orderGap: 8, yesterdayOrders: 4, lastMonthGap: null },
-        { group: "HK-GZLP02小组", students: 372, upgrades: 79, rate: 0.212, target: 0.27, orderGap: 3, yesterdayOrders: 1, lastMonthGap: null },
-        { group: "LP合计", students: 1022, upgrades: 214, rate: 0.209, target: 0.27, orderGap: 11, yesterdayOrders: 5, lastMonthGap: null, total: true }
+        { group: "HK-GZLP01小组", students: 650, upgrades: 145, rate: 0.223, target: 0.27, orderGap: -2, yesterdayOrders: 7, lastMonthGap: null },
+        { group: "HK-GZLP02小组", students: 372, upgrades: 83, rate: 0.223, target: 0.27, orderGap: -1, yesterdayOrders: 3, lastMonthGap: null },
+        { group: "LP合计", students: 1022, upgrades: 228, rate: 0.223, target: 0.27, orderGap: -3, yesterdayOrders: 8, lastMonthGap: null, total: true }
       ]
     },
     {
@@ -55,9 +55,9 @@ window.LP_CORE_OVERVIEW_DATA = {
         { key: "activeRate", label: "在读率", type: "percent" }
       ],
       rows: [
-        { group: "HK-GZLP01小组", students: 2854, target: 0.85, forecastRate: 0.7554, stageRate: 0.6976, avgLessons: 13.6, goodStudents: 967, goodRate: 0.3388, activeStudents: 2493, activeRate: 0.8735 },
-        { group: "HK-GZLP02小组", students: 1637, target: 0.85, forecastRate: 0.7764, stageRate: 0.7263, avgLessons: 13.7, goodStudents: 566, goodRate: 0.3458, activeStudents: 1454, activeRate: 0.8882 },
-        { group: "LP合计", students: 4491, target: 0.85, forecastRate: 0.7631, stageRate: 0.7081, avgLessons: 13.6, goodStudents: 1533, goodRate: 0.3413, activeStudents: 3947, activeRate: 0.8789, total: true }
+        { group: "HK-GZLP01小组", students: 2854, target: 0.85, forecastRate: 0.7933, stageRate: 0.6868, avgLessons: 14.5, goodStudents: 1107, goodRate: 0.3879, activeStudents: 2566, activeRate: 0.8991 },
+        { group: "HK-GZLP02小组", students: 1637, target: 0.85, forecastRate: 0.8088, stageRate: 0.7117, avgLessons: 14.6, goodStudents: 642, goodRate: 0.3922, activeStudents: 1477, activeRate: 0.9023 },
+        { group: "LP合计", students: 4491, target: 0.85, forecastRate: 0.7989, stageRate: 0.6958, avgLessons: 14.6, goodStudents: 1749, goodRate: 0.3894, activeStudents: 4043, activeRate: 0.9002, total: true }
       ]
     },
     {
@@ -79,9 +79,9 @@ window.LP_CORE_OVERVIEW_DATA = {
         { key: "activeRate", label: "在读率", type: "percent" }
       ],
       rows: [
-        { group: "HK-GZLP01小组", students: 1154, target: 0.85, forecastRate: 0.8154, stageRate: 0.7782, avgLessons: 14.9, goodStudents: 505, goodRate: 0.4376, activeStudents: 1057, activeRate: 0.9159 },
-        { group: "HK-GZLP02小组", students: 656, target: 0.85, forecastRate: 0.8323, stageRate: 0.8049, avgLessons: 15.2, goodStudents: 289, goodRate: 0.4405, activeStudents: 611, activeRate: 0.9314 },
-        { group: "LP合计", students: 1810, target: 0.85, forecastRate: 0.8215, stageRate: 0.7878, avgLessons: 15.0, goodStudents: 794, goodRate: 0.4387, activeStudents: 1668, activeRate: 0.9215, total: true }
+        { group: "HK-GZLP01小组", students: 1154, target: 0.85, forecastRate: 0.8501, stageRate: 0.7686, avgLessons: 15.9, goodStudents: 568, goodRate: 0.4922, activeStudents: 1073, activeRate: 0.9298 },
+        { group: "HK-GZLP02小组", students: 656, target: 0.85, forecastRate: 0.8628, stageRate: 0.7896, avgLessons: 16.2, goodStudents: 328, goodRate: 0.5000, activeStudents: 615, activeRate: 0.9375 },
+        { group: "LP合计", students: 1810, target: 0.85, forecastRate: 0.8547, stageRate: 0.7762, avgLessons: 16.0, goodStudents: 896, goodRate: 0.4950, activeStudents: 1688, activeRate: 0.9326, total: true }
       ]
     },
     {
@@ -99,9 +99,9 @@ window.LP_CORE_OVERVIEW_DATA = {
         { key: "threeTeacherRate", label: "绑定外教超过3个占比", type: "percent" }
       ],
       rows: [
-        { group: "HK-GZLP01小组", students: 797, target: 0.55, boundStudents: 376, bindingRate: 0.4718, threeTeacherRate: 0.1844 },
-        { group: "HK-GZLP02小组", students: 451, target: 0.55, boundStudents: 192, bindingRate: 0.4257, threeTeacherRate: 0.1153 },
-        { group: "LP合计", students: 1248, target: 0.55, boundStudents: 568, bindingRate: 0.4551, threeTeacherRate: 0.1595, total: true }
+        { group: "HK-GZLP01小组", students: 826, target: 0.55, boundStudents: 389, bindingRate: 0.4709, threeTeacherRate: 0.1913 },
+        { group: "HK-GZLP02小组", students: 468, target: 0.55, boundStudents: 206, bindingRate: 0.4402, threeTeacherRate: 0.1282 },
+        { group: "LP合计", students: 1294, target: 0.55, boundStudents: 595, bindingRate: 0.4598, threeTeacherRate: 0.1685, total: true }
       ]
     }
   ]

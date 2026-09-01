@@ -105,13 +105,13 @@
     const fixed01 = row("fixedPlan", "HK-GZLP01小组");
     const fixed02 = row("fixedPlan", "HK-GZLP02小组");
     const analysisCards = [
-      '<article class="core-analysis-card is-growth"><span>增长转化</span><h3>升舱与固定计划均未达标</h3><p>升舱率<strong>' + pct(upgrade.value) + '</strong>，距27%目标' + pp(upgrade.value - upgrade.target) + '；固定计划<strong>' + pct(fixedPlan.value) + '</strong>，距55%目标' + pp(fixedPlan.value - fixedPlan.target) + '。其中升舱还差' + upgradeTotal.orderGap + '单，固定计划以HK-GZLP02小组' + pct(fixed02.bindingRate) + '为主要短板。</p></article>',
+      '<article class="core-analysis-card is-growth"><span>增长转化</span><h3>升舱与固定计划均未达标</h3><p>升舱率<strong>' + pct(upgrade.value) + '</strong>，距27%目标' + pp(upgrade.value - upgrade.target) + '；固定计划<strong>' + pct(fixedPlan.value) + '</strong>，距55%目标' + pp(fixedPlan.value - fixedPlan.target) + '。BI阶段目标单量差距为' + upgradeTotal.orderGap + '单，固定计划以HK-GZLP02小组' + pct(fixed02.bindingRate) + '为主要短板。</p></article>',
       '<article class="core-analysis-card is-course"><span>课耗质量</span><h3>新生优于整体，存量学员承接偏弱</h3><p>整体预计完课率<strong>' + pct(courseOverall.value) + '</strong>，距目标' + pp(courseOverall.value - courseOverall.target) + '；新生为<strong>' + pct(courseNew.value) + '</strong>，距目标' + pp(courseNew.value - courseNew.target) + '。HK-GZLP01小组整体课耗' + pct(overall01.forecastRate) + '，低于02小组' + pct(overall02.forecastRate) + '，且承载' + overall01.students.toLocaleString("zh-CN") + '名考核学员，应优先改善。</p></article>',
       '<article class="core-analysis-card is-service"><span>用户承接</span><h3>IUR已达标，M0建群是最大缺口</h3><p>IUR为<strong>' + pct(iur.value) + '</strong>，高于40%目标' + pp(iur.value - iur.target) + '；M1建群率' + pct(m1.value) + '，仅差' + pp(m1.value - m1.target) + '。M0建群率只有<strong>' + pct(m0.value) + '</strong>，距85%目标' + pp(m0.value - m0.target) + '，是当前最优先的承接问题。</p></article>'
     ].join("");
     const actions = [
       ["P0", "补齐M0建群", "建立本月未建群名单，按LP分配到人；首付后24小时完成拉群，当日未完成的次日晨会逐人关闭。", "M0建群率 " + pct(m0.value) + " -> 85%"],
-      ["P0", "拆解升舱24单缺口", "HK-GZLP01小组承担" + upgrade01.orderGap + "单、HK-GZLP02小组承担" + upgrade02.orderGap + "单；优先跟进高意向、临近升舱门槛及昨日未转化学员。", "升舱率 " + pct(upgrade.value) + " -> 27%"],
+      ["P0", "继续提升升舱转化", "当前BI阶段目标单量差距：HK-GZLP01小组" + upgrade01.orderGap + "单、HK-GZLP02小组" + upgrade02.orderGap + "单；继续跟进高意向、临近升舱门槛及昨日未转化学员，冲刺27%月目标。", "升舱率 " + pct(upgrade.value) + " -> 27%"],
       ["P0", "提升整体课耗", "优先治理HK-GZLP01小组：按0课耗、预约断档、固定计划未绑定三类分池，补齐未来四周排课并做每日闭环。", "01小组预计完课率 " + pct(overall01.forecastRate) + " -> 85%"],
       ["P1", "补固定计划短板", "先抓HK-GZLP02小组，将高频上课时段转为固定计划；对未绑定学员逐一确认固定时段，并同步提升绑定3个以上外教的覆盖。", "02小组固定计划 " + pct(fixed02.bindingRate) + " -> 55%"],
       ["P1", "固化新生早期动作", "复用02小组新生阶段达标率" + pct(new02.stageRate) + "的有效做法，在01小组强化首周排课、次周补约和固定计划绑定。", "01小组新生预计完课率 " + pct(new01.forecastRate) + " -> 88%"],
