@@ -27,16 +27,23 @@ STAGE_TARGETS = [
 ]
 HISTORICAL_DISTRIBUTION_MONTHS = [
     "2501", "2502", "2503", "2504", "2505", "2506", "2507", "2508", "2509", "2510",
-    "2511", "2512", "2601", "2602", "2603", "2604", "2605", "2606", "2607",
+    "2511", "2512", "2601", "2602", "2603", "2604", "2605", "2606", "2607", "2608",
 ]
 HISTORICAL_DISTRIBUTION_BUCKETS = [
-    {"label": ">=15", "values": [0.2982, 0.3395, 0.3999, 0.3743, 0.3741, 0.3611, 0.3999, 0.3837, 0.3628, 0.3322, 0.3119, 0.3267, 0.3306, 0.2516, 0.3321, 0.3091, 0.3176, 0.3230, 0.3542]},
-    {"label": "12<=x<15", "values": [0.2349, 0.2244, 0.2292, 0.2450, 0.2475, 0.2530, 0.2402, 0.2423, 0.2713, 0.2737, 0.2861, 0.3002, 0.3118, 0.3038, 0.3250, 0.3329, 0.3250, 0.3372, 0.3317]},
-    {"label": "10<=x<12", "values": [0.1258, 0.1107, 0.1050, 0.1069, 0.1040, 0.1106, 0.0987, 0.0937, 0.0985, 0.1018, 0.1009, 0.0992, 0.0904, 0.1058, 0.0940, 0.1063, 0.0970, 0.0988, 0.0840]},
-    {"label": "8<=x<10", "values": [0.0722, 0.0655, 0.0488, 0.0547, 0.0519, 0.0519, 0.0473, 0.0462, 0.0567, 0.0561, 0.0574, 0.0527, 0.0502, 0.0615, 0.0465, 0.0506, 0.0480, 0.0452, 0.0430]},
-    {"label": "0<x<8", "values": [0.1509, 0.1450, 0.1162, 0.1194, 0.1188, 0.1188, 0.1132, 0.1132, 0.1170, 0.1325, 0.1405, 0.1244, 0.1229, 0.1650, 0.1126, 0.1113, 0.1140, 0.1096, 0.1033]},
-    {"label": "x=0", "values": [0.1180, 0.1152, 0.1011, 0.0890, 0.1040, 0.1040, 0.1000, 0.1210, 0.0930, 0.1047, 0.1030, 0.0960, 0.0940, 0.1122, 0.0890, 0.0830, 0.0910, 0.0900, 0.0830]},
+    {"label": ">=15", "values": [0.2982, 0.3395, 0.3999, 0.3743, 0.3741, 0.3611, 0.3999, 0.3837, 0.3628, 0.3322, 0.3119, 0.3267, 0.3306, 0.2516, 0.3321, 0.3091, 0.3176, 0.3230, 0.3542, 0.3498]},
+    {"label": "12<=x<15", "values": [0.2349, 0.2244, 0.2292, 0.2450, 0.2475, 0.2530, 0.2402, 0.2423, 0.2713, 0.2737, 0.2861, 0.3002, 0.3118, 0.3038, 0.3250, 0.3329, 0.3250, 0.3372, 0.3317, 0.3365]},
+    {"label": "10<=x<12", "values": [0.1258, 0.1107, 0.1050, 0.1069, 0.1040, 0.1106, 0.0987, 0.0937, 0.0985, 0.1018, 0.1009, 0.0992, 0.0904, 0.1058, 0.0940, 0.1063, 0.0970, 0.0988, 0.0840, 0.0815]},
+    {"label": "8<=x<10", "values": [0.0722, 0.0655, 0.0488, 0.0547, 0.0519, 0.0519, 0.0473, 0.0462, 0.0567, 0.0561, 0.0574, 0.0527, 0.0502, 0.0615, 0.0465, 0.0506, 0.0480, 0.0452, 0.0430, 0.0418]},
+    {"label": "0<x<8", "values": [0.1509, 0.1450, 0.1162, 0.1194, 0.1188, 0.1188, 0.1132, 0.1132, 0.1170, 0.1325, 0.1405, 0.1244, 0.1229, 0.1650, 0.1126, 0.1113, 0.1140, 0.1096, 0.1033, 0.0934]},
+    {"label": "x=0", "values": [0.1180, 0.1152, 0.1011, 0.0890, 0.1040, 0.1040, 0.1000, 0.1210, 0.0930, 0.1047, 0.1030, 0.0960, 0.0940, 0.1122, 0.0890, 0.0830, 0.0910, 0.0900, 0.0830, 0.0970]},
 ]
+HISTORICAL_AVG_COMPLETION = {
+    "months": HISTORICAL_DISTRIBUTION_MONTHS,
+    "values": [
+        10.7334, 10.8909, 11.8686, 11.6095, 11.6787, 11.5761, 12.3370, 12.0261, 11.8916, 11.3197,
+        11.0966, 11.4964, 11.6286, 10.4880, 11.6537, 11.2705, 11.4885, 11.8806, 12.7408, 12.6807,
+    ],
+}
 LIFECYCLE_COLUMNS = ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M12+", "overall"]
 LIFECYCLE_PERFORMANCE = [
     {"month": "2501", "values": [0.5644, 0.5527, 0.5304, 0.4697, 0.4429, 0.4379, 0.4225, 0.4044, 0.3804, 0.3759, 0.3812, 0.3933, 0.4710, 0.4592]},
@@ -58,6 +65,7 @@ LIFECYCLE_PERFORMANCE = [
     {"month": "2605", "values": [0.8934, 0.8558, 0.7922, 0.7887, 0.7377, 0.7264, 0.6547, 0.6530, 0.6008, 0.5769, 0.5583, 0.5561, 0.5671, 0.6305]},
     {"month": "2606", "values": [0.8848, 0.8172, 0.7988, 0.7275, 0.7505, 0.7098, 0.6718, 0.6302, 0.6320, 0.5900, 0.5441, 0.5694, 0.5691, 0.6360]},
     {"month": "2607", "values": [0.9005, 0.8387, 0.8088, 0.7686, 0.7139, 0.7253, 0.6554, 0.6804, 0.6091, 0.6229, 0.6221, 0.5945, 0.6122, 0.6740]},
+    {"month": "2608", "values": [None, 0.9132, 0.8577, 0.8306, 0.7900, 0.7500, 0.7309, 0.7025, 0.6786, 0.6579, 0.6395, 0.6387, 0.6275, 0.6863]},
 ]
 
 
@@ -808,6 +816,7 @@ def build_dashboard_data(history, diagnostics, report_date):
                 "months": HISTORICAL_DISTRIBUTION_MONTHS,
                 "buckets": HISTORICAL_DISTRIBUTION_BUCKETS,
             },
+            "avgCompletion": HISTORICAL_AVG_COMPLETION,
             "lifecycle": {
                 "columns": LIFECYCLE_COLUMNS,
                 "rows": LIFECYCLE_PERFORMANCE,
@@ -969,17 +978,23 @@ def render_html(data, output_path):
     .target-line { background: var(--green); }
     .risk { color: var(--red); }
     .history-grid { margin-top: 16px; display: grid; grid-template-columns: minmax(0,1fr) minmax(420px,.95fr); gap: 14px; }
-    .history-summary { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin-bottom: 14px; }
+    .history-summary { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; margin-bottom: 14px; }
     .history-summary-item { padding: 12px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-2); }
     .history-summary-item span { display: block; color: var(--muted); font-size: 12px; margin-bottom: 6px; }
     .history-summary-item b { font-size: 20px; color: var(--brand); }
-    .stacked-chart { display: grid; grid-template-columns: repeat(19,minmax(34px,1fr)); align-items: end; gap: 8px; min-width: 760px; height: 260px; padding: 8px 0 0; }
+    .stacked-chart { display: grid; grid-template-columns: repeat(20,minmax(34px,1fr)); align-items: end; gap: 8px; min-width: 820px; height: 260px; padding: 8px 0 0; }
     .stack-month { display: grid; grid-template-rows: 1fr 22px; gap: 6px; height: 100%; text-align: center; color: var(--muted); font-size: 11px; }
     .stack-bar { align-self: end; height: 220px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; border-radius: 8px 8px 4px 4px; background: var(--surface-3); border: 1px solid var(--line); }
     .stack-segment { min-height: 1px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.92); font-size: 10px; font-weight: 760; line-height: 1; text-shadow: 0 1px 2px rgba(0,0,0,.28); }
     .stack-segment.is-light { color: #2e3440; text-shadow: none; }
     .dist-legend { margin-top: 12px; display: flex; gap: 10px 14px; flex-wrap: wrap; color: var(--muted); font-size: 12px; }
     .legend-dot { width: 9px; height: 9px; border-radius: 3px; display: inline-block; margin-right: 6px; vertical-align: -1px; }
+    .avg-chart { display: grid; grid-template-columns: repeat(9,minmax(70px,1fr)); align-items: end; gap: 12px; min-width: 780px; height: 250px; padding: 16px 4px 0; border-bottom: 1px solid var(--line); }
+    .avg-bar-item { height: 100%; display: grid; grid-template-rows: 22px 1fr 24px; align-items: end; text-align: center; color: var(--muted); font-size: 12px; }
+    .avg-value { color: var(--brand); font-weight: 760; align-self: start; }
+    .avg-bar { width: 52%; margin: 0 auto; border-radius: 10px 10px 3px 3px; background: linear-gradient(180deg,#152b52,#5a759d); min-height: 18px; }
+    .avg-bar.is-latest { background: linear-gradient(180deg,#20a36b,#9adbb9); box-shadow: inset 0 0 0 1px rgba(255,255,255,.45); }
+    .avg-bar.is-yoy { background: linear-gradient(180deg,#6b7280,#c9ced6); }
     .heatmap-wrap { overflow-x: auto; }
     .heatmap { min-width: 980px; border-collapse: separate; border-spacing: 0; }
     .heatmap th, .heatmap td { height: 38px; padding: 0 8px; text-align: center; font-size: 12px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); white-space: nowrap; }
@@ -1014,7 +1029,7 @@ def render_html(data, output_path):
     .rec { padding: 14px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-2); display: grid; gap: 8px; }
     .priority { width: fit-content; }
     .footer-note { margin-top: 14px; color: var(--muted); font-size: 12px; line-height: 1.6; }
-    @media (max-width: 1200px) { .kpis { grid-template-columns: repeat(2,minmax(0,1fr)); } .kpi-primary { grid-column: 1 / -1; } .grid-2,.history-grid { grid-template-columns: 1fr; } .insight-strip { grid-template-columns: 1fr; } .strategy-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+    @media (max-width: 1200px) { .kpis { grid-template-columns: repeat(2,minmax(0,1fr)); } .kpi-primary { grid-column: 1 / -1; } .grid-2,.history-grid { grid-template-columns: 1fr; } .insight-strip { grid-template-columns: 1fr; } .strategy-grid,.history-summary { grid-template-columns: repeat(2,minmax(0,1fr)); } }
     @media (max-width: 860px) { body { --nav-w: 76px; } .brand-copy,.nav-text,.collapse-text { display:none; } .toolbar { padding: 0 16px; } .content { padding: 16px; } .hero { grid-template-columns: 1fr; } .tools .btn span { display:none; } }
   </style>
 </head>
@@ -1102,7 +1117,7 @@ function renderBars(){
 function renderAnalysis(){
   return `<section class="grid-2"><div class="panel"><div class="panel-head"><div><div class="panel-title">\u9884\u8ba1\u5b8c\u8bfe\u7387\u8d8b\u52bf</div><div class="panel-sub">\u6700\u8fd1 30 \u5929 / ${DATA.targetLabel||'\u9636\u6bb5\u76ee\u6807'}\u7ebf</div></div></div><div class="panel-body">${renderTrendChart()}</div></div><div class="panel"><div class="panel-head"><div><div class="panel-title">SS \u5c0f\u7ec4\u8868\u73b0\u6392\u540d</div><div class="panel-sub">\u6a2a\u5411\u6761\u5f62\u56fe\uff0c\u53ef\u70b9\u51fb\u8054\u52a8\u8868\u683c</div></div></div><div class="panel-body">${renderBars()}</div></div></section>`;
 }
-function historyData(){ return DATA.historicalAnalysis || {distribution:{months:[],buckets:[]}, lifecycle:{columns:[],rows:[]}}; }
+function historyData(){ return DATA.historicalAnalysis || {distribution:{months:[],buckets:[]}, avgCompletion:{months:[],values:[]}, lifecycle:{columns:[],rows:[]}}; }
 function distBucket(label){ return historyData().distribution.buckets.find(b=>b.label===label) || {values:[]}; }
 function latestDistributionSummary(){
   const d=historyData().distribution, i=d.months.length-1, p=i-1, yoy=d.months.indexOf('2507');
@@ -1115,15 +1130,24 @@ function latestDistributionSummary(){
   const yoyData={high:highAt(yoy), low:lowAt(yoy), middle:midAt(yoy), top15:val('>=15',yoy), zero:val('x=0',yoy), activeLow:val('0<x<8',yoy)};
   return {month:d.months[i], prior:d.months[p], yoyMonth:d.months[yoy], ...current, highDelta:current.high-mom.high, zeroDelta:current.zero-mom.zero, top15Delta:current.top15-mom.top15, yoyHighDelta:current.high-yoyData.high, yoyZeroDelta:current.zero-yoyData.zero, yoyTop15Delta:current.top15-yoyData.top15, yoyLowDelta:current.low-yoyData.low, priorData:mom, yoyData};
 }
+function latestAvgSummary(){
+  const a=historyData().avgCompletion || {months:[],values:[]};
+  const i=a.months.length-1, p=i-1, yoy=a.months.indexOf('2507');
+  const current=a.values[i], prior=a.values[p], yoyValue=a.values[yoy];
+  const allRows=a.months.map((m,idx)=>({month:m,value:a.values[idx]}));
+  const recent=[allRows[yoy], ...allRows.slice(-8)].filter(Boolean);
+  return {month:a.months[i], prior:a.months[p], yoyMonth:a.months[yoy], current, priorValue:prior, yoyValue, delta:current-prior, yoyDelta:current-yoyValue, recent};
+}
 function latestLifecycleSummary(){
   const l=historyData().lifecycle, row=l.rows[l.rows.length-1]||{values:[]}, prior=l.rows[l.rows.length-2]||{values:[]}, yoy=l.rows.find(r=>r.month==='2507')||{values:[]};
   const cols=l.columns.slice(0,-1);
   const cells=cols.map((c,i)=>({col:c, value:row.values[i]}));
   const priorCells=cols.map((c,i)=>({col:c, value:prior.values[i]}));
   const yoyCells=cols.map((c,i)=>({col:c, value:yoy.values[i]}));
-  const weakest=cells.slice().sort((a,b)=>a.value-b.value)[0]||{};
-  const strongest=cells.slice().sort((a,b)=>b.value-a.value)[0]||{};
-  const avgOf=(source,names)=>{ const selected=source.filter(c=>names.includes(c.col)); return selected.reduce((s,c)=>s+c.value,0)/(selected.length||1); };
+  const validCells=cells.filter(c=>c.value!==null&&c.value!==undefined);
+  const weakest=validCells.slice().sort((a,b)=>a.value-b.value)[0]||{};
+  const strongest=validCells.slice().sort((a,b)=>b.value-a.value)[0]||{};
+  const avgOf=(source,names)=>{ const selected=source.filter(c=>names.includes(c.col)&&c.value!==null&&c.value!==undefined); return selected.reduce((s,c)=>s+c.value,0)/(selected.length||1); };
   const early=avgOf(cells,['M1','M2','M3']), mid=avgOf(cells,['M4','M5','M6','M7','M8']), mature=avgOf(cells,['M9','M10','M11','M12','M12+']);
   const priorEarly=avgOf(priorCells,['M1','M2','M3']), priorMature=avgOf(priorCells,['M9','M10','M11','M12','M12+']);
   const yoyEarly=avgOf(yoyCells,['M1','M2','M3']), yoyMature=avgOf(yoyCells,['M9','M10','M11','M12','M12+']);
@@ -1132,12 +1156,13 @@ function latestLifecycleSummary(){
 }
 function renderDistributionChart(){
   const d=historyData().distribution;
-  const colors=['#22406f','#3f6f95','#6cae75','#d6c95a','#f0aa55','#e66767'];
+  const colors=['#168a5b','#69bd83','#d9cf61','#f0b35b','#ef8a5b','#d95d5d'];
   const bars=d.months.map((m,i)=>`<div class="stack-month"><div class="stack-bar">${d.buckets.map((b,bi)=>{ const v=b.values[i]||0; return `<span class="stack-segment ${bi>=2?'is-light':''}" style="height:${v*100}%;background:${colors[bi]}" title="${esc(m)} ${esc(b.label)} ${pct(v,2)}">${v>=.08?pct(v,0):''}</span>`; }).join('')}</div><span>${esc(m)}</span></div>`).join('');
   const legend=d.buckets.map((b,i)=>`<span><i class="legend-dot" style="background:${colors[i]}"></i>${esc(b.label)}</span>`).join('');
   return `<div class="table-wrap"><div class="stacked-chart">${bars}</div></div><div class="dist-legend">${legend}</div>`;
 }
 function heatColor(value){
+  if(value===null||value===undefined) return '#f3f4f6';
   const min=.37, max=.91, t=Math.max(0,Math.min(1,(value-min)/(max-min)));
   const mix=(a,b,p)=>Math.round(a+(b-a)*p);
   const low=[232,102,102], mid=[246,224,92], high=[104,190,91];
@@ -1149,20 +1174,31 @@ function heatColor(value){
 function renderLifecycleHeatmap(){
   const l=historyData().lifecycle;
   const head=`<tr><th>\u6708\u4efd</th>${l.columns.map(c=>`<th>${c==='overall'?'\u6574\u4f53\u9ad8\u8bfe\u8017\u8fbe\u6210':c}</th>`).join('')}</tr>`;
-  const body=l.rows.map((r,ri)=>`<tr>${[`<td>${r.month}</td>`,...r.values.map((v,ci)=>`<td style="background:${heatColor(v)};font-weight:${ri===l.rows.length-1||ci===l.columns.length-1?'760':'520'}">${pct(v,2)}</td>`)].join('')}</tr>`).join('');
+  const body=l.rows.map((r,ri)=>`<tr>${[`<td>${r.month}</td>`,...r.values.map((v,ci)=>`<td style="background:${heatColor(v)};font-weight:${ri===l.rows.length-1||ci===l.columns.length-1?'760':'520'}">${v===null||v===undefined?'-':pct(v,2)}</td>`)].join('')}</tr>`).join('');
   return `<div class="heatmap-wrap"><table class="heatmap"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
 }
+function renderAvgCompletionChart(){
+  const a=latestAvgSummary();
+  const rows=a.recent || [];
+  const max=Math.max(...rows.map(r=>r.value), 13), min=Math.min(...rows.map(r=>r.value), 10);
+  const bars=rows.map(r=>{ const height=18+((r.value-min)/(max-min||1))*78; const isLatest=r.month===a.month, isYoy=r.month===a.yoyMonth; return `<div class="avg-bar-item"><div class="avg-value">${num(r.value,2)}</div><div class="avg-bar ${isLatest?'is-latest':isYoy?'is-yoy':''}" style="height:${height}%"></div><span>${esc(r.month)}</span></div>`; }).join('');
+  return `<div class="avg-chart">${bars}</div><div class="dist-legend"><span><i class="legend-dot" style="background:#168a5b"></i>${a.month} 8月实际</span><span><i class="legend-dot" style="background:#152b52"></i>近月人均完课量</span></div>`;
+}
 function renderHistoryInsights(){
-  const dist=latestDistributionSummary(), life=latestLifecycleSummary();
-  return `<div class="history-summary"><div class="history-summary-item"><span>\u9ad8\u8bfe\u8017\u5c42\u5360\u6bd4\uff08>=12\uff09</span><b>${pct(dist.high)}</b><div class="${cls(dist.highDelta)}">\u8f83 ${dist.prior} ${signedPct(dist.highDelta)}</div></div><div class="history-summary-item"><span>0\u8bfe\u8017\u5360\u6bd4</span><b>${pct(dist.zero)}</b><div class="${cls(-dist.zeroDelta)}">\u8f83 ${dist.prior} ${signedPct(dist.zeroDelta)}</div></div><div class="history-summary-item"><span>\u751f\u547d\u5468\u671f\u6574\u4f53\u8fbe\u6210</span><b>${pct(life.overall)}</b><div class="${cls(life.overallDelta)}">\u8f83 ${life.prior} ${signedPct(life.overallDelta)}</div></div></div>`;
+  const dist=latestDistributionSummary(), life=latestLifecycleSummary(), avg=latestAvgSummary();
+  return `<div class="history-summary"><div class="history-summary-item"><span>\u9ad8\u8bfe\u8017\u5c42\u5360\u6bd4\uff08>=12\uff09</span><b>${pct(dist.high)}</b><div class="${cls(dist.highDelta)}">\u8f83 ${dist.prior} ${signedPct(dist.highDelta)}</div></div><div class="history-summary-item"><span>\u540c\u671f\u4eba\u5747\u5b8c\u8bfe\u91cf</span><b>${num(avg.current,2)}</b><div class="${cls(avg.yoyDelta)}">\u8f83 ${avg.yoyMonth} ${avg.yoyDelta>=0?'+':''}${num(avg.yoyDelta,2)}</div></div><div class="history-summary-item"><span>0\u8bfe\u8017\u5360\u6bd4</span><b>${pct(dist.zero)}</b><div class="${cls(-dist.zeroDelta)}">\u8f83 ${dist.prior} ${signedPct(dist.zeroDelta)}</div></div><div class="history-summary-item"><span>\u751f\u547d\u5468\u671f\u6574\u4f53\u8fbe\u6210</span><b>${pct(life.overall)}</b><div class="${cls(life.overallDelta)}">\u8f83 ${life.prior} ${signedPct(life.overallDelta)}</div></div></div>`;
 }
 function renderDistributionAnalysis(){
   const d=latestDistributionSummary();
-  return `<div class="analysis-block"><h3>\u4e00\u3001\u8bfe\u8017\u533a\u95f4\u7ed3\u6784\u5206\u6790</h3><ul class="analysis-list"><li><b>\u5f53\u524d\u7ed3\u6784\uff1a</b>${d.month} \u9ad8\u8bfe\u8017\u5c42\uff08>=12\uff09\u5360\u6bd4 ${pct(d.high)}\uff0c\u5176\u4e2d >=15 \u9876\u90e8\u5c42 ${pct(d.top15)}\uff1b0\u8bfe\u8017 ${pct(d.zero)}\uff0c0-8\u8bfe\u8017\u542b0\u8bfe\u8017\u5408\u8ba1 ${pct(d.low)}\u3002\u8fd9\u4e2a\u7ed3\u6784\u8bf4\u660e\uff1a\u9ad8\u8bfe\u8017\u4eba\u7fa4\u5df2\u7ecf\u6210\u4e3a\u5927\u76d8\u57fa\u672c\u76d8\uff0c\u4f46\u4f4e\u8bfe\u8017\u6c60\u4ecd\u662f\u62d6\u4f4e\u6700\u7ec8\u5b8c\u8bfe\u7387\u7684\u4e3b\u8981\u539f\u56e0\u3002</li><li><b>\u73af\u6bd4 ${d.prior}\uff1a</b>>=12 \u9ad8\u8bfe\u8017\u5c42 ${signedPct(d.highDelta)}\uff0c>=15 \u9876\u90e8\u5c42 ${signedPct(d.top15Delta)}\uff0c0\u8bfe\u8017 ${signedPct(d.zeroDelta)}\u3002\u7ed3\u8bba\uff1a7\u6708\u7684\u589e\u957f\u66f4\u504f\u5411\u201c\u9ad8\u8bfe\u8017\u4eba\u7fa4\u52a0\u539a\u201d\uff0c\u8bf4\u660e\u5df2\u7ecf\u4e0a\u8bfe\u8f83\u79ef\u6781\u7684\u5b66\u5458\u8fd8\u80fd\u7ee7\u7eed\u88ab\u62c9\u52a8\uff1b\u4f460\u8bfe\u8017\u6ca1\u6709\u540c\u6b65\u5927\u5e45\u4e0b\u964d\uff0c\u8bf4\u660e\u6c89\u9ed8\u5b66\u5458\u9700\u8981\u5355\u72ec\u673a\u5236\uff0c\u4e0d\u80fd\u53ea\u9760\u5927\u76d8\u6d3b\u52a8\u5e26\u52a8\u3002</li><li><b>\u540c\u6bd4 ${d.yoyMonth}\uff1a</b>>=12 \u9ad8\u8bfe\u8017\u5c42 ${signedPct(d.yoyHighDelta)}\uff0c>=15 \u9876\u90e8\u5c42 ${signedPct(d.yoyTop15Delta)}\uff0c0\u8bfe\u8017 ${signedPct(d.yoyZeroDelta)}\uff0c0-8\u4f4e\u8bfe\u8017\u6c60 ${signedPct(d.yoyLowDelta)}\u3002\u7ed3\u8bba\uff1a\u548c25\u5e747\u6708\u76f8\u6bd4\uff0c\u4eca\u5e747\u6708\u7684\u4f18\u52bf\u662f\u9ad8\u8bfe\u8017\u5c42\u66f4\u539a\uff0c\u5982\u679c\u4f4e\u8bfe\u8017\u6c60\u540c\u6b65\u538b\u964d\uff0c\u76ee\u6807\u8fbe\u6210\u7684\u786e\u5b9a\u6027\u4f1a\u66f4\u9ad8\u3002</li><li><b>\u52a8\u4f5c\u63aa\u65bd\uff1a</b>\u7b2c\u4e00\uff0c\u5bf9 10-12 \u8bfe\u8017\u5b66\u5458\u505a\u201c\u4e34\u754c\u51b2\u523a\u201d\uff0c\u6309\u8fd1 7 \u5929\u9884\u7ea6\u6570\u3001\u5b8c\u8bfe\u6570\u3001\u8ddd12\u8282\u5dee\u8ddd\u6392\u5e8f\uff0c\u6bcf\u5929\u8ba9SS\u5148\u6253\u8fd9\u6279\u540d\u5355\uff1b\u7b2c\u4e8c\uff0c0\u8bfe\u8017\u5355\u72ec\u5efa\u6c60\uff0c\u6309\u672a\u7ea6\u8bfe\u3001\u5bb6\u957f\u672a\u54cd\u5e94\u3001\u8ba1\u5212\u65ad\u6863\u4e09\u7c7b\u8f93\u51fa\u539f\u56e0\u548c\u5904\u7406\u8bb0\u5f55\uff1b\u7b2c\u4e09\uff0c>=15 \u5b66\u5458\u505a\u6807\u6746\u6848\u4f8b\uff0c\u590d\u76d8\u4ed6\u4eec\u7684\u9884\u7ea6\u8282\u594f\u3001\u5bb6\u957f\u6c9f\u901a\u8bdd\u672f\u548c\u4e0a\u8bfe\u6fc0\u52b1\u70b9\uff0c\u7528\u6765\u5e26\u52a8\u4e34\u754c\u5c42\u3002</li></ul></div>`;
+  return `<div class="analysis-block"><h3>\u4e00\u3001\u8bfe\u8017\u533a\u95f4\u7ed3\u6784\u5206\u6790</h3><ul class="analysis-list"><li><b>8\u6708\u5b9e\u9645\u7ed3\u6784\uff1a</b>${d.month} \u9ad8\u8bfe\u8017\u5c42\uff08>=12\uff09\u5360\u6bd4 ${pct(d.high)}\uff0c\u5176\u4e2d >=15 \u9876\u90e8\u5c42 ${pct(d.top15)}\uff0c12-15 \u4e2d\u9ad8\u8bfe\u8017\u5c42 ${pct(d.high-d.top15)}\uff1b0\u8bfe\u8017 ${pct(d.zero)}\uff0c0-8\u8bfe\u8017\u542b0\u8bfe\u8017\u5408\u8ba1 ${pct(d.low)}\u3002\u8fd9\u8bf4\u660e 8\u6708\u5df2\u7ecf\u5b88\u4f4f\u9ad8\u8bfe\u8017\u57fa\u672c\u76d8\uff0c\u4f46\u672a\u542f\u52a8\u548c\u4f4e\u8bfe\u8017\u6c60\u4ecd\u7136\u662f\u62d6\u4f4e\u6700\u7ec8\u5b8c\u8bfe\u7387\u7684\u5173\u952e\u98ce\u9669\u3002</li><li><b>\u5bf9\u6bd4 7\u6708\uff08${d.prior}\uff09\uff1a</b>>=12 \u9ad8\u8bfe\u8017\u5c42 ${signedPct(d.highDelta)}\uff0c\u57fa\u672c\u6301\u5e73\uff1b>=15 \u9876\u90e8\u5c42 ${signedPct(d.top15Delta)}\uff0c12-15 \u4e2d\u9ad8\u5c42\u8865\u4f4d\uff1b0\u8bfe\u8017 ${signedPct(d.zeroDelta)}\u3002\u7ed3\u8bba\uff1a8\u6708\u4e0d\u662f\u201c\u9ad8\u8bfe\u8017\u4eba\u7fa4\u5927\u5e45\u6269\u5f20\u201d\uff0c\u800c\u662f\u201c\u9ad8\u8bfe\u8017\u5927\u76d8\u7a33\u4f4f\uff0c\u9876\u90e8\u5411\u4e2d\u9ad8\u5c42\u8fc1\u79fb\u201d\u3002\u5bf9\u8001\u677f\u6c47\u62a5\u65f6\u53ef\u4ee5\u76f4\u63a5\u8bf4\uff1a\u76ee\u6807\u8fbe\u6210\u80fd\u529b\u8fd8\u5728\uff0c\u4f46\u8bfe\u8017\u8d28\u91cf\u6ca1\u6709\u6bd47\u6708\u66f4\u5c16\uff0c\u9700\u8981\u628a 12-15 \u5b66\u5458\u518d\u63a8\u4e00\u6b65\u3002</li><li><b>\u5bf9\u6bd4 25\u5e747\u6708\uff08${d.yoyMonth}\uff09\uff1a</b>>=12 \u9ad8\u8bfe\u8017\u5c42 ${signedPct(d.yoyHighDelta)}\uff0c0-8\u4f4e\u8bfe\u8017\u6c60 ${signedPct(d.yoyLowDelta)}\uff0c0\u8bfe\u8017 ${signedPct(d.yoyZeroDelta)}\uff0c\u4f46 >=15 \u9876\u90e8\u5c42 ${signedPct(d.yoyTop15Delta)}\u3002\u7ed3\u8bba\uff1a\u540c\u6bd4\u770b\uff0c\u4eca\u5e74\u7684\u4f4e\u8bfe\u8017\u63a7\u5236\u66f4\u597d\uff0c\u9ad8\u8bfe\u8017\u5e95\u76d8\u66f4\u539a\uff1b\u4f46\u8d85\u9ad8\u8bfe\u8017\u5b66\u5458\u6bd4\u53bb\u5e74\u5c11\uff0c\u8bf4\u660e\u4eca\u5e74\u66f4\u50cf\u201c\u5e7f\u8986\u76d6\u8fbe\u6210\u201d\uff0c\u800c\u4e0d\u662f\u201c\u5c16\u5b50\u5b66\u5458\u62c9\u52a8\u201d\u3002</li><li><b>\u52a8\u4f5c\u65b9\u6848\uff1a</b>\u7b2c\u4e00\uff0c\u628a 10-12 \u548c 12-15 \u4e24\u4e2a\u4e34\u754c\u5c42\u5206\u5f00\u7ba1\uff1a10-12 \u8ffd\u52a012\u8282\u8fbe\u6807\uff0c12-15 \u8ffd\u52a015\u8282\u9ad8\u8d28\u91cf\u6807\u6746\uff1b\u7b2c\u4e8c\uff0c0\u8bfe\u8017\u5b66\u5458\u5355\u72ec\u5efa\u6c60\uff0c\u6309\u672a\u7ea6\u8bfe\u3001\u5bb6\u957f\u65e0\u54cd\u5e94\u3001\u8ba1\u5212\u65ad\u6863\u4e09\u7c7b\u62c6\u89e3\u8ddf\u8fdb\uff1b\u7b2c\u4e09\uff0c>=15 \u5b66\u5458\u505a\u6807\u6746\u6848\u4f8b\u548c\u5c0f\u7ec4\u590d\u76d8\uff0c\u8ba9\u4f18\u79c0 SS \u7684\u9884\u7ea6\u8282\u594f\u3001\u5bb6\u957f\u8bdd\u672f\u548c\u6fc0\u52b1\u70b9\u53d8\u6210\u53ef\u590d\u5236\u52a8\u4f5c\u3002</li></ul></div>`;
+}
+function renderAvgCompletionAnalysis(){
+  const a=latestAvgSummary();
+  return `<div class="analysis-block"><h3>\u4e8c\u3001\u540c\u671f\u4eba\u5747\u5b8c\u8bfe\u91cf\u5206\u6790</h3><ul class="analysis-list"><li><b>8\u6708\u7ed3\u679c\uff1a</b>${a.month} \u4eba\u5747\u5b8c\u8bfe\u91cf ${num(a.current,2)} \u8282\uff0c\u5bf9\u6bd4 7\u6708 ${num(a.priorValue,2)} \u8282\uff0c\u53d8\u5316 ${a.delta>=0?'+':''}${num(a.delta,2)} \u8282\uff1b\u5bf9\u6bd4 25\u5e747\u6708 ${num(a.yoyValue,2)} \u8282\uff0c\u63d0\u5347 ${a.yoyDelta>=0?'+':''}${num(a.yoyDelta,2)} \u8282\u3002</li><li><b>\u7ba1\u7406\u7ed3\u8bba\uff1a</b>8\u6708\u4eba\u5747\u5b8c\u8bfe\u91cf\u548c7\u6708\u57fa\u672c\u6301\u5e73\uff0c\u8bf4\u660e\u6574\u4f53\u8bfe\u8017\u80fd\u529b\u6ca1\u6709\u5931\u901f\uff1b\u4f46\u5728 0\u8bfe\u8017\u5360\u6bd4\u4e0a\u5347\u7684\u60c5\u51b5\u4e0b\uff0c\u4eba\u5747\u503c\u80fd\u7a33\u4f4f\uff0c\u610f\u5473\u7740\u5df2\u5f00\u52a8\u5b66\u5458\u7684\u4e0a\u8bfe\u5f3a\u5ea6\u5728\u6258\u4f4f\u5927\u76d8\u3002</li><li><b>\u5bf9\u8001\u677f\u6c47\u62a5\u53ef\u8bb2\uff1a</b>\u4eca\u5e74 8\u6708\u6bd425\u5e747\u6708\u9ad8 ${num(a.yoyDelta,2)} \u8282\uff0c\u8bf4\u660e\u8bfe\u8017\u8fd0\u8425\u5df2\u7ecf\u4ece\u201c\u8986\u76d6\u5b66\u5458\u201d\u8fdb\u9636\u5230\u201c\u63d0\u5347\u5355\u4f4d\u5b66\u5458\u5b8c\u8bfe\u5f3a\u5ea6\u201d\uff1b\u4e0b\u4e00\u6b65\u4e0d\u662f\u5355\u7eaf\u62c9\u5927\u76d8\u6d3b\u52a8\uff0c\u800c\u662f\u964d\u4f4e 0\u8bfe\u8017\u5e76\u628a\u4e2d\u9ad8\u5c42\u63a8\u5230 15 \u8282\u4ee5\u4e0a\u3002</li><li><b>\u52a8\u4f5c\u65b9\u6848\uff1a</b>\u6bcf\u6708\u4e0a\u65ec\u5efa\u7acb\u201c0\u8bfe\u8017\u542f\u52a8\u7387\u201d\u65e5\u76d1\u63a7\uff0c\u4e2d\u65ec\u628a 8-12 \u8282\u5b66\u5458\u4f5c\u4e3a\u51b2\u523a\u540d\u5355\uff0c\u4e0b\u65ec\u5bf9 12-15 \u8282\u505a\u9ad8\u8bfe\u8017\u51b2\u523a\uff1b\u8fd9\u6837\u624d\u80fd\u540c\u65f6\u62c9\u9ad8\u4eba\u5747\u8bfe\u8017\u548c\u9ad8\u8bfe\u8017\u5360\u6bd4\u3002</li></ul></div>`;
 }
 function renderLifecycleAnalysis(){
   const l=latestLifecycleSummary();
-  return `<div class="analysis-block"><h3>\u4e8c\u3001\u751f\u547d\u5468\u671f\u8bfe\u8017\u8868\u73b0\u5206\u6790</h3><ul class="analysis-list"><li><b>\u5f53\u524d\u7ed3\u8bba\uff1a</b>${l.month} \u751f\u547d\u5468\u671f\u6574\u4f53\u9ad8\u8bfe\u8017\u8fbe\u6210 ${pct(l.overall)}\uff0c\u6700\u5f3a\u4e3a ${l.strongest.col} ${pct(l.strongest.value)}\uff0c\u6700\u5f31\u4e3a ${l.weakest.col} ${pct(l.weakest.value)}\u3002M1-M3 \u65b0\u751f\u671f\u5e73\u5747 ${pct(l.early)}\uff0c\u9ad8\u4e8e M9-M12+ \u6210\u719f\u671f ${pct(l.mature)}\uff0c\u8bf4\u660e\u8bfe\u8017\u62c9\u52a8\u6700\u5bb9\u6613\u5728\u65b0\u751f\u671f\u5efa\u7acb\u60ef\u6027\u3002</li><li><b>\u73af\u6bd4 ${l.prior}\uff1a</b>\u6574\u4f53 ${signedPct(l.overallDelta)}\uff0cM1-M3 \u65b0\u751f\u671f ${signedPct(l.earlyDelta)}\uff0cM9-M12+ \u6210\u719f\u671f ${signedPct(l.matureDelta)}\u3002\u7ed3\u8bba\uff1a7\u6708\u76f8\u6bd46\u6708\u7684\u63d0\u5347\u5e76\u4e0d\u662f\u5355\u70b9\u589e\u957f\uff0c\u800c\u662f\u4ece\u65b0\u751f\u671f\u5230\u6210\u719f\u671f\u90fd\u6709\u6539\u5584\uff1b\u4f46\u540e\u6bb5\u751f\u547d\u5468\u671f\u4ecd\u7136\u4f4e\u4e8e\u65b0\u751f\u671f\uff0c\u9700\u8981\u5355\u72ec\u7684\u7ef4\u62a4\u7b56\u7565\u3002</li><li><b>\u540c\u6bd4 ${l.yoyMonth}\uff1a</b>\u6574\u4f53 ${signedPct(l.yoyOverallDelta)}\uff0cM1-M3 \u65b0\u751f\u671f ${signedPct(l.yoyEarlyDelta)}\uff0cM9-M12+ \u6210\u719f\u671f ${signedPct(l.yoyMatureDelta)}\u3002\u7ed3\u8bba\uff1a\u548c25\u5e747\u6708\u76f8\u6bd4\uff0c\u4eca\u5e747\u6708\u7684\u751f\u547d\u5468\u671f\u5927\u76d8\u66f4\u5f3a\uff0c\u8bf4\u660e\u65b0\u751f\u542f\u52a8\u548c\u8001\u751f\u7ef4\u62a4\u90fd\u6709\u8fdb\u6b65\uff1b\u4f46\u5bf9\u4e8e\u5df2\u7ecf\u8fc7\u4e86\u65b0\u751f\u671f\u7684\u5b66\u5458\uff0c\u4e0d\u80fd\u518d\u7528\u201c\u7ed1\u5b9a\u56fa\u5b9a\u8ba1\u5212\u201d\u4f5c\u4e3a\u4e3b\u8981\u6293\u624b\uff0c\u800c\u8981\u505a\u7cbe\u7ec6\u5316\u5206\u7ec4\u548c\u6301\u7eed\u5524\u9192\u3002</li><li><b>\u52a8\u4f5c\u63aa\u65bd\uff1a</b>M1-M3 \u65b0\u751f\u671f\u624d\u662f\u56fa\u5b9a\u8ba1\u5212\u7684\u6838\u5fc3\u7a97\u53e3\uff0c\u8981\u5728\u9996\u5468\u5b8c\u6210\u8bfe\u8017\u542f\u52a8\u548c\u7a33\u5b9a\u8282\u594f\u5efa\u7acb\uff1bM4-M8 \u8981\u6309\u6708\u8bfe\u8017\u76ee\u6807\u505a\u8282\u70b9\u8ffd\u8e2a\uff0c\u9632\u6b62\u4ece\u9ad8\u4f4d\u6ed1\u843d\uff1bM9-M12+ \u548c\u8001\u751f\u540e\u6bb5\u4e0d\u5efa\u8bae\u518d\u5199\u56fa\u5b9a\u8ba1\u5212\uff0c\u5efa\u8bae\u5728 SCRM \u91cc\u5efa\u7acb\u201c\u4f4e\u8bfe\u8017\u6210\u719f\u671f\u201d\u5206\u7ec4\uff0c\u4e0b\u4e2a\u6708\u8ba9SS\u91cd\u70b9\u5173\u6ce8\uff0c\u6309\u65ad\u6863\u9884\u7ea6\u3001\u5bb6\u957f\u53cd\u9988\u3001\u5b66\u5458\u5174\u8da3\u4e09\u7c7b\u505a\u5524\u9192\u548c\u8ddf\u8fdb\u3002</li></ul></div>`;
+  return `<div class="analysis-block"><h3>\u4e09\u3001\u751f\u547d\u5468\u671f\u8bfe\u8017\u8868\u73b0\u5206\u6790</h3><ul class="analysis-list"><li><b>8\u6708\u5b9e\u9645\u8868\u73b0\uff1a</b>${l.month} \u751f\u547d\u5468\u671f\u6574\u4f53\u9ad8\u8bfe\u8017\u8fbe\u6210 ${pct(l.overall)}\uff0c\u6700\u5f3a\u4e3a ${l.strongest.col} ${pct(l.strongest.value)}\uff0c\u6700\u5f31\u4e3a ${l.weakest.col} ${pct(l.weakest.value)}\u3002M2-M4 \u5df2\u7ecf\u5168\u90e8\u8d85\u8fc7 83%\uff0c\u8bf4\u660e\u65b0\u751f\u542f\u52a8\u8d28\u91cf\u5f88\u5f3a\uff1bM10-M12+ \u57fa\u672c\u843d\u5728 63%-66% \u9644\u8fd1\uff0c\u662f\u4e0b\u4e2a\u6708\u6700\u5e94\u4f18\u5148\u76ef\u7684\u4eba\u7fa4\u3002</li><li><b>\u5bf9\u6bd4 7\u6708\uff08${l.prior}\uff09\uff1a</b>\u6574\u4f53 ${signedPct(l.overallDelta)}\uff0cM1-M3 \u65b0\u751f\u671f ${signedPct(l.earlyDelta)}\uff0cM9-M12+ \u6210\u719f\u671f ${signedPct(l.matureDelta)}\u3002\u7ed3\u8bba\uff1a8\u6708\u6574\u4f53\u6bd47\u6708\u66f4\u9ad8\uff0c\u4e3b\u8981\u4ef7\u503c\u5728\u65b0\u751f\u548c\u4e2d\u524d\u6bb5\u7684\u8bfe\u8017\u8d28\u91cf\u63d0\u5347\uff1b\u4f46\u6210\u719f\u671f\u63d0\u5347\u5e45\u5ea6\u6709\u9650\uff0c\u9700\u8981\u5355\u72ec\u4ece\u201c\u7eed\u8bfe\u610f\u613f\u3001\u7ea6\u8bfe\u60ef\u6027\u3001\u5bb6\u957f\u4f53\u611f\u201d\u4e09\u4e2a\u65b9\u5411\u62c6\u89e3\u3002</li><li><b>\u5bf9\u6bd4 25\u5e747\u6708\uff08${l.yoyMonth}\uff09\uff1a</b>\u6574\u4f53 ${signedPct(l.yoyOverallDelta)}\uff0cM1-M3 \u65b0\u751f\u671f ${signedPct(l.yoyEarlyDelta)}\uff0cM9-M12+ \u6210\u719f\u671f ${signedPct(l.yoyMatureDelta)}\u3002\u7ed3\u8bba\uff1a\u540c\u6bd4\u770b\uff0c\u4eca\u5e74\u751f\u547d\u5468\u671f\u5927\u76d8\u660e\u663e\u66f4\u5f3a\uff0c\u5c24\u5176\u524d\u4e2d\u671f\u5b66\u5458\u7684\u8bfe\u8017\u5df2\u7ecf\u88ab\u62c9\u5230\u8f83\u9ad8\u6c34\u4f4d\uff1b\u98ce\u9669\u5728\u4e8e M11/M12/M12+ \u8001\u751f\u540e\u6bb5\u4ecd\u7136\u4f4e\u4e8e66%\u76ee\u6807\u7ebf\uff0c\u5bb9\u6613\u5728\u6708\u5e95\u6210\u4e3a\u62d6\u540e\u817f\u4eba\u7fa4\u3002</li><li><b>\u52a8\u4f5c\u65b9\u6848\uff1a</b>\u56fa\u5b9a\u8ba1\u5212\u53ea\u9002\u5408\u653e\u5728\u65b0\u751f\u671f\uff0c\u56e0\u6b64 M2-M4 \u8981\u628a\u56fa\u5b9a\u8ba1\u5212\u7684\u8986\u76d6\u548c\u6267\u884c\u7a33\u4f4f\uff1bM5-M9 \u8981\u505a\u8282\u70b9\u8ffd\u8e2a\uff0c\u9632\u6b62\u4ece\u9ad8\u4f4d\u56de\u843d\uff1bM10-M12+ \u4e0d\u5efa\u8bae\u518d\u4ee5\u56fa\u5b9a\u8ba1\u5212\u4e3a\u4e3b\u6293\u624b\uff0c\u5efa\u8bae\u5728 SCRM \u5355\u72ec\u5efa\u7acb\u201c\u6210\u719f\u671f\u4f4e\u8bfe\u8017\u201d\u5206\u7ec4\uff0c\u4e0b\u4e2a\u6708\u8ba9 SS \u6309\u65ad\u6863\u9884\u7ea6\u3001\u5bb6\u957f\u4f53\u611f\u3001\u5b66\u5458\u5174\u8da3\u8870\u51cf\u4e09\u7c7b\u8fdb\u884c\u8ddf\u8fdb\u548c\u5524\u9192\u3002</li></ul></div>`;
 }
 function renderLayerStrategies(){
   const dist=latestDistributionSummary(), life=latestLifecycleSummary();
@@ -1175,8 +1211,8 @@ function renderLayerStrategies(){
   return `<div class="strategy-grid">${cards.map(c=>`<div class="strategy-card"><b>${c[0]}</b><span class="tag tag-neutral">${c[1]}</span><p>${c[2]}</p></div>`).join('')}</div>`;
 }
 function renderHistoricalAnalysis(){
-  const dist=latestDistributionSummary(), life=latestLifecycleSummary();
-  return `<section class="panel" id="historyAnalysis"><div class="panel-head"><div><div class="panel-title">\u5386\u53f2\u8bfe\u8017\u7ed3\u6784\u4e0e\u751f\u547d\u5468\u671f\u5206\u6790</div><div class="panel-sub">\u9875\u9762\u6700\u540e\u7684\u6838\u5fc3\u590d\u76d8\u677f\u5757\uff1a\u6309\u201c\u56fe\u8868\u2192\u5206\u6790\u201d\u7684\u987a\u5e8f\u5c55\u5f00\uff0c\u66f4\u9002\u5408\u6708\u5ea6\u590d\u76d8</div></div></div><div class="panel-body">${renderHistoryInsights()}<section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u4e0d\u540c\u8bfe\u8017\u533a\u95f4\u5360\u6bd4</div><div class="panel-sub" style="margin-bottom:10px">${dist.month} \u9ad8\u8bfe\u8017\u5c42 ${pct(dist.high)}\uff0c0\u8bfe\u8017 ${pct(dist.zero)}\uff1b\u6bcf\u4e2a\u6708\u4efd\u7684\u4e3b\u8981\u533a\u95f4\u5df2\u76f4\u63a5\u6807\u6ce8\u5360\u6bd4</div>${renderDistributionChart()}</section><div style="height:14px"></div>${renderDistributionAnalysis()}<div style="height:18px"></div><section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u4e0d\u540c\u751f\u547d\u5468\u671f\u8bfe\u8017\u8868\u73b0</div><div class="panel-sub" style="margin-bottom:10px">${life.month} \u6574\u4f53 ${pct(life.overall)}\uff0c\u6700\u5f3a ${life.strongest.col} ${pct(life.strongest.value)}\uff0c\u6700\u5f31 ${life.weakest.col} ${pct(life.weakest.value)}\uff1b\u70ed\u529b\u56fe\u6bcf\u4e2a\u683c\u5b50\u5747\u5c55\u793a\u5177\u4f53\u6570\u503c</div>${renderLifecycleHeatmap()}</section><div style="height:14px"></div>${renderLifecycleAnalysis()}<div style="height:14px"></div>${renderLayerStrategies()}</div></section>`;
+  const dist=latestDistributionSummary(), life=latestLifecycleSummary(), avg=latestAvgSummary();
+  return `<section class="panel" id="historyAnalysis"><div class="panel-head"><div><div class="panel-title">\u5386\u53f2\u8bfe\u8017\u7ed3\u6784\u4e0e\u751f\u547d\u5468\u671f\u5206\u6790</div><div class="panel-sub">\u9875\u9762\u6700\u540e\u7684\u6838\u5fc3\u590d\u76d8\u677f\u5757\uff1a\u805a\u7126 8\u6708\u5b9e\u9645\uff0c\u5bf9\u6bd4 7\u6708\u548c25\u5e747\u6708</div></div></div><div class="panel-body">${renderHistoryInsights()}<section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u4e0d\u540c\u8bfe\u8017\u533a\u95f4\u5360\u6bd4</div><div class="panel-sub" style="margin-bottom:10px">${dist.month} \u9ad8\u8bfe\u8017\u5c42 ${pct(dist.high)}\uff0c0\u8bfe\u8017 ${pct(dist.zero)}\uff1b\u6bcf\u4e2a\u6708\u4efd\u7684\u4e3b\u8981\u533a\u95f4\u5df2\u76f4\u63a5\u6807\u6ce8\u5360\u6bd4</div>${renderDistributionChart()}</section><div style="height:14px"></div>${renderDistributionAnalysis()}<div style="height:18px"></div><section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u540c\u671f\u4eba\u5747\u5b8c\u8bfe\u91cf</div><div class="panel-sub" style="margin-bottom:10px">${avg.month} \u4eba\u5747 ${num(avg.current,2)} \u8282\uff0c\u8f83 ${avg.prior} ${avg.delta>=0?'+':''}${num(avg.delta,2)} \u8282\uff0c\u8f83 ${avg.yoyMonth} ${avg.yoyDelta>=0?'+':''}${num(avg.yoyDelta,2)} \u8282</div><div class="table-wrap">${renderAvgCompletionChart()}</div></section><div style="height:14px"></div>${renderAvgCompletionAnalysis()}<div style="height:18px"></div><section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u4e0d\u540c\u751f\u547d\u5468\u671f\u8bfe\u8017\u8868\u73b0</div><div class="panel-sub" style="margin-bottom:10px">${life.month} \u6574\u4f53 ${pct(life.overall)}\uff0c\u6700\u5f3a ${life.strongest.col} ${pct(life.strongest.value)}\uff0c\u6700\u5f31 ${life.weakest.col} ${pct(life.weakest.value)}\uff1b\u70ed\u529b\u56fe\u6bcf\u4e2a\u683c\u5b50\u5747\u5c55\u793a\u5177\u4f53\u6570\u503c</div>${renderLifecycleHeatmap()}</section><div style="height:14px"></div>${renderLifecycleAnalysis()}<div style="height:14px"></div>${renderLayerStrategies()}</div></section>`;
 }
 function sortGroups(rows){
   return rows.slice().sort((a,b)=>{ const av=a[groupSort.key]??0, bv=b[groupSort.key]??0; return groupSort.dir==='asc'?av-bv:bv-av; });
