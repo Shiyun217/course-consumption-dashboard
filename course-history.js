@@ -5,7 +5,7 @@
 
   let project = 'daily';
   let lifecycleMetric = 'high_rate';
-  const distColors = ['#173f6b', '#2f7f75', '#7aa68b', '#d7b56d', '#d98a58', '#aeb7c3'];
+  const distColors = ['#168a5b', '#5fba7d', '#d8c85c', '#efb256', '#e78155', '#c94f4f'];
   const distLabels = ['15节及以上', '12-14节', '10-11节', '8-9节', '1-7节', '0节'];
 
   const pctH = (value, digits = 1) => value == null ? '-' : `${(value * 100).toFixed(digits)}%`;
@@ -44,7 +44,7 @@
 
   function setHistoryToolbar() {
     const update = document.querySelector('.tools > span');
-    if (update) update.textContent = '分析范围：2025-01 至 2026-07';
+    if (update) update.textContent = '分析范围：2025-01 至 2026-08';
     const filter = document.getElementById('filterBtn');
     const ai = document.getElementById('aiBtn');
     const scope = document.getElementById('scopeBtn');
@@ -52,7 +52,7 @@
     if (filter) filter.onclick = () => document.getElementById('lifecycleAnalysis')?.scrollIntoView({ behavior: 'smooth' });
     if (ai) ai.onclick = () => document.getElementById('historyActions')?.scrollIntoView({ behavior: 'smooth' });
     if (scope) scope.onclick = () => alert('生命周期口径：M1为首单次月；M12+单格汇总月差大于12个月的可观测记录，底部均值每个非空cohort只按该cohort学员数计一次。同月同学员重复记录的完课量求和、达标取最大值；未来月份显示“-”且不参与均值。');
-    if (importButton) importButton.onclick = () => alert('数据源：付费明细.xlsx、25年1月-26年8月完课量数据汇总.xlsx。当前完课文件实际包含2501-2607共19个sheet。');
+    if (importButton) importButton.onclick = () => alert('数据源：付费明细.xlsx、25年1月-26年8月完课量数据汇总.xlsx。当前历史数据已补入2501-2608共20个月观察值。');
   }
 
   function distributionChart() {
@@ -83,10 +83,10 @@
   }
 
   function completionChart() {
-    const rows25 = history.monthly_summary.filter(row => row.month >= '2501' && row.month <= '2507');
-    const rows26 = history.monthly_summary.filter(row => row.month >= '2601' && row.month <= '2607');
+    const rows25 = history.monthly_summary.filter(row => row.month >= '2501' && row.month <= '2508');
+    const rows26 = history.monthly_summary.filter(row => row.month >= '2601' && row.month <= '2608');
     const w = 920, h = 330, left = 44, right = 14, top = 30, bottom = 44;
-    const max = 14, plotH = h - top - bottom, step = (w - left - right) / 7, barW = 34, gap = 5;
+    const max = 14, plotH = h - top - bottom, step = (w - left - right) / 8, barW = 34, gap = 5;
     const y = value => top + (max - value) * plotH / max;
     const grid = [0, 4, 8, 12, 14].map(v => `<line x1="${left}" y1="${y(v)}" x2="${w-right}" y2="${y(v)}" stroke="#e4e8ee"/><text x="8" y="${y(v)+4}" fill="#667085" font-size="10">${v}</text>`).join('');
     const bars = rows25.map((row25, i) => {
@@ -97,18 +97,18 @@
       const bar = (row, x, fill) => `<rect x="${x}" y="${y(row.avg_completion)}" width="${barW}" height="${h-bottom-y(row.avg_completion)}" rx="2" fill="${fill}"><title>${row.month}: ${numH(row.avg_completion)}节</title></rect><text x="${x + barW / 2}" y="${y(row.avg_completion) - 6}" text-anchor="middle" fill="#172033" font-size="10" font-weight="700">${numH(row.avg_completion)}</text>`;
       return `${bar(row25, x25, '#4169a1')}${bar(row26, x26, '#2f7f75')}<text x="${center}" y="${h-15}" text-anchor="middle" fill="#667085" font-size="10">${i + 1}月</text>`;
     }).join('');
-    return `<div class="history-chart-scroll"><svg class="history-chart history-chart-compact" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-label="1-7月同期人均完课量">${grid}${bars}</svg></div><div class="history-legend"><span><i style="background:#4169a1"></i>2025同期</span><span><i style="background:#2f7f75"></i>2026同期</span></div>`;
+    return `<div class="history-chart-scroll"><svg class="history-chart history-chart-compact" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-label="1-8月同期人均完课量">${grid}${bars}</svg></div><div class="history-legend"><span><i style="background:#4169a1"></i>2025同期</span><span><i style="background:#2f7f75"></i>2026同期</span></div>`;
   }
 
   function completionPeriodComparison() {
     const c = history.comparisons;
-    const rows25 = history.monthly_summary.filter(row => row.month >= '2501' && row.month <= '2507');
-    const rows26 = history.monthly_summary.filter(row => row.month >= '2601' && row.month <= '2607');
-    const lift = c.avg_completion_2026_same_period - c.avg_completion_2025_jan_jul;
-    const relativeLift = lift / c.avg_completion_2025_jan_jul;
+    const rows25 = history.monthly_summary.filter(row => row.month >= '2501' && row.month <= '2508');
+    const rows26 = history.monthly_summary.filter(row => row.month >= '2601' && row.month <= '2608');
+    const lift = c.avg_completion_2026_same_period - c.avg_completion_2025_jan_aug;
+    const relativeLift = lift / c.avg_completion_2025_jan_aug;
     const betterMonths = rows26.map((row, i) => row.avg_completion > rows25[i].avg_completion ? `${i + 1}月` : null).filter(Boolean);
-    const highLift = c.high_rate_2026_same_period - c.high_rate_2025_jan_jul;
-    return `<div class="period-compare-grid"><article><span>2025年1-7月均值</span><b>${numH(c.avg_completion_2025_jan_jul)}节</b><p>同期高课耗达成率${pctH(c.high_rate_2025_jan_jul)}</p></article><article><span>2026年1-7月均值</span><b>${numH(c.avg_completion_2026_same_period)}节</b><p>同期高课耗达成率${pctH(c.high_rate_2026_same_period)}</p></article><article class="period-compare-result"><span>同期变化</span><b>+${numH(lift)}节 / +${(relativeLift * 100).toFixed(1)}%</b><p>${betterMonths.join('、')}共${betterMonths.length}/7个月高于去年同期；高课耗率提升${ppH(highLift)}，明显快于真实课量。</p></article></div>`;
+    const highLift = c.high_rate_2026_same_period - c.high_rate_2025_jan_aug;
+    return `<div class="period-compare-grid"><article><span>2025年1-8月均值</span><b>${numH(c.avg_completion_2025_jan_aug)}节</b><p>同期高课耗达成率${pctH(c.high_rate_2025_jan_aug)}</p></article><article><span>2026年1-8月均值</span><b>${numH(c.avg_completion_2026_same_period)}节</b><p>同期高课耗达成率${pctH(c.high_rate_2026_same_period)}</p></article><article class="period-compare-result"><span>同期变化</span><b>+${numH(lift)}节 / +${(relativeLift * 100).toFixed(1)}%</b><p>${betterMonths.join('、')}共${betterMonths.length}/8个月高于去年同期；高课耗率提升${ppH(highLift)}，明显快于真实课量。</p></article></div>`;
   }
 
   function packageChart() {
@@ -222,12 +222,12 @@
       const rightVariance = right.reduce((sum, value) => sum + (value - rightMean) ** 2, 0);
       return numerator / Math.sqrt(leftVariance * rightVariance);
     };
-    const samePeriod = values => ({ y25: mean(values.slice(0, 7)), y26: mean(values.slice(12, 19)) });
+    const samePeriod = values => ({ y25: mean(values.slice(0, 8)), y26: mean(values.slice(12, 20)) });
     const packages = Object.fromEntries(history.package_mix.series.map(series => [series.label, samePeriod(series.values)]));
     const distribution = Object.fromEntries(history.distribution.buckets.map(bucket => [bucket.label, samePeriod(bucket.values)]));
     const c = history.comparisons;
-    const highLift = c.high_rate_2026_same_period - c.high_rate_2025_jan_jul;
-    const avgLiftRate = (c.avg_completion_2026_same_period - c.avg_completion_2025_jan_jul) / c.avg_completion_2025_jan_jul;
+    const highLift = c.high_rate_2026_same_period - c.high_rate_2025_jan_aug;
+    const avgLiftRate = (c.avg_completion_2026_same_period - c.avg_completion_2025_jan_aug) / c.avg_completion_2025_jan_aug;
     const completed12Lift = (distribution['>=15'].y26 + distribution['12<=x<15'].y26) - (distribution['>=15'].y25 + distribution['12<=x<15'].y25);
     const high25 = weightedLifecycle('high_rate', '25');
     const high26 = weightedLifecycle('high_rate', '26');
@@ -235,19 +235,19 @@
     const avg26 = weightedLifecycle('avg_completion', '26');
     const highStageLift = high26.slice(0, 6).map((stage, i) => stage.value - high25[i].value);
     const avgStageLift = avg26.slice(0, 6).map((stage, i) => stage.value - avg25[i].value);
-    const rows25 = history.monthly_summary.filter(row => row.month >= '2501' && row.month <= '2507');
-    const rows26 = history.monthly_summary.filter(row => row.month >= '2601' && row.month <= '2607');
+    const rows25 = history.monthly_summary.filter(row => row.month >= '2501' && row.month <= '2508');
+    const rows26 = history.monthly_summary.filter(row => row.month >= '2601' && row.month <= '2608');
     const betterHighMonths = rows26.map((row, i) => row.high_rate > rows25[i].high_rate ? `${i + 1}月` : null).filter(Boolean);
     const highDeltas = rows26.map((row, i) => row.high_rate - rows25[i].high_rate);
     const avgDeltas = rows26.map((row, i) => row.avg_completion - rows25[i].avg_completion);
     const packageDeltas = rows26.map((row, i) => row.package_12_share - rows25[i].package_12_share);
     const highAvgCorrelation = correlation(highDeltas, avgDeltas);
     const highPackageCorrelation = correlation(highDeltas, packageDeltas);
-    return `<div class="driver-verdict"><span>综合判断</span><b>新生早期排课与激活质量提升是主因，套餐迁移是放大因素</b><p>2026年1-7月高课耗率提升${ppH(highLift)}，同期实际完成12节及以上占比提升${ppH(completed12Lift)}，两者方向和幅度接近；可比生命周期的人均课量也全面领先，更支持真实运营改善。</p></div>
+    return `<div class="driver-verdict"><span>综合判断</span><b>新生早期排课与激活质量提升是主因，套餐迁移是放大因素</b><p>2026年1-8月高课耗率提升${ppH(highLift)}，同期实际完成12节及以上占比提升${ppH(completed12Lift)}，两者方向和幅度接近；可比生命周期的人均课量也全面领先，更支持真实运营改善。</p></div>
       <div class="driver-evidence-list"><article class="is-positive"><span>主因 · 可比生命周期改善</span><b>M1-M6高课耗同比高${(Math.min(...highStageLift)*100).toFixed(1)}-${(Math.max(...highStageLift)*100).toFixed(1)}pp</b><p>更关键的是不受达标门槛影响的人均课量：2026 cohort M1-M6比2025高${Math.min(...avgStageLift).toFixed(2)}-${Math.max(...avgStageLift).toFixed(2)}节，M2提升${avgStageLift[1].toFixed(2)}节、M3提升${avgStageLift[2].toFixed(2)}节，说明新生排课、激活和早期承接质量更好。</p></article>
-      <article class="is-primary"><span>核心验证 · 同期月度波动</span><b>高课耗变化与人均课量变化相关系数${highAvgCorrelation.toFixed(2)}</b><p>七个月同比变化中，高课耗与实际人均课量高度同向；与12节套餐占比变化的相关系数仅${highPackageCorrelation.toFixed(2)}。该检验仅有7个月，用于判断方向而非做因果估计；套餐迁移每月持续扩大，但高课耗2-4月仍同比下降，说明套餐变化不能单独解释结果。</p></article>
+      <article class="is-primary"><span>核心验证 · 同期月度波动</span><b>高课耗变化与人均课量变化相关系数${highAvgCorrelation.toFixed(2)}</b><p>八个月同比变化中，高课耗与实际人均课量高度同向；与12节套餐占比变化的相关系数仅${highPackageCorrelation.toFixed(2)}。该检验仅有7个月，用于判断方向而非做因果估计；套餐迁移每月持续扩大，但高课耗2-4月仍同比下降，说明套餐变化不能单独解释结果。</p></article>
       <article class="is-structure"><span>结果验证 · 真实完课结构</span><b>完成12节及以上占比提升${ppH(completed12Lift)}</b><p>0课耗占比由${pctH(distribution['x=0'].y25)}降至${pctH(distribution['x=0'].y26)}；12-14节占比提升${ppH(distribution['12<=x<15'].y26 - distribution['12<=x<15'].y25)}，抵消15节以上下降${ppH(distribution['>=15'].y26 - distribution['>=15'].y25)}后，仍形成${ppH(completed12Lift)}的净增长，反映更多学员跨过了实际12节线。</p></article>
-      <article class="is-risk"><span>放大因素与边界 · 套餐结构</span><b>12节套餐${pctH(packages['12'].y25)} → ${pctH(packages['12'].y26)}</b><p>门槛下降会放大达标率，可能解释高课耗率涨幅快于整体人均课量，也可能解释5月“达标率升、课量降”的背离。但当前套餐占比是月度汇总，未与学员达标结果逐人匹配，不能把它定为主因；${betterHighMonths.join('、')}共${betterHighMonths.length}/7个月高于去年，M3后防滑落仍是下一阶段重点。</p></article></div>`;
+      <article class="is-risk"><span>放大因素与边界 · 套餐结构</span><b>12节套餐${pctH(packages['12'].y25)} → ${pctH(packages['12'].y26)}</b><p>门槛下降会放大达标率，可能解释高课耗率涨幅快于整体人均课量，也可能解释5月“达标率升、课量降”的背离。但当前套餐占比是月度汇总，未与学员达标结果逐人匹配，不能把它定为主因；${betterHighMonths.join('、')}共${betterHighMonths.length}/8个月高于去年，M3后防滑落仍是下一阶段重点。</p></article></div>`;
   }
 
   function historyActions() {
@@ -264,19 +264,19 @@
 
   function renderHistory() {
     const c = history.comparisons;
-    const avgLift = c.avg_completion_2026_same_period - c.avg_completion_2025_jan_jul;
-    const highLift = c.high_rate_2026_same_period - c.high_rate_2025_jan_jul;
-    const packageLift = c.low_package_share_2026_same_period - c.low_package_share_2025_jan_jul;
+    const avgLift = c.avg_completion_2026_same_period - c.avg_completion_2025_jan_aug;
+    const highLift = c.high_rate_2026_same_period - c.high_rate_2025_jan_aug;
+    const packageLift = c.low_package_share_2026_same_period - c.low_package_share_2025_jan_aug;
     const content = document.getElementById('content');
     content.innerHTML = `${projectTabs()}
-      <section class="history-hero"><div><div class="kicker">COURSE CONSUMPTION REVIEW</div><h1>课耗历史数据分析</h1><p class="subtitle">从月度结构、首单cohort生命周期与套餐门槛三层拆解2025-01至2026-07的课耗表现</p></div><div class="history-scope"><div class="history-scope-row"><span>首单cohort</span><b>2501-2607</b></div><div class="history-scope-row"><span>观察月份</span><b>2501-2607（19个月）</b></div><div class="history-scope-row"><span>生命周期</span><b>M1-M12 / M12+</b></div><div class="history-scope-row"><span>核心判断</span><b>真实课量提升 + 达标门槛结构变化</b></div></div></section>
-      <section class="history-kpis"><div class="history-kpi"><div class="history-kpi-label"><span>2026人均完课量</span><span>1-7月同期</span></div><div class="history-kpi-value">${numH(c.avg_completion_2026_same_period)}</div><div class="history-kpi-meta">2025年1-7月为${numH(c.avg_completion_2025_jan_jul)}，同比提升${numH(avgLift)}节（${(avgLift/c.avg_completion_2025_jan_jul*100).toFixed(1)}%）</div></div><div class="history-kpi"><div class="history-kpi-label"><span>2026高课耗达成</span><span>1-7月同期</span></div><div class="history-kpi-value">${pctH(c.high_rate_2026_same_period)}</div><div class="history-kpi-meta">较2025年1-7月${pctH(c.high_rate_2025_jan_jul)}提升${ppH(highLift)}</div></div><div class="history-kpi"><div class="history-kpi-label"><span>低消套餐占比</span><span>1-7月同期</span></div><div class="history-kpi-value">${pctH(c.low_package_share_2026_same_period)}</div><div class="history-kpi-meta">较2025年1-7月${pctH(c.low_package_share_2025_jan_jul)}提升${ppH(packageLift)}</div></div><div class="history-kpi"><div class="history-kpi-label"><span>覆盖cohort学员</span><span>去重ID</span></div><div class="history-kpi-value">${history.diagnostics.paid_cohort_students.toLocaleString('zh-CN')}</div><div class="history-kpi-meta">付费明细X列首单日期在2501-2607范围内</div></div></section>
+      <section class="history-hero"><div><div class="kicker">COURSE CONSUMPTION REVIEW</div><h1>课耗历史数据分析</h1><p class="subtitle">从月度结构、首单cohort生命周期与套餐门槛三层拆解2025-01至2026-08的课耗表现</p></div><div class="history-scope"><div class="history-scope-row"><span>首单cohort</span><b>2501-2607</b></div><div class="history-scope-row"><span>观察月份</span><b>2501-2608（20个月）</b></div><div class="history-scope-row"><span>生命周期</span><b>M1-M12 / M12+</b></div><div class="history-scope-row"><span>核心判断</span><b>真实课量提升 + 达标门槛结构变化</b></div></div></section>
+      <section class="history-kpis"><div class="history-kpi"><div class="history-kpi-label"><span>2026人均完课量</span><span>1-8月同期</span></div><div class="history-kpi-value">${numH(c.avg_completion_2026_same_period)}</div><div class="history-kpi-meta">2025年1-8月为${numH(c.avg_completion_2025_jan_aug)}，同比提升${numH(avgLift)}节（${(avgLift/c.avg_completion_2025_jan_aug*100).toFixed(1)}%）</div></div><div class="history-kpi"><div class="history-kpi-label"><span>2026高课耗达成</span><span>1-8月同期</span></div><div class="history-kpi-value">${pctH(c.high_rate_2026_same_period)}</div><div class="history-kpi-meta">较2025年1-8月${pctH(c.high_rate_2025_jan_aug)}提升${ppH(highLift)}</div></div><div class="history-kpi"><div class="history-kpi-label"><span>低消套餐占比</span><span>1-8月同期</span></div><div class="history-kpi-value">${pctH(c.low_package_share_2026_same_period)}</div><div class="history-kpi-meta">较2025年1-8月${pctH(c.low_package_share_2025_jan_aug)}提升${ppH(packageLift)}</div></div><div class="history-kpi"><div class="history-kpi-label"><span>覆盖cohort学员</span><span>去重ID</span></div><div class="history-kpi-value">${history.diagnostics.paid_cohort_students.toLocaleString('zh-CN')}</div><div class="history-kpi-meta">付费明细X列首单日期在2501-2608范围内</div></div></section>
       <section class="panel history-section"><div class="panel-head"><div><div class="panel-title">不同课耗区间占比分析</div><div class="panel-sub">按每个月sheet的完课量分层，100%堆叠展示结构变化</div></div></div><div class="panel-body">${distributionChart()}</div></section>
-      <section class="history-grid-2 history-section"><div class="panel"><div class="panel-head"><div><div class="panel-title">1-7月同期人均完课量</div><div class="panel-sub">同一月份并排比较2025与2026；柱顶展示具体课量</div></div></div><div class="panel-body">${completionChart()}${completionPeriodComparison()}</div></div><div class="panel"><div class="panel-head"><div><div class="panel-title">趋势判断</div><div class="panel-sub">区分实际课量与达标门槛</div></div></div><div class="panel-body history-callouts"><div class="history-callout good"><b>同期实际课量小幅改善</b><p>2026年1-7月人均${numH(c.avg_completion_2026_same_period)}节，较2025同期${numH(c.avg_completion_2025_jan_jul)}节提升${numH(avgLift)}节（${(avgLift/c.avg_completion_2025_jan_jul*100).toFixed(1)}%）。1月、6月、7月高于去年同期，2-5月仍有波动。</p></div><div class="history-callout"><b>新cohort早期质量更好</b><p>非空样本加权生命周期中，2026 cohort 的M1达标率${pctH(weightedLifecycle('high_rate','26')[0].value)}、人均${numH(weightedLifecycle('avg_completion','26')[0].value)}节，分别高于2025 cohort 的${pctH(weightedLifecycle('high_rate','25')[0].value)}和${numH(weightedLifecycle('avg_completion','25')[0].value)}节；M2-M6也保持领先。</p></div><div class="history-callout warn"><b>达标率涨幅仍大于实际课量</b><p>同期高课耗达成提升${ppH(highLift)}，而人均课量仅提升${(avgLift/c.avg_completion_2025_jan_jul*100).toFixed(1)}%。必须同步观察套餐门槛变化，不能把全部提升归因于运营。</p></div></div></div></section>
+      <section class="history-grid-2 history-section"><div class="panel"><div class="panel-head"><div><div class="panel-title">1-8月同期人均完课量</div><div class="panel-sub">同一月份并排比较2025与2026；柱顶展示具体课量</div></div></div><div class="panel-body">${completionChart()}${completionPeriodComparison()}</div></div><div class="panel"><div class="panel-head"><div><div class="panel-title">趋势判断</div><div class="panel-sub">区分实际课量与达标门槛</div></div></div><div class="panel-body history-callouts"><div class="history-callout good"><b>同期实际课量小幅改善</b><p>2026年1-8月人均${numH(c.avg_completion_2026_same_period)}节，较2025同期${numH(c.avg_completion_2025_jan_aug)}节提升${numH(avgLift)}节（${(avgLift/c.avg_completion_2025_jan_aug*100).toFixed(1)}%）。1月、6月、7月、8月高于去年同期，2-5月仍有波动。</p></div><div class="history-callout"><b>新cohort早期质量更好</b><p>非空样本加权生命周期中，2026 cohort 的M1达标率${pctH(weightedLifecycle('high_rate','26')[0].value)}、人均${numH(weightedLifecycle('avg_completion','26')[0].value)}节，分别高于2025 cohort 的${pctH(weightedLifecycle('high_rate','25')[0].value)}和${numH(weightedLifecycle('avg_completion','25')[0].value)}节；M2-M6也保持领先。</p></div><div class="history-callout warn"><b>达标率涨幅仍大于实际课量</b><p>同期高课耗达成提升${ppH(highLift)}，而人均课量仅提升${(avgLift/c.avg_completion_2025_jan_aug*100).toFixed(1)}%。必须同步观察套餐门槛变化，不能把全部提升归因于运营。</p></div></div></div></section>
       <section class="panel history-section" id="lifecycleAnalysis"><div class="panel-head"><div><div class="panel-title">不同用户生命周期的课耗分布</div><div class="panel-sub">纵轴为首单月份，横轴为M1-M12+；红色偏低、黄色居中、绿色偏高</div></div><div class="history-metric-switch"><button class="${lifecycleMetric === 'high_rate' ? 'active' : ''}" data-lifecycle-metric="high_rate">高课耗达成</button><button class="${lifecycleMetric === 'avg_completion' ? 'active' : ''}" data-lifecycle-metric="avg_completion">人均课量</button></div></div><div class="panel-body">${lifecycleTable()}</div></section>
       ${lifecycleNodeAnalysis()}
-      <section class="history-grid-2 history-section"><div class="panel"><div class="panel-head"><div><div class="panel-title">套餐结构变化（放大因素）</div><div class="panel-sub">港澳1-7月同期：用于解释门槛效应，不单独作为主因</div></div></div><div class="panel-body history-chart-scroll">${packageChart()}</div></div><div class="panel"><div class="panel-head"><div><div class="panel-title">港澳26年高课耗占比为何高于25年</div><div class="panel-sub">同期60.2% vs 57.0%；主看真实课量与可比生命周期改善</div></div></div><div class="panel-body">${highConsumptionDrivers()}</div></div></section>
-      <section class="panel history-section"><div class="panel-head"><div><div class="panel-title">老板汇报结论</div><div class="panel-sub">建议按“结果、主因、风险”三句话呈现</div></div></div><div class="panel-body driver-grid"><article class="driver-card"><span class="driver-tag">结果</span><h3>高课耗率提升3.2pp，实际完成12节以上同步提升2.9pp</h3><p>2026年1-7月高课耗率为<strong>${pctH(c.high_rate_2026_same_period)}</strong>，高于2025同期<strong>${pctH(c.high_rate_2025_jan_jul)}</strong>；0课耗占比下降1.2pp，真实完课结构也在改善。</p></article><article class="driver-card"><span class="driver-tag">主因</span><h3>2026新生早期排课和激活质量更好</h3><p>非空样本加权生命周期中，2026 cohort M1-M6高课耗与人均课量均高于2025 cohort；七个月高课耗同比变化与人均课量变化高度同向。</p></article><article class="driver-card"><span class="driver-tag">风险</span><h3>套餐迁移会放大达标率，老生断课仍未解决</h3><p>套餐结构是放大因素而非当前证据下的主因；非空样本加权高课耗到M9、M12为${pctH(weightedLifecycle('high_rate')[8].value)}和${pctH(weightedLifecycle('high_rate')[11].value)}，需重点治理生命周期中段的持续衰减。</p></article></div></section>
+      <section class="history-grid-2 history-section"><div class="panel"><div class="panel-head"><div><div class="panel-title">套餐结构变化（放大因素）</div><div class="panel-sub">港澳1-8月同期：用于解释门槛效应，不单独作为主因</div></div></div><div class="panel-body history-chart-scroll">${packageChart()}</div></div><div class="panel"><div class="panel-head"><div><div class="panel-title">港澳26年高课耗占比为何高于25年</div><div class="panel-sub">同期61.3% vs 57.2%；主看真实课量与可比生命周期改善</div></div></div><div class="panel-body">${highConsumptionDrivers()}</div></div></section>
+      <section class="panel history-section"><div class="panel-head"><div><div class="panel-title">老板汇报结论</div><div class="panel-sub">建议按“结果、主因、风险”三句话呈现</div></div></div><div class="panel-body driver-grid"><article class="driver-card"><span class="driver-tag">结果</span><h3>高课耗率提升4.1pp，实际完成12节以上同步提升3.3pp</h3><p>2026年1-8月高课耗率为<strong>${pctH(c.high_rate_2026_same_period)}</strong>，高于2025同期<strong>${pctH(c.high_rate_2025_jan_aug)}</strong>；0课耗占比下降1.3pp，真实完课结构也在改善。</p></article><article class="driver-card"><span class="driver-tag">主因</span><h3>2026新生早期排课和激活质量更好</h3><p>非空样本加权生命周期中，2026 cohort M1-M6高课耗与人均课量均高于2025 cohort；八个月高课耗同比变化与人均课量变化高度同向。</p></article><article class="driver-card"><span class="driver-tag">风险</span><h3>套餐迁移会放大达标率，老生断课仍未解决</h3><p>套餐结构是放大因素而非当前证据下的主因；非空样本加权高课耗到M9、M12为${pctH(weightedLifecycle('high_rate')[8].value)}和${pctH(weightedLifecycle('high_rate')[11].value)}，需重点治理生命周期中段的持续衰减。</p></article></div></section>
       ${historyActions()}
       <div class="history-quality"><b>数据质量与口径：</b>2507 sheet 有1,223条空ID记录，保留在月度总体图中但无法进入生命周期匹配；2603-2605共2,001条重复学员记录，生命周期按同月同学员聚合（完课量求和、达标取最大值）。付费明细与完课sheet的首付月份在有效匹配记录中无差异。</div>`;
     bindProjectTabs();
