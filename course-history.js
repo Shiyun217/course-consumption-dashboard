@@ -158,21 +158,50 @@
     return { value: denominator ? numerator / denominator : null, count: denominator };
   }
 
+  function lifecycleMonthSnapshot(observationMonth, metric) {
+    const metricRows = history.lifecycle[metric];
+    const countRows = history.lifecycle.matched_counts;
+    const findRow = (rows, cohort) => rows.find(row => row.cohort === cohort);
+    const year = Number(observationMonth.slice(0, 2));
+    const month = Number(observationMonth.slice(2));
+    return history.lifecycle.columns.slice(0, 12).map((stage, stageIndex) => {
+      const totalMonths = year * 12 + month - stageIndex - 1;
+      const cohortYear = Math.floor((totalMonths - 1) / 12);
+      const cohortMonth = ((totalMonths - 1) % 12) + 1;
+      const cohort = `${String(cohortYear).padStart(2, '0')}${String(cohortMonth).padStart(2, '0')}`;
+      const row = findRow(metricRows, cohort);
+      const countRow = findRow(countRows, cohort);
+      return {
+        stage,
+        cohort,
+        value: row ? row.values[stageIndex] : null,
+        count: countRow ? countRow.values[stageIndex] : 0,
+      };
+    });
+  }
+
+  const rangeText = (values, formatter) => {
+    const valid = values.filter(value => value != null);
+    if (!valid.length) return '-';
+    return `${formatter(Math.min(...valid))}-${formatter(Math.max(...valid)).replace('+', '')}`;
+  };
+
   function lifecycleInsights() {
-    const y25 = weightedLifecycle(lifecycleMetric, '25');
-    const y26 = weightedLifecycle(lifecycleMetric, '26');
+    const aug26 = lifecycleMonthSnapshot('2608', lifecycleMetric);
+    const jul26 = lifecycleMonthSnapshot('2607', lifecycleMetric);
+    const aug25 = lifecycleMonthSnapshot('2508', lifecycleMetric);
+    const diff = (left, right, index) => left[index].value != null && right[index].value != null ? left[index].value - right[index].value : null;
     if (lifecycleMetric === 'high_rate') {
-      const m1Lift = y26[0].value - y25[0].value;
-      const m6Lift = y26[5].value - y25[5].value;
-      const y25M12Drop = y25[11].value - y25[0].value;
-      const y26M6Drop = y26[5].value - y26[0].value;
-      return `<div class="lifecycle-analysis-grid"><article><span>同期早期优势</span><b>M1 ${pctH(y26[0].value)}，同比 ${ppH(m1Lift)}</b><p>2026 cohort在M2-M6仍领先；到M6为${pctH(y26[5].value)}，较2025 cohort的${pctH(y25[5].value)}高${ppH(m6Lift)}。</p></article><article><span>非空样本生命周期衰减</span><b>2025 M1→M12下降${(Math.abs(y25M12Drop) * 100).toFixed(1)}pp</b><p>2025 cohort从M1的${pctH(y25[0].value)}降到M6的${pctH(y25[5].value)}、M12的${pctH(y25[11].value)}。这里只比较热力表已有数据的 cohort，空白格不进入分子和分母。</p></article><article><span>节奏与样本提醒</span><b>2026从M1开始回落</b><p>2026由M1的${pctH(y26[0].value)}降至M2的${pctH(y26[1].value)}，到M6累计下降${(Math.abs(y26M6Drop) * 100).toFixed(1)}pp；M6仅覆盖已有该阶段数据的${y26[5].count.toLocaleString('zh-CN')}名 cohort 学员，后段结论需滚动观察。</p></article></div>`;
+      const earlyYoY = [0, 1, 2, 3, 4, 5, 6].map(index => diff(aug26, aug25, index));
+      const earlyMoM = [0, 1, 2, 3, 4, 5, 6].map(index => diff(aug26, jul26, index));
+      const lateStages = [9, 10, 11].map(index => `${aug26[index].stage}${pctH(aug26[index].value)}`).join('、');
+      return `<div class="lifecycle-analysis-grid"><article><span>8月新生启动明显走强</span><b>M1 ${pctH(aug26[0].value)}，环比${ppH(diff(aug26, jul26, 0))}</b><p>8月新增观察的2607 cohort在M1达${pctH(aug26[0].value)}，较7月2606 cohort高${ppH(diff(aug26, jul26, 0))}，较去年8月2507 cohort高${ppH(diff(aug26, aug25, 0))}；说明8月首月激活、排课承接比7月和去年同期都更强。</p></article><article><span>8月M2-M7全段抬升</span><b>同比提升${rangeText(earlyYoY, ppH)}</b><p>M2-M7分别为${pctH(aug26[1].value)}、${pctH(aug26[2].value)}、${pctH(aug26[3].value)}、${pctH(aug26[4].value)}、${pctH(aug26[5].value)}、${pctH(aug26[6].value)}；较7月同阶段整体提升${rangeText(earlyMoM, ppH)}，早期优势不是单点，而是从新生到M7持续扩散。</p></article><article><span>8月风险集中在后段老生</span><b>${lateStages}低于/贴近66%</b><p>8月M8为${pctH(aug26[7].value)}、M9为${pctH(aug26[8].value)}，但M10-M12仍在66%目标线附近或以下。固定计划只能在新生期完成，后段学员建议在SCRM按M10-M12与低课耗标签分组，下月由SS重点做预约恢复、断课召回和稳定时段维护。</p></article></div>`;
     }
-    const m1Lift = y26[0].value - y25[0].value;
-    const m2Lift = y26[1].value - y25[1].value;
-    const y25M12Drop = y25[11].value - y25[0].value;
-    const y26M6Drop = y26[5].value - y26[0].value;
-    return `<div class="lifecycle-analysis-grid"><article><span>同期早期课量</span><b>M1 ${numH(y26[0].value)}节，同比 +${numH(m1Lift)}节</b><p>M2差距扩大至+${numH(m2Lift)}节（2026为${numH(y26[1].value)}节）；M3-M6也均高于2025 cohort，早期排课强度确有改善。</p></article><article><span>非空样本生命周期衰减</span><b>2025 M1→M12下降${numH(Math.abs(y25M12Drop))}节</b><p>2025 cohort从M1的${numH(y25[0].value)}节降到M6的${numH(y25[5].value)}节、M12的${numH(y25[11].value)}节，M12较M1下降${Math.abs(y25M12Drop / y25[0].value * 100).toFixed(1)}%。空白格不按0补值，也不进入分母。</p></article><article><span>运营着力点</span><b>M3→M4出现明显断点</b><p>2026 cohort由M3的${numH(y26[2].value)}节降至M4的${numH(y26[3].value)}节、M6的${numH(y26[5].value)}节，M1-M6累计下降${numH(Math.abs(y26M6Drop))}节；应在M3结束前完成防滑落干预。</p></article></div>`;
+    const earlyYoY = [0, 1, 2, 3].map(index => diff(aug26, aug25, index));
+    const lateMoM = [8, 9, 10, 11].map(index => diff(aug26, jul26, index));
+    const lateMin = Math.min(...lateMoM);
+    const lateMax = Math.max(...lateMoM);
+    return `<div class="lifecycle-analysis-grid"><article><span>8月M1课量拉升最明显</span><b>M1 ${numH(aug26[0].value)}节，环比+${numH(diff(aug26, jul26, 0))}节</b><p>2607 cohort首月人均${numH(aug26[0].value)}节，较7月2606 cohort提升${numH(diff(aug26, jul26, 0))}节，较去年8月2507 cohort提升${numH(diff(aug26, aug25, 0))}节；高课耗率同步走高，说明不是只靠套餐门槛，而是首月真实完课强度提高。</p></article><article><span>8月早期课量优势延续到M4</span><b>M1-M4同比+${rangeText(earlyYoY, value => numH(value))}节</b><p>8月M2为${numH(aug26[1].value)}节、M3为${numH(aug26[2].value)}节、M4为${numH(aug26[3].value)}节，均高于去年8月同生命周期；重点要把2607、2606、2605 cohort的强启动动作沉淀成标准化SOP。</p></article><article><span>8月后段课量仍有回落</span><b>M9-M12环比最低${numH(lateMin)}节，最高+${numH(lateMax)}节</b><p>8月M10-M12人均仅${numH(aug26[9].value)}、${numH(aug26[10].value)}、${numH(aug26[11].value)}节，虽高课耗率贴近目标，但真实课量低于早期阶段。建议对M9+学员建立“下月可上课时段+剩余课量+近两周预约”清单，由SS按优先级做召回和补约。</p></article></div>`;
   }
 
   function lifecycleTable() {
