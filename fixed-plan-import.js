@@ -13,6 +13,7 @@
   };
   const FIXED_REQUIRED = ['student_id', 'bind_add_time', 'bind_operator_name', 'bind_operator_group_type', 'unbind_time'];
   const PAYMENT_REQUIRED = ['stdt_id', 'first_1v1_nml_pay_date', 'last_cc_group_name', 'last_ss_group_name', 'last_lp_group_name'];
+  const SYNC_ENDPOINT = String(window.FIXED_PLAN_SYNC_CONFIG?.endpoint || '').replace(/\/$/, '');
   const state = { fixed: null, payment: null, busy: false, exportReady: false, exportName: '', priorData: window.FIXED_PLAN_LATEST_DATA || null };
 
   function restoreSavedDashboard() {
@@ -25,6 +26,40 @@
     } catch (_) {
       localStorage.removeItem(STORAGE_KEY);
     }
+  }
+
+  async function loadSharedDashboard() {
+    if (!SYNC_ENDPOINT) return;
+    try {
+      const response = await fetch(SYNC_ENDPOINT, { cache: 'no-store', headers: { Accept: 'application/json' } });
+      if (response.status === 404) return;
+      if (!response.ok) throw new Error(`共享数据读取失败（${response.status}）`);
+      const shared = await response.json();
+      if (!shared || !Array.isArray(shared.metrics) || !Array.isArray(shared.groups)) throw new Error('共享数据格式不正确');
+      window.FIXED_PLAN_LATEST_DATA = shared;
+      state.priorData = shared;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(shared));
+      window.dispatchEvent(new CustomEvent('fixed-plan-data-updated', { detail: shared }));
+    } catch (error) {
+      console.warn('固定计划共享数据暂时不可用，已使用最近缓存。', error);
+    }
+  }
+
+  async function publishSharedDashboard(payload, publishKey) {
+    if (!SYNC_ENDPOINT) throw new Error('公共同步服务尚未配置。');
+    const response = await fetch(SYNC_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Fixed-Plan-Key': publishKey,
+      },
+      body: JSON.stringify(payload),
+    });
+    let result = null;
+    try { result = await response.json(); } catch (_) {}
+    if (!response.ok) throw new Error(result?.error || `公共看板发布失败（${response.status}）`);
+    if (!result?.data) throw new Error('后台未返回已发布的数据。');
+    return result.data;
   }
 
   function openDb() {
@@ -163,7 +198,8 @@
 
   function updateRunButton() {
     const button = document.getElementById('fpRunImport');
-    if (button) button.disabled = state.busy || !state.fixed || !state.payment;
+    const publishKey = text(document.getElementById('fpPublishKey')?.value);
+    if (button) button.disabled = state.busy || !state.fixed || !state.payment || !publishKey || !SYNC_ENDPOINT;
   }
 
   function mostCommon(counter) {
@@ -392,24 +428,31 @@
 
   async function runImport() {
     if (state.busy || !state.fixed || !state.payment) return;
+    const publishKey = text(document.getElementById('fpPublishKey')?.value);
+    if (!publishKey) {
+      setProgress('error', '请输入发布口令', '口令只用于本次发布，不会保存在浏览器中。');
+      return;
+    }
     state.busy = true;
     updateRunButton();
-    setProgress('working', '正在更新看板', '正在按双月新生口径计算 14 个组，请稍候...');
+    setProgress('working', '正在计算数据', '正在按双月新生口径计算 14 个组，请稍候...');
     try {
       await new Promise(resolve => setTimeout(resolve, 40));
       const analysis = analyzeFiles();
-      window.FIXED_PLAN_LATEST_DATA = analysis.payload;
-      state.priorData = analysis.payload;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(analysis.payload));
-      window.dispatchEvent(new CustomEvent('fixed-plan-data-updated', { detail: analysis.payload }));
-      setProgress('working', '看板已更新', '正在生成三个 sheet 的统计结果文件...');
+      setProgress('working', '正在生成统计结果', '源表仍保留在本机，正在生成三个 sheet 的统计结果文件...');
       await new Promise(resolve => setTimeout(resolve, 40));
       const exported = await createExport(analysis);
       await setCachedExport({ blob: exported.blob, name: exported.name, sourceAsOf: analysis.payload.source_as_of, savedAt: Date.now() });
       state.exportReady = true;
       state.exportName = exported.name;
       bindPageActions();
-      setProgress('success', '处理完成', `${analysis.payload.period} · 整体明细计算 ${pct(analysis.calculatedOverallRate)} · 已生成 ${exported.name}`);
+      setProgress('working', '正在发布公共看板', '仅发送不含姓名和学员ID的汇总指标，请稍候...');
+      const published = await publishSharedDashboard(analysis.payload, publishKey);
+      window.FIXED_PLAN_LATEST_DATA = published;
+      state.priorData = published;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(published));
+      window.dispatchEvent(new CustomEvent('fixed-plan-data-updated', { detail: published }));
+      setProgress('success', '公共看板已更新', `${published.period} · 整体明细计算 ${pct(analysis.calculatedOverallRate)} · 已生成 ${exported.name}`);
     } catch (error) {
       console.error(error);
       setProgress('error', '处理失败', error.message || '请检查文件后重试。');
@@ -449,7 +492,7 @@
     return `<div class="fp-import-modal" id="fpImportModal" hidden>
       <div class="fp-import-backdrop" data-close-fixed-import></div>
       <section class="fp-import-dialog" role="dialog" aria-modal="true" aria-labelledby="fpImportTitle">
-        <header class="fp-import-head"><div><span>每日数据更新</span><h2 id="fpImportTitle">更新固定计划看板</h2><p>两份文件只在当前浏览器中处理，不会上传到外部服务。</p></div><button class="fp-import-close" type="button" data-close-fixed-import aria-label="关闭">×</button></header>
+        <header class="fp-import-head"><div><span>每日数据更新</span><h2 id="fpImportTitle">更新固定计划看板</h2><p>源表只在当前浏览器中处理；后台仅接收不含姓名和学员ID的汇总指标。</p></div><button class="fp-import-close" type="button" data-close-fixed-import aria-label="关闭">×</button></header>
         <div class="fp-import-body">
           <div class="fp-upload-grid">
             <label class="fp-upload-file"><input id="fpFixedFile" type="file" accept=".xlsx,.xls"><span class="fp-upload-file-icon">01</span><b>固定计划绑定人明细</b><small>选择当天原始固定明细</small><em data-file-status="fixed">未选择文件</em></label>
@@ -459,9 +502,10 @@
             <div><label>自动统计范围</label><b id="fpUploadScope">等待付费明细校验</b><small>以付费表中最新首单月份为本月，并自动纳入上月。</small></div>
             <div><label for="fpOverallOverride">整体固定率（可选）</label><div class="fp-percent-input"><input id="fpOverallOverride" type="number" min="0" max="100" step="0.01" placeholder="按明细自动计算"><span>%</span></div><small>若业务平台有最终确认值可填写；留空则使用明细计算值。</small></div>
           </div>
+          <div class="fp-publish-setting"><div><label for="fpPublishKey">公共看板发布口令</label><input id="fpPublishKey" type="password" autocomplete="off" placeholder="输入实习生更新口令"><small>口令仅在点击发布时发送，不写入网页、不保存在浏览器中。</small></div><span class="fp-sync-badge ${SYNC_ENDPOINT ? 'ready' : 'offline'}">${SYNC_ENDPOINT ? '公共同步已连接' : '公共同步待配置'}</span></div>
           <div class="fp-import-progress" id="fpImportProgress"><b>等待上传</b><span>两份文件校验通过后即可更新看板。</span></div>
         </div>
-        <footer class="fp-import-footer"><button class="fp-import-secondary" type="button" id="fpModalDownload">下载已有统计结果</button><button class="fp-import-primary" type="button" id="fpRunImport" disabled>更新看板并生成统计结果</button></footer>
+        <footer class="fp-import-footer"><button class="fp-import-secondary" type="button" id="fpModalDownload">下载已有统计结果</button><button class="fp-import-primary" type="button" id="fpRunImport" disabled>发布并更新公共看板</button></footer>
       </section>
     </div>`;
   }
@@ -471,6 +515,7 @@
     document.body.insertAdjacentHTML('beforeend', modalMarkup());
     document.getElementById('fpFixedFile').addEventListener('change', event => handleFile('fixed', event.target.files[0]));
     document.getElementById('fpPaymentFile').addEventListener('change', event => handleFile('payment', event.target.files[0]));
+    document.getElementById('fpPublishKey').addEventListener('input', updateRunButton);
     document.getElementById('fpRunImport').addEventListener('click', runImport);
     document.getElementById('fpModalDownload').addEventListener('click', downloadExport);
     document.querySelectorAll('[data-close-fixed-import]').forEach(element => element.addEventListener('click', closeModal));
@@ -507,6 +552,7 @@
 
   restoreSavedDashboard();
   ensureModal();
+  loadSharedDashboard();
   getCachedExport().then(cached => {
     state.exportReady = Boolean(cached?.blob);
     state.exportName = cached?.name || '';

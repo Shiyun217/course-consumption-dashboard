@@ -74,3 +74,13 @@ $py='C:\Users\guoshiyun\.cache\codex-runtimes\codex-primary-runtime\dependencies
 ## GitHub Pages 部署
 
 将本目录作为独立仓库推送到 GitHub 后，在仓库 `Settings > Pages` 中选择 `Deploy from a branch`，分支选择 `main`，目录选择 `/root`。部署完成后访问仓库 Pages 地址即可自动打开 `ss-course-consumption-dashboard.html`。
+
+## 固定计划跨电脑更新
+
+固定计划的每日更新在浏览器中完成：进入“固定计划 > M0-1固定计划绑定-最新”，点击“更新数据”，选择固定计划明细和付费明细，输入发布口令后点击“发布并更新公共看板”。
+
+- 原始 Excel、学员 ID 和操作人员姓名仅在当前浏览器中处理，不发送到后台。
+- 后台只保存整体、端口和指定 14 个小组的汇总人数与比例。
+- 发布成功后，其他电脑刷新 GitHub Pages 页面即可读取同一份公共汇总。
+- 三个 sheet 的统计结果文件仍保存在上传者浏览器中，可在当前电脑下载。
+- 公共数据接口由 Cloudflare Pages Functions 提供，配置见 `fixed-plan-sync-config.js`，服务代码见 `workers/fixed-plan-sync/`。

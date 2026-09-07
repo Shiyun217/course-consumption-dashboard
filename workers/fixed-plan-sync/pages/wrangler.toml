@@ -1,0 +1,7 @@
+name = "course-dashboard-fixed-plan-sync-pages"
+pages_build_output_dir = "./public"
+compatibility_date = "2026-09-07"
+
+[[kv_namespaces]]
+binding = "FIXED_PLAN_DATA"
+id = "5e2120f372de4bad9bd707728190fa99"
