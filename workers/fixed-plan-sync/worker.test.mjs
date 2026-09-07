@@ -44,6 +44,8 @@ test('publishes sanitized aggregates and exposes them publicly', async () => {
   assert.equal(result.data.groups.length, 14);
   assert.equal(result.data.metrics.length, 4);
   assert.equal(result.data.metrics.find(item => item.key === 'overall').rate, 0.451);
+  assert.equal(result.data.metrics.find(item => item.key === 'overall').yesterday_rate, 0.41702127659574467);
+  assert.equal(result.data.comparison_as_of, '2026-09-01');
   assert.equal(JSON.stringify(result.data).includes('student_id'), false);
 
   const publicRead = await worker.fetch(new Request('https://worker.example/api/fixed-plan/latest'), env);

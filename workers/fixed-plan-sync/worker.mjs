@@ -57,6 +57,10 @@ function safeRate(value, label) {
   return value;
 }
 
+function optionalRate(value, label) {
+  return value == null ? null : safeRate(value, label);
+}
+
 function safeCount(value, label) {
   if (!Number.isInteger(value) || value < 0 || value > 5_000_000) throw new Error(`${label}必须是有效人数`);
   return value;
@@ -74,7 +78,8 @@ function sanitizePayload(input, previous) {
   if (!Array.isArray(input.metrics) || !Array.isArray(input.groups)) throw new Error('缺少指标或小组汇总');
 
   const sameDate = previous?.source_as_of === sourceAsOf;
-  const comparisonAsOf = sameDate ? previous?.comparison_as_of || null : previous?.source_as_of || null;
+  const inputComparison = typeof input.comparison_as_of === 'string' && /^20\d{2}-(0[1-9]|1[0-2])-([012]\d|3[01])$/.test(input.comparison_as_of) ? input.comparison_as_of : null;
+  const comparisonAsOf = sameDate ? previous?.comparison_as_of || inputComparison : previous?.source_as_of || inputComparison;
   const groupMap = new Map(input.groups.map(row => [`${row?.port}|${row?.group}`, row]));
   const groups = [];
   const totals = [];
@@ -121,8 +126,11 @@ function sanitizePayload(input, previous) {
   const metrics = [];
   for (const key of ['overall', 'CC', 'SS', 'LP']) {
     const previousMetric = priorMetric(previous, key);
-    const yesterdayRate = sameDate ? previousMetric?.yesterday_rate ?? null : previousMetric?.rate ?? null;
-    const lastMonthRate = previousMetric?.last_month_same_period_rate ?? null;
+    const incomingMetric = metricMap.get(key);
+    const incomingYesterday = optionalRate(incomingMetric?.yesterday_rate, `${key}上次固定率`);
+    const incomingLastMonth = optionalRate(incomingMetric?.last_month_same_period_rate, `${key}上月同期固定率`);
+    const yesterdayRate = sameDate ? previousMetric?.yesterday_rate ?? incomingYesterday : previousMetric?.rate ?? incomingYesterday;
+    const lastMonthRate = previousMetric?.last_month_same_period_rate ?? incomingLastMonth;
     if (key === 'overall') {
       metrics.push({
         key,
