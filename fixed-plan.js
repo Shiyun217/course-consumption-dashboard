@@ -8,7 +8,7 @@
   const userData = window.FIXED_PLAN_USER_DATA;
   const ticketData = window.FIXED_PLAN_TICKET_DATA;
   const m01AllData = window.FIXED_PLAN_M01_ALL_DATA;
-  const latestData = window.FIXED_PLAN_LATEST_DATA;
+  let latestData = window.FIXED_PLAN_LATEST_DATA;
   const colors = { CC: '#2f7f75', SS: '#4169a1', LP: '#d38b2c', student: '#a05a80', other: '#7d8796' };
   const lifecycleColors = { M0: '#2f7f75', M1: '#4169a1', M2plus: '#d38b2c', total: '#17365d' };
   let fixedTab = 'latest';
@@ -44,7 +44,7 @@
       <div class="fp-latest-value">${pct(metric.rate, 2)}</div>
       <div class="fp-latest-progress" aria-label="目标达成进度"><span style="width:${progress}%"></span><i style="left:${Math.min(progress, 98)}%"></i></div>
       <div class="fp-latest-target"><span>目标 ${pct(metric.target, 0)}</span><b class="${gap >= 0 ? 'is-positive' : 'is-negative'}">差 ${pp(gap, 2)}</b></div>
-      <div class="fp-latest-compare"><div><label>较昨日</label>${latestComparison(metric.rate, metric.yesterday_rate, '暂无昨日快照')}</div><div><label>较上月同期</label>${latestComparison(metric.rate, metric.last_month_same_period_rate, '暂无同日快照')}</div></div>
+      <div class="fp-latest-compare"><div><label>${latestData.comparison_label || '较昨日'}</label>${latestComparison(metric.rate, metric.yesterday_rate, '暂无对比快照')}</div><div><label>较上月同期</label>${latestComparison(metric.rate, metric.last_month_same_period_rate, '暂无同日快照')}</div></div>
       <div class="fp-latest-count">已固定 <b>${num(metric.fixed_students)}</b> / 新生 <b>${num(metric.new_students)}</b></div>
     </article>`;
   }
@@ -72,11 +72,11 @@
     const ssNear = latestData.groups.filter(row => row.port === 'SS').sort((a,b) => a.gap_students-b.gap_students).slice(0,2);
     const ssGap = latestData.groups.filter(row => row.port === 'SS').sort((a,b) => b.gap_students-a.gap_students)[0];
     const lpGap = latestData.totals.find(row => row.port === 'LP');
-    return `${navMarkup()}<section class="fp-latest-hero"><div><div class="kicker">LATEST FIXED PLAN PULSE</div><h1>M0-1固定计划绑定-最新</h1><p>聚焦当前整体进度、三端口目标差距与14个固定小组的补齐优先级</p></div><div class="fp-latest-date"><span>数据更新</span><b>${latestData.source_as_of}</b><small>${latestData.period}</small></div></section>
+    return `${navMarkup()}<section class="fp-latest-hero"><div><div class="kicker">LATEST FIXED PLAN PULSE</div><h1>M0-1固定计划绑定-最新</h1><p>聚焦当前整体进度、三端口目标差距与14个固定小组的补齐优先级</p></div><div class="fp-latest-hero-side"><div class="fp-latest-date"><span>数据更新</span><b>${latestData.source_as_of}</b><small>${latestData.period}</small></div><div class="fp-latest-hero-actions"><button class="fp-import-primary" id="openFixedImport" type="button"><span aria-hidden="true">↑</span> 更新数据</button><button class="fp-import-secondary" id="downloadFixedResult" type="button"><span aria-hidden="true">↓</span> 下载统计结果</button></div></div></section>
       <section class="fp-latest-overview" aria-label="核心固定计划指标">${latestData.metrics.map(latestKpiCard).join('')}</section>
-      <div class="fp-latest-source-note"><b>对比说明：</b>整体与 CC / SS / LP 均已按 0831 明细口径更新；昨日值沿用 0830 最新快照。上月同期因当前数据源未提供历史快照，暂不展示差值。</div>
-      <section class="panel fp-latest-groups" id="latestGroupSection"><div class="panel-head"><div><div class="panel-title">14个固定小组目标进度</div><div class="panel-sub">固定率 = 该组固定学员数 / 该组2026年7月及8月新生数；固定差额按目标人数四舍五入后计算</div></div><span class="fp-latest-scope">仅统计指定14组</span></div><div class="table-wrap"><table class="fp-latest-table"><thead><tr><th>组别</th><th>新生数</th><th>固定人数</th><th>固定率</th><th>目标</th><th>固定差额</th><th>状态</th></tr></thead><tbody><tr class="fp-port-divider"><td colspan="7"><span class="cc">CC</span> 目标 ${pct(metrics.CC.target,0)}</td></tr>${latestGroupRows('CC')}<tr class="fp-port-divider"><td colspan="7"><span class="ss">SS</span> 目标 ${pct(metrics.SS.target,0)}</td></tr>${latestGroupRows('SS')}<tr class="fp-port-divider"><td colspan="7"><span class="lp">LP</span> 目标 ${pct(metrics.LP.target,0)}</td></tr>${latestGroupRows('LP')}</tbody></table></div></section>
-      <section class="fp-latest-analysis" id="latestAnalysis"><article class="summary"><span>当前判断</span><h2>整体距离65%目标仍差 ${pp(metrics.overall.rate-metrics.overall.target,2).replace('-','')}</h2><p>整体固定率为${pct(metrics.overall.rate,2)}。三端口中SS当前${pct(metrics.SS.rate,2)}最接近目标，CC的绝对补齐人数最多，LP需要在两个小组同步推进。</p><div class="fp-analysis-pills"><span>CC 较昨日 ${pp(metrics.CC.rate-metrics.CC.yesterday_rate,2)}</span><span>SS 较昨日 ${pp(metrics.SS.rate-metrics.SS.yesterday_rate,2)}</span><span>LP 较昨日 ${pp(metrics.LP.rate-metrics.LP.yesterday_rate,2)}</span></div></article>
+      <div class="fp-latest-source-note"><b>对比说明：</b>整体与 CC / SS / LP 均已按 ${latestData.source_as_of} 明细口径更新；对比值为 ${latestData.comparison_as_of || '上一快照'} 按相同新生范围重算结果。上月同期因当前数据源未提供历史快照，暂不展示差值。</div>
+      <section class="panel fp-latest-groups" id="latestGroupSection"><div class="panel-head"><div><div class="panel-title">14个固定小组目标进度</div><div class="panel-sub">固定率 = 该组固定学员数 / 该组${latestData.period}；固定差额按目标人数四舍五入后计算</div></div><span class="fp-latest-scope">仅统计指定14组</span></div><div class="table-wrap"><table class="fp-latest-table"><thead><tr><th>组别</th><th>新生数</th><th>固定人数</th><th>固定率</th><th>目标</th><th>固定差额</th><th>状态</th></tr></thead><tbody><tr class="fp-port-divider"><td colspan="7"><span class="cc">CC</span> 目标 ${pct(metrics.CC.target,0)}</td></tr>${latestGroupRows('CC')}<tr class="fp-port-divider"><td colspan="7"><span class="ss">SS</span> 目标 ${pct(metrics.SS.target,0)}</td></tr>${latestGroupRows('SS')}<tr class="fp-port-divider"><td colspan="7"><span class="lp">LP</span> 目标 ${pct(metrics.LP.target,0)}</td></tr>${latestGroupRows('LP')}</tbody></table></div></section>
+      <section class="fp-latest-analysis" id="latestAnalysis"><article class="summary"><span>当前判断</span><h2>整体距离${pct(metrics.overall.target,0)}目标仍差 ${pp(metrics.overall.rate-metrics.overall.target,2).replace('-','')}</h2><p>整体固定率为${pct(metrics.overall.rate,2)}。三端口中SS当前${pct(metrics.SS.rate,2)}最接近目标，CC的绝对补齐人数最多，LP需要在两个小组同步推进。</p><div class="fp-analysis-pills"><span>CC ${latestData.comparison_label || '较昨日'} ${pp(metrics.CC.rate-metrics.CC.yesterday_rate,2)}</span><span>SS ${latestData.comparison_label || '较昨日'} ${pp(metrics.SS.rate-metrics.SS.yesterday_rate,2)}</span><span>LP ${latestData.comparison_label || '较昨日'} ${pp(metrics.LP.rate-metrics.LP.yesterday_rate,2)}</span></div></article>
       <article><span>优先级 P0</span><b>先抓 ${ccTop.group} 与 ${ssGap.group}</b><p>${ccTop.group}还差${num(ccTop.gap_students)}人，是单组最大缺口；${ssGap.group}还差${num(ssGap.gap_students)}人。两组合计补齐${num(ccTop.gap_students+ssGap.gap_students)}人，可最快压缩总缺口。</p></article>
       <article><span>快速达标</span><b>${ssNear.map(row=>row.group).join('、')}</b><p>两个小组距离32%目标分别还差${ssNear.map(row=>num(row.gap_students)).join('、')}人，合计${num(ssNear.reduce((sum,row)=>sum+row.gap_students,0))}人。先在日清单中闭环，可形成可复制的SS达标动作，再迁移到其他SS组。</p></article>
       <article><span>LP动作</span><b>两组共同补齐 ${num(lpGap.gap_students)} 人</b><p>LP各小组缺口为${latestData.groups.filter(row=>row.port==='LP').map(row=>`${row.group.replace('HK-GZ','')} ${num(row.gap_students)}人`).join('、')}。建议按未固定新生清单每日分批触达，分别设置日目标并在次日复核绑定结果。</p></article></section>
@@ -351,8 +351,8 @@
     const importButton = document.getElementById('importBtn');
     if (filter) filter.onclick = () => document.getElementById(fixedTab === 'latest' ? 'latestGroupSection' : fixedTab === 'm01all' ? 'operatorAllSection' : 'operatorSection')?.scrollIntoView({ behavior: 'smooth' });
     if (ai) ai.onclick = () => document.getElementById(fixedTab === 'latest' ? 'latestAnalysis' : fixedTab === 'm01all' ? 'fpAllTarget' : 'fpTarget')?.scrollIntoView({ behavior: 'smooth' });
-    if (scope) scope.onclick = () => alert(fixedTab === 'latest' ? '最新口径：端口及14个小组仅统计2026年7月、8月新生；同一学员在同一端口仅计1人。整体固定率取BI当前口径，端口固定率分母为对应端口滚动双月新生数。' : fixedTab === 'm01all' ? '不去重端口口径：统计月M纳入首单月份和绑定月份均为M-1或M的学员；同一学员在同一端口多次只计1人，跨端口分别计入；整体固定人数仍按学员去重，分母为滚动双月新生数。' : '整体趋势：使用业务确认的2501-2607固定计划绑定率。端口分析：统计月M纳入首单月份为M-1或M的去重学员；全历史首次绑定月份也在M-1至M时计入，操作人取最早绑定记录Y列；端口固定率分母为当月滚动双月新生数。');
-    if (importButton) importButton.onclick = () => alert(fixedTab === 'latest' ? '最新数据源：学员付费明细_0831.xlsx、固定计划绑定人明细_831.xlsx；昨日对比使用0830最新快照。' : '数据源：业务确认整体固定率表、学员付费明细_0807.xlsx、固定计划绑定人历史数据.xlsx。');
+    if (scope) scope.onclick = () => alert(fixedTab === 'latest' ? `最新口径：端口及14个小组仅统计${latestData.period}；同一学员在同一端口仅计1人。整体固定率按有效绑定学员去重计算，端口固定率分母为对应端口双月新生数。` : fixedTab === 'm01all' ? '不去重端口口径：统计月M纳入首单月份和绑定月份均为M-1或M的学员；同一学员在同一端口多次只计1人，跨端口分别计入；整体固定人数仍按学员去重，分母为滚动双月新生数。' : '整体趋势：使用业务确认的2501-2607固定计划绑定率。端口分析：统计月M纳入首单月份为M-1或M的去重学员；全历史首次绑定月份也在M-1至M时计入，操作人取最早绑定记录Y列；端口固定率分母为当月滚动双月新生数。');
+    if (importButton) importButton.onclick = fixedTab === 'latest' && window.FixedPlanImporter ? window.FixedPlanImporter.open : () => alert('历史版块使用已确认的历史数据源，不在每日上传入口中更新。');
   }
 
   function setCourseToolbar() {
@@ -378,7 +378,14 @@
     if (!content) return;
     content.innerHTML = fixedTab === 'latest' ? renderLatest() : fixedTab === 'm01' ? renderM01() : fixedTab === 'm01all' ? renderM01All() : fixedTab === 'user' ? renderUser() : renderTicket();
     bindFixedTabs();
+    window.FixedPlanImporter?.bindPageActions();
   }
+
+  window.addEventListener('fixed-plan-data-updated', event => {
+    latestData = event.detail || window.FIXED_PLAN_LATEST_DATA;
+    fixedTab = 'latest';
+    renderFixedPlan();
+  });
 
   const nav = document.querySelector('.nav');
   if (!nav) return;

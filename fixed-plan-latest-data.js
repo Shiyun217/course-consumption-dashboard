@@ -1,50 +1,52 @@
 window.FIXED_PLAN_LATEST_DATA = {
-  "source_as_of": "2026-08-31",
-  "period": "2026年7月 + 8月新生",
+  "source_as_of": "2026-09-04",
+  "comparison_as_of": "2026-09-01",
+  "comparison_label": "较上次（09-01）",
+  "period": "8月 + 9月新生",
   "scope_note": "端口及小组数据按滚动双月新生口径；同一学员在同一端口仅计1人。",
   "metrics": [
     {
       "key": "overall",
       "label": "整体固定计划绑定率",
-      "source": "0831今日最新值",
-      "rate": 0.463,
+      "source": "0904今日最新值",
+      "rate": 0.451,
       "target": 0.65,
-      "fixed_students": 642,
-      "new_students": 1409,
-      "yesterday_rate": 0.464,
+      "fixed_students": 329,
+      "new_students": 705,
+      "yesterday_rate": 0.41702127659574467,
       "last_month_same_period_rate": null
     },
     {
       "key": "CC",
       "label": "CC固定计划绑定率",
-      "source": "0831明细口径",
-      "rate": 0.1928523263654754,
+      "source": "0904明细口径",
+      "rate": 0.21139240506329113,
       "target": 0.28,
-      "fixed_students": 286,
-      "new_students": 1483,
-      "yesterday_rate": 0.1909028256374914,
+      "fixed_students": 167,
+      "new_students": 790,
+      "yesterday_rate": 0.17088607594936708,
       "last_month_same_period_rate": null
     },
     {
       "key": "SS",
       "label": "SS固定计划绑定率",
-      "source": "0831明细口径",
-      "rate": 0.27785419532324623,
+      "source": "0904明细口径",
+      "rate": 0.22764227642276422,
       "target": 0.32,
-      "fixed_students": 404,
-      "new_students": 1454,
-      "yesterday_rate": 0.2707454289732771,
+      "fixed_students": 168,
+      "new_students": 738,
+      "yesterday_rate": 0.19647696476964768,
       "last_month_same_period_rate": null
     },
     {
       "key": "LP",
       "label": "LP固定计划绑定率",
-      "source": "0831明细口径",
-      "rate": 0.17459190915542938,
+      "source": "0904明细口径",
+      "rate": 0.12198581560283688,
       "target": 0.21,
-      "fixed_students": 246,
-      "new_students": 1409,
-      "yesterday_rate": 0.17318840579710146,
+      "fixed_students": 86,
+      "new_students": 705,
+      "yesterday_rate": 0.12056737588652482,
       "last_month_same_period_rate": null
     }
   ],
@@ -52,157 +54,157 @@ window.FIXED_PLAN_LATEST_DATA = {
     {
       "port": "CC",
       "group": "GZ-CC01小组",
-      "new_students": 40,
+      "new_students": 25,
       "fixed_students": 3,
-      "rate": 0.075,
+      "rate": 0.12,
       "target": 0.28,
-      "gap_students": 8
+      "gap_students": 4
     },
     {
       "port": "CC",
       "group": "GZ-CC06小组",
-      "new_students": 92,
-      "fixed_students": 3,
-      "rate": 0.03260869565217391,
+      "new_students": 46,
+      "fixed_students": 2,
+      "rate": 0.043478260869565216,
       "target": 0.28,
-      "gap_students": 23
+      "gap_students": 11
     },
     {
       "port": "CC",
       "group": "GZ-CC07小组",
-      "new_students": 286,
-      "fixed_students": 67,
-      "rate": 0.23426573426573427,
+      "new_students": 168,
+      "fixed_students": 44,
+      "rate": 0.2619047619047619,
       "target": 0.28,
-      "gap_students": 13
+      "gap_students": 3
     },
     {
       "port": "CC",
       "group": "GZ-CC09小组",
-      "new_students": 353,
-      "fixed_students": 83,
-      "rate": 0.23512747875354106,
+      "new_students": 193,
+      "fixed_students": 50,
+      "rate": 0.25906735751295334,
       "target": 0.28,
-      "gap_students": 16
+      "gap_students": 4
     },
     {
       "port": "CC",
       "group": "GZ-CC11小组",
-      "new_students": 301,
-      "fixed_students": 63,
-      "rate": 0.20930232558139536,
+      "new_students": 151,
+      "fixed_students": 31,
+      "rate": 0.2052980132450331,
       "target": 0.28,
-      "gap_students": 21
+      "gap_students": 11
     },
     {
       "port": "CC",
       "group": "GZ-CC14小组",
-      "new_students": 411,
-      "fixed_students": 67,
-      "rate": 0.1630170316301703,
+      "new_students": 207,
+      "fixed_students": 37,
+      "rate": 0.178743961352657,
       "target": 0.28,
-      "gap_students": 48
+      "gap_students": 21
     },
     {
       "port": "SS",
       "group": "BJ-JWSS01小组",
-      "new_students": 256,
-      "fixed_students": 83,
-      "rate": 0.32421875,
+      "new_students": 130,
+      "fixed_students": 33,
+      "rate": 0.25384615384615383,
       "target": 0.32,
-      "gap_students": 0
+      "gap_students": 9
     },
     {
       "port": "SS",
       "group": "BJ-JWSS02小组",
-      "new_students": 239,
-      "fixed_students": 73,
-      "rate": 0.3054393305439331,
+      "new_students": 118,
+      "fixed_students": 26,
+      "rate": 0.22033898305084745,
       "target": 0.32,
-      "gap_students": 3
+      "gap_students": 12
     },
     {
       "port": "SS",
       "group": "BJ-JWSS04小组",
-      "new_students": 263,
-      "fixed_students": 74,
-      "rate": 0.2813688212927757,
+      "new_students": 133,
+      "fixed_students": 30,
+      "rate": 0.22556390977443608,
       "target": 0.32,
-      "gap_students": 10
+      "gap_students": 13
     },
     {
       "port": "SS",
       "group": "BJ-JWSS07小组",
-      "new_students": 212,
-      "fixed_students": 57,
-      "rate": 0.2688679245283019,
+      "new_students": 107,
+      "fixed_students": 28,
+      "rate": 0.2616822429906542,
       "target": 0.32,
-      "gap_students": 11
+      "gap_students": 6
     },
     {
       "port": "SS",
       "group": "GZ-SS01小组",
-      "new_students": 285,
-      "fixed_students": 67,
-      "rate": 0.23508771929824562,
+      "new_students": 143,
+      "fixed_students": 33,
+      "rate": 0.23076923076923078,
       "target": 0.32,
-      "gap_students": 24
+      "gap_students": 13
     },
     {
       "port": "SS",
       "group": "GZ-SS04小组",
-      "new_students": 199,
-      "fixed_students": 50,
-      "rate": 0.25125628140703515,
+      "new_students": 107,
+      "fixed_students": 18,
+      "rate": 0.16822429906542055,
       "target": 0.32,
-      "gap_students": 14
+      "gap_students": 16
     },
     {
       "port": "LP",
       "group": "HK-GZLP01小组",
-      "new_students": 884,
-      "fixed_students": 155,
-      "rate": 0.1753393665158371,
+      "new_students": 430,
+      "fixed_students": 50,
+      "rate": 0.11627906976744186,
       "target": 0.21,
-      "gap_students": 31
+      "gap_students": 40
     },
     {
       "port": "LP",
       "group": "HK-GZLP02小组",
-      "new_students": 525,
-      "fixed_students": 91,
-      "rate": 0.17333333333333334,
+      "new_students": 275,
+      "fixed_students": 36,
+      "rate": 0.13090909090909092,
       "target": 0.21,
-      "gap_students": 19
+      "gap_students": 22
     }
   ],
   "totals": [
     {
       "port": "CC",
       "group": "CC总计",
-      "new_students": 1483,
-      "fixed_students": 286,
-      "rate": 0.1928523263654754,
+      "new_students": 790,
+      "fixed_students": 167,
+      "rate": 0.21139240506329113,
       "target": 0.28,
-      "gap_students": 129
+      "gap_students": 54
     },
     {
       "port": "SS",
       "group": "SS总计",
-      "new_students": 1454,
-      "fixed_students": 404,
-      "rate": 0.27785419532324623,
+      "new_students": 738,
+      "fixed_students": 168,
+      "rate": 0.22764227642276422,
       "target": 0.32,
-      "gap_students": 61
+      "gap_students": 68
     },
     {
       "port": "LP",
       "group": "LP总计",
-      "new_students": 1409,
-      "fixed_students": 246,
-      "rate": 0.17459190915542938,
+      "new_students": 705,
+      "fixed_students": 86,
+      "rate": 0.12198581560283688,
       "target": 0.21,
-      "gap_students": 50
+      "gap_students": 62
     }
   ]
 };
