@@ -59,6 +59,18 @@ $py='C:\Users\guoshiyun\.cache\codex-runtimes\codex-primary-runtime\dependencies
 
 第一次初始化历史时才需要加 `--seed-followup`，它会从现有跟进表补入 7.24 和 7.25 的历史基线。
 
+## 实习生更新权限
+
+实习生需要 GitHub 账号，并在仓库中添加为协作者，权限建议为 `Write`。
+
+当前仓库是公开仓库，不要把含学员明细的原始 Excel 上传到 GitHub。推荐流程是：源表只放在本地 `D:\codex数据\课耗`，然后运行一键脚本，脚本只提交生成后的看板和历史数据。
+
+```powershell
+.\scripts\update-course-dashboard.ps1
+```
+
+详细步骤见 `docs/intern-course-update-guide.md`。
+
 ## GitHub Pages 部署
 
 将本目录作为独立仓库推送到 GitHub 后，在仓库 `Settings > Pages` 中选择 `Deploy from a branch`，分支选择 `main`，目录选择 `/root`。部署完成后访问仓库 Pages 地址即可自动打开 `ss-course-consumption-dashboard.html`。

@@ -1091,7 +1091,7 @@ function renderShell(){
   document.getElementById('filterBtn').onclick=()=>document.getElementById('filters').scrollIntoView({behavior:'smooth'});
   document.getElementById('aiBtn').onclick=()=>document.getElementById('recommendations').scrollIntoView({behavior:'smooth'});
   document.getElementById('scopeBtn').onclick=()=>alert('\u53e3\u5f84\uff1a\u5148\u6309\u8bfe\u8017\u8003\u6838\u89c4\u5219\u7b5b\u9009\uff0c\u518d\u4fdd\u7559\u6838\u5fc3 6 \u4e2a SS \u5c0f\u7ec4\uff1b\u9ad8\u8bfe\u8017\u6309\u6708\u8fdb\u5ea6\u8ba1\u7b97\uff0c\u597d\u5b66\u751f\u7387\u6309\u5f53\u6708\u5b8c\u8bfe\u91cf\u8fbe\u5230\u9608\u503c\u8ba1\u7b97\u3002');
-  document.getElementById('importBtn').onclick=()=>alert('\u5df2\u4fdd\u7559\u5bfc\u5165\u5165\u53e3\uff1a\u5c06\u6bcf\u65e5\u539f\u59cb\u8868\u653e\u5165 D:/codex\u6570\u636e/\u8bfe\u8017 \u540e\u8fd0\u884c\u66f4\u65b0\u811a\u672c\u5373\u53ef\u3002');
+  document.getElementById('importBtn').onclick=()=>alert('实习生更新流程：1）将每日课耗源表放入 D:/codex数据/课耗；2）在仓库目录运行 scripts/update-course-dashboard.ps1；3）脚本会自动更新历史数据并推送看板。注意：仓库是公开的，不要把含学员明细的原始 Excel 上传到 GitHub。详细说明见 docs/intern-course-update-guide.md。');
 }
 function renderHero(){
   const d=DATA, t=total(), ins=buildInsights();
