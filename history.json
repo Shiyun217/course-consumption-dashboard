@@ -1637,6 +1637,300 @@
       "assessed": 2732,
       "qualified": 1762,
       "rate": 0.644949
+    },
+    {
+      "date": "2026-09-01",
+      "group": "BJ-JWSS01小组",
+      "assessed": 3043,
+      "qualified": 216,
+      "rate": 0.070983
+    },
+    {
+      "date": "2026-09-01",
+      "group": "BJ-JWSS02小组",
+      "assessed": 2862,
+      "qualified": 156,
+      "rate": 0.054507
+    },
+    {
+      "date": "2026-09-01",
+      "group": "BJ-JWSS04小组",
+      "assessed": 3024,
+      "qualified": 203,
+      "rate": 0.06713
+    },
+    {
+      "date": "2026-09-01",
+      "group": "BJ-JWSS07小组",
+      "assessed": 2543,
+      "qualified": 159,
+      "rate": 0.062525
+    },
+    {
+      "date": "2026-09-01",
+      "group": "GZ-SS01小组",
+      "assessed": 3374,
+      "qualified": 248,
+      "rate": 0.073503
+    },
+    {
+      "date": "2026-09-01",
+      "group": "GZ-SS04小组",
+      "assessed": 2679,
+      "qualified": 156,
+      "rate": 0.058231
+    },
+    {
+      "date": "2026-09-02",
+      "group": "BJ-JWSS01小组",
+      "assessed": 2957,
+      "qualified": 231,
+      "rate": 0.07812
+    },
+    {
+      "date": "2026-09-02",
+      "group": "BJ-JWSS02小组",
+      "assessed": 2948,
+      "qualified": 194,
+      "rate": 0.065807
+    },
+    {
+      "date": "2026-09-02",
+      "group": "BJ-JWSS04小组",
+      "assessed": 3023,
+      "qualified": 245,
+      "rate": 0.081045
+    },
+    {
+      "date": "2026-09-02",
+      "group": "BJ-JWSS07小组",
+      "assessed": 2543,
+      "qualified": 182,
+      "rate": 0.071569
+    },
+    {
+      "date": "2026-09-02",
+      "group": "GZ-SS01小组",
+      "assessed": 3375,
+      "qualified": 281,
+      "rate": 0.083259
+    },
+    {
+      "date": "2026-09-02",
+      "group": "GZ-SS04小组",
+      "assessed": 2679,
+      "qualified": 191,
+      "rate": 0.071295
+    },
+    {
+      "date": "2026-09-03",
+      "group": "BJ-JWSS01小组",
+      "assessed": 2957,
+      "qualified": 289,
+      "rate": 0.097734
+    },
+    {
+      "date": "2026-09-03",
+      "group": "BJ-JWSS02小组",
+      "assessed": 2950,
+      "qualified": 228,
+      "rate": 0.077288
+    },
+    {
+      "date": "2026-09-03",
+      "group": "BJ-JWSS04小组",
+      "assessed": 3024,
+      "qualified": 280,
+      "rate": 0.092593
+    },
+    {
+      "date": "2026-09-03",
+      "group": "BJ-JWSS07小组",
+      "assessed": 2545,
+      "qualified": 200,
+      "rate": 0.078585
+    },
+    {
+      "date": "2026-09-03",
+      "group": "GZ-SS01小组",
+      "assessed": 3376,
+      "qualified": 313,
+      "rate": 0.092713
+    },
+    {
+      "date": "2026-09-03",
+      "group": "GZ-SS04小组",
+      "assessed": 2679,
+      "qualified": 216,
+      "rate": 0.080627
+    },
+    {
+      "date": "2026-09-04",
+      "group": "BJ-JWSS01小组",
+      "assessed": 2957,
+      "qualified": 363,
+      "rate": 0.12276
+    },
+    {
+      "date": "2026-09-04",
+      "group": "BJ-JWSS02小组",
+      "assessed": 2950,
+      "qualified": 293,
+      "rate": 0.099322
+    },
+    {
+      "date": "2026-09-04",
+      "group": "BJ-JWSS04小组",
+      "assessed": 3025,
+      "qualified": 314,
+      "rate": 0.103802
+    },
+    {
+      "date": "2026-09-04",
+      "group": "BJ-JWSS07小组",
+      "assessed": 2545,
+      "qualified": 261,
+      "rate": 0.102554
+    },
+    {
+      "date": "2026-09-04",
+      "group": "GZ-SS01小组",
+      "assessed": 3375,
+      "qualified": 361,
+      "rate": 0.106963
+    },
+    {
+      "date": "2026-09-04",
+      "group": "GZ-SS04小组",
+      "assessed": 2679,
+      "qualified": 244,
+      "rate": 0.091079
+    },
+    {
+      "date": "2026-09-05",
+      "group": "BJ-JWSS01小组",
+      "assessed": 2957,
+      "qualified": 420,
+      "rate": 0.142036
+    },
+    {
+      "date": "2026-09-05",
+      "group": "BJ-JWSS02小组",
+      "assessed": 2950,
+      "qualified": 352,
+      "rate": 0.119322
+    },
+    {
+      "date": "2026-09-05",
+      "group": "BJ-JWSS04小组",
+      "assessed": 3025,
+      "qualified": 368,
+      "rate": 0.121653
+    },
+    {
+      "date": "2026-09-05",
+      "group": "BJ-JWSS07小组",
+      "assessed": 2545,
+      "qualified": 307,
+      "rate": 0.120629
+    },
+    {
+      "date": "2026-09-05",
+      "group": "GZ-SS01小组",
+      "assessed": 3375,
+      "qualified": 418,
+      "rate": 0.123852
+    },
+    {
+      "date": "2026-09-05",
+      "group": "GZ-SS04小组",
+      "assessed": 2679,
+      "qualified": 282,
+      "rate": 0.105263
+    },
+    {
+      "date": "2026-09-06",
+      "group": "BJ-JWSS01小组",
+      "assessed": 2957,
+      "qualified": 499,
+      "rate": 0.168752
+    },
+    {
+      "date": "2026-09-06",
+      "group": "BJ-JWSS02小组",
+      "assessed": 2950,
+      "qualified": 440,
+      "rate": 0.149153
+    },
+    {
+      "date": "2026-09-06",
+      "group": "BJ-JWSS04小组",
+      "assessed": 3025,
+      "qualified": 445,
+      "rate": 0.147107
+    },
+    {
+      "date": "2026-09-06",
+      "group": "BJ-JWSS07小组",
+      "assessed": 2545,
+      "qualified": 353,
+      "rate": 0.138703
+    },
+    {
+      "date": "2026-09-06",
+      "group": "GZ-SS01小组",
+      "assessed": 3376,
+      "qualified": 487,
+      "rate": 0.144254
+    },
+    {
+      "date": "2026-09-06",
+      "group": "GZ-SS04小组",
+      "assessed": 2679,
+      "qualified": 358,
+      "rate": 0.133632
+    },
+    {
+      "date": "2026-09-07",
+      "group": "BJ-JWSS01小组",
+      "assessed": 2957,
+      "qualified": 573,
+      "rate": 0.193777
+    },
+    {
+      "date": "2026-09-07",
+      "group": "BJ-JWSS02小组",
+      "assessed": 2951,
+      "qualified": 494,
+      "rate": 0.167401
+    },
+    {
+      "date": "2026-09-07",
+      "group": "BJ-JWSS04小组",
+      "assessed": 3024,
+      "qualified": 504,
+      "rate": 0.166667
+    },
+    {
+      "date": "2026-09-07",
+      "group": "BJ-JWSS07小组",
+      "assessed": 2545,
+      "qualified": 400,
+      "rate": 0.157171
+    },
+    {
+      "date": "2026-09-07",
+      "group": "GZ-SS01小组",
+      "assessed": 3376,
+      "qualified": 549,
+      "rate": 0.162618
+    },
+    {
+      "date": "2026-09-07",
+      "group": "GZ-SS04小组",
+      "assessed": 2679,
+      "qualified": 424,
+      "rate": 0.158268
     }
   ],
   "people": [
@@ -21599,6 +21893,3478 @@
       "group": "GZ-SS04小组",
       "ss": "51yehaitao001",
       "rate": 0.62614
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS01小组",
+      "ss": "51fanxingrou",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 215,
+      "qualified": 17,
+      "group": "BJ-JWSS01小组",
+      "ss": "51hezhenqin001",
+      "rate": 0.07907
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 256,
+      "qualified": 13,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangmingliang001",
+      "rate": 0.050781
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 201,
+      "qualified": 15,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangyu001",
+      "rate": 0.074627
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 255,
+      "qualified": 16,
+      "group": "BJ-JWSS01小组",
+      "ss": "51lijiajia001",
+      "rate": 0.062745
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 235,
+      "qualified": 15,
+      "group": "BJ-JWSS01小组",
+      "ss": "51liuziqi001",
+      "rate": 0.06383
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 440,
+      "qualified": 29,
+      "group": "BJ-JWSS01小组",
+      "ss": "51wangzhao",
+      "rate": 0.065909
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 403,
+      "qualified": 38,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhaoziao",
+      "rate": 0.094293
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 249,
+      "qualified": 15,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhengli002",
+      "rate": 0.060241
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 278,
+      "qualified": 8,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhoulihui",
+      "rate": 0.028777
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 510,
+      "qualified": 50,
+      "group": "BJ-JWSS01小组",
+      "ss": "zhoubianli",
+      "rate": 0.098039
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS02小组",
+      "ss": "51fengxueqian01",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 271,
+      "qualified": 9,
+      "group": "BJ-JWSS02小组",
+      "ss": "51lipengfei07",
+      "rate": 0.03321
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 73,
+      "qualified": 2,
+      "group": "BJ-JWSS02小组",
+      "ss": "51litiantian001",
+      "rate": 0.027397
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 272,
+      "qualified": 19,
+      "group": "BJ-JWSS02小组",
+      "ss": "51liuyuefeng",
+      "rate": 0.069853
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 305,
+      "qualified": 19,
+      "group": "BJ-JWSS02小组",
+      "ss": "51sunmingjun",
+      "rate": 0.062295
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 318,
+      "qualified": 16,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wangdengcheng001",
+      "rate": 0.050314
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 198,
+      "qualified": 14,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wanglinshu",
+      "rate": 0.070707
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 288,
+      "qualified": 19,
+      "group": "BJ-JWSS02小组",
+      "ss": "51yuanzhimin001",
+      "rate": 0.065972
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 433,
+      "qualified": 18,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhangyaru03",
+      "rate": 0.04157
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 268,
+      "qualified": 26,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhaowei001",
+      "rate": 0.097015
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 435,
+      "qualified": 14,
+      "group": "BJ-JWSS02小组",
+      "ss": "duanguozhong",
+      "rate": 0.032184
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 300,
+      "qualified": 23,
+      "group": "BJ-JWSS04小组",
+      "ss": "51fengweijia",
+      "rate": 0.076667
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 321,
+      "qualified": 23,
+      "group": "BJ-JWSS04小组",
+      "ss": "51panshengna001",
+      "rate": 0.071651
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 371,
+      "qualified": 20,
+      "group": "BJ-JWSS04小组",
+      "ss": "51songyumeng",
+      "rate": 0.053908
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 302,
+      "qualified": 17,
+      "group": "BJ-JWSS04小组",
+      "ss": "51sunjingjing001",
+      "rate": 0.056291
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 247,
+      "qualified": 20,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanghaoran001",
+      "rate": 0.080972
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 362,
+      "qualified": 27,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanglin07",
+      "rate": 0.074586
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 166,
+      "qualified": 11,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yangningge001",
+      "rate": 0.066265
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 326,
+      "qualified": 19,
+      "group": "BJ-JWSS04小组",
+      "ss": "51zhangyanchao001",
+      "rate": 0.058282
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 366,
+      "qualified": 28,
+      "group": "BJ-JWSS04小组",
+      "ss": "chenwenjian",
+      "rate": 0.076503
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 263,
+      "qualified": 15,
+      "group": "BJ-JWSS04小组",
+      "ss": "guoxiaopeng",
+      "rate": 0.057034
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 119,
+      "qualified": 15,
+      "group": "BJ-JWSS07小组",
+      "ss": "51changhong001",
+      "rate": 0.12605
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 322,
+      "qualified": 15,
+      "group": "BJ-JWSS07小组",
+      "ss": "51hangaofei",
+      "rate": 0.046584
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 120,
+      "qualified": 4,
+      "group": "BJ-JWSS07小组",
+      "ss": "51huanglixia001",
+      "rate": 0.033333
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 173,
+      "qualified": 13,
+      "group": "BJ-JWSS07小组",
+      "ss": "51qihuan001",
+      "rate": 0.075145
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 299,
+      "qualified": 12,
+      "group": "BJ-JWSS07小组",
+      "ss": "51sunshiwei001",
+      "rate": 0.040134
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 86,
+      "qualified": 2,
+      "group": "BJ-JWSS07小组",
+      "ss": "51wangjie003",
+      "rate": 0.023256
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 348,
+      "qualified": 25,
+      "group": "BJ-JWSS07小组",
+      "ss": "51weixinying01",
+      "rate": 0.071839
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 295,
+      "qualified": 20,
+      "group": "BJ-JWSS07小组",
+      "ss": "51xujing002",
+      "rate": 0.067797
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 417,
+      "qualified": 30,
+      "group": "BJ-JWSS07小组",
+      "ss": "51yuanfei",
+      "rate": 0.071942
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 364,
+      "qualified": 23,
+      "group": "BJ-JWSS07小组",
+      "ss": "yangyuna01",
+      "rate": 0.063187
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 197,
+      "qualified": 12,
+      "group": "GZ-SS01小组",
+      "ss": "51chenzhenpeng001",
+      "rate": 0.060914
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 185,
+      "qualified": 7,
+      "group": "GZ-SS01小组",
+      "ss": "51huangzijun001",
+      "rate": 0.037838
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 424,
+      "qualified": 36,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiazhu001",
+      "rate": 0.084906
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 487,
+      "qualified": 60,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiyuan",
+      "rate": 0.123203
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 297,
+      "qualified": 21,
+      "group": "GZ-SS01小组",
+      "ss": "51pengwaner001",
+      "rate": 0.070707
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 235,
+      "qualified": 9,
+      "group": "GZ-SS01小组",
+      "ss": "51qiuyao001",
+      "rate": 0.038298
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 158,
+      "qualified": 7,
+      "group": "GZ-SS01小组",
+      "ss": "51ruanmingfeng001",
+      "rate": 0.044304
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 350,
+      "qualified": 20,
+      "group": "GZ-SS01小组",
+      "ss": "51zengqing",
+      "rate": 0.057143
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 414,
+      "qualified": 36,
+      "group": "GZ-SS01小组",
+      "ss": "51zhangzuhui001",
+      "rate": 0.086957
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 438,
+      "qualified": 32,
+      "group": "GZ-SS01小组",
+      "ss": "51zhongling01",
+      "rate": 0.073059
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 189,
+      "qualified": 8,
+      "group": "GZ-SS01小组",
+      "ss": "51zhoushimei001",
+      "rate": 0.042328
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 332,
+      "qualified": 19,
+      "group": "GZ-SS04小组",
+      "ss": "51baoshengcheng",
+      "rate": 0.057229
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 241,
+      "qualified": 13,
+      "group": "GZ-SS04小组",
+      "ss": "51chenhongling001",
+      "rate": 0.053942
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 128,
+      "qualified": 9,
+      "group": "GZ-SS04小组",
+      "ss": "51chenliuyuan001",
+      "rate": 0.070312
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 475,
+      "qualified": 33,
+      "group": "GZ-SS04小组",
+      "ss": "51huangxiaotong001",
+      "rate": 0.069474
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 274,
+      "qualified": 11,
+      "group": "GZ-SS04小组",
+      "ss": "51huangzhenjie001",
+      "rate": 0.040146
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 230,
+      "qualified": 20,
+      "group": "GZ-SS04小组",
+      "ss": "51lijiahui002",
+      "rate": 0.086957
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 464,
+      "qualified": 25,
+      "group": "GZ-SS04小组",
+      "ss": "51pengshuying001",
+      "rate": 0.053879
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 198,
+      "qualified": 8,
+      "group": "GZ-SS04小组",
+      "ss": "51xujinghan001",
+      "rate": 0.040404
+    },
+    {
+      "date": "2026-09-01",
+      "assessed": 337,
+      "qualified": 18,
+      "group": "GZ-SS04小组",
+      "ss": "51yehaitao001",
+      "rate": 0.053412
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS01小组",
+      "ss": "51fanxingrou",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 215,
+      "qualified": 21,
+      "group": "BJ-JWSS01小组",
+      "ss": "51hezhenqin001",
+      "rate": 0.097674
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 257,
+      "qualified": 13,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangmingliang001",
+      "rate": 0.050584
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 201,
+      "qualified": 15,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangyu001",
+      "rate": 0.074627
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 254,
+      "qualified": 20,
+      "group": "BJ-JWSS01小组",
+      "ss": "51lijiajia001",
+      "rate": 0.07874
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 235,
+      "qualified": 14,
+      "group": "BJ-JWSS01小组",
+      "ss": "51liuziqi001",
+      "rate": 0.059574
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 439,
+      "qualified": 32,
+      "group": "BJ-JWSS01小组",
+      "ss": "51wangzhao",
+      "rate": 0.072893
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 374,
+      "qualified": 44,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhaoziao",
+      "rate": 0.117647
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 196,
+      "qualified": 11,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhengli002",
+      "rate": 0.056122
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 277,
+      "qualified": 9,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhoulihui",
+      "rate": 0.032491
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 508,
+      "qualified": 52,
+      "group": "BJ-JWSS01小组",
+      "ss": "zhoubianli",
+      "rate": 0.102362
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS02小组",
+      "ss": "51fengxueqian01",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 271,
+      "qualified": 10,
+      "group": "BJ-JWSS02小组",
+      "ss": "51lipengfei07",
+      "rate": 0.0369
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 113,
+      "qualified": 4,
+      "group": "BJ-JWSS02小组",
+      "ss": "51litiantian001",
+      "rate": 0.035398
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 272,
+      "qualified": 19,
+      "group": "BJ-JWSS02小组",
+      "ss": "51liuyuefeng",
+      "rate": 0.069853
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 305,
+      "qualified": 22,
+      "group": "BJ-JWSS02小组",
+      "ss": "51sunmingjun",
+      "rate": 0.072131
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 318,
+      "qualified": 21,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wangdengcheng001",
+      "rate": 0.066038
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 244,
+      "qualified": 18,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wanglinshu",
+      "rate": 0.07377
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 288,
+      "qualified": 24,
+      "group": "BJ-JWSS02小组",
+      "ss": "51yuanzhimin001",
+      "rate": 0.083333
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 433,
+      "qualified": 23,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhangyaru03",
+      "rate": 0.053118
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 268,
+      "qualified": 27,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhaowei001",
+      "rate": 0.100746
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 435,
+      "qualified": 26,
+      "group": "BJ-JWSS02小组",
+      "ss": "duanguozhong",
+      "rate": 0.05977
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 299,
+      "qualified": 22,
+      "group": "BJ-JWSS04小组",
+      "ss": "51fengweijia",
+      "rate": 0.073579
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 321,
+      "qualified": 29,
+      "group": "BJ-JWSS04小组",
+      "ss": "51panshengna001",
+      "rate": 0.090343
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 371,
+      "qualified": 24,
+      "group": "BJ-JWSS04小组",
+      "ss": "51songyumeng",
+      "rate": 0.06469
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 302,
+      "qualified": 22,
+      "group": "BJ-JWSS04小组",
+      "ss": "51sunjingjing001",
+      "rate": 0.072848
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 247,
+      "qualified": 26,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanghaoran001",
+      "rate": 0.105263
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 362,
+      "qualified": 37,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanglin07",
+      "rate": 0.10221
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 166,
+      "qualified": 11,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yangningge001",
+      "rate": 0.066265
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 326,
+      "qualified": 20,
+      "group": "BJ-JWSS04小组",
+      "ss": "51zhangyanchao001",
+      "rate": 0.06135
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 366,
+      "qualified": 33,
+      "group": "BJ-JWSS04小组",
+      "ss": "chenwenjian",
+      "rate": 0.090164
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 263,
+      "qualified": 21,
+      "group": "BJ-JWSS04小组",
+      "ss": "guoxiaopeng",
+      "rate": 0.079848
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 119,
+      "qualified": 16,
+      "group": "BJ-JWSS07小组",
+      "ss": "51changhong001",
+      "rate": 0.134454
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 322,
+      "qualified": 15,
+      "group": "BJ-JWSS07小组",
+      "ss": "51hangaofei",
+      "rate": 0.046584
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 121,
+      "qualified": 8,
+      "group": "BJ-JWSS07小组",
+      "ss": "51huanglixia001",
+      "rate": 0.066116
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 173,
+      "qualified": 13,
+      "group": "BJ-JWSS07小组",
+      "ss": "51qihuan001",
+      "rate": 0.075145
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 299,
+      "qualified": 16,
+      "group": "BJ-JWSS07小组",
+      "ss": "51sunshiwei001",
+      "rate": 0.053512
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 87,
+      "qualified": 3,
+      "group": "BJ-JWSS07小组",
+      "ss": "51wangjie003",
+      "rate": 0.034483
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 348,
+      "qualified": 30,
+      "group": "BJ-JWSS07小组",
+      "ss": "51weixinying01",
+      "rate": 0.086207
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 293,
+      "qualified": 23,
+      "group": "BJ-JWSS07小组",
+      "ss": "51xujing002",
+      "rate": 0.078498
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 417,
+      "qualified": 30,
+      "group": "BJ-JWSS07小组",
+      "ss": "51yuanfei",
+      "rate": 0.071942
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 364,
+      "qualified": 28,
+      "group": "BJ-JWSS07小组",
+      "ss": "yangyuna01",
+      "rate": 0.076923
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 196,
+      "qualified": 13,
+      "group": "GZ-SS01小组",
+      "ss": "51chenzhenpeng001",
+      "rate": 0.066327
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 185,
+      "qualified": 8,
+      "group": "GZ-SS01小组",
+      "ss": "51huangzijun001",
+      "rate": 0.043243
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 426,
+      "qualified": 48,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiazhu001",
+      "rate": 0.112676
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 487,
+      "qualified": 67,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiyuan",
+      "rate": 0.137577
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 297,
+      "qualified": 20,
+      "group": "GZ-SS01小组",
+      "ss": "51pengwaner001",
+      "rate": 0.06734
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 234,
+      "qualified": 8,
+      "group": "GZ-SS01小组",
+      "ss": "51qiuyao001",
+      "rate": 0.034188
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 158,
+      "qualified": 6,
+      "group": "GZ-SS01小组",
+      "ss": "51ruanmingfeng001",
+      "rate": 0.037975
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 350,
+      "qualified": 21,
+      "group": "GZ-SS01小组",
+      "ss": "51zengqing",
+      "rate": 0.06
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 416,
+      "qualified": 38,
+      "group": "GZ-SS01小组",
+      "ss": "51zhangzuhui001",
+      "rate": 0.091346
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 437,
+      "qualified": 42,
+      "group": "GZ-SS01小组",
+      "ss": "51zhongling01",
+      "rate": 0.09611
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 189,
+      "qualified": 10,
+      "group": "GZ-SS01小组",
+      "ss": "51zhoushimei001",
+      "rate": 0.05291
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 333,
+      "qualified": 22,
+      "group": "GZ-SS04小组",
+      "ss": "51baoshengcheng",
+      "rate": 0.066066
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 301,
+      "qualified": 19,
+      "group": "GZ-SS04小组",
+      "ss": "51chenhongling001",
+      "rate": 0.063123
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 66,
+      "qualified": 6,
+      "group": "GZ-SS04小组",
+      "ss": "51chenliuyuan001",
+      "rate": 0.090909
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 477,
+      "qualified": 42,
+      "group": "GZ-SS04小组",
+      "ss": "51huangxiaotong001",
+      "rate": 0.08805
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 272,
+      "qualified": 14,
+      "group": "GZ-SS04小组",
+      "ss": "51huangzhenjie001",
+      "rate": 0.051471
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 230,
+      "qualified": 23,
+      "group": "GZ-SS04小组",
+      "ss": "51lijiahui002",
+      "rate": 0.1
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 463,
+      "qualified": 35,
+      "group": "GZ-SS04小组",
+      "ss": "51pengshuying001",
+      "rate": 0.075594
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 200,
+      "qualified": 8,
+      "group": "GZ-SS04小组",
+      "ss": "51xujinghan001",
+      "rate": 0.04
+    },
+    {
+      "date": "2026-09-02",
+      "assessed": 337,
+      "qualified": 22,
+      "group": "GZ-SS04小组",
+      "ss": "51yehaitao001",
+      "rate": 0.065282
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS01小组",
+      "ss": "51fanxingrou",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 215,
+      "qualified": 23,
+      "group": "BJ-JWSS01小组",
+      "ss": "51hezhenqin001",
+      "rate": 0.106977
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 257,
+      "qualified": 16,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangmingliang001",
+      "rate": 0.062257
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 201,
+      "qualified": 20,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangyu001",
+      "rate": 0.099502
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 254,
+      "qualified": 23,
+      "group": "BJ-JWSS01小组",
+      "ss": "51lijiajia001",
+      "rate": 0.090551
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 235,
+      "qualified": 18,
+      "group": "BJ-JWSS01小组",
+      "ss": "51liuziqi001",
+      "rate": 0.076596
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 439,
+      "qualified": 39,
+      "group": "BJ-JWSS01小组",
+      "ss": "51wangzhao",
+      "rate": 0.088838
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 375,
+      "qualified": 59,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhaoziao",
+      "rate": 0.157333
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 195,
+      "qualified": 15,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhengli002",
+      "rate": 0.076923
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 277,
+      "qualified": 16,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhoulihui",
+      "rate": 0.057762
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 508,
+      "qualified": 60,
+      "group": "BJ-JWSS01小组",
+      "ss": "zhoubianli",
+      "rate": 0.11811
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS02小组",
+      "ss": "51fengxueqian01",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 271,
+      "qualified": 14,
+      "group": "BJ-JWSS02小组",
+      "ss": "51lipengfei07",
+      "rate": 0.051661
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 113,
+      "qualified": 7,
+      "group": "BJ-JWSS02小组",
+      "ss": "51litiantian001",
+      "rate": 0.061947
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 272,
+      "qualified": 25,
+      "group": "BJ-JWSS02小组",
+      "ss": "51liuyuefeng",
+      "rate": 0.091912
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 305,
+      "qualified": 29,
+      "group": "BJ-JWSS02小组",
+      "ss": "51sunmingjun",
+      "rate": 0.095082
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 318,
+      "qualified": 24,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wangdengcheng001",
+      "rate": 0.075472
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 246,
+      "qualified": 20,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wanglinshu",
+      "rate": 0.081301
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 287,
+      "qualified": 25,
+      "group": "BJ-JWSS02小组",
+      "ss": "51yuanzhimin001",
+      "rate": 0.087108
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 433,
+      "qualified": 25,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhangyaru03",
+      "rate": 0.057737
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 267,
+      "qualified": 30,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhaowei001",
+      "rate": 0.11236
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 437,
+      "qualified": 29,
+      "group": "BJ-JWSS02小组",
+      "ss": "duanguozhong",
+      "rate": 0.066362
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 299,
+      "qualified": 27,
+      "group": "BJ-JWSS04小组",
+      "ss": "51fengweijia",
+      "rate": 0.090301
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 322,
+      "qualified": 30,
+      "group": "BJ-JWSS04小组",
+      "ss": "51panshengna001",
+      "rate": 0.093168
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 371,
+      "qualified": 25,
+      "group": "BJ-JWSS04小组",
+      "ss": "51songyumeng",
+      "rate": 0.067385
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 302,
+      "qualified": 24,
+      "group": "BJ-JWSS04小组",
+      "ss": "51sunjingjing001",
+      "rate": 0.07947
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 247,
+      "qualified": 27,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanghaoran001",
+      "rate": 0.109312
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 362,
+      "qualified": 43,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanglin07",
+      "rate": 0.118785
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 166,
+      "qualified": 15,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yangningge001",
+      "rate": 0.090361
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 326,
+      "qualified": 25,
+      "group": "BJ-JWSS04小组",
+      "ss": "51zhangyanchao001",
+      "rate": 0.076687
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 366,
+      "qualified": 40,
+      "group": "BJ-JWSS04小组",
+      "ss": "chenwenjian",
+      "rate": 0.10929
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 263,
+      "qualified": 24,
+      "group": "BJ-JWSS04小组",
+      "ss": "guoxiaopeng",
+      "rate": 0.091255
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 119,
+      "qualified": 16,
+      "group": "BJ-JWSS07小组",
+      "ss": "51changhong001",
+      "rate": 0.134454
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 323,
+      "qualified": 20,
+      "group": "BJ-JWSS07小组",
+      "ss": "51hangaofei",
+      "rate": 0.06192
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 121,
+      "qualified": 9,
+      "group": "BJ-JWSS07小组",
+      "ss": "51huanglixia001",
+      "rate": 0.07438
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 173,
+      "qualified": 15,
+      "group": "BJ-JWSS07小组",
+      "ss": "51qihuan001",
+      "rate": 0.086705
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 299,
+      "qualified": 21,
+      "group": "BJ-JWSS07小组",
+      "ss": "51sunshiwei001",
+      "rate": 0.070234
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 88,
+      "qualified": 3,
+      "group": "BJ-JWSS07小组",
+      "ss": "51wangjie003",
+      "rate": 0.034091
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 348,
+      "qualified": 33,
+      "group": "BJ-JWSS07小组",
+      "ss": "51weixinying01",
+      "rate": 0.094828
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 293,
+      "qualified": 24,
+      "group": "BJ-JWSS07小组",
+      "ss": "51xujing002",
+      "rate": 0.081911
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 417,
+      "qualified": 30,
+      "group": "BJ-JWSS07小组",
+      "ss": "51yuanfei",
+      "rate": 0.071942
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 364,
+      "qualified": 29,
+      "group": "BJ-JWSS07小组",
+      "ss": "yangyuna01",
+      "rate": 0.07967
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 197,
+      "qualified": 14,
+      "group": "GZ-SS01小组",
+      "ss": "51chenzhenpeng001",
+      "rate": 0.071066
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 185,
+      "qualified": 10,
+      "group": "GZ-SS01小组",
+      "ss": "51huangzijun001",
+      "rate": 0.054054
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 427,
+      "qualified": 48,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiazhu001",
+      "rate": 0.112412
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 487,
+      "qualified": 77,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiyuan",
+      "rate": 0.158111
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 297,
+      "qualified": 24,
+      "group": "GZ-SS01小组",
+      "ss": "51pengwaner001",
+      "rate": 0.080808
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 234,
+      "qualified": 8,
+      "group": "GZ-SS01小组",
+      "ss": "51qiuyao001",
+      "rate": 0.034188
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 158,
+      "qualified": 5,
+      "group": "GZ-SS01小组",
+      "ss": "51ruanmingfeng001",
+      "rate": 0.031646
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 350,
+      "qualified": 27,
+      "group": "GZ-SS01小组",
+      "ss": "51zengqing",
+      "rate": 0.077143
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 415,
+      "qualified": 41,
+      "group": "GZ-SS01小组",
+      "ss": "51zhangzuhui001",
+      "rate": 0.098795
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 437,
+      "qualified": 49,
+      "group": "GZ-SS01小组",
+      "ss": "51zhongling01",
+      "rate": 0.112128
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 189,
+      "qualified": 10,
+      "group": "GZ-SS01小组",
+      "ss": "51zhoushimei001",
+      "rate": 0.05291
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 333,
+      "qualified": 26,
+      "group": "GZ-SS04小组",
+      "ss": "51baoshengcheng",
+      "rate": 0.078078
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 302,
+      "qualified": 19,
+      "group": "GZ-SS04小组",
+      "ss": "51chenhongling001",
+      "rate": 0.062914
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 104,
+      "qualified": 8,
+      "group": "GZ-SS04小组",
+      "ss": "51chenliuyuan001",
+      "rate": 0.076923
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 478,
+      "qualified": 48,
+      "group": "GZ-SS04小组",
+      "ss": "51huangxiaotong001",
+      "rate": 0.100418
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 272,
+      "qualified": 16,
+      "group": "GZ-SS04小组",
+      "ss": "51huangzhenjie001",
+      "rate": 0.058824
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 230,
+      "qualified": 27,
+      "group": "GZ-SS04小组",
+      "ss": "51lijiahui002",
+      "rate": 0.117391
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 423,
+      "qualified": 37,
+      "group": "GZ-SS04小组",
+      "ss": "51pengshuying001",
+      "rate": 0.08747
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 200,
+      "qualified": 9,
+      "group": "GZ-SS04小组",
+      "ss": "51xujinghan001",
+      "rate": 0.045
+    },
+    {
+      "date": "2026-09-03",
+      "assessed": 337,
+      "qualified": 26,
+      "group": "GZ-SS04小组",
+      "ss": "51yehaitao001",
+      "rate": 0.077151
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS01小组",
+      "ss": "51fanxingrou",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 216,
+      "qualified": 26,
+      "group": "BJ-JWSS01小组",
+      "ss": "51hezhenqin001",
+      "rate": 0.12037
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 257,
+      "qualified": 19,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangmingliang001",
+      "rate": 0.07393
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 201,
+      "qualified": 31,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangyu001",
+      "rate": 0.154229
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 254,
+      "qualified": 27,
+      "group": "BJ-JWSS01小组",
+      "ss": "51lijiajia001",
+      "rate": 0.106299
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 235,
+      "qualified": 21,
+      "group": "BJ-JWSS01小组",
+      "ss": "51liuziqi001",
+      "rate": 0.089362
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 438,
+      "qualified": 50,
+      "group": "BJ-JWSS01小组",
+      "ss": "51wangzhao",
+      "rate": 0.114155
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 377,
+      "qualified": 71,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhaoziao",
+      "rate": 0.188329
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 192,
+      "qualified": 16,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhengli002",
+      "rate": 0.083333
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 278,
+      "qualified": 25,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhoulihui",
+      "rate": 0.089928
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 508,
+      "qualified": 77,
+      "group": "BJ-JWSS01小组",
+      "ss": "zhoubianli",
+      "rate": 0.151575
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS02小组",
+      "ss": "51fengxueqian01",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 271,
+      "qualified": 19,
+      "group": "BJ-JWSS02小组",
+      "ss": "51lipengfei07",
+      "rate": 0.070111
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 113,
+      "qualified": 8,
+      "group": "BJ-JWSS02小组",
+      "ss": "51litiantian001",
+      "rate": 0.070796
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 272,
+      "qualified": 35,
+      "group": "BJ-JWSS02小组",
+      "ss": "51liuyuefeng",
+      "rate": 0.128676
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 305,
+      "qualified": 38,
+      "group": "BJ-JWSS02小组",
+      "ss": "51sunmingjun",
+      "rate": 0.12459
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 318,
+      "qualified": 30,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wangdengcheng001",
+      "rate": 0.09434
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 246,
+      "qualified": 22,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wanglinshu",
+      "rate": 0.089431
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 287,
+      "qualified": 34,
+      "group": "BJ-JWSS02小组",
+      "ss": "51yuanzhimin001",
+      "rate": 0.118467
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 433,
+      "qualified": 31,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhangyaru03",
+      "rate": 0.071594
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 267,
+      "qualified": 42,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhaowei001",
+      "rate": 0.157303
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 437,
+      "qualified": 34,
+      "group": "BJ-JWSS02小组",
+      "ss": "duanguozhong",
+      "rate": 0.077803
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 299,
+      "qualified": 33,
+      "group": "BJ-JWSS04小组",
+      "ss": "51fengweijia",
+      "rate": 0.110368
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 322,
+      "qualified": 34,
+      "group": "BJ-JWSS04小组",
+      "ss": "51panshengna001",
+      "rate": 0.10559
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 371,
+      "qualified": 30,
+      "group": "BJ-JWSS04小组",
+      "ss": "51songyumeng",
+      "rate": 0.080863
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 302,
+      "qualified": 27,
+      "group": "BJ-JWSS04小组",
+      "ss": "51sunjingjing001",
+      "rate": 0.089404
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 247,
+      "qualified": 33,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanghaoran001",
+      "rate": 0.133603
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 362,
+      "qualified": 48,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanglin07",
+      "rate": 0.132597
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 166,
+      "qualified": 14,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yangningge001",
+      "rate": 0.084337
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 326,
+      "qualified": 26,
+      "group": "BJ-JWSS04小组",
+      "ss": "51zhangyanchao001",
+      "rate": 0.079755
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 366,
+      "qualified": 42,
+      "group": "BJ-JWSS04小组",
+      "ss": "chenwenjian",
+      "rate": 0.114754
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 264,
+      "qualified": 27,
+      "group": "BJ-JWSS04小组",
+      "ss": "guoxiaopeng",
+      "rate": 0.102273
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 119,
+      "qualified": 18,
+      "group": "BJ-JWSS07小组",
+      "ss": "51changhong001",
+      "rate": 0.151261
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 323,
+      "qualified": 25,
+      "group": "BJ-JWSS07小组",
+      "ss": "51hangaofei",
+      "rate": 0.077399
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 121,
+      "qualified": 13,
+      "group": "BJ-JWSS07小组",
+      "ss": "51huanglixia001",
+      "rate": 0.107438
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 173,
+      "qualified": 18,
+      "group": "BJ-JWSS07小组",
+      "ss": "51qihuan001",
+      "rate": 0.104046
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 299,
+      "qualified": 30,
+      "group": "BJ-JWSS07小组",
+      "ss": "51sunshiwei001",
+      "rate": 0.100334
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 88,
+      "qualified": 5,
+      "group": "BJ-JWSS07小组",
+      "ss": "51wangjie003",
+      "rate": 0.056818
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 348,
+      "qualified": 36,
+      "group": "BJ-JWSS07小组",
+      "ss": "51weixinying01",
+      "rate": 0.103448
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 293,
+      "qualified": 33,
+      "group": "BJ-JWSS07小组",
+      "ss": "51xujing002",
+      "rate": 0.112628
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 417,
+      "qualified": 48,
+      "group": "BJ-JWSS07小组",
+      "ss": "51yuanfei",
+      "rate": 0.115108
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 364,
+      "qualified": 35,
+      "group": "BJ-JWSS07小组",
+      "ss": "yangyuna01",
+      "rate": 0.096154
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 196,
+      "qualified": 17,
+      "group": "GZ-SS01小组",
+      "ss": "51chenzhenpeng001",
+      "rate": 0.086735
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 185,
+      "qualified": 15,
+      "group": "GZ-SS01小组",
+      "ss": "51huangzijun001",
+      "rate": 0.081081
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 427,
+      "qualified": 53,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiazhu001",
+      "rate": 0.124122
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 487,
+      "qualified": 82,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiyuan",
+      "rate": 0.168378
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 297,
+      "qualified": 28,
+      "group": "GZ-SS01小组",
+      "ss": "51pengwaner001",
+      "rate": 0.094276
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 234,
+      "qualified": 11,
+      "group": "GZ-SS01小组",
+      "ss": "51qiuyao001",
+      "rate": 0.047009
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 158,
+      "qualified": 5,
+      "group": "GZ-SS01小组",
+      "ss": "51ruanmingfeng001",
+      "rate": 0.031646
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 350,
+      "qualified": 31,
+      "group": "GZ-SS01小组",
+      "ss": "51zengqing",
+      "rate": 0.088571
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 415,
+      "qualified": 50,
+      "group": "GZ-SS01小组",
+      "ss": "51zhangzuhui001",
+      "rate": 0.120482
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 437,
+      "qualified": 56,
+      "group": "GZ-SS01小组",
+      "ss": "51zhongling01",
+      "rate": 0.128146
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 189,
+      "qualified": 13,
+      "group": "GZ-SS01小组",
+      "ss": "51zhoushimei001",
+      "rate": 0.068783
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 348,
+      "qualified": 31,
+      "group": "GZ-SS04小组",
+      "ss": "51baoshengcheng",
+      "rate": 0.08908
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 302,
+      "qualified": 24,
+      "group": "GZ-SS04小组",
+      "ss": "51chenhongling001",
+      "rate": 0.07947
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 94,
+      "qualified": 7,
+      "group": "GZ-SS04小组",
+      "ss": "51chenliuyuan001",
+      "rate": 0.074468
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 478,
+      "qualified": 57,
+      "group": "GZ-SS04小组",
+      "ss": "51huangxiaotong001",
+      "rate": 0.119247
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 272,
+      "qualified": 18,
+      "group": "GZ-SS04小组",
+      "ss": "51huangzhenjie001",
+      "rate": 0.066176
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 230,
+      "qualified": 29,
+      "group": "GZ-SS04小组",
+      "ss": "51lijiahui002",
+      "rate": 0.126087
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 418,
+      "qualified": 37,
+      "group": "GZ-SS04小组",
+      "ss": "51pengshuying001",
+      "rate": 0.088517
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 200,
+      "qualified": 12,
+      "group": "GZ-SS04小组",
+      "ss": "51xujinghan001",
+      "rate": 0.06
+    },
+    {
+      "date": "2026-09-04",
+      "assessed": 337,
+      "qualified": 29,
+      "group": "GZ-SS04小组",
+      "ss": "51yehaitao001",
+      "rate": 0.086053
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS01小组",
+      "ss": "51fanxingrou",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 217,
+      "qualified": 32,
+      "group": "BJ-JWSS01小组",
+      "ss": "51hezhenqin001",
+      "rate": 0.147465
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 257,
+      "qualified": 24,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangmingliang001",
+      "rate": 0.093385
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 201,
+      "qualified": 33,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangyu001",
+      "rate": 0.164179
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 254,
+      "qualified": 32,
+      "group": "BJ-JWSS01小组",
+      "ss": "51lijiajia001",
+      "rate": 0.125984
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 235,
+      "qualified": 24,
+      "group": "BJ-JWSS01小组",
+      "ss": "51liuziqi001",
+      "rate": 0.102128
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 438,
+      "qualified": 55,
+      "group": "BJ-JWSS01小组",
+      "ss": "51wangzhao",
+      "rate": 0.125571
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 377,
+      "qualified": 83,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhaoziao",
+      "rate": 0.220159
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 192,
+      "qualified": 21,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhengli002",
+      "rate": 0.109375
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 277,
+      "qualified": 27,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhoulihui",
+      "rate": 0.097473
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 508,
+      "qualified": 89,
+      "group": "BJ-JWSS01小组",
+      "ss": "zhoubianli",
+      "rate": 0.175197
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS02小组",
+      "ss": "51fengxueqian01",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 271,
+      "qualified": 26,
+      "group": "BJ-JWSS02小组",
+      "ss": "51lipengfei07",
+      "rate": 0.095941
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 113,
+      "qualified": 8,
+      "group": "BJ-JWSS02小组",
+      "ss": "51litiantian001",
+      "rate": 0.070796
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 272,
+      "qualified": 38,
+      "group": "BJ-JWSS02小组",
+      "ss": "51liuyuefeng",
+      "rate": 0.139706
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 305,
+      "qualified": 43,
+      "group": "BJ-JWSS02小组",
+      "ss": "51sunmingjun",
+      "rate": 0.140984
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 318,
+      "qualified": 36,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wangdengcheng001",
+      "rate": 0.113208
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 246,
+      "qualified": 26,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wanglinshu",
+      "rate": 0.105691
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 287,
+      "qualified": 40,
+      "group": "BJ-JWSS02小组",
+      "ss": "51yuanzhimin001",
+      "rate": 0.139373
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 433,
+      "qualified": 41,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhangyaru03",
+      "rate": 0.094688
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 267,
+      "qualified": 55,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhaowei001",
+      "rate": 0.205993
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 437,
+      "qualified": 39,
+      "group": "BJ-JWSS02小组",
+      "ss": "duanguozhong",
+      "rate": 0.089245
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 299,
+      "qualified": 36,
+      "group": "BJ-JWSS04小组",
+      "ss": "51fengweijia",
+      "rate": 0.120401
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 322,
+      "qualified": 39,
+      "group": "BJ-JWSS04小组",
+      "ss": "51panshengna001",
+      "rate": 0.121118
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 372,
+      "qualified": 37,
+      "group": "BJ-JWSS04小组",
+      "ss": "51songyumeng",
+      "rate": 0.099462
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 302,
+      "qualified": 32,
+      "group": "BJ-JWSS04小组",
+      "ss": "51sunjingjing001",
+      "rate": 0.10596
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 247,
+      "qualified": 42,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanghaoran001",
+      "rate": 0.17004
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 362,
+      "qualified": 60,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanglin07",
+      "rate": 0.165746
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 166,
+      "qualified": 16,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yangningge001",
+      "rate": 0.096386
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 325,
+      "qualified": 27,
+      "group": "BJ-JWSS04小组",
+      "ss": "51zhangyanchao001",
+      "rate": 0.083077
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 366,
+      "qualified": 48,
+      "group": "BJ-JWSS04小组",
+      "ss": "chenwenjian",
+      "rate": 0.131148
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 264,
+      "qualified": 31,
+      "group": "BJ-JWSS04小组",
+      "ss": "guoxiaopeng",
+      "rate": 0.117424
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 119,
+      "qualified": 19,
+      "group": "BJ-JWSS07小组",
+      "ss": "51changhong001",
+      "rate": 0.159664
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 323,
+      "qualified": 28,
+      "group": "BJ-JWSS07小组",
+      "ss": "51hangaofei",
+      "rate": 0.086687
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 121,
+      "qualified": 16,
+      "group": "BJ-JWSS07小组",
+      "ss": "51huanglixia001",
+      "rate": 0.132231
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 173,
+      "qualified": 23,
+      "group": "BJ-JWSS07小组",
+      "ss": "51qihuan001",
+      "rate": 0.132948
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 299,
+      "qualified": 39,
+      "group": "BJ-JWSS07小组",
+      "ss": "51sunshiwei001",
+      "rate": 0.130435
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 88,
+      "qualified": 7,
+      "group": "BJ-JWSS07小组",
+      "ss": "51wangjie003",
+      "rate": 0.079545
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 348,
+      "qualified": 40,
+      "group": "BJ-JWSS07小组",
+      "ss": "51weixinying01",
+      "rate": 0.114943
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 293,
+      "qualified": 41,
+      "group": "BJ-JWSS07小组",
+      "ss": "51xujing002",
+      "rate": 0.139932
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 417,
+      "qualified": 54,
+      "group": "BJ-JWSS07小组",
+      "ss": "51yuanfei",
+      "rate": 0.129496
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 364,
+      "qualified": 40,
+      "group": "BJ-JWSS07小组",
+      "ss": "yangyuna01",
+      "rate": 0.10989
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 196,
+      "qualified": 16,
+      "group": "GZ-SS01小组",
+      "ss": "51chenzhenpeng001",
+      "rate": 0.081633
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 185,
+      "qualified": 23,
+      "group": "GZ-SS01小组",
+      "ss": "51huangzijun001",
+      "rate": 0.124324
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 427,
+      "qualified": 62,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiazhu001",
+      "rate": 0.145199
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 488,
+      "qualified": 91,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiyuan",
+      "rate": 0.186475
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 297,
+      "qualified": 29,
+      "group": "GZ-SS01小组",
+      "ss": "51pengwaner001",
+      "rate": 0.097643
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 234,
+      "qualified": 13,
+      "group": "GZ-SS01小组",
+      "ss": "51qiuyao001",
+      "rate": 0.055556
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 157,
+      "qualified": 7,
+      "group": "GZ-SS01小组",
+      "ss": "51ruanmingfeng001",
+      "rate": 0.044586
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 350,
+      "qualified": 42,
+      "group": "GZ-SS01小组",
+      "ss": "51zengqing",
+      "rate": 0.12
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 415,
+      "qualified": 53,
+      "group": "GZ-SS01小组",
+      "ss": "51zhangzuhui001",
+      "rate": 0.127711
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 437,
+      "qualified": 65,
+      "group": "GZ-SS01小组",
+      "ss": "51zhongling01",
+      "rate": 0.148741
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 189,
+      "qualified": 17,
+      "group": "GZ-SS01小组",
+      "ss": "51zhoushimei001",
+      "rate": 0.089947
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 348,
+      "qualified": 37,
+      "group": "GZ-SS04小组",
+      "ss": "51baoshengcheng",
+      "rate": 0.106322
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 302,
+      "qualified": 28,
+      "group": "GZ-SS04小组",
+      "ss": "51chenhongling001",
+      "rate": 0.092715
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 93,
+      "qualified": 8,
+      "group": "GZ-SS04小组",
+      "ss": "51chenliuyuan001",
+      "rate": 0.086022
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 478,
+      "qualified": 66,
+      "group": "GZ-SS04小组",
+      "ss": "51huangxiaotong001",
+      "rate": 0.138075
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 272,
+      "qualified": 22,
+      "group": "GZ-SS04小组",
+      "ss": "51huangzhenjie001",
+      "rate": 0.080882
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 230,
+      "qualified": 31,
+      "group": "GZ-SS04小组",
+      "ss": "51lijiahui002",
+      "rate": 0.134783
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 418,
+      "qualified": 43,
+      "group": "GZ-SS04小组",
+      "ss": "51pengshuying001",
+      "rate": 0.102871
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 201,
+      "qualified": 15,
+      "group": "GZ-SS04小组",
+      "ss": "51xujinghan001",
+      "rate": 0.074627
+    },
+    {
+      "date": "2026-09-05",
+      "assessed": 337,
+      "qualified": 32,
+      "group": "GZ-SS04小组",
+      "ss": "51yehaitao001",
+      "rate": 0.094955
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS01小组",
+      "ss": "51fanxingrou",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 217,
+      "qualified": 42,
+      "group": "BJ-JWSS01小组",
+      "ss": "51hezhenqin001",
+      "rate": 0.193548
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 257,
+      "qualified": 33,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangmingliang001",
+      "rate": 0.128405
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 201,
+      "qualified": 37,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangyu001",
+      "rate": 0.18408
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 254,
+      "qualified": 38,
+      "group": "BJ-JWSS01小组",
+      "ss": "51lijiajia001",
+      "rate": 0.149606
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 235,
+      "qualified": 29,
+      "group": "BJ-JWSS01小组",
+      "ss": "51liuziqi001",
+      "rate": 0.123404
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 438,
+      "qualified": 59,
+      "group": "BJ-JWSS01小组",
+      "ss": "51wangzhao",
+      "rate": 0.134703
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 377,
+      "qualified": 97,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhaoziao",
+      "rate": 0.257294
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 192,
+      "qualified": 26,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhengli002",
+      "rate": 0.135417
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 277,
+      "qualified": 38,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhoulihui",
+      "rate": 0.137184
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 508,
+      "qualified": 100,
+      "group": "BJ-JWSS01小组",
+      "ss": "zhoubianli",
+      "rate": 0.19685
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS02小组",
+      "ss": "51fengxueqian01",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 271,
+      "qualified": 28,
+      "group": "BJ-JWSS02小组",
+      "ss": "51lipengfei07",
+      "rate": 0.103321
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 113,
+      "qualified": 10,
+      "group": "BJ-JWSS02小组",
+      "ss": "51litiantian001",
+      "rate": 0.088496
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 272,
+      "qualified": 48,
+      "group": "BJ-JWSS02小组",
+      "ss": "51liuyuefeng",
+      "rate": 0.176471
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 305,
+      "qualified": 58,
+      "group": "BJ-JWSS02小组",
+      "ss": "51sunmingjun",
+      "rate": 0.190164
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 318,
+      "qualified": 49,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wangdengcheng001",
+      "rate": 0.154088
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 246,
+      "qualified": 30,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wanglinshu",
+      "rate": 0.121951
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 287,
+      "qualified": 53,
+      "group": "BJ-JWSS02小组",
+      "ss": "51yuanzhimin001",
+      "rate": 0.184669
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 433,
+      "qualified": 53,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhangyaru03",
+      "rate": 0.122402
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 267,
+      "qualified": 60,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhaowei001",
+      "rate": 0.224719
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 437,
+      "qualified": 51,
+      "group": "BJ-JWSS02小组",
+      "ss": "duanguozhong",
+      "rate": 0.116705
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 299,
+      "qualified": 49,
+      "group": "BJ-JWSS04小组",
+      "ss": "51fengweijia",
+      "rate": 0.16388
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 322,
+      "qualified": 48,
+      "group": "BJ-JWSS04小组",
+      "ss": "51panshengna001",
+      "rate": 0.149068
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 372,
+      "qualified": 42,
+      "group": "BJ-JWSS04小组",
+      "ss": "51songyumeng",
+      "rate": 0.112903
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 302,
+      "qualified": 43,
+      "group": "BJ-JWSS04小组",
+      "ss": "51sunjingjing001",
+      "rate": 0.142384
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 247,
+      "qualified": 48,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanghaoran001",
+      "rate": 0.194332
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 362,
+      "qualified": 69,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanglin07",
+      "rate": 0.190608
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 166,
+      "qualified": 20,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yangningge001",
+      "rate": 0.120482
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 325,
+      "qualified": 31,
+      "group": "BJ-JWSS04小组",
+      "ss": "51zhangyanchao001",
+      "rate": 0.095385
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 366,
+      "qualified": 53,
+      "group": "BJ-JWSS04小组",
+      "ss": "chenwenjian",
+      "rate": 0.144809
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 264,
+      "qualified": 42,
+      "group": "BJ-JWSS04小组",
+      "ss": "guoxiaopeng",
+      "rate": 0.159091
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 120,
+      "qualified": 23,
+      "group": "BJ-JWSS07小组",
+      "ss": "51changhong001",
+      "rate": 0.191667
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 323,
+      "qualified": 33,
+      "group": "BJ-JWSS07小组",
+      "ss": "51hangaofei",
+      "rate": 0.102167
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 121,
+      "qualified": 18,
+      "group": "BJ-JWSS07小组",
+      "ss": "51huanglixia001",
+      "rate": 0.14876
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 172,
+      "qualified": 26,
+      "group": "BJ-JWSS07小组",
+      "ss": "51qihuan001",
+      "rate": 0.151163
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 299,
+      "qualified": 42,
+      "group": "BJ-JWSS07小组",
+      "ss": "51sunshiwei001",
+      "rate": 0.140468
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 88,
+      "qualified": 8,
+      "group": "BJ-JWSS07小组",
+      "ss": "51wangjie003",
+      "rate": 0.090909
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 348,
+      "qualified": 50,
+      "group": "BJ-JWSS07小组",
+      "ss": "51weixinying01",
+      "rate": 0.143678
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 293,
+      "qualified": 44,
+      "group": "BJ-JWSS07小组",
+      "ss": "51xujing002",
+      "rate": 0.150171
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 417,
+      "qualified": 66,
+      "group": "BJ-JWSS07小组",
+      "ss": "51yuanfei",
+      "rate": 0.158273
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 364,
+      "qualified": 43,
+      "group": "BJ-JWSS07小组",
+      "ss": "yangyuna01",
+      "rate": 0.118132
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 195,
+      "qualified": 17,
+      "group": "GZ-SS01小组",
+      "ss": "51chenzhenpeng001",
+      "rate": 0.087179
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 185,
+      "qualified": 26,
+      "group": "GZ-SS01小组",
+      "ss": "51huangzijun001",
+      "rate": 0.140541
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 428,
+      "qualified": 73,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiazhu001",
+      "rate": 0.170561
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 490,
+      "qualified": 100,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiyuan",
+      "rate": 0.204082
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 297,
+      "qualified": 39,
+      "group": "GZ-SS01小组",
+      "ss": "51pengwaner001",
+      "rate": 0.131313
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 234,
+      "qualified": 16,
+      "group": "GZ-SS01小组",
+      "ss": "51qiuyao001",
+      "rate": 0.068376
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 157,
+      "qualified": 8,
+      "group": "GZ-SS01小组",
+      "ss": "51ruanmingfeng001",
+      "rate": 0.050955
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 350,
+      "qualified": 50,
+      "group": "GZ-SS01小组",
+      "ss": "51zengqing",
+      "rate": 0.142857
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 415,
+      "qualified": 59,
+      "group": "GZ-SS01小组",
+      "ss": "51zhangzuhui001",
+      "rate": 0.142169
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 437,
+      "qualified": 78,
+      "group": "GZ-SS01小组",
+      "ss": "51zhongling01",
+      "rate": 0.17849
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 188,
+      "qualified": 21,
+      "group": "GZ-SS01小组",
+      "ss": "51zhoushimei001",
+      "rate": 0.111702
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 348,
+      "qualified": 45,
+      "group": "GZ-SS04小组",
+      "ss": "51baoshengcheng",
+      "rate": 0.12931
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 302,
+      "qualified": 37,
+      "group": "GZ-SS04小组",
+      "ss": "51chenhongling001",
+      "rate": 0.122517
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 93,
+      "qualified": 9,
+      "group": "GZ-SS04小组",
+      "ss": "51chenliuyuan001",
+      "rate": 0.096774
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 478,
+      "qualified": 78,
+      "group": "GZ-SS04小组",
+      "ss": "51huangxiaotong001",
+      "rate": 0.16318
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 272,
+      "qualified": 30,
+      "group": "GZ-SS04小组",
+      "ss": "51huangzhenjie001",
+      "rate": 0.110294
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 230,
+      "qualified": 37,
+      "group": "GZ-SS04小组",
+      "ss": "51lijiahui002",
+      "rate": 0.16087
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 418,
+      "qualified": 63,
+      "group": "GZ-SS04小组",
+      "ss": "51pengshuying001",
+      "rate": 0.150718
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 201,
+      "qualified": 22,
+      "group": "GZ-SS04小组",
+      "ss": "51xujinghan001",
+      "rate": 0.109453
+    },
+    {
+      "date": "2026-09-06",
+      "assessed": 337,
+      "qualified": 37,
+      "group": "GZ-SS04小组",
+      "ss": "51yehaitao001",
+      "rate": 0.109792
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS01小组",
+      "ss": "51fanxingrou",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 216,
+      "qualified": 45,
+      "group": "BJ-JWSS01小组",
+      "ss": "51hezhenqin001",
+      "rate": 0.208333
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 257,
+      "qualified": 39,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangmingliang001",
+      "rate": 0.151751
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 201,
+      "qualified": 40,
+      "group": "BJ-JWSS01小组",
+      "ss": "51jiangyu001",
+      "rate": 0.199005
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 254,
+      "qualified": 47,
+      "group": "BJ-JWSS01小组",
+      "ss": "51lijiajia001",
+      "rate": 0.185039
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 235,
+      "qualified": 35,
+      "group": "BJ-JWSS01小组",
+      "ss": "51liuziqi001",
+      "rate": 0.148936
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 438,
+      "qualified": 83,
+      "group": "BJ-JWSS01小组",
+      "ss": "51wangzhao",
+      "rate": 0.189498
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 377,
+      "qualified": 104,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhaoziao",
+      "rate": 0.275862
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 191,
+      "qualified": 27,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhengli002",
+      "rate": 0.141361
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 278,
+      "qualified": 42,
+      "group": "BJ-JWSS01小组",
+      "ss": "51zhoulihui",
+      "rate": 0.151079
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 509,
+      "qualified": 111,
+      "group": "BJ-JWSS01小组",
+      "ss": "zhoubianli",
+      "rate": 0.218075
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 1,
+      "qualified": 0,
+      "group": "BJ-JWSS02小组",
+      "ss": "51fengxueqian01",
+      "rate": 0.0
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 271,
+      "qualified": 33,
+      "group": "BJ-JWSS02小组",
+      "ss": "51lipengfei07",
+      "rate": 0.121771
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 113,
+      "qualified": 14,
+      "group": "BJ-JWSS02小组",
+      "ss": "51litiantian001",
+      "rate": 0.123894
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 272,
+      "qualified": 52,
+      "group": "BJ-JWSS02小组",
+      "ss": "51liuyuefeng",
+      "rate": 0.191176
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 305,
+      "qualified": 64,
+      "group": "BJ-JWSS02小组",
+      "ss": "51sunmingjun",
+      "rate": 0.209836
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 318,
+      "qualified": 60,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wangdengcheng001",
+      "rate": 0.188679
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 246,
+      "qualified": 31,
+      "group": "BJ-JWSS02小组",
+      "ss": "51wanglinshu",
+      "rate": 0.126016
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 287,
+      "qualified": 61,
+      "group": "BJ-JWSS02小组",
+      "ss": "51yuanzhimin001",
+      "rate": 0.212544
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 433,
+      "qualified": 59,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhangyaru03",
+      "rate": 0.136259
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 267,
+      "qualified": 64,
+      "group": "BJ-JWSS02小组",
+      "ss": "51zhaowei001",
+      "rate": 0.2397
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 438,
+      "qualified": 56,
+      "group": "BJ-JWSS02小组",
+      "ss": "duanguozhong",
+      "rate": 0.127854
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 299,
+      "qualified": 54,
+      "group": "BJ-JWSS04小组",
+      "ss": "51fengweijia",
+      "rate": 0.180602
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 322,
+      "qualified": 58,
+      "group": "BJ-JWSS04小组",
+      "ss": "51panshengna001",
+      "rate": 0.180124
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 371,
+      "qualified": 46,
+      "group": "BJ-JWSS04小组",
+      "ss": "51songyumeng",
+      "rate": 0.123989
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 302,
+      "qualified": 50,
+      "group": "BJ-JWSS04小组",
+      "ss": "51sunjingjing001",
+      "rate": 0.165563
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 247,
+      "qualified": 53,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanghaoran001",
+      "rate": 0.214575
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 362,
+      "qualified": 72,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yanglin07",
+      "rate": 0.198895
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 166,
+      "qualified": 27,
+      "group": "BJ-JWSS04小组",
+      "ss": "51yangningge001",
+      "rate": 0.162651
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 325,
+      "qualified": 40,
+      "group": "BJ-JWSS04小组",
+      "ss": "51zhangyanchao001",
+      "rate": 0.123077
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 366,
+      "qualified": 58,
+      "group": "BJ-JWSS04小组",
+      "ss": "chenwenjian",
+      "rate": 0.15847
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 264,
+      "qualified": 46,
+      "group": "BJ-JWSS04小组",
+      "ss": "guoxiaopeng",
+      "rate": 0.174242
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 121,
+      "qualified": 26,
+      "group": "BJ-JWSS07小组",
+      "ss": "51changhong001",
+      "rate": 0.214876
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 325,
+      "qualified": 38,
+      "group": "BJ-JWSS07小组",
+      "ss": "51hangaofei",
+      "rate": 0.116923
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 124,
+      "qualified": 19,
+      "group": "BJ-JWSS07小组",
+      "ss": "51huanglixia001",
+      "rate": 0.153226
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 172,
+      "qualified": 32,
+      "group": "BJ-JWSS07小组",
+      "ss": "51qihuan001",
+      "rate": 0.186047
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 299,
+      "qualified": 46,
+      "group": "BJ-JWSS07小组",
+      "ss": "51sunshiwei001",
+      "rate": 0.153846
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 80,
+      "qualified": 10,
+      "group": "BJ-JWSS07小组",
+      "ss": "51wangxinyue06",
+      "rate": 0.125
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 348,
+      "qualified": 56,
+      "group": "BJ-JWSS07小组",
+      "ss": "51weixinying01",
+      "rate": 0.16092
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 293,
+      "qualified": 50,
+      "group": "BJ-JWSS07小组",
+      "ss": "51xujing002",
+      "rate": 0.170648
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 418,
+      "qualified": 71,
+      "group": "BJ-JWSS07小组",
+      "ss": "51yuanfei",
+      "rate": 0.169856
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 365,
+      "qualified": 52,
+      "group": "BJ-JWSS07小组",
+      "ss": "yangyuna01",
+      "rate": 0.142466
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 195,
+      "qualified": 19,
+      "group": "GZ-SS01小组",
+      "ss": "51chenzhenpeng001",
+      "rate": 0.097436
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 185,
+      "qualified": 30,
+      "group": "GZ-SS01小组",
+      "ss": "51huangzijun001",
+      "rate": 0.162162
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 428,
+      "qualified": 82,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiazhu001",
+      "rate": 0.191589
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 490,
+      "qualified": 112,
+      "group": "GZ-SS01小组",
+      "ss": "51linxiyuan",
+      "rate": 0.228571
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 297,
+      "qualified": 47,
+      "group": "GZ-SS01小组",
+      "ss": "51pengwaner001",
+      "rate": 0.158249
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 234,
+      "qualified": 18,
+      "group": "GZ-SS01小组",
+      "ss": "51qiuyao001",
+      "rate": 0.076923
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 157,
+      "qualified": 10,
+      "group": "GZ-SS01小组",
+      "ss": "51ruanmingfeng001",
+      "rate": 0.063694
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 350,
+      "qualified": 60,
+      "group": "GZ-SS01小组",
+      "ss": "51zengqing",
+      "rate": 0.171429
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 415,
+      "qualified": 63,
+      "group": "GZ-SS01小组",
+      "ss": "51zhangzuhui001",
+      "rate": 0.151807
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 437,
+      "qualified": 83,
+      "group": "GZ-SS01小组",
+      "ss": "51zhongling01",
+      "rate": 0.189931
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 188,
+      "qualified": 25,
+      "group": "GZ-SS01小组",
+      "ss": "51zhoushimei001",
+      "rate": 0.132979
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 348,
+      "qualified": 52,
+      "group": "GZ-SS04小组",
+      "ss": "51baoshengcheng",
+      "rate": 0.149425
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 302,
+      "qualified": 47,
+      "group": "GZ-SS04小组",
+      "ss": "51chenhongling001",
+      "rate": 0.155629
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 93,
+      "qualified": 13,
+      "group": "GZ-SS04小组",
+      "ss": "51chenliuyuan001",
+      "rate": 0.139785
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 478,
+      "qualified": 91,
+      "group": "GZ-SS04小组",
+      "ss": "51huangxiaotong001",
+      "rate": 0.190377
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 272,
+      "qualified": 36,
+      "group": "GZ-SS04小组",
+      "ss": "51huangzhenjie001",
+      "rate": 0.132353
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 230,
+      "qualified": 42,
+      "group": "GZ-SS04小组",
+      "ss": "51lijiahui002",
+      "rate": 0.182609
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 418,
+      "qualified": 70,
+      "group": "GZ-SS04小组",
+      "ss": "51pengshuying001",
+      "rate": 0.167464
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 201,
+      "qualified": 32,
+      "group": "GZ-SS04小组",
+      "ss": "51xujinghan001",
+      "rate": 0.159204
+    },
+    {
+      "date": "2026-09-07",
+      "assessed": 337,
+      "qualified": 41,
+      "group": "GZ-SS04小组",
+      "ss": "51yehaitao001",
+      "rate": 0.121662
     }
   ],
   "overall": [
@@ -22374,6 +26140,69 @@
       "good_student_rate": 0.34981,
       "zero_consumption_ratio": 0.09705,
       "zero_consumption_count": 1714
+    },
+    {
+      "date": "2026-09-01",
+      "completion_rate": 0.0649358059914408,
+      "avg_consumption": 0.3772,
+      "process_high_ratio": 0.341398,
+      "good_student_rate": 0.0,
+      "zero_consumption_ratio": 0.658602,
+      "zero_consumption_count": 11542
+    },
+    {
+      "date": "2026-09-02",
+      "completion_rate": 0.07554921540656205,
+      "avg_consumption": 0.792,
+      "process_high_ratio": 0.525877,
+      "good_student_rate": 0.0,
+      "zero_consumption_ratio": 0.474123,
+      "zero_consumption_count": 8309
+    },
+    {
+      "date": "2026-09-03",
+      "completion_rate": 0.08704580457475329,
+      "avg_consumption": 1.2187,
+      "process_high_ratio": 0.38623,
+      "good_student_rate": 5.7e-05,
+      "zero_consumption_ratio": 0.383435,
+      "zero_consumption_count": 6722
+    },
+    {
+      "date": "2026-09-04",
+      "completion_rate": 0.10472876618561405,
+      "avg_consumption": 1.5906,
+      "process_high_ratio": 0.489932,
+      "good_student_rate": 5.7e-05,
+      "zero_consumption_ratio": 0.313274,
+      "zero_consumption_count": 5492
+    },
+    {
+      "date": "2026-09-05",
+      "completion_rate": 0.12246876960812275,
+      "avg_consumption": 1.9823,
+      "process_high_ratio": 0.560721,
+      "good_student_rate": 0.000342,
+      "zero_consumption_ratio": 0.240317,
+      "zero_consumption_count": 4213
+    },
+    {
+      "date": "2026-09-06",
+      "completion_rate": 0.14727355692448094,
+      "avg_consumption": 2.3391,
+      "process_high_ratio": 0.460358,
+      "good_student_rate": 0.000456,
+      "zero_consumption_ratio": 0.207734,
+      "zero_consumption_count": 3642
+    },
+    {
+      "date": "2026-09-07",
+      "completion_rate": 0.1679215149441022,
+      "avg_consumption": 2.7547,
+      "process_high_ratio": 0.524013,
+      "good_student_rate": 0.000799,
+      "zero_consumption_ratio": 0.185546,
+      "zero_consumption_count": 3253
     }
   ]
 }
