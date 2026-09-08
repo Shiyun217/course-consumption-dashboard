@@ -1,4 +1,4 @@
-# Fixed plan sync service
+# Dashboard sync service
 
 This Cloudflare Worker stores only the dashboard's aggregate metrics. Raw Excel rows,
 student IDs, and operator names are processed in the browser and are never sent to
@@ -7,6 +7,12 @@ the Worker.
 The public `GET /api/fixed-plan/latest` endpoint is read-only. Publishing requires
 the `PUBLISH_SECRET` secret and is restricted to the dashboard's GitHub Pages origin
 plus the local development origins declared in `worker.mjs`.
+
+The same service also exposes `GET /api/favorites/latest` and a protected `POST`
+for the business-favorites dashboard. Only employee-level counts, fixed targets,
+and roster display fields are stored. Raw employee-teacher favorite rows remain in
+the uploader's browser. The service preserves the first published target for each
+employee and carries the prior published day into `previousFavorites`.
 
 Production uses Cloudflare Pages Functions because the company network can reach
 `pages.dev` reliably. The standalone Worker configuration is retained for local

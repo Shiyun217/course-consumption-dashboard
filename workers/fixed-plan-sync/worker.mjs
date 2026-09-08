@@ -1,4 +1,5 @@
 const DATA_KEY = 'latest';
+const FAVORITES_DATA_KEY = 'favorites-latest';
 const MAX_BODY_BYTES = 64 * 1024;
 const ALLOWED_ORIGINS = new Set([
   'https://shiyun217.github.io',
@@ -64,6 +65,82 @@ function optionalRate(value, label) {
 function safeCount(value, label) {
   if (!Number.isInteger(value) || value < 0 || value > 5_000_000) throw new Error(`${label}必须是有效人数`);
   return value;
+}
+
+function favoriteTarget(role, baseline) {
+  return role === 'LP' ? 250 : baseline < 150 ? 150 : 250;
+}
+
+function optionalCount(value, label) {
+  return value == null ? null : safeCount(value, label);
+}
+
+function sanitizeFavoritesPayload(input, previous) {
+  if (!input || typeof input !== 'object' || Array.isArray(input)) throw new Error('收藏汇总格式不正确');
+  const dataDate = safeString(input.dataDate, '数据日期', 10);
+  if (!/^20\d{2}-(0[1-9]|1[0-2])-([012]\d|3[01])$/.test(dataDate)) throw new Error('数据日期格式应为YYYY-MM-DD');
+  if (previous?.dataDate && dataDate < previous.dataDate) throw new Error(`数据日期早于当前公共版本（${previous.dataDate}）`);
+  if (!Array.isArray(input.employees) || input.employees.length < 1 || input.employees.length > 1000) throw new Error('员工汇总数量不正确');
+  const sameDate = previous?.dataDate === dataDate;
+  const previousEmployees = new Map((previous?.employees || []).map(row => [String(row.id), row]));
+  const ids = new Set();
+  const employees = input.employees.map((row, index) => {
+    if (!row || typeof row !== 'object' || Array.isArray(row)) throw new Error(`第${index + 1}名员工格式不正确`);
+    const id = safeString(String(row.id || ''), `第${index + 1}名员工ID`, 40);
+    if (ids.has(id)) throw new Error(`员工ID重复：${id}`);
+    ids.add(id);
+    const role = safeString(row.role, `${id}端口`, 2).toUpperCase();
+    if (!['CC', 'SS', 'LP'].includes(role)) throw new Error(`${id}端口不正确`);
+    const account = safeString(row.account, `${id}员工账号`, 100);
+    const group = safeString(row.group, `${id}当前小组`, 100);
+    const favorites = safeCount(row.favorites, `${id}当前收藏数量`);
+    const prior = previousEmployees.get(id);
+    if (prior && prior.role !== role) throw new Error(`${id}端口不能从${prior.role}变更为${role}`);
+    const target = prior ? safeCount(prior.target, `${id}固定目标`) : favoriteTarget(role, favorites);
+    const previousFavorites = sameDate ? optionalCount(prior?.previousFavorites, `${id}昨日收藏数量`) : prior ? safeCount(prior.favorites, `${id}上次收藏数量`) : null;
+    return { role, id, account, group, name: null, target, favorites, previousFavorites };
+  });
+  for (const role of ['CC', 'SS', 'LP']) if (!employees.some(row => row.role === role)) throw new Error(`员工汇总缺少${role}端口`);
+  return {
+    schemaVersion: 1,
+    dataDate,
+    comparisonDate: sameDate ? previous?.comparisonDate || null : previous?.dataDate || null,
+    sourceName: safeString(input.sourceName || '原始CSV', '文件名', 180),
+    sourceRows: safeCount(input.sourceRows, '源文件行数'),
+    uniquePairCount: safeCount(input.uniquePairCount, '去重收藏关系数'),
+    duplicatePairCount: safeCount(input.duplicatePairCount || 0, '重复收藏关系数'),
+    employees,
+    publishedAt: new Date().toISOString(),
+  };
+}
+
+async function handleFavoritesRequest(request, env) {
+  if (request.method === 'OPTIONS') {
+    const origin = corsOrigin(request);
+    if (!origin) return json({ error: 'Origin not allowed' }, 403);
+    return new Response(null, { status: 204, headers: { 'Access-Control-Allow-Origin': origin, 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type, X-Favorites-Key', 'Access-Control-Max-Age': '86400', Vary: 'Origin' } });
+  }
+  if (request.method === 'GET') {
+    const data = await env.FIXED_PLAN_DATA.get(FAVORITES_DATA_KEY, 'json');
+    return data ? json(data, 200, corsHeaders(request, true)) : json({ error: 'No shared data yet' }, 404, corsHeaders(request, true));
+  }
+  if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405, { Allow: 'GET, POST, OPTIONS' });
+  const origin = corsOrigin(request);
+  if (!origin) return json({ error: 'Origin not allowed' }, 403);
+  if (!(await secretsMatch(request.headers.get('X-Favorites-Key') || '', env.PUBLISH_SECRET || ''))) return json({ error: '发布口令不正确' }, 401, corsHeaders(request));
+  const contentLength = Number(request.headers.get('Content-Length') || 0);
+  if (contentLength > MAX_BODY_BYTES * 2) return json({ error: '员工汇总超过大小限制' }, 413, corsHeaders(request));
+  try {
+    const bodyText = await request.text();
+    if (new TextEncoder().encode(bodyText).length > MAX_BODY_BYTES * 2) throw new Error('员工汇总超过大小限制');
+    const input = JSON.parse(bodyText);
+    const previous = await env.FIXED_PLAN_DATA.get(FAVORITES_DATA_KEY, 'json');
+    const data = sanitizeFavoritesPayload(input, previous);
+    await env.FIXED_PLAN_DATA.put(FAVORITES_DATA_KEY, JSON.stringify(data));
+    return json({ ok: true, data }, 200, corsHeaders(request));
+  } catch (error) {
+    return json({ error: error instanceof Error ? error.message : '员工汇总校验失败' }, 400, corsHeaders(request));
+  }
 }
 
 function priorMetric(previous, key) {
@@ -175,6 +252,7 @@ function sanitizePayload(input, previous) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === '/api/favorites/latest') return handleFavoritesRequest(request, env);
     if (url.pathname !== '/api/fixed-plan/latest') return json({ error: 'Not found' }, 404);
 
     if (request.method === 'OPTIONS') {
