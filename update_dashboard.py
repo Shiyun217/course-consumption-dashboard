@@ -1030,7 +1030,7 @@ def render_html(data, output_path):
     .priority { width: fit-content; }
     .footer-note { margin-top: 14px; color: var(--muted); font-size: 12px; line-height: 1.6; }
     @media (max-width: 1200px) { .kpis { grid-template-columns: repeat(2,minmax(0,1fr)); } .kpi-primary { grid-column: 1 / -1; } .grid-2,.history-grid { grid-template-columns: 1fr; } .insight-strip { grid-template-columns: 1fr; } .strategy-grid,.history-summary { grid-template-columns: repeat(2,minmax(0,1fr)); } }
-    @media (max-width: 860px) { body { --nav-w: 76px; } .brand-copy,.nav-text,.collapse-text { display:none; } .toolbar { padding: 0 16px; } .content { padding: 16px; } .hero { grid-template-columns: 1fr; } .tools .btn span { display:none; } }
+    @media (max-width: 860px) { body { --nav-w: 76px; } .brand-copy,.nav-text,.collapse-text { display:none; } .toolbar { padding: 0 16px; } .content { padding: 16px; } .hero,.kpi-primary-grid { grid-template-columns: 1fr; } .tools .btn span { display:none; } }
   </style>
 </head>
 <body>
