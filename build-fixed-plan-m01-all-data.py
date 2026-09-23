@@ -1,18 +1,27 @@
+import csv
+import calendar
 import json
 import os
 from collections import defaultdict
 from datetime import date, datetime
+from pathlib import Path
 
 from openpyxl import load_workbook
 
 
-BIND_PATH = os.environ["FP_BIND"]
-PAY_PATH = os.environ["FP_PAY"]
-BASE_DIR = os.path.dirname(__file__)
-JSON_OUTPUT = os.path.join(BASE_DIR, "fixed-plan-m01-all-data.json")
-JS_OUTPUT = os.path.join(BASE_DIR, "fixed-plan-m01-all-data.js")
-START_MONTH = "2025-02"
-END_MONTH = "2026-07"
+BIND_PATH = Path(os.environ["FP_BIND"])
+PAY_PATH = Path(os.environ["FP_PAY"])
+BASE_DIR = Path(__file__).resolve().parent
+JSON_OUTPUT = BASE_DIR / "fixed-plan-m01-all-data.json"
+JS_OUTPUT = BASE_DIR / "fixed-plan-m01-all-data.js"
+START_MONTH = os.environ.get("FP_START_MONTH", "2026-08")
+END_MONTH = os.environ.get("FP_END_MONTH", START_MONTH)
+end_year, end_month = map(int, END_MONTH.split("-"))
+SOURCE_AS_OF = os.environ.get(
+    "FP_SOURCE_AS_OF",
+    f"{END_MONTH}-{calendar.monthrange(end_year, end_month)[1]:02d}",
+)
+TARGET_BASELINE_MONTH = os.environ.get("FP_TARGET_BASELINE_MONTH", "2026-07")
 PORTS = ("CC", "SS", "LP", "student", "other")
 
 
@@ -21,7 +30,8 @@ def normalize_id(value):
         return None
     if isinstance(value, float) and value.is_integer():
         return str(int(value))
-    return str(value).strip()
+    normalized = str(value).strip()
+    return normalized[:-2] if normalized.endswith(".0") else normalized
 
 
 def to_datetime(value):
@@ -29,10 +39,11 @@ def to_datetime(value):
         return value
     if isinstance(value, date):
         return datetime(value.year, value.month, value.day)
-    if isinstance(value, str) and value.strip():
+    if isinstance(value, str) and value.strip() and value.strip() != r"\N":
+        cleaned = value.strip().split(".", 1)[0]
         for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%d", "%Y/%m/%d %H:%M:%S", "%Y/%m/%d"):
             try:
-                return datetime.strptime(value.strip(), fmt)
+                return datetime.strptime(cleaned, fmt)
             except ValueError:
                 pass
     return None
@@ -57,8 +68,12 @@ def month_range(start, end):
     return [month_from_index(value) for value in range(month_index(start), month_index(end) + 1)]
 
 
-def normalize_port(value):
-    lowered = str(value or "").strip().lower()
+def normalize_port(operator_type, operator_group_type=""):
+    lowered = str(operator_type or "").strip().lower()
+    group_type = str(operator_group_type or "").strip().lower()
+    # New exports record CC as operator_type=other and operator_group_type=cc.
+    if group_type == "cc":
+        return "CC"
     if lowered in ("cc", "ss", "lp"):
         return lowered.upper()
     if lowered == "student":
@@ -70,15 +85,32 @@ def rate(count, denominator):
     return count / denominator if denominator else 0
 
 
-def load_pay_students():
-    workbook = load_workbook(PAY_PATH, read_only=True, data_only=True)
+def iter_records(path):
+    if path.suffix.lower() == ".csv":
+        with path.open(encoding="utf-8-sig", newline="") as handle:
+            yield from csv.DictReader(handle)
+        return
+    workbook = load_workbook(path, read_only=True, data_only=True)
     sheet = workbook.active
-    headers = next(sheet.iter_rows(min_row=1, max_row=1, values_only=True))
-    positions = {name: index for index, name in enumerate(headers)}
+    rows = sheet.iter_rows(values_only=True)
+    headers = [str(value or "").strip() for value in next(rows)]
+    for values in rows:
+        yield dict(zip(headers, values))
+
+
+def first_value(row, *names):
+    for name in names:
+        value = row.get(name)
+        if value not in (None, "", r"\N"):
+            return value
+    return None
+
+
+def load_pay_students():
     students = {}
-    for row in sheet.iter_rows(min_row=2, values_only=True):
-        student_id = normalize_id(row[positions["stdt_id"]])
-        pay_date = to_datetime(row[positions["first_1v1_nml_pay_date"]])
+    for row in iter_records(PAY_PATH):
+        student_id = normalize_id(first_value(row, "stdt_id", "student_id"))
+        pay_date = to_datetime(first_value(row, "first_1v1_nml_pay_date", "首单时间"))
         if not student_id or not pay_date:
             continue
         current = students.get(student_id)
@@ -88,29 +120,27 @@ def load_pay_students():
 
 
 def load_binding_touches():
-    workbook = load_workbook(BIND_PATH, read_only=True, data_only=True)
-    sheet = workbook.active
-    headers = next(sheet.iter_rows(min_row=1, max_row=1, values_only=True))
-    positions = {name: index for index, name in enumerate(headers)}
     touches_by_month = defaultdict(lambda: defaultdict(set))
     valid_rows = 0
-    for row in sheet.iter_rows(min_row=2, values_only=True):
-        student_id = normalize_id(row[positions["b.student_id"]])
-        binding_month = month_key(row[positions["固定绑定时间"]])
+    for row in iter_records(BIND_PATH):
+        student_id = normalize_id(first_value(row, "b.student_id", "student_id"))
+        binding_month = month_key(first_value(row, "固定绑定时间", "bind_add_time"))
         if not student_id or not binding_month:
             continue
         valid_rows += 1
-        touches_by_month[binding_month][normalize_port(row[positions["bind_operator_type"]])].add(student_id)
+        port = normalize_port(row.get("bind_operator_type"), row.get("bind_operator_group_type"))
+        touches_by_month[binding_month][port].add(student_id)
     return touches_by_month, valid_rows
 
 
+existing = json.loads(JSON_OUTPUT.read_text(encoding="utf-8-sig")) if JSON_OUTPUT.exists() else {}
 pay_students = load_pay_students()
 touches_by_month, valid_binding_rows = load_binding_touches()
 pay_by_month = defaultdict(set)
 for student_id, pay_date in pay_students.items():
     pay_by_month[month_key(pay_date)].add(student_id)
 
-rows = []
+updated_rows = []
 for report_month in month_range(START_MONTH, END_MONTH):
     previous_month = month_from_index(month_index(report_month) - 1)
     eligible = pay_by_month[previous_month] | pay_by_month[report_month]
@@ -120,9 +150,12 @@ for report_month in month_range(START_MONTH, END_MONTH):
         port_students[port] = eligible & touched
     union_students = set().union(*port_students.values())
     touch_sum = sum(len(values) for values in port_students.values())
-    multi_port_students = sum(1 for student_id in union_students if sum(student_id in port_students[port] for port in PORTS) > 1)
+    multi_port_students = sum(
+        1 for student_id in union_students
+        if sum(student_id in port_students[port] for port in PORTS) > 1
+    )
     denominator = len(eligible)
-    rows.append({
+    updated_rows.append({
         "month": report_month,
         "new_students": denominator,
         "bound_students": len(union_students),
@@ -138,50 +171,55 @@ for report_month in month_range(START_MONTH, END_MONTH):
         "union_efficiency": rate(len(union_students), touch_sum),
     })
 
-latest = rows[-1]
+replacement_months = {row["month"] for row in updated_rows}
+rows = [row for row in existing.get("rows", []) if row["month"] not in replacement_months]
+rows.extend(updated_rows)
+rows.sort(key=lambda row: row["month"])
+if not rows:
+    raise RuntimeError("No report rows were generated")
+
+baseline = next((row for row in rows if row["month"] == TARGET_BASELINE_MONTH), rows[-1])
 target_total = 0.65
-auxiliary_rate = latest["rates"]["student"] + latest["rates"]["other"]
-major_rate = latest["rates"]["CC"] + latest["rates"]["SS"] + latest["rates"]["LP"]
-required_touch_sum = target_total / latest["union_efficiency"]
-required_major_sum = required_touch_sum
+auxiliary_rate = baseline["rates"]["student"] + baseline["rates"]["other"]
+major_rate = baseline["rates"]["CC"] + baseline["rates"]["SS"] + baseline["rates"]["LP"]
+required_touch_sum = target_total / baseline["union_efficiency"]
 exact = {
-    port: required_major_sum * latest["rates"][port] / major_rate
+    port: required_touch_sum * baseline["rates"][port] / major_rate
     for port in ("CC", "SS", "LP")
 }
-rounded = {"CC": 0.33, "SS": 0.38, "LP": 0.25}
-rounded_touch_sum = sum(rounded.values())
-estimated_total = rounded_touch_sum * latest["union_efficiency"]
+recommended = {"CC": 0.33, "SS": 0.38, "LP": 0.25}
+recommended_touch_sum = sum(recommended.values())
 
 result = {
-    "source_as_of": "2026-07-31",
-    "range": {"start": START_MONTH, "end": END_MONTH},
+    "source_as_of": SOURCE_AS_OF,
+    "range": {"start": rows[0]["month"], "end": rows[-1]["month"]},
     "ports": list(PORTS),
     "rows": rows,
     "target": {
         "total": target_total,
-        "baseline_period": latest["month"],
-        "baseline": {**latest["rates"], "total": latest["binding_rate"], "touch_sum": latest["touch_sum_rate"], "union_efficiency": latest["union_efficiency"]},
+        "baseline_period": baseline["month"],
+        "baseline": {**baseline["rates"], "total": baseline["binding_rate"], "touch_sum": baseline["touch_sum_rate"], "union_efficiency": baseline["union_efficiency"]},
         "exact": exact,
-        "recommended": rounded,
+        "recommended": recommended,
         "auxiliary_rate": auxiliary_rate,
         "required_touch_sum": required_touch_sum,
-        "recommended_touch_sum": rounded_touch_sum,
-        "estimated_total": estimated_total,
+        "recommended_touch_sum": recommended_touch_sum,
+        "estimated_total": recommended_touch_sum * baseline["union_efficiency"],
     },
     "quality": {
         "valid_binding_rows": valid_binding_rows,
         "pay_students": len(pay_students),
-        "latest_touch_sum": latest["touch_sum"],
-        "latest_bound_students": latest["bound_students"],
-        "latest_overlap_touches": latest["overlap_touches"],
+        "latest_touch_sum": rows[-1]["touch_sum"],
+        "latest_bound_students": rows[-1]["bound_students"],
+        "latest_overlap_touches": rows[-1]["overlap_touches"],
     },
 }
 
-with open(JSON_OUTPUT, "w", encoding="utf-8") as handle:
-    json.dump(result, handle, ensure_ascii=False, indent=2)
-with open(JS_OUTPUT, "w", encoding="utf-8") as handle:
-    handle.write("window.FIXED_PLAN_M01_ALL_DATA = ")
-    json.dump(result, handle, ensure_ascii=False, separators=(",", ":"))
-    handle.write(";\n")
-
-print(json.dumps(result, ensure_ascii=False, indent=2))
+JSON_OUTPUT.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+JS_OUTPUT.write_text(
+    "window.FIXED_PLAN_M01_ALL_DATA = "
+    + json.dumps(result, ensure_ascii=False, separators=(",", ":"))
+    + ";\n",
+    encoding="utf-8",
+)
+print(json.dumps({"updated_months": sorted(replacement_months), "latest": rows[-1]}, ensure_ascii=False, indent=2))

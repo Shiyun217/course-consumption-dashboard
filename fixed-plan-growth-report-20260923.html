@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>港澳固定计划增长复盘与70%路径</title>
+  <style>
+    :root{
+      --ink:#17202a;--muted:#68727d;--line:#d9dee4;--paper:#f5f7f8;--white:#fff;
+      --navy:#17365d;--teal:#087f8c;--green:#27864b;--amber:#e5a125;--red:#c84b4b;
+      --cc:#2474a8;--ss:#008f7a;--lp:#d58221;--radius:6px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;font-size:15px;line-height:1.65;letter-spacing:0}
+    a{color:inherit}
+    .shell{max-width:1180px;margin:0 auto;padding:0 28px}
+    .topbar{background:var(--navy);color:#fff;border-bottom:4px solid var(--teal)}
+    .topbar .shell{min-height:58px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-weight:700;font-size:16px}.stamp{font-size:12px;color:#d7e2ef;text-align:right}
+    .hero{background:#fff;border-bottom:1px solid var(--line);padding:42px 0 34px}
+    .eyebrow{font-size:12px;font-weight:700;color:var(--teal);text-transform:uppercase;margin-bottom:10px}
+    h1{font-size:38px;line-height:1.25;margin:0 0 14px;color:var(--navy);font-weight:800}
+    .lead{max-width:900px;font-size:18px;color:#48535e;margin:0}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .tag{border:1px solid var(--line);padding:5px 10px;background:#fafbfc;font-size:12px;color:#4e5964;border-radius:4px}
+    main{padding:34px 0 60px}
+    section{margin:0 0 42px;scroll-margin-top:20px}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:20px}
+    .section-head h2{font-size:24px;line-height:1.35;margin:0;color:var(--navy)}
+    .section-head p{margin:0;color:var(--muted);font-size:13px;text-align:right}
+    .conclusion{display:grid;grid-template-columns:1.45fr 1fr 1fr;gap:14px}
+    .verdict{background:var(--navy);color:#fff;padding:24px;border-radius:var(--radius);min-height:190px}
+    .verdict small,.metric small{display:block;font-size:12px;font-weight:700;opacity:.72;margin-bottom:10px}
+    .verdict h2{font-size:28px;line-height:1.35;margin:0 0 14px;color:#fff}
+    .verdict p{margin:0;color:#d9e4ee}
+    .metric{background:#fff;border:1px solid var(--line);padding:22px;border-radius:var(--radius);min-height:190px}
+    .metric .big{display:block;font-size:36px;line-height:1;color:var(--navy);font-weight:800;margin:13px 0 12px}
+    .metric strong{font-size:16px}.metric p{margin:8px 0 0;color:var(--muted);font-size:13px}
+    .callout{margin-top:14px;padding:14px 18px;background:#edf7f5;border-left:4px solid var(--teal);color:#314850}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+    .panel h3{font-size:17px;margin:0 0 4px;color:var(--navy)}
+    .panel .sub{font-size:12px;color:var(--muted);margin:0 0 20px}
+    .bars{display:grid;gap:15px}.bar-row{display:grid;grid-template-columns:72px 1fr 78px;align-items:center;gap:12px}
+    .bar-label{font-weight:700}.bar-track{height:18px;background:#edf0f3;position:relative;border-radius:3px;overflow:hidden}
+    .bar-fill{height:100%;display:block;border-radius:3px}.bar-fill.cc{background:var(--cc)}.bar-fill.ss{background:var(--ss)}.bar-fill.lp{background:var(--lp)}
+    .bar-value{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+    .contrib{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+    .contrib div{border-top:4px solid;padding:12px;background:#f8fafb}.contrib .cc{border-color:var(--cc)}.contrib .ss{border-color:var(--ss)}.contrib .lp{border-color:var(--lp)}
+    .contrib b{display:block;font-size:24px}.contrib span{font-size:12px;color:var(--muted)}
+    .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:4px}
+    .time-item{padding:16px 18px;border-left:3px solid var(--line);position:relative}
+    .time-item:before{content:"";position:absolute;left:-7px;top:20px;width:11px;height:11px;background:var(--navy);border-radius:50%}
+    .time-item b{display:block;color:var(--navy);font-size:17px}.time-item p{margin:7px 0 0;color:var(--muted);font-size:13px}
+    table{width:100%;border-collapse:collapse;font-size:13px}
+    th,td{padding:11px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+    th{background:#f1f4f6;color:#46515d;font-size:12px}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+    .good{color:var(--green);font-weight:700}.warn{color:#a66305;font-weight:700}.weak{color:var(--red);font-weight:700}
+    .evidence{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:18px 0}
+    .evidence article{background:#fff;border:1px solid var(--line);border-top:4px solid var(--navy);padding:18px;border-radius:var(--radius)}
+    .evidence b{display:block;font-size:26px;color:var(--navy)}.evidence span{font-weight:700}.evidence p{font-size:13px;color:var(--muted);margin:8px 0 0}
+    .logic{display:grid;grid-template-columns:1fr 54px 1fr 54px 1fr;align-items:stretch;margin-top:18px}
+    .logic-box{background:#fff;border:1px solid var(--line);padding:18px;border-radius:var(--radius)}
+    .logic-box b{display:block;color:var(--navy);margin-bottom:6px}.logic-box p{font-size:13px;color:var(--muted);margin:0}
+    .arrow{display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--teal)}
+    .target-switch{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .target{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+    .target-head{padding:18px 22px;background:var(--navy);color:#fff;display:flex;justify-content:space-between;align-items:center}
+    .target-head h3{margin:0;font-size:20px}.target-head b{font-size:26px}
+    .target-body{padding:20px 22px}.target-row{display:grid;grid-template-columns:46px 1fr 72px;gap:12px;align-items:center;margin:13px 0}
+    .goal-track{height:12px;background:#edf0f3;position:relative;border-radius:3px;overflow:hidden}
+    .goal-track span{display:block;height:100%}.target-row .num{text-align:right;font-weight:700}
+    .target-note{font-size:12px;color:var(--muted);margin:16px 0 0;border-top:1px solid var(--line);padding-top:12px}
+    .priority{display:grid;grid-template-columns:110px 1fr 1fr;gap:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+    .priority>div{padding:18px;border-bottom:1px solid var(--line)}
+    .priority>div:nth-last-child(-n+3){border-bottom:0}.p-label{font-size:22px;font-weight:800;color:#fff;text-align:center}.p0{background:var(--red)}.p1{background:var(--amber)}.p2{background:var(--teal)}
+    .priority h3{font-size:16px;margin:0 0 6px;color:var(--navy)}.priority p{margin:0;color:var(--muted);font-size:13px}
+    .allocation{display:flex;height:38px;overflow:hidden;border-radius:4px;margin:20px 0 10px;color:#fff;font-weight:700;font-size:13px}
+    .allocation span{display:flex;align-items:center;justify-content:center}.alloc-ss{width:42%;background:var(--ss)}.alloc-lp{width:33%;background:var(--lp)}.alloc-cc{width:25%;background:var(--cc)}
+    .cadence{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.cadence article{background:#fff;border:1px solid var(--line);padding:16px;border-radius:var(--radius)}
+    .cadence b{color:var(--navy);display:block;margin-bottom:8px}.cadence p{margin:0;color:var(--muted);font-size:13px}
+    .note{font-size:12px;color:var(--muted);padding:16px 18px;border:1px solid var(--line);background:#fafbfc;margin-top:16px}
+    footer{background:#202a35;color:#cbd3da;padding:24px 0;font-size:12px}
+    .sources{display:flex;justify-content:space-between;gap:30px}.sources p{margin:0;max-width:820px}
+    @media(max-width:850px){
+      .shell{padding:0 16px}.topbar .shell{align-items:flex-start;padding-top:12px;padding-bottom:12px}.stamp{max-width:180px}
+      h1{font-size:30px}.lead{font-size:16px}.conclusion,.grid-2,.target-switch{grid-template-columns:1fr}
+      .evidence{grid-template-columns:1fr}.timeline{grid-template-columns:1fr}.logic{grid-template-columns:1fr}.arrow{transform:rotate(90deg);height:42px}
+      .priority{grid-template-columns:74px 1fr}.priority>div:nth-child(3n){grid-column:2}.priority>div:nth-last-child(-n+3){border-bottom:1px solid var(--line)}
+      .cadence{grid-template-columns:1fr 1fr}.section-head{align-items:flex-start;flex-direction:column;gap:6px}.section-head p{text-align:left}
+      .table-scroll{overflow-x:auto}.table-scroll table{min-width:720px}.sources{display:block}.sources p+ p{margin-top:8px}
+    }
+    @media(max-width:520px){.hero{padding:30px 0 26px}h1{font-size:27px}.contrib,.cadence{grid-template-columns:1fr}.bar-row{grid-template-columns:56px 1fr 66px}.allocation{height:auto;display:grid}.allocation span{width:100%;min-height:34px}}
+    @media print{body{background:#fff}.topbar{position:static}.panel,.metric,.target,.evidence article,.cadence article{break-inside:avoid}section{break-inside:auto}.hero{padding-top:20px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell"><div class="brand">港澳业务 · 固定计划专项</div><div class="stamp">管理层汇报版<br>固定数据截至 2026-09-22</div></div>
+  </header>
+  <div class="hero">
+    <div class="shell">
+      <div class="eyebrow">September performance review / Route to 70%</div>
+      <h1>港澳固定计划增长复盘与 70% 路径</h1>
+      <p class="lead">9 月固定增长的第一驱动力是 CC，收藏外教的扩容提供了供给基础，但不是充分解释。下一阶段应把新增资源的 40%–45% 投向 SS、30%–35% 投向 LP，其余用于修复 CC 低位组。</p>
+      <div class="hero-meta"><span class="tag">M0-1 滚动双月口径</span><span class="tag">端口不去重</span><span class="tag">整体去重</span><span class="tag">收藏快照 09-07 vs 09-23</span></div>
+    </div>
+  </div>
+
+  <main class="shell">
+    <section>
+      <div class="section-head"><h2>管理结论</h2><p>先回答：为什么涨、收藏是否相关、资源投哪里</p></div>
+      <div class="conclusion">
+        <article class="verdict"><small>本月增长归因</small><h2>CC 是 9 月固定增长的第一驱动力</h2><p>9 月 1 日至 22 日，CC 提升 10.48 个百分点，对三端增量贡献约 43%；SS 贡献约 37%，LP 贡献约 20%。</p></article>
+        <article class="metric"><small>当前整体固定率</small><strong class="big">57.20%</strong><strong>距离 65% 还差 7.8pp</strong><p>整体值按学员去重；三端口率不去重，不能直接相加当作整体。</p></article>
+        <article class="metric"><small>资源主攻方向</small><strong class="big">SS + LP</strong><strong>约占新增资源 75%</strong><p>SS 的绝对补量最大；LP 当前基数最低，尤其 LP01 是结构性短板。</p></article>
+      </div>
+      <div class="callout"><b>一句话汇报：</b>8 月是 SS 拉动，9 月转为 CC 拉动；收藏池在扩大，但端口间的收藏增量与固定增量并不一致，真正决定结果的是“收藏供给 × 匹配转化 × 未固定名单闭环”。</div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>01 · 9 月增长来自哪里</h2><p>9 月 1 日基线 vs 9 月 22 日最新快照</p></div>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>各端口固定率变化</h3><p class="sub">条形长度为端口当前固定率，右侧标注本月提升</p>
+          <div class="bars">
+            <div class="bar-row"><span class="bar-label">CC</span><div class="bar-track"><span class="bar-fill cc" style="width:78.8%"></span></div><span class="bar-value">27.57%</span></div>
+            <div class="bar-row"><span class="bar-label">SS</span><div class="bar-track"><span class="bar-fill ss" style="width:82%"></span></div><span class="bar-value">28.71%</span></div>
+            <div class="bar-row"><span class="bar-label">LP</span><div class="bar-track"><span class="bar-fill lp" style="width:48.3%"></span></div><span class="bar-value">16.90%</span></div>
+          </div>
+          <div class="contrib">
+            <div class="cc"><b>+10.48pp</b><span>CC · 增量贡献 43%</span></div>
+            <div class="ss"><b>+9.06pp</b><span>SS · 增量贡献 37%</span></div>
+            <div class="lp"><b>+4.84pp</b><span>LP · 增量贡献 20%</span></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>历史脉络：增长主力发生了切换</h3><p class="sub">8 月已按“7 月 + 8 月首单学员”补入原看板</p>
+          <div class="timeline">
+            <div class="time-item"><b>7 月</b><p>不去重 71.38%<br>去重 48.72%</p></div>
+            <div class="time-item"><b>8 月</b><p>不去重 81.41%<br>去重 55.52%</p></div>
+            <div class="time-item"><b>9 月</b><p>整体去重 57.20%<br>截至 09-22</p></div>
+          </div>
+          <div class="callout"><b>8 月增长：</b>SS +5.75pp 为第一驱动，LP +2.88pp，CC 仅 +0.50pp。<br><b>9 月增长：</b>CC +10.48pp 跃升为第一驱动，说明本月增长不是单一端口惯性，而是 CC 执行动作显著增强。</div>
+        </div>
+      </div>
+      <div class="table-scroll panel" style="margin-top:20px">
+        <h3>9 月组别表现：头部可复制，低位组需专项修复</h3><p class="sub">固定率为 8 月 + 9 月新生 M0-1 口径，截至 09-22</p>
+        <table>
+          <thead><tr><th>端口</th><th>高位组 / 亮点</th><th class="num">固定率</th><th>低位组 / 风险</th><th class="num">固定率</th><th>管理含义</th></tr></thead>
+          <tbody>
+            <tr><td><b>CC</b></td><td>CC07</td><td class="num good">35.55%</td><td>CC01 / CC06</td><td class="num weak">12.50% / 16.47%</td><td>整体增长强，但组间分化最大；优先复制 CC07 的前置绑定节奏。</td></tr>
+            <tr><td><b>SS</b></td><td>BJ-JWSS07 / 04</td><td class="num good">35.00% / 32.44%</td><td>GZ-SS04 / BJ-JWSS01</td><td class="num weak">22.51% / 24.52%</td><td>有成熟样板，但执行不均；适合用组间复制快速补量。</td></tr>
+            <tr><td><b>LP</b></td><td>LP02</td><td class="num warn">21.03%</td><td>LP01</td><td class="num weak">14.38%</td><td>LP01 体量大且转化低，是达成 65%/70% 的结构性瓶颈。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>02 · 收藏外教是否带来固定增长</h2><p>收藏数据 09-07 至 09-23；固定数据截至 09-22</p></div>
+      <div class="evidence">
+        <article><span>全量收藏池</span><b>+3,376</b><p>24,647 → 28,023，增长 13.7%。供给池确实在扩大。</p></article>
+        <article><span>收藏增量第一</span><b>SS +1,944</b><p>增幅 15.9%，但固定增幅为第二名，而不是第一名。</p></article>
+        <article><span>收藏增速第一</span><b>LP +23.8%</b><p>收藏增速最快，固定率增幅却最小，说明收藏不是充分条件。</p></article>
+      </div>
+      <div class="grid-2">
+        <div class="panel table-scroll">
+          <h3>端口层面对照</h3><p class="sub">收藏净增与固定增幅的排序不一致</p>
+          <table>
+            <thead><tr><th>端口</th><th class="num">收藏净增</th><th class="num">收藏增幅</th><th class="num">固定率增幅</th><th>判断</th></tr></thead>
+            <tbody>
+              <tr><td><b>CC</b></td><td class="num">+488</td><td class="num">+5.8%</td><td class="num good">+10.48pp</td><td>收藏增量最小，固定增长最大</td></tr>
+              <tr><td><b>SS</b></td><td class="num good">+1,944</td><td class="num">+15.9%</td><td class="num">+9.06pp</td><td>收藏扩容与固定增长同向</td></tr>
+              <tr><td><b>LP</b></td><td class="num">+944</td><td class="num good">+23.8%</td><td class="num weak">+4.84pp</td><td>供给扩容尚未充分转化</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel">
+          <h3>相关性结论</h3><p class="sub">不把相关性误报为因果</p>
+          <div class="bars">
+            <div class="bar-row"><span class="bar-label">CC</span><div class="bar-track"><span class="bar-fill cc" style="width:30.7%"></span></div><span class="bar-value">r = 0.31</span></div>
+            <div class="bar-row"><span class="bar-label">SS</span><div class="bar-track"><span class="bar-fill ss" style="width:3.8%"></span></div><span class="bar-value">r = 0.04</span></div>
+            <div class="bar-row"><span class="bar-label">LP</span><div class="bar-track"><span class="bar-fill lp" style="width:8.8%"></span></div><span class="bar-value">r = 0.09</span></div>
+          </div>
+          <p class="note">业务人员当前收藏存量与 8 月固定学员产出：CC 为弱到中等正相关，SS/LP 接近无相关。跨 12 个有稳定基数的小组，9 月收藏增幅与当前固定率相关系数约 0.12，也仅为弱相关。</p>
+        </div>
+      </div>
+      <div class="table-scroll panel" style="margin-top:20px">
+        <h3>组别证据：既有正例，也有反例</h3><p class="sub">用组别对照判断收藏是“能力底座”还是“直接结果”</p>
+        <table>
+          <thead><tr><th>组别</th><th class="num">09-07→09-23 收藏增幅</th><th class="num">当前固定率</th><th>观察</th></tr></thead>
+          <tbody>
+            <tr><td>LP02</td><td class="num good">+37.9%</td><td class="num warn">21.03%</td><td>收藏扩容与固定表现同向，是“供给池转化”的正例。</td></tr>
+            <tr><td>BJ-JWSS02</td><td class="num good">+49.1%</td><td class="num good">31.40%</td><td>新增收藏较多且固定表现靠前，可复盘其匹配与跟进动作。</td></tr>
+            <tr><td>GZ-SS04</td><td class="num good">+27.6%</td><td class="num weak">22.51%</td><td>收藏增加但固定仍低，瓶颈更可能在匹配和闭环。</td></tr>
+            <tr><td>CC07</td><td class="num">+4.0%</td><td class="num good">35.55%</td><td>收藏增长不大但固定率最高，说明执行效率可以放大既有存量。</td></tr>
+            <tr><td>LP01</td><td class="num">+5.0%</td><td class="num weak">14.38%</td><td>收藏扩容和固定转化都弱，应作为联合专项，而非只要求多收藏。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="logic">
+        <div class="logic-box"><b>1. 收藏供给</b><p>可固定外教数量、时段覆盖、科目匹配度决定“有没有合适的人”。</p></div><div class="arrow">→</div>
+        <div class="logic-box"><b>2. 匹配转化</b><p>把外教池映射到学员时段与偏好，决定“能不能快速匹配”。</p></div><div class="arrow">→</div>
+        <div class="logic-box"><b>3. 绑定闭环</b><p>M0 前置、M1 补漏、未固定名单日清，决定“最后是否落成固定”。</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>03 · 65% 与 70% 的端口目标</h2><p>沿用 7 月去重转化效率 68.26%；8 月为 68.20%，结果稳定</p></div>
+      <div class="target-switch">
+        <article class="target">
+          <div class="target-head"><h3>第一阶段</h3><b>整体 65%</b></div>
+          <div class="target-body">
+            <div class="target-row"><b>CC</b><div class="goal-track"><span class="bar-fill cc" style="width:86%"></span></div><span class="num">目标 33%</span></div>
+            <div class="target-row"><b>SS</b><div class="goal-track"><span class="bar-fill ss" style="width:99%"></span></div><span class="num">目标 38%</span></div>
+            <div class="target-row"><b>LP</b><div class="goal-track"><span class="bar-fill lp" style="width:65%"></span></div><span class="num">目标 25%</span></div>
+            <p class="target-note">三端不去重目标合计 96%，预计对应去重整体 65.5%。按当前分母约需新增：CC 71、SS 118、LP 100 个“学员×端口”触达。</p>
+          </div>
+        </article>
+        <article class="target">
+          <div class="target-head" style="background:#087f8c"><h3>第二阶段</h3><b>整体 70%</b></div>
+          <div class="target-body">
+            <div class="target-row"><b>CC</b><div class="goal-track"><span class="bar-fill cc" style="width:91%"></span></div><span class="num">目标 35%</span></div>
+            <div class="target-row"><b>SS</b><div class="goal-track"><span class="bar-fill ss" style="width:100%"></span></div><span class="num">目标 41%</span></div>
+            <div class="target-row"><b>LP</b><div class="goal-track"><span class="bar-fill lp" style="width:70%"></span></div><span class="num">目标 27%</span></div>
+            <p class="target-note">三端不去重目标合计 103%，预计对应去重整体约 70.3%。按当前分母约需新增：CC 97、SS 156、LP 124 个“学员×端口”触达。</p>
+          </div>
+        </article>
+      </div>
+      <div class="note"><b>为什么三端目标合计会超过 100%：</b>同一学员可以被 CC、SS、LP 多端触达，端口率不去重；最终整体固定率按学员去重。这里用历史“去重人数 / 端口触达总量”的效率反推目标，避免把端口率简单相加误当成整体。</div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>04 · 资源倾斜与执行优先级</h2><p>资源建议配比：SS 42% / LP 33% / CC 25%</p></div>
+      <div class="allocation"><span class="alloc-ss">SS 42%</span><span class="alloc-lp">LP 33%</span><span class="alloc-cc">CC 25%</span></div>
+      <div class="priority">
+        <div class="p-label p0">P0</div><div><h3>SS：承担最大绝对补量</h3><p>65% 路径约需新增 118 个端口触达，70% 路径约需 156 个。先复制 BJ-JWSS07/04 的固定动作到 GZ-SS04、BJ-JWSS01。</p></div><div><h3>做法</h3><p>按时段建立可固定外教池；每日输出未固定名单；组长复盘“已收藏未绑定、已匹配未确认”两类漏斗。</p></div>
+        <div class="p-label p0">P0</div><div><h3>LP01：解决结构性低位</h3><p>LP01 固定率 14.38%，明显低于 LP02 的 21.03%；同时收藏增幅仅 5.0%，供给扩容与转化两端都要补。</p></div><div><h3>做法</h3><p>优先补高频时段/科目外教；将 LP02 的外教池建设、首周匹配、二次确认 SOP 平移至 LP01，周度看转化而非只看收藏数。</p></div>
+        <div class="p-label p1">P1</div><div><h3>CC01 / CC06 / CC11：修复低位组</h3><p>CC 已是 9 月增长主力，不宜平均加资源；应守住 CC07/09，同时把资源集中到 12.50%–25.70% 的低位组。</p></div><div><h3>做法</h3><p>复制 CC07 的 M0 前置绑定节奏；对零/低收藏人员设置最低有效外教池门槛；按未固定学员数分配辅导资源。</p></div>
+        <div class="p-label p2">P2</div><div><h3>头部组：保稳定、做样板</h3><p>CC07、BJ-JWSS07、BJ-JWSS04 已经超过或接近端口阶段目标，资源以保供和知识复制为主。</p></div><div><h3>做法</h3><p>沉淀可复制的时段池、话术和跟进节点；不追加同等强度的人力，避免边际收益递减。</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>05 · 落地管理机制</h2><p>把“收藏量”改造成可管理的转化漏斗</p></div>
+      <div class="cadence">
+        <article><b>每日：名单日清</b><p>按 CC/SS/LP 输出 M0、M1 未固定学员；标记无可用外教、待匹配、待确认、已绑定。</p></article>
+        <article><b>每两日：供给补洞</b><p>按缺口时段/科目补收藏，不追求收藏总量，追求“可覆盖未固定学员”的有效收藏。</p></article>
+        <article><b>每周：组别复盘</b><p>同时看固定率、有效收藏覆盖率、匹配转化率、M1 补回率；低位组必须给出具体漏点。</p></article>
+        <article><b>阶段：目标切换</b><p>先按 33/38/25 达成 65%；连续稳定后切换 35/41/27，冲刺 70%。</p></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>口径与限制</h2><p>用于管理决策，不作因果实验结论</p></div>
+      <div class="note">
+        <b>固定口径：</b>8 月使用首单在 7 月或 8 月的学员，绑定动作发生在 7 月或 8 月；9 月使用首单在 8 月或 9 月的学员。学员×端口仅计一次，跨端口分别计数，整体覆盖按学员去重。<br>
+        <b>收藏口径：</b>当前公开数据仅能稳定回溯到 09-07，因此用 09-07 与 09-23 比较，不等同于完整月初至月末。收藏快照缺少收藏发生时间，分析的是库存变化和横截面相关性。<br>
+        <b>判断边界：</b>相关系数仅用于识别方向，不证明收藏导致固定增长。更可靠的后续验证应追踪“新增有效收藏 → 匹配 → 学员确认 → 固定绑定”的同一批次漏斗。
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell sources"><p>数据来源：港澳固定计划绑定明细、港澳学员首单明细、固定计划最新看板、外教收藏看板历史快照。</p><p>生成日期：2026-09-23</p></div></footer>
+</body>
+</html>

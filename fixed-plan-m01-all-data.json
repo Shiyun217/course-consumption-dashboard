@@ -1,8 +1,8 @@
 {
-  "source_as_of": "2026-07-31",
+  "source_as_of": "2026-08-31",
   "range": {
     "start": "2025-02",
-    "end": "2026-07"
+    "end": "2026-08"
   },
   "ports": [
     "CC",
@@ -497,6 +497,33 @@
       "multi_port_students": 338,
       "multi_port_student_rate": 0.17244897959183675,
       "union_efficiency": 0.6826304503216584
+    },
+    {
+      "month": "2026-08",
+      "new_students": 1549,
+      "bound_students": 860,
+      "binding_rate": 0.5551969012265978,
+      "port_counts": {
+        "CC": 301,
+        "SS": 421,
+        "LP": 262,
+        "student": 122,
+        "other": 155
+      },
+      "rates": {
+        "CC": 0.19431891542930924,
+        "SS": 0.27178825048418337,
+        "LP": 0.16914138153647515,
+        "student": 0.07876049063912201,
+        "other": 0.1000645577792124
+      },
+      "touch_sum": 1261,
+      "touch_sum_rate": 0.8140735958683021,
+      "overlap_touches": 401,
+      "overlap_rate": 0.2588766946417043,
+      "multi_port_students": 324,
+      "multi_port_student_rate": 0.2091672046481601,
+      "union_efficiency": 0.6819984139571769
     }
   ],
   "target": {
@@ -528,10 +555,10 @@
     "estimated_total": 0.655325232308792
   },
   "quality": {
-    "valid_binding_rows": 142346,
-    "pay_students": 67455,
-    "latest_touch_sum": 1399,
-    "latest_bound_students": 955,
-    "latest_overlap_touches": 444
+    "valid_binding_rows": 22725,
+    "pay_students": 68012,
+    "latest_touch_sum": 1261,
+    "latest_bound_students": 860,
+    "latest_overlap_touches": 401
   }
 }
