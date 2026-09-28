@@ -110,6 +110,36 @@ def round_float(value, digits=6):
     return value
 
 
+def parse_datetime_value(value):
+    if value in (None, ""):
+        return None
+    if isinstance(value, datetime):
+        return value
+    if hasattr(value, "year") and hasattr(value, "month") and hasattr(value, "day"):
+        return datetime(value.year, value.month, value.day)
+    if isinstance(value, (int, float)):
+        return datetime(1899, 12, 30) + timedelta(days=float(value))
+    text = str(value).strip()
+    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%d", "%Y/%m/%d %H:%M:%S", "%Y/%m/%d"):
+        try:
+            return datetime.strptime(text, fmt)
+        except ValueError:
+            pass
+    try:
+        return datetime.fromisoformat(text)
+    except ValueError:
+        return None
+
+
+def lifecycle_bucket(first_payment, report_date):
+    if first_payment is None:
+        return None
+    delta = (report_date.year - first_payment.year) * 12 + report_date.month - first_payment.month
+    if delta < 1:
+        return None
+    return "M12+" if delta >= 13 else f"M{delta}"
+
+
 def parse_report_date(source_path):
     match = re.search(r"(\d{4})-(\d{2})-(\d{2})", source_path.name)
     if match:
@@ -451,6 +481,20 @@ def read_source_summary(path, report_date):
     core_completed_total = 0
     process_high_count = 0
     zero_consumption_count = 0
+    lifecycle_order = [f"M{index}" for index in range(1, 13)] + ["M12+"]
+    lifecycle_stats = {
+        bucket: {
+            "lifecycle": bucket,
+            "students": 0,
+            "qualified": 0,
+            "completed_total": 0,
+            "expected_total": 0,
+            "zero_consumption_count": 0,
+        }
+        for bucket in lifecycle_order
+    }
+    lifecycle_missing_first_payment = 0
+    lifecycle_m0_excluded = 0
     days_in_month = monthrange(report_date.year, report_date.month)[1]
     month_progress = report_date.day / days_in_month
     excluded_core = defaultdict(int)
@@ -485,6 +529,20 @@ def read_source_summary(path, report_date):
         process_high_count += 1 if completed >= target * month_progress else 0
         zero_consumption_count += 1 if completed == 0 else 0
 
+        first_payment = parse_datetime_value(row[index["首付时间"]])
+        bucket = lifecycle_bucket(first_payment, report_date)
+        if first_payment is None:
+            lifecycle_missing_first_payment += 1
+        elif bucket is None:
+            lifecycle_m0_excluded += 1
+        else:
+            lifecycle_item = lifecycle_stats[bucket]
+            lifecycle_item["students"] += 1
+            lifecycle_item["qualified"] += qualified
+            lifecycle_item["completed_total"] += completed
+            lifecycle_item["expected_total"] += expected
+            lifecycle_item["zero_consumption_count"] += 1 if completed == 0 else 0
+
         group_stats[group]["assessed"] += 1
         group_stats[group]["qualified"] += qualified
 
@@ -509,6 +567,19 @@ def read_source_summary(path, report_date):
     people_rows.sort(key=lambda item: (-item["rate"], item["group"], item["ss"]))
 
     core_rows_assessed = sum(row["assessed"] for row in group_rows)
+    lifecycle_rows = []
+    for bucket in lifecycle_order:
+        item = lifecycle_stats[bucket]
+        students = item["students"]
+        lifecycle_rows.append(
+            {
+                **item,
+                "completion_rate": round_float(safe_ratio(item["qualified"], students), 6) if students else None,
+                "avg_completed": round_float(safe_ratio(item["completed_total"], students), 4) if students else None,
+                "avg_expected": round_float(safe_ratio(item["expected_total"], students), 4) if students else None,
+                "zero_consumption_rate": round_float(safe_ratio(item["zero_consumption_count"], students), 6) if students else None,
+            }
+        )
     upsert_payload = {"date": report_date.isoformat(), "groups": group_rows, "people": people_rows}
     diagnostics = {
         "source_rows_assessed": eligible_total,
@@ -521,6 +592,12 @@ def read_source_summary(path, report_date):
         "zero_consumption_ratio": round_float(safe_ratio(zero_consumption_count, core_rows_assessed), 6),
         "zero_consumption_count": zero_consumption_count,
         "process_high_count": process_high_count,
+        "lifecycle_stats": {
+            "report_month": f"{report_date.year % 100:02d}{report_date.month:02d}",
+            "rows": lifecycle_rows,
+            "missing_first_payment": lifecycle_missing_first_payment,
+            "m0_excluded": lifecycle_m0_excluded,
+        },
         "excluded_groups": dict(excluded_core),
     }
     return upsert_payload, diagnostics
@@ -811,6 +888,7 @@ def build_dashboard_data(history, diagnostics, report_date):
         "groupRows": group_rows,
         "personRows": person_rows,
         "trend": trend,
+        "currentLifecycle": diagnostics.get("lifecycle_stats", {"rows": []}),
         "historicalAnalysis": {
             "distribution": {
                 "months": HISTORICAL_DISTRIBUTION_MONTHS,
@@ -1210,6 +1288,21 @@ function renderLayerStrategies(){
   ];
   return `<div class="strategy-grid">${cards.map(c=>`<div class="strategy-card"><b>${c[0]}</b><span class="tag tag-neutral">${c[1]}</span><p>${c[2]}</p></div>`).join('')}</div>`;
 }
+function renderCurrentLifecycle(){
+  const source=DATA.currentLifecycle || {rows:[]};
+  const rows=(source.rows || []).filter(row=>row.students>0);
+  if(!rows.length) return '';
+  const totalStudents=rows.reduce((sum,row)=>sum+row.students,0);
+  const totalQualified=rows.reduce((sum,row)=>sum+row.qualified,0);
+  const slowest=rows.slice().sort((a,b)=>a.completion_rate-b.completion_rate)[0];
+  const lowestActual=rows.slice().sort((a,b)=>a.avg_completed-b.avg_completed)[0];
+  const highestZero=rows.slice().sort((a,b)=>b.zero_consumption_rate-a.zero_consumption_rate)[0];
+  const slowThree=rows.slice().sort((a,b)=>a.completion_rate-b.completion_rate).slice(0,3);
+  const status=row=>row.completion_rate>=DATA.target?['\u8fbe\u6807','tag-good']:row.completion_rate>=.55?['\u5173\u6ce8','tag-warn']:['\u91cd\u70b9\u8ddf\u8fdb','tag-risk'];
+  const body=rows.map(row=>{ const s=status(row); return `<tr><td><b>${row.lifecycle}</b></td><td>${num(row.students,0)}</td><td>${pct(row.completion_rate)}</td><td>${num(row.avg_completed,2)}</td><td>${num(row.avg_expected,2)}</td><td>${pct(row.zero_consumption_rate)}</td><td><span class="tag ${s[1]}">${s[0]}</span></td></tr>`; }).join('');
+  const slowText=slowThree.map(row=>`${row.lifecycle} ${pct(row.completion_rate)}`).join('\u3001');
+  return `<section class="panel" id="currentLifecycle"><div class="panel-head"><div><div class="panel-title">9\u6708\u4e0d\u540c\u751f\u547d\u5468\u671f\u8bfe\u8017\u8fdb\u5ea6</div><div class="panel-sub">\u622a\u81f3 ${DATA.currentDate} \u00b7 \u6838\u5fc36\u4e2aSS\u5c0f\u7ec4 \u00b7 M1\u4e3a\u9996\u4ed8\u6b21\u6708\uff0cM12+\u4e3a\u9996\u4ed8\u6ee113\u4e2a\u6708\u53ca\u4ee5\u4e0a</div></div></div><div class="panel-body"><div class="history-summary"><div class="history-summary-item"><span>\u751f\u547d\u5468\u671f\u603b\u4f53\u9884\u8ba1\u5b8c\u8bfe\u7387</span><b>${pct(totalQualified/totalStudents)}</b><div>\u8986\u76d6 ${num(totalStudents,0)} \u540d\u8003\u6838\u5b66\u5458</div></div><div class="history-summary-item"><span>\u9884\u8ba1\u5b8c\u8bfe\u7387\u6700\u6162</span><b>${slowest.lifecycle} ${pct(slowest.completion_rate)}</b><div>\u9884\u8ba1\u8fbe\u6807 ${num(slowest.qualified,0)} / ${num(slowest.students,0)}</div></div><div class="history-summary-item"><span>\u5b9e\u9645\u4eba\u5747\u5b8c\u8bfe\u91cf\u6700\u4f4e</span><b>${lowestActual.lifecycle} ${num(lowestActual.avg_completed,2)}\u8282</b><div>\u4eba\u5747\u9884\u8ba1 ${num(lowestActual.avg_expected,2)} \u8282</div></div><div class="history-summary-item"><span>0\u8bfe\u8017\u7387\u6700\u9ad8</span><b>${highestZero.lifecycle} ${pct(highestZero.zero_consumption_rate)}</b><div>${num(highestZero.zero_consumption_count,0)} \u540d0\u8bfe\u8017\u5b66\u5458</div></div></div><div class="table-wrap"><table><thead><tr><th>\u751f\u547d\u5468\u671f</th><th>\u8003\u6838\u5b66\u5458</th><th>\u9884\u8ba1\u5b8c\u8bfe\u7387</th><th>\u4eba\u5747\u5df2\u5b8c\u8bfe</th><th>\u4eba\u5747\u9884\u8ba1\u8bfe\u91cf</th><th>0\u8bfe\u8017\u7387</th><th>\u72b6\u6001</th></tr></thead><tbody>${body}</tbody></table></div><div class="analysis-block"><h3>9\u6708\u751f\u547d\u5468\u671f\u5224\u65ad</h3><ul class="analysis-list"><li><b>\u9884\u8ba1\u5b8c\u8bfe\u7387\u504f\u6162\uff1a</b>${slowText}\uff0c\u5e94\u4f18\u5148\u6392\u67e5\u672a\u9884\u7ea6\u3001\u9884\u7ea6\u4e0d\u8db3\u548c\u56fa\u5b9a\u8ba1\u5212\u65ad\u6863\u3002</li><li><b>\u5b9e\u9645\u8bfe\u91cf\u504f\u6162\uff1a</b>${lowestActual.lifecycle} \u4eba\u5747\u4ec5 ${num(lowestActual.avg_completed,2)} \u8282\uff1b\u5373\u4f7f\u5df2\u6709\u9884\u7ea6\uff0c\u4e5f\u8981\u786e\u8ba4\u6708\u5e95\u524d\u80fd\u5426\u5b9e\u9645\u5b8c\u8bfe\u3002</li><li><b>\u672a\u542f\u52a8\u98ce\u9669\uff1a</b>${highestZero.lifecycle} \u76840\u8bfe\u8017\u7387\u6700\u9ad8\uff0c\u4e3a ${pct(highestZero.zero_consumption_rate)}\uff1b\u5efa\u8bae\u6309\u751f\u547d\u5468\u671f\u5355\u72ec\u5efa\u6c60\u8ddf\u8fdb\u3002</li><li><b>\u53e3\u5f84\uff1a</b>\u9884\u8ba1\u5b8c\u8bfe\u91cf\u4e3a\u5f53\u6708\u5b8c\u8bfe\u91cf\u52a0\u5f53\u6708\u5df2\u7ea6\u672a\u4e0a\u8bfe\u6b21\uff1b\u9884\u8ba1\u8fbe\u5230\u5957\u9910\u4f4e\u6d88\u8981\u6c42\u5373\u8ba1\u4e3a\u8fbe\u6807\uff0c\u4f4e\u6d88\u4e3a0\u65f6\u630912\u8282\u3002</li></ul></div></div></section>`;
+}
 function renderHistoricalAnalysis(){
   const dist=latestDistributionSummary(), life=latestLifecycleSummary(), avg=latestAvgSummary();
   return `<section class="panel" id="historyAnalysis"><div class="panel-head"><div><div class="panel-title">\u5386\u53f2\u8bfe\u8017\u7ed3\u6784\u4e0e\u751f\u547d\u5468\u671f\u5206\u6790</div><div class="panel-sub">\u9875\u9762\u6700\u540e\u7684\u6838\u5fc3\u590d\u76d8\u677f\u5757\uff1a\u805a\u7126 8\u6708\u5b9e\u9645\uff0c\u5bf9\u6bd4 7\u6708\u548c25\u5e747\u6708</div></div></div><div class="panel-body">${renderHistoryInsights()}<section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u4e0d\u540c\u8bfe\u8017\u533a\u95f4\u5360\u6bd4</div><div class="panel-sub" style="margin-bottom:10px">${dist.month} \u9ad8\u8bfe\u8017\u5c42 ${pct(dist.high)}\uff0c0\u8bfe\u8017 ${pct(dist.zero)}\uff1b\u6bcf\u4e2a\u6708\u4efd\u7684\u4e3b\u8981\u533a\u95f4\u5df2\u76f4\u63a5\u6807\u6ce8\u5360\u6bd4</div>${renderDistributionChart()}</section><div style="height:14px"></div>${renderDistributionAnalysis()}<div style="height:18px"></div><section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u540c\u671f\u4eba\u5747\u5b8c\u8bfe\u91cf</div><div class="panel-sub" style="margin-bottom:10px">${avg.month} \u4eba\u5747 ${num(avg.current,2)} \u8282\uff0c\u8f83 ${avg.prior} ${avg.delta>=0?'+':''}${num(avg.delta,2)} \u8282\uff0c\u8f83 ${avg.yoyMonth} ${avg.yoyDelta>=0?'+':''}${num(avg.yoyDelta,2)} \u8282</div><div class="table-wrap">${renderAvgCompletionChart()}</div></section><div style="height:14px"></div>${renderAvgCompletionAnalysis()}<div style="height:18px"></div><section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u4e0d\u540c\u751f\u547d\u5468\u671f\u8bfe\u8017\u8868\u73b0</div><div class="panel-sub" style="margin-bottom:10px">${life.month} \u6574\u4f53 ${pct(life.overall)}\uff0c\u6700\u5f3a ${life.strongest.col} ${pct(life.strongest.value)}\uff0c\u6700\u5f31 ${life.weakest.col} ${pct(life.weakest.value)}\uff1b\u70ed\u529b\u56fe\u6bcf\u4e2a\u683c\u5b50\u5747\u5c55\u793a\u5177\u4f53\u6570\u503c</div>${renderLifecycleHeatmap()}</section><div style="height:14px"></div>${renderLifecycleAnalysis()}<div style="height:14px"></div>${renderLayerStrategies()}</div></section>`;
@@ -1257,7 +1350,7 @@ function bindInteractions(){
   const ps=document.getElementById('personSearch'); if(ps) ps.oninput=()=>renderMain();
 }
 function renderMain(){
-  document.getElementById('content').innerHTML = renderHero()+renderKpis()+renderGroupTable()+renderPersonTable()+`<div style="height:16px"></div>`+renderAnalysis()+`<div style="height:16px"></div>`+renderRecommendations()+`<div style="height:16px"></div>`+renderHistoricalAnalysis()+`<div class="footer-note">\u6570\u636e\u6e90\uff1a\u6838\u5fc3 6 \u4e2a SS \u5c0f\u7ec4\uff0c\u672c\u6b21\u6e90\u8868\u8003\u6838\u5b66\u5458 ${num(DATA.diagnostics.source_rows_assessed,0)} \u4eba\uff0c\u6838\u5fc3 6 \u7ec4 ${num(DATA.diagnostics.core_rows_assessed,0)} \u4eba\u3002</div>`;
+  document.getElementById('content').innerHTML = renderHero()+renderKpis()+renderGroupTable()+renderPersonTable()+`<div style="height:16px"></div>`+renderAnalysis()+`<div style="height:16px"></div>`+renderRecommendations()+`<div style="height:16px"></div>`+renderCurrentLifecycle()+`<div style="height:16px"></div>`+renderHistoricalAnalysis()+`<div class="footer-note">\u6570\u636e\u6e90\uff1a\u6838\u5fc3 6 \u4e2a SS \u5c0f\u7ec4\uff0c\u672c\u6b21\u6e90\u8868\u8003\u6838\u5b66\u5458 ${num(DATA.diagnostics.source_rows_assessed,0)} \u4eba\uff0c\u6838\u5fc3 6 \u7ec4 ${num(DATA.diagnostics.core_rows_assessed,0)} \u4eba\u3002</div>`;
   bindInteractions();
 }
 renderShell(); renderMain();
