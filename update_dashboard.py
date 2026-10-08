@@ -285,11 +285,19 @@ def seed_history_from_followup(path, history):
     year = 2026
 
     def label_to_date(label):
-        month, day = str(label).split(".")
-        return f"{year}-{int(month):02d}-{int(float(day)):02d}"
+        match = re.fullmatch(r"\s*(\d{1,2})\.(\d{1,2})(?:\.0+)?\s*", str(label))
+        if not match:
+            return None
+        month, day = map(int, match.groups())
+        try:
+            return datetime(year, month, day).date().isoformat()
+        except ValueError:
+            return None
 
     previous_date = label_to_date(previous_label)
     current_date = label_to_date(current_label)
+    if not previous_date or not current_date:
+        return
     trusted_dates = {previous_date, current_date}
     history["groups"] = [
         row for row in history["groups"]
@@ -1003,8 +1011,8 @@ def render_html(data, output_path):
     .tools { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; }
     .btn { height: 36px; border: 1px solid var(--line); background: var(--surface); color: var(--text); border-radius: 9px; padding: 0 12px; display: inline-flex; align-items: center; gap: 7px; cursor: pointer; }
     .btn:hover { border-color: var(--line-strong); background: var(--surface-2); }
-    .content { padding: 22px 28px 36px; max-width: 1780px; margin: 0 auto; }
-    .section-card { margin-top: 16px; padding: 22px 24px 26px; background: rgba(255,255,255,.82); border: 1px solid rgba(214,230,247,.92); border-radius: 22px; box-shadow: var(--shadow); }
+    .content { width: 100%; min-width: 0; padding: 22px 28px 36px; max-width: 1780px; margin: 0 auto; }
+    .section-card { min-width: 0; margin-top: 16px; padding: 22px 24px 26px; background: rgba(255,255,255,.82); border: 1px solid rgba(214,230,247,.92); border-radius: 22px; box-shadow: var(--shadow); }
     .section-card:first-child { margin-top: 0; }
     .section-head { min-height: 58px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
     .section-index { width: 42px; height: 42px; border-radius: 10px; background: linear-gradient(180deg,#eff7ff,#d9ebff); border: 1px solid #bfd9f6; color: var(--brand); display: grid; place-items: center; font-weight: 850; }
@@ -1041,11 +1049,11 @@ def render_html(data, output_path):
     .progress { height: 5px; background: var(--surface-3); border-radius: 999px; overflow: hidden; }
     .progress span { display: block; height: 100%; background: linear-gradient(90deg,var(--brand-2),var(--brand)); border-radius: inherit; }
     .grid-2 { margin-top: 16px; display: grid; grid-template-columns: minmax(0,1.15fr) minmax(380px,.85fr); gap: 14px; }
-    .panel { background: rgba(255,255,255,.78); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: 0 10px 24px rgba(68,117,171,.07); overflow: hidden; }
+    .panel { min-width: 0; background: rgba(255,255,255,.78); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: 0 10px 24px rgba(68,117,171,.07); overflow: hidden; }
     .panel-head { min-height: 56px; padding: 14px 16px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .panel-title { font-size: 20px; font-weight: 760; letter-spacing: -.03em; }
     .panel-sub { color: var(--muted); font-size: 12px; }
-    .panel-body { padding: 16px; }
+    .panel-body { min-width: 0; padding: 16px; }
     .chart-svg { width: 100%; height: 280px; display: block; }
     .bars { display: grid; gap: 12px; }
     .bar-row { display: grid; grid-template-columns: 112px minmax(0,1fr) 58px; align-items: center; gap: 10px; font-size: 13px; cursor: pointer; padding: 3px 0; }
@@ -1073,7 +1081,7 @@ def render_html(data, output_path):
     .avg-bar { width: 52%; margin: 0 auto; border-radius: 10px 10px 3px 3px; background: linear-gradient(180deg,#152b52,#5a759d); min-height: 18px; }
     .avg-bar.is-latest { background: linear-gradient(180deg,#20a36b,#9adbb9); box-shadow: inset 0 0 0 1px rgba(255,255,255,.45); }
     .avg-bar.is-yoy { background: linear-gradient(180deg,#6b7280,#c9ced6); }
-    .heatmap-wrap { overflow-x: auto; }
+    .heatmap-wrap { width: 100%; min-width: 0; max-width: 100%; overflow-x: auto; }
     .heatmap { min-width: 980px; border-collapse: separate; border-spacing: 0; }
     .heatmap th, .heatmap td { height: 38px; padding: 0 8px; text-align: center; font-size: 12px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); white-space: nowrap; }
     .heatmap th { cursor: default; background: var(--surface-2); }
@@ -1107,8 +1115,8 @@ def render_html(data, output_path):
     .rec { padding: 14px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-2); display: grid; gap: 8px; }
     .priority { width: fit-content; }
     .footer-note { margin-top: 14px; color: var(--muted); font-size: 12px; line-height: 1.6; }
-    @media (max-width: 1200px) { .kpis { grid-template-columns: repeat(2,minmax(0,1fr)); } .kpi-primary { grid-column: 1 / -1; } .grid-2,.history-grid { grid-template-columns: 1fr; } .insight-strip { grid-template-columns: 1fr; } .strategy-grid,.history-summary { grid-template-columns: repeat(2,minmax(0,1fr)); } }
-    @media (max-width: 860px) { body { --nav-w: 76px; } .brand-copy,.nav-text,.collapse-text { display:none; } .toolbar { padding: 0 16px; } .content { padding: 16px; } .hero,.kpi-primary-grid { grid-template-columns: 1fr; } .tools .btn span { display:none; } }
+    @media (max-width: 1500px) { .kpis { grid-template-columns: repeat(2,minmax(0,1fr)); } .kpi-primary { grid-column: 1 / -1; } .grid-2,.history-grid { grid-template-columns: 1fr; } .insight-strip { grid-template-columns: 1fr; } .strategy-grid,.history-summary { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+    @media (max-width: 860px) { body { --nav-w: 76px; } .brand-copy,.nav-text,.collapse-text { display:none; } .toolbar { padding: 0 16px; } .content { padding: 16px; } .hero,.kpi-primary-grid { grid-template-columns: 1fr; } .date-card { width: 100%; min-width: 0; } .tools .btn span { display:none; } }
   </style>
 </head>
 <body>
@@ -1292,6 +1300,7 @@ function renderCurrentLifecycle(){
   const source=DATA.currentLifecycle || {rows:[]};
   const rows=(source.rows || []).filter(row=>row.students>0);
   if(!rows.length) return '';
+  const reportMonth=Number(String(source.report_month||'').slice(-2)) || Number(DATA.currentDate.slice(5,7));
   const totalStudents=rows.reduce((sum,row)=>sum+row.students,0);
   const totalQualified=rows.reduce((sum,row)=>sum+row.qualified,0);
   const slowest=rows.slice().sort((a,b)=>a.completion_rate-b.completion_rate)[0];
@@ -1301,7 +1310,7 @@ function renderCurrentLifecycle(){
   const status=row=>row.completion_rate>=DATA.target?['\u8fbe\u6807','tag-good']:row.completion_rate>=.55?['\u5173\u6ce8','tag-warn']:['\u91cd\u70b9\u8ddf\u8fdb','tag-risk'];
   const body=rows.map(row=>{ const s=status(row); return `<tr><td><b>${row.lifecycle}</b></td><td>${num(row.students,0)}</td><td>${pct(row.completion_rate)}</td><td>${num(row.avg_completed,2)}</td><td>${num(row.avg_expected,2)}</td><td>${pct(row.zero_consumption_rate)}</td><td><span class="tag ${s[1]}">${s[0]}</span></td></tr>`; }).join('');
   const slowText=slowThree.map(row=>`${row.lifecycle} ${pct(row.completion_rate)}`).join('\u3001');
-  return `<section class="panel" id="currentLifecycle"><div class="panel-head"><div><div class="panel-title">9\u6708\u4e0d\u540c\u751f\u547d\u5468\u671f\u8bfe\u8017\u8fdb\u5ea6</div><div class="panel-sub">\u622a\u81f3 ${DATA.currentDate} \u00b7 \u6838\u5fc36\u4e2aSS\u5c0f\u7ec4 \u00b7 M1\u4e3a\u9996\u4ed8\u6b21\u6708\uff0cM12+\u4e3a\u9996\u4ed8\u6ee113\u4e2a\u6708\u53ca\u4ee5\u4e0a</div></div></div><div class="panel-body"><div class="history-summary"><div class="history-summary-item"><span>\u751f\u547d\u5468\u671f\u603b\u4f53\u9884\u8ba1\u5b8c\u8bfe\u7387</span><b>${pct(totalQualified/totalStudents)}</b><div>\u8986\u76d6 ${num(totalStudents,0)} \u540d\u8003\u6838\u5b66\u5458</div></div><div class="history-summary-item"><span>\u9884\u8ba1\u5b8c\u8bfe\u7387\u6700\u6162</span><b>${slowest.lifecycle} ${pct(slowest.completion_rate)}</b><div>\u9884\u8ba1\u8fbe\u6807 ${num(slowest.qualified,0)} / ${num(slowest.students,0)}</div></div><div class="history-summary-item"><span>\u5b9e\u9645\u4eba\u5747\u5b8c\u8bfe\u91cf\u6700\u4f4e</span><b>${lowestActual.lifecycle} ${num(lowestActual.avg_completed,2)}\u8282</b><div>\u4eba\u5747\u9884\u8ba1 ${num(lowestActual.avg_expected,2)} \u8282</div></div><div class="history-summary-item"><span>0\u8bfe\u8017\u7387\u6700\u9ad8</span><b>${highestZero.lifecycle} ${pct(highestZero.zero_consumption_rate)}</b><div>${num(highestZero.zero_consumption_count,0)} \u540d0\u8bfe\u8017\u5b66\u5458</div></div></div><div class="table-wrap"><table><thead><tr><th>\u751f\u547d\u5468\u671f</th><th>\u8003\u6838\u5b66\u5458</th><th>\u9884\u8ba1\u5b8c\u8bfe\u7387</th><th>\u4eba\u5747\u5df2\u5b8c\u8bfe</th><th>\u4eba\u5747\u9884\u8ba1\u8bfe\u91cf</th><th>0\u8bfe\u8017\u7387</th><th>\u72b6\u6001</th></tr></thead><tbody>${body}</tbody></table></div><div class="analysis-block"><h3>9\u6708\u751f\u547d\u5468\u671f\u5224\u65ad</h3><ul class="analysis-list"><li><b>\u9884\u8ba1\u5b8c\u8bfe\u7387\u504f\u6162\uff1a</b>${slowText}\uff0c\u5e94\u4f18\u5148\u6392\u67e5\u672a\u9884\u7ea6\u3001\u9884\u7ea6\u4e0d\u8db3\u548c\u56fa\u5b9a\u8ba1\u5212\u65ad\u6863\u3002</li><li><b>\u5b9e\u9645\u8bfe\u91cf\u504f\u6162\uff1a</b>${lowestActual.lifecycle} \u4eba\u5747\u4ec5 ${num(lowestActual.avg_completed,2)} \u8282\uff1b\u5373\u4f7f\u5df2\u6709\u9884\u7ea6\uff0c\u4e5f\u8981\u786e\u8ba4\u6708\u5e95\u524d\u80fd\u5426\u5b9e\u9645\u5b8c\u8bfe\u3002</li><li><b>\u672a\u542f\u52a8\u98ce\u9669\uff1a</b>${highestZero.lifecycle} \u76840\u8bfe\u8017\u7387\u6700\u9ad8\uff0c\u4e3a ${pct(highestZero.zero_consumption_rate)}\uff1b\u5efa\u8bae\u6309\u751f\u547d\u5468\u671f\u5355\u72ec\u5efa\u6c60\u8ddf\u8fdb\u3002</li><li><b>\u53e3\u5f84\uff1a</b>\u9884\u8ba1\u5b8c\u8bfe\u91cf\u4e3a\u5f53\u6708\u5b8c\u8bfe\u91cf\u52a0\u5f53\u6708\u5df2\u7ea6\u672a\u4e0a\u8bfe\u6b21\uff1b\u9884\u8ba1\u8fbe\u5230\u5957\u9910\u4f4e\u6d88\u8981\u6c42\u5373\u8ba1\u4e3a\u8fbe\u6807\uff0c\u4f4e\u6d88\u4e3a0\u65f6\u630912\u8282\u3002</li></ul></div></div></section>`;
+  return `<section class="panel" id="currentLifecycle"><div class="panel-head"><div><div class="panel-title">${reportMonth}\u6708\u4e0d\u540c\u751f\u547d\u5468\u671f\u8bfe\u8017\u8fdb\u5ea6</div><div class="panel-sub">\u622a\u81f3 ${DATA.currentDate} \u00b7 \u6838\u5fc36\u4e2aSS\u5c0f\u7ec4 \u00b7 M1\u4e3a\u9996\u4ed8\u6b21\u6708\uff0cM12+\u4e3a\u9996\u4ed8\u6ee113\u4e2a\u6708\u53ca\u4ee5\u4e0a</div></div></div><div class="panel-body"><div class="history-summary"><div class="history-summary-item"><span>\u751f\u547d\u5468\u671f\u603b\u4f53\u9884\u8ba1\u5b8c\u8bfe\u7387</span><b>${pct(totalQualified/totalStudents)}</b><div>\u8986\u76d6 ${num(totalStudents,0)} \u540d\u8003\u6838\u5b66\u5458</div></div><div class="history-summary-item"><span>\u9884\u8ba1\u5b8c\u8bfe\u7387\u6700\u6162</span><b>${slowest.lifecycle} ${pct(slowest.completion_rate)}</b><div>\u9884\u8ba1\u8fbe\u6807 ${num(slowest.qualified,0)} / ${num(slowest.students,0)}</div></div><div class="history-summary-item"><span>\u5b9e\u9645\u4eba\u5747\u5b8c\u8bfe\u91cf\u6700\u4f4e</span><b>${lowestActual.lifecycle} ${num(lowestActual.avg_completed,2)}\u8282</b><div>\u4eba\u5747\u9884\u8ba1 ${num(lowestActual.avg_expected,2)} \u8282</div></div><div class="history-summary-item"><span>0\u8bfe\u8017\u7387\u6700\u9ad8</span><b>${highestZero.lifecycle} ${pct(highestZero.zero_consumption_rate)}</b><div>${num(highestZero.zero_consumption_count,0)} \u540d0\u8bfe\u8017\u5b66\u5458</div></div></div><div class="table-wrap"><table><thead><tr><th>\u751f\u547d\u5468\u671f</th><th>\u8003\u6838\u5b66\u5458</th><th>\u9884\u8ba1\u5b8c\u8bfe\u7387</th><th>\u4eba\u5747\u5df2\u5b8c\u8bfe</th><th>\u4eba\u5747\u9884\u8ba1\u8bfe\u91cf</th><th>0\u8bfe\u8017\u7387</th><th>\u72b6\u6001</th></tr></thead><tbody>${body}</tbody></table></div><div class="analysis-block"><h3>${reportMonth}\u6708\u751f\u547d\u5468\u671f\u5224\u65ad</h3><ul class="analysis-list"><li><b>\u9884\u8ba1\u5b8c\u8bfe\u7387\u504f\u6162\uff1a</b>${slowText}\uff0c\u5e94\u4f18\u5148\u6392\u67e5\u672a\u9884\u7ea6\u3001\u9884\u7ea6\u4e0d\u8db3\u548c\u56fa\u5b9a\u8ba1\u5212\u65ad\u6863\u3002</li><li><b>\u5b9e\u9645\u8bfe\u91cf\u504f\u6162\uff1a</b>${lowestActual.lifecycle} \u4eba\u5747\u4ec5 ${num(lowestActual.avg_completed,2)} \u8282\uff1b\u5373\u4f7f\u5df2\u6709\u9884\u7ea6\uff0c\u4e5f\u8981\u786e\u8ba4\u6708\u5e95\u524d\u80fd\u5426\u5b9e\u9645\u5b8c\u8bfe\u3002</li><li><b>\u672a\u542f\u52a8\u98ce\u9669\uff1a</b>${highestZero.lifecycle} \u76840\u8bfe\u8017\u7387\u6700\u9ad8\uff0c\u4e3a ${pct(highestZero.zero_consumption_rate)}\uff1b\u5efa\u8bae\u6309\u751f\u547d\u5468\u671f\u5355\u72ec\u5efa\u6c60\u8ddf\u8fdb\u3002</li><li><b>\u53e3\u5f84\uff1a</b>\u9884\u8ba1\u5b8c\u8bfe\u91cf\u4e3a\u5f53\u6708\u5b8c\u8bfe\u91cf\u52a0\u5f53\u6708\u5df2\u7ea6\u672a\u4e0a\u8bfe\u6b21\uff1b\u9884\u8ba1\u8fbe\u5230\u5957\u9910\u4f4e\u6d88\u8981\u6c42\u5373\u8ba1\u4e3a\u8fbe\u6807\uff0c\u4f4e\u6d88\u4e3a0\u65f6\u630912\u8282\u3002</li></ul></div></div></section>`;
 }
 function renderHistoricalAnalysis(){
   const dist=latestDistributionSummary(), life=latestLifecycleSummary(), avg=latestAvgSummary();
