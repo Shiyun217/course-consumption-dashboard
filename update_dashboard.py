@@ -20,10 +20,10 @@ CORE_GROUPS = [
 ]
 FORMULA_INCLUDED_GROUPS = [*CORE_GROUPS, "GZ-SS03小组"]
 STAGE_TARGETS = [
-    {"day": 11, "target": 0.27},
-    {"day": 17, "target": 0.45},
-    {"day": 24, "target": 0.55},
-    {"day": 31, "target": 0.66},
+    {"day": 12, "target": 0.29},
+    {"day": 19, "target": 0.47},
+    {"day": 25, "target": 0.52},
+    {"day": 31, "target": 0.63},
 ]
 HISTORICAL_DISTRIBUTION_MONTHS = [
     "2501", "2502", "2503", "2504", "2505", "2506", "2507", "2508", "2509", "2510",
