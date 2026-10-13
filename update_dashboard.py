@@ -65,7 +65,8 @@ LIFECYCLE_PERFORMANCE = [
     {"month": "2605", "values": [0.8934, 0.8558, 0.7922, 0.7887, 0.7377, 0.7264, 0.6547, 0.6530, 0.6008, 0.5769, 0.5583, 0.5561, 0.5671, 0.6305]},
     {"month": "2606", "values": [0.8848, 0.8172, 0.7988, 0.7275, 0.7505, 0.7098, 0.6718, 0.6302, 0.6320, 0.5900, 0.5441, 0.5694, 0.5691, 0.6360]},
     {"month": "2607", "values": [0.9005, 0.8387, 0.8088, 0.7686, 0.7139, 0.7253, 0.6554, 0.6804, 0.6091, 0.6229, 0.6221, 0.5945, 0.6122, 0.6740]},
-    {"month": "2608", "values": [None, 0.9132, 0.8577, 0.8306, 0.7900, 0.7500, 0.7309, 0.7025, 0.6786, 0.6579, 0.6395, 0.6387, 0.6275, 0.6863]},
+    {"month": "2608", "values": [0.9132, 0.8578, 0.8308, 0.7900, 0.7491, 0.7309, 0.7025, 0.6806, 0.6535, 0.6289, 0.6339, 0.6378, 0.6044, 0.6732]},
+    {"month": "2609", "values": [0.8248, 0.7948, 0.7547, 0.7585, 0.7263, 0.7105, 0.5882, 0.6132, 0.5647, 0.5876, 0.5730, 0.6120, 0.5576, 0.6213]},
 ]
 
 
@@ -1365,14 +1366,14 @@ function renderMain(){
 renderShell(); renderMain();
 </script>
 <script src="fixed-plan-data.js?v=20260909-import-fix"></script>
-<script src="fixed-plan-latest-data.js?v=20260909-import-fix"></script>
+<script src="fixed-plan-latest-data.js?v=20261013-targets"></script>
 <script src="fixed-plan-m01-all-data.js?v=20260813"></script>
 <script src="fixed-plan-user-data.js?v=20260813"></script>
 <script src="fixed-plan-ticket-data.js?v=20260813"></script>
 <script src="vendor/xlsx.full.min.js?v=0.20.3"></script>
 <script src="fixed-plan-sync-config.js?v=20260909-import-fix"></script>
-<script src="fixed-plan-import.js?v=20260909-import-fix"></script>
-<script src="fixed-plan.js?v=20260909-import-fix"></script>
+<script src="fixed-plan-import.js?v=20261013-targets"></script>
+<script src="fixed-plan.js?v=20261013-targets"></script>
 <script src="course-history-data.js?v=20260904-history2608b"></script>
 <script src="course-history.js?v=20260904-history2608b"></script>
 <script src="core-overview-data.js?v=20260825"></script>
