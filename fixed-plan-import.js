@@ -5,7 +5,7 @@
   const DB_NAME = 'fixed-plan-dashboard-files';
   const DB_STORE = 'exports';
   const EXPORT_KEY = 'latest-statistics';
-  const TARGETS = { cc: 0.28, ss: 0.32, lp: 0.21 };
+  const TARGETS = { overall: 0.60, cc: 0.29, ss: 0.31, lp: 0.16 };
   const GROUPS = {
     cc: ['GZ-CC01小组', 'GZ-CC06小组', 'GZ-CC07小组', 'GZ-CC09小组', 'GZ-CC11小组', 'GZ-CC14小组'],
     ss: ['BJ-JWSS01小组', 'BJ-JWSS02小组', 'BJ-JWSS04小组', 'BJ-JWSS07小组', 'GZ-SS01小组', 'GZ-SS04小组'],
@@ -14,11 +14,33 @@
   const FIXED_REQUIRED = ['student_id', 'bind_add_time', 'bind_operator_name', 'bind_operator_group_type', 'unbind_time'];
   const PAYMENT_REQUIRED = ['stdt_id', 'first_1v1_nml_pay_date', 'last_cc_group_name', 'last_ss_group_name', 'last_lp_group_name'];
   const SYNC_ENDPOINT = String(window.FIXED_PLAN_SYNC_CONFIG?.endpoint || '').replace(/\/$/, '');
+
+  function normalizeDashboardTargets(data) {
+    if (!data || !Array.isArray(data.metrics) || !Array.isArray(data.groups)) return data;
+    const targetFor = key => TARGETS[String(key || '').toLowerCase()];
+    const normalizeRow = row => {
+      const target = targetFor(row.port);
+      if (target == null) return row;
+      return {
+        ...row,
+        target,
+        gap_students: Math.max(0, Math.round(row.new_students * target) - row.fixed_students),
+      };
+    };
+    return {
+      ...data,
+      metrics: data.metrics.map(metric => ({ ...metric, target: targetFor(metric.key) ?? metric.target })),
+      groups: data.groups.map(normalizeRow),
+      totals: Array.isArray(data.totals) ? data.totals.map(normalizeRow) : data.totals,
+    };
+  }
+
+  window.FIXED_PLAN_LATEST_DATA = normalizeDashboardTargets(window.FIXED_PLAN_LATEST_DATA);
   const state = { fixed: null, payment: null, busy: false, exportReady: false, exportName: '', priorData: window.FIXED_PLAN_LATEST_DATA || null };
 
   function restoreSavedDashboard() {
     try {
-      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      const saved = normalizeDashboardTargets(JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'));
       if (saved && Array.isArray(saved.metrics) && Array.isArray(saved.groups)) {
         window.FIXED_PLAN_LATEST_DATA = saved;
         state.priorData = saved;
@@ -34,7 +56,7 @@
       const response = await fetch(SYNC_ENDPOINT, { cache: 'no-store', headers: { Accept: 'application/json' } });
       if (response.status === 404) return;
       if (!response.ok) throw new Error(`共享数据读取失败（${response.status}）`);
-      const shared = await response.json();
+      const shared = normalizeDashboardTargets(await response.json());
       if (!shared || !Array.isArray(shared.metrics) || !Array.isArray(shared.groups)) throw new Error('共享数据格式不正确');
       window.FIXED_PLAN_LATEST_DATA = shared;
       state.priorData = shared;
@@ -59,7 +81,7 @@
     try { result = await response.json(); } catch (_) {}
     if (!response.ok) throw new Error(result?.error || `公共看板发布失败（${response.status}）`);
     if (!result?.data) throw new Error('后台未返回已发布的数据。');
-    return result.data;
+    return normalizeDashboardTargets(result.data);
   }
 
   function openDb() {
@@ -310,7 +332,7 @@
     const sourceCode = sourceAsOf ? `${sourceAsOf.slice(5, 7)}${sourceAsOf.slice(8, 10)}` : '上传';
     const metrics = [{
       key: 'overall', label: '整体固定计划绑定率', source: override == null ? `${sourceCode}明细有效绑定口径` : `${sourceCode}业务确认值`,
-      rate: overallRate, target: 0.65, fixed_students: overallFixedStudents, new_students: overallNewStudents,
+      rate: overallRate, target: TARGETS.overall, fixed_students: overallFixedStudents, new_students: overallNewStudents,
       yesterday_rate: baselineFor('overall'), last_month_same_period_rate: prior?.metrics?.find(item => item.key === 'overall')?.last_month_same_period_rate ?? null,
     }];
     for (const port of ['cc', 'ss', 'lp']) {

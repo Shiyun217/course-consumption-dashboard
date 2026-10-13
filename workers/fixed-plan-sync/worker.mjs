@@ -6,7 +6,7 @@ const ALLOWED_ORIGINS = new Set([
   'http://127.0.0.1:8000',
   'http://localhost:8000',
 ]);
-const TARGETS = { overall: 0.65, CC: 0.28, SS: 0.32, LP: 0.21 };
+const TARGETS = { overall: 0.60, CC: 0.29, SS: 0.31, LP: 0.16 };
 const GROUPS = {
   CC: ['GZ-CC01小组', 'GZ-CC06小组', 'GZ-CC07小组', 'GZ-CC09小组', 'GZ-CC11小组', 'GZ-CC14小组'],
   SS: ['BJ-JWSS01小组', 'BJ-JWSS02小组', 'BJ-JWSS04小组', 'BJ-JWSS07小组', 'GZ-SS01小组', 'GZ-SS04小组'],
@@ -147,6 +147,30 @@ function priorMetric(previous, key) {
   return previous?.metrics?.find(metric => metric.key === key) || null;
 }
 
+function applyCurrentTargets(data) {
+  return {
+    ...data,
+    metrics: (data.metrics || []).map(metric => ({
+      ...metric,
+      target: TARGETS[metric.key] ?? metric.target,
+    })),
+    groups: (data.groups || []).map(row => ({
+      ...row,
+      target: TARGETS[row.port] ?? row.target,
+      gap_students: TARGETS[row.port] == null
+        ? row.gap_students
+        : Math.max(0, Math.round(row.new_students * TARGETS[row.port]) - row.fixed_students),
+    })),
+    totals: (data.totals || []).map(row => ({
+      ...row,
+      target: TARGETS[row.port] ?? row.target,
+      gap_students: TARGETS[row.port] == null
+        ? row.gap_students
+        : Math.max(0, Math.round(row.new_students * TARGETS[row.port]) - row.fixed_students),
+    })),
+  };
+}
+
 function sanitizePayload(input, previous) {
   if (!input || typeof input !== 'object' || Array.isArray(input)) throw new Error('汇总数据格式不正确');
   const sourceAsOf = safeString(input.source_as_of, '数据日期', 10);
@@ -272,7 +296,7 @@ export default {
 
     if (request.method === 'GET') {
       const data = await env.FIXED_PLAN_DATA.get(DATA_KEY, 'json');
-      return data ? json(data, 200, corsHeaders(request, true)) : json({ error: 'No shared data yet' }, 404, corsHeaders(request, true));
+      return data ? json(applyCurrentTargets(data), 200, corsHeaders(request, true)) : json({ error: 'No shared data yet' }, 404, corsHeaders(request, true));
     }
 
     if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405, { Allow: 'GET, POST, OPTIONS' });

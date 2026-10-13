@@ -10,7 +10,7 @@ window.FIXED_PLAN_LATEST_DATA = {
       "label": "整体固定计划绑定率",
       "source": "0904今日最新值",
       "rate": 0.451,
-      "target": 0.65,
+      "target": 0.6,
       "fixed_students": 329,
       "new_students": 705,
       "yesterday_rate": 0.41702127659574467,
@@ -21,7 +21,7 @@ window.FIXED_PLAN_LATEST_DATA = {
       "label": "CC固定计划绑定率",
       "source": "0904明细口径",
       "rate": 0.21139240506329113,
-      "target": 0.28,
+      "target": 0.29,
       "fixed_students": 167,
       "new_students": 790,
       "yesterday_rate": 0.17088607594936708,
@@ -32,7 +32,7 @@ window.FIXED_PLAN_LATEST_DATA = {
       "label": "SS固定计划绑定率",
       "source": "0904明细口径",
       "rate": 0.22764227642276422,
-      "target": 0.32,
+      "target": 0.31,
       "fixed_students": 168,
       "new_students": 738,
       "yesterday_rate": 0.19647696476964768,
@@ -43,7 +43,7 @@ window.FIXED_PLAN_LATEST_DATA = {
       "label": "LP固定计划绑定率",
       "source": "0904明细口径",
       "rate": 0.12198581560283688,
-      "target": 0.21,
+      "target": 0.16,
       "fixed_students": 86,
       "new_students": 705,
       "yesterday_rate": 0.12056737588652482,
@@ -57,7 +57,7 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 25,
       "fixed_students": 3,
       "rate": 0.12,
-      "target": 0.28,
+      "target": 0.29,
       "gap_students": 4
     },
     {
@@ -66,7 +66,7 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 46,
       "fixed_students": 2,
       "rate": 0.043478260869565216,
-      "target": 0.28,
+      "target": 0.29,
       "gap_students": 11
     },
     {
@@ -75,8 +75,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 168,
       "fixed_students": 44,
       "rate": 0.2619047619047619,
-      "target": 0.28,
-      "gap_students": 3
+      "target": 0.29,
+      "gap_students": 5
     },
     {
       "port": "CC",
@@ -84,8 +84,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 193,
       "fixed_students": 50,
       "rate": 0.25906735751295334,
-      "target": 0.28,
-      "gap_students": 4
+      "target": 0.29,
+      "gap_students": 6
     },
     {
       "port": "CC",
@@ -93,8 +93,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 151,
       "fixed_students": 31,
       "rate": 0.2052980132450331,
-      "target": 0.28,
-      "gap_students": 11
+      "target": 0.29,
+      "gap_students": 13
     },
     {
       "port": "CC",
@@ -102,8 +102,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 207,
       "fixed_students": 37,
       "rate": 0.178743961352657,
-      "target": 0.28,
-      "gap_students": 21
+      "target": 0.29,
+      "gap_students": 23
     },
     {
       "port": "SS",
@@ -111,8 +111,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 130,
       "fixed_students": 33,
       "rate": 0.25384615384615383,
-      "target": 0.32,
-      "gap_students": 9
+      "target": 0.31,
+      "gap_students": 7
     },
     {
       "port": "SS",
@@ -120,8 +120,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 118,
       "fixed_students": 26,
       "rate": 0.22033898305084745,
-      "target": 0.32,
-      "gap_students": 12
+      "target": 0.31,
+      "gap_students": 11
     },
     {
       "port": "SS",
@@ -129,8 +129,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 133,
       "fixed_students": 30,
       "rate": 0.22556390977443608,
-      "target": 0.32,
-      "gap_students": 13
+      "target": 0.31,
+      "gap_students": 11
     },
     {
       "port": "SS",
@@ -138,8 +138,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 107,
       "fixed_students": 28,
       "rate": 0.2616822429906542,
-      "target": 0.32,
-      "gap_students": 6
+      "target": 0.31,
+      "gap_students": 5
     },
     {
       "port": "SS",
@@ -147,8 +147,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 143,
       "fixed_students": 33,
       "rate": 0.23076923076923078,
-      "target": 0.32,
-      "gap_students": 13
+      "target": 0.31,
+      "gap_students": 11
     },
     {
       "port": "SS",
@@ -156,8 +156,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 107,
       "fixed_students": 18,
       "rate": 0.16822429906542055,
-      "target": 0.32,
-      "gap_students": 16
+      "target": 0.31,
+      "gap_students": 15
     },
     {
       "port": "LP",
@@ -165,8 +165,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 430,
       "fixed_students": 50,
       "rate": 0.11627906976744186,
-      "target": 0.21,
-      "gap_students": 40
+      "target": 0.16,
+      "gap_students": 19
     },
     {
       "port": "LP",
@@ -174,8 +174,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 275,
       "fixed_students": 36,
       "rate": 0.13090909090909092,
-      "target": 0.21,
-      "gap_students": 22
+      "target": 0.16,
+      "gap_students": 8
     }
   ],
   "totals": [
@@ -185,8 +185,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 790,
       "fixed_students": 167,
       "rate": 0.21139240506329113,
-      "target": 0.28,
-      "gap_students": 54
+      "target": 0.29,
+      "gap_students": 62
     },
     {
       "port": "SS",
@@ -194,8 +194,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 738,
       "fixed_students": 168,
       "rate": 0.22764227642276422,
-      "target": 0.32,
-      "gap_students": 68
+      "target": 0.31,
+      "gap_students": 61
     },
     {
       "port": "LP",
@@ -203,8 +203,8 @@ window.FIXED_PLAN_LATEST_DATA = {
       "new_students": 705,
       "fixed_students": 86,
       "rate": 0.12198581560283688,
-      "target": 0.21,
-      "gap_students": 62
+      "target": 0.16,
+      "gap_students": 27
     }
   ]
 };
