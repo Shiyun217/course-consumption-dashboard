@@ -91,6 +91,7 @@
     .section-title-wrap { display: flex; align-items: center; gap: 14px; }
     .section-title { margin: 0; font-size: 26px; line-height: 1.05; letter-spacing: -.04em; color: var(--text); }
     .section-sub { margin-top: 6px; color: var(--muted); font-size: 13px; }
+    .section-actions { display: flex; align-items: center; gap: 10px; }
     .section-mark { color: #a2b2c7; font-size: 12px; letter-spacing: .14em; font-weight: 850; text-transform: uppercase; }
     .hero { display: block; min-height: unset; padding: 0; background: transparent; border: 0; border-radius: 0; box-shadow: none; }
     .kicker { color: var(--brand-2); font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
@@ -403,7 +404,31 @@ function renderPersonTable(){
   let rows=DATA.personRows.filter(r=>current==='all'||r.group===current);
   const term=(document.getElementById('personSearch')?.value||'').toLowerCase(); if(term) rows=rows.filter(r=>String(r.ss).toLowerCase().includes(term));
   rows=rows.slice().sort((a,b)=>(b.rate??0)-(a.rate??0)).slice(0,80);
-  return `<section class="section-card"><div class="section-head" id="filters"><div class="section-title-wrap"><div class="section-index">04</div><div><h2 class="section-title">\u4e2a\u4eba\u660e\u7ec6\u98ce\u9669\u8868</h2><div class="section-sub">\u6309\u5f53\u524d\u9884\u8ba1\u5b8c\u8bfe\u7387\u6392\u5e8f \u00b7 \u805a\u7126 SS \u4e2a\u4eba\u5dee\u8ddd\u548c\u5f85\u8ddf\u8fdb\u5b66\u5458</div></div></div><div class="section-mark">RISK DETAIL</div></div><div class="filter-row"><select id="groupFilter">${opts.map(o=>`<option value="${o}" ${o===current?'selected':''}>${o==='all'?'\u5168\u90e8\u5c0f\u7ec4':o}</option>`).join('')}</select><input id="personSearch" placeholder="\u641c\u7d22 SS" value="${term}"></div><div class="table-wrap"><table><thead><tr><th>TOP</th><th>SS \u5c0f\u7ec4</th><th>SS</th><th>\u8003\u6838\u5b66\u5458</th><th>\u5f53\u524d\u9884\u8ba1\u5b8c\u8bfe\u7387</th><th>\u65e5\u73af\u6bd4</th><th>\u8ddd\u76ee\u6807\u5dee\u503c</th><th>\u79bb\u8fbe\u6807\u76f8\u5dee\u5b66\u5458\u6570</th><th>\u72b6\u6001</th></tr></thead><tbody>${rows.map((r,i)=>{const st=status(r); return `<tr><td>${i+1}</td><td>${r.group}</td><td><b>${r.ss}</b></td><td>${num(r.assessed,0)}</td><td><span class="value-strong">${pct(r.rate)}</span></td><td class="${cls(r.lift)}">${signedPct(r.lift)}</td><td class="${cls(-r.gap_rate)}">${signedPct(-r.gap_rate)}</td><td>${num(Math.max(r.gap_students,0),0)}</td><td><span class="tag ${st[1]}">${st[0]}</span></td></tr>`;}).join('')}</tbody></table></div></section>`;
+  return `<section class="section-card"><div class="section-head" id="filters"><div class="section-title-wrap"><div class="section-index">04</div><div><h2 class="section-title">\u4e2a\u4eba\u660e\u7ec6\u98ce\u9669\u8868</h2><div class="section-sub">\u6309\u5f53\u524d\u9884\u8ba1\u5b8c\u8bfe\u7387\u6392\u5e8f \u00b7 \u805a\u7126 SS \u4e2a\u4eba\u5dee\u8ddd\u548c\u5f85\u8ddf\u8fdb\u5b66\u5458</div></div></div><div class="section-actions"><button class="btn" id="exportPersonImage" title="\u5bfc\u51fa\u5f53\u524d\u7b5b\u9009\u7684\u4e2a\u4eba\u660e\u7ec6\u8868\u56fe\u7247"><span aria-hidden="true">\u21e9</span><span>\u5bfc\u51fa\u56fe\u7247</span></button><div class="section-mark">RISK DETAIL</div></div></div><div class="filter-row"><select id="groupFilter">${opts.map(o=>`<option value="${o}" ${o===current?'selected':''}>${o==='all'?'\u5168\u90e8\u5c0f\u7ec4':o}</option>`).join('')}</select><input id="personSearch" placeholder="\u641c\u7d22 SS" value="${term}"></div><div class="table-wrap"><table><thead><tr><th>TOP</th><th>SS \u5c0f\u7ec4</th><th>SS</th><th>\u8003\u6838\u5b66\u5458</th><th>\u5f53\u524d\u9884\u8ba1\u5b8c\u8bfe\u7387</th><th>\u65e5\u73af\u6bd4</th><th>\u8ddd\u76ee\u6807\u5dee\u503c</th><th>\u79bb\u8fbe\u6807\u76f8\u5dee\u5b66\u5458\u6570</th><th>\u72b6\u6001</th></tr></thead><tbody>${rows.map((r,i)=>{const st=status(r); return `<tr><td>${i+1}</td><td>${r.group}</td><td><b>${r.ss}</b></td><td>${num(r.assessed,0)}</td><td><span class="value-strong">${pct(r.rate)}</span></td><td class="${cls(r.lift)}">${signedPct(r.lift)}</td><td class="${cls(-r.gap_rate)}">${signedPct(-r.gap_rate)}</td><td>${num(Math.max(r.gap_students,0),0)}</td><td><span class="tag ${st[1]}">${st[0]}</span></td></tr>`;}).join('')}</tbody></table></div></section>`;
+}
+function exportPersonTableImage(){
+  const section=document.querySelector('#filters')?.closest('.section-card');
+  const table=section?.querySelector('table');
+  if(!table) return;
+  const values=[...table.querySelectorAll('tr')].map(row=>[...row.children].map(cell=>String(cell.innerText||'').replace(/\s+/g,' ').trim()));
+  if(!values.length) return;
+  const widths=[58,180,190,100,150,100,120,150,92];
+  const rowHeight=38, titleHeight=94, headerHeight=42, footerHeight=42;
+  const width=widths.reduce((sum,value)=>sum+value,0), height=titleHeight+headerHeight+(values.length-1)*rowHeight+footerHeight;
+  const scale=2, canvas=document.createElement('canvas'); canvas.width=width*scale; canvas.height=height*scale;
+  const ctx=canvas.getContext('2d'); ctx.scale(scale,scale); ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,width,height);
+  const font='Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
+  const fit=(text,maxWidth)=>{ let value=String(text||''); if(ctx.measureText(value).width<=maxWidth) return value; while(value.length && ctx.measureText(value+'…').width>maxWidth) value=value.slice(0,-1); return value+'…'; };
+  const drawCell=(text,x,y,w,h,options={})=>{ ctx.fillStyle=options.fill||'#2c3c55'; ctx.font=options.font||`14px ${font}`; ctx.textAlign=options.align||'left'; ctx.textBaseline='middle'; const pad=options.align==='center'?0:12; ctx.fillText(fit(text,w-pad*2),options.align==='center'?x+w/2:x+pad,y+h/2); };
+  ctx.fillStyle='#2f7dda'; ctx.font=`700 22px ${font}`; ctx.fillText('个人明细风险表',24,31);
+  const groupLabel=document.getElementById('groupFilter')?.selectedOptions?.[0]?.textContent||'全部小组'; const search=document.getElementById('personSearch')?.value?.trim();
+  ctx.fillStyle='#71839c'; ctx.font=`13px ${font}`; ctx.fillText(`截至 ${DATA.currentDate} · ${groupLabel}${search?` · 搜索：${search}`:''}`,24,60);
+  let y=titleHeight; let x=0;
+  ctx.fillStyle='#eef6ff'; ctx.fillRect(0,y,width,headerHeight);
+  values[0].forEach((value,index)=>{ drawCell(value,x,y,widths[index],headerHeight,{fill:'#4d6b8e',font:`700 12px ${font}`,align:'center'}); x+=widths[index]; });
+  values.slice(1).forEach((row,rowIndex)=>{ y+=headerHeight; ctx.fillStyle=rowIndex%2?'#ffffff':'#f9fcff'; ctx.fillRect(0,y,width,rowHeight); x=0; row.forEach((value,index)=>{ const align=index===0||index===3||index===4||index===5||index===6||index===7?'center':'left'; const color=index===4?'#2f7dda':(index===5||index===6?(String(value).startsWith('-')?'#c65463':'#2e9570'):'#2c3c55'); drawCell(value,x,y,widths[index],rowHeight,{fill:color,font:index===2?`700 14px ${font}`:`14px ${font}`,align}); x+=widths[index]; }); ctx.fillStyle='#d6e6f7'; ctx.fillRect(0,y+rowHeight-1,width,1); });
+  ctx.fillStyle='#9aaec7'; ctx.font=`12px ${font}`; ctx.textAlign='right'; ctx.fillText(`共 ${values.length-1} 位 SS`,width-24,height-18);
+  canvas.toBlob(blob=>{ if(!blob) return; const link=document.createElement('a'); link.download=`个人明细风险表-${DATA.currentDate}.png`; link.href=URL.createObjectURL(blob); link.click(); setTimeout(()=>URL.revokeObjectURL(link.href),1000); },'image/png');
 }
 function renderRecommendations(){
   const ins=buildInsights(); const t=total(); const weak=ins.weakest, fast=ins.fastest;
@@ -429,6 +454,7 @@ function bindInteractions(){
   document.querySelectorAll('.bar-row').forEach(row=>row.onclick=()=>{ selectedGroup=row.dataset.group; document.getElementById('filters')?.scrollIntoView({behavior:'smooth'}); renderMain(); });
   const gf=document.getElementById('groupFilter'); if(gf) gf.onchange=e=>{ selectedGroup=e.target.value; renderMain(); };
   const ps=document.getElementById('personSearch'); if(ps) ps.oninput=()=>renderMain();
+  const exportBtn=document.getElementById('exportPersonImage'); if(exportBtn) exportBtn.onclick=exportPersonTableImage;
 }
 function renderMain(){
   document.getElementById('content').innerHTML = renderHero()+renderKpis()+renderGroupTable()+renderPersonTable()+`<div style="height:16px"></div>`+renderAnalysis()+`<div style="height:16px"></div>`+renderRecommendations()+`<div style="height:16px"></div>`+renderCurrentLifecycle()+`<div style="height:16px"></div>`+renderHistoricalAnalysis()+`<div class="footer-note">\u6570\u636e\u6e90\uff1a\u6838\u5fc3 6 \u4e2a SS \u5c0f\u7ec4\uff0c\u672c\u6b21\u6e90\u8868\u8003\u6838\u5b66\u5458 ${num(DATA.diagnostics.source_rows_assessed,0)} \u4eba\uff0c\u6838\u5fc3 6 \u7ec4 ${num(DATA.diagnostics.core_rows_assessed,0)} \u4eba\u3002</div>`;
