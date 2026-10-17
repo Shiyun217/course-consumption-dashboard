@@ -1,12 +1,18 @@
 # Dashboard sync service
 
-This Cloudflare Worker stores only the dashboard's aggregate metrics. Raw Excel rows,
-student IDs, and operator names are processed in the browser and are never sent to
-the Worker.
+This Cloudflare Worker stores the dashboard's aggregate metrics and the latest
+generated statistics workbook. Raw source workbooks are processed in the browser
+and are never uploaded. The generated workbook can contain student IDs and operator
+names, so its upload and download endpoints both require `PUBLISH_SECRET`.
 
 The public `GET /api/fixed-plan/latest` endpoint is read-only. Publishing requires
 the `PUBLISH_SECRET` secret and is restricted to the dashboard's GitHub Pages origin
 plus the local development origins declared in `worker.mjs`.
+
+`POST /api/fixed-plan/export` stores the latest generated `.xlsx` file after its
+data date has been matched against the public dashboard snapshot. Protected
+`GET /api/fixed-plan/export` downloads that file. Files are limited to 20 MB and
+stored in the existing `FIXED_PLAN_DATA` KV namespace.
 
 The same service also exposes `GET /api/favorites/latest` and a protected `POST`
 for the business-favorites dashboard. Only employee-level counts, fixed targets,

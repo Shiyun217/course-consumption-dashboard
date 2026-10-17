@@ -1,6 +1,9 @@
 const DATA_KEY = 'latest';
+const EXPORT_DATA_KEY = 'latest-export';
+const EXPORT_META_KEY = 'latest-export-meta';
 const FAVORITES_DATA_KEY = 'favorites-latest';
 const MAX_BODY_BYTES = 64 * 1024;
+const MAX_EXPORT_BYTES = 20 * 1024 * 1024;
 const ALLOWED_ORIGINS = new Set([
   'https://shiyun217.github.io',
   'http://127.0.0.1:8000',
@@ -34,6 +37,13 @@ function corsHeaders(request, publicRead = false) {
   const origin = corsOrigin(request);
   if (publicRead) return { 'Access-Control-Allow-Origin': '*' };
   return origin ? { 'Access-Control-Allow-Origin': origin, Vary: 'Origin' } : {};
+}
+
+function exportEndpointHeaders(request) {
+  return {
+    ...corsHeaders(request),
+    'Access-Control-Expose-Headers': 'Content-Disposition, X-Fixed-Plan-Filename, X-Fixed-Plan-Source-As-Of',
+  };
 }
 
 async function digest(value) {
@@ -73,6 +83,72 @@ function favoriteTarget(role, baseline) {
 
 function optionalCount(value, label) {
   return value == null ? null : safeCount(value, label);
+}
+
+function exportFilename(value) {
+  let decoded = '';
+  try { decoded = decodeURIComponent(value || ''); } catch (_) { throw new Error('统计结果文件名格式不正确'); }
+  const filename = decoded.replace(/[\\/:*?"<>|\x00-\x1f]/g, '_').trim();
+  if (!filename || filename.length > 180 || !/\.xlsx$/i.test(filename)) throw new Error('统计结果文件名格式不正确');
+  return filename;
+}
+
+function contentDisposition(filename) {
+  const fallback = filename.replace(/[^\x20-\x7e]/g, '_').replace(/["\\]/g, '_');
+  const encoded = encodeURIComponent(filename).replace(/['()]/g, char => `%${char.charCodeAt(0).toString(16).toUpperCase()}`);
+  return `attachment; filename="${fallback}"; filename*=UTF-8''${encoded}`;
+}
+
+async function handleExportRequest(request, env) {
+  if (request.method !== 'GET' && request.method !== 'POST') {
+    return json({ error: 'Method not allowed' }, 405, { Allow: 'GET, POST, OPTIONS' });
+  }
+  const origin = corsOrigin(request);
+  if (!origin) return json({ error: 'Origin not allowed' }, 403);
+  if (!(await secretsMatch(request.headers.get('X-Fixed-Plan-Key') || '', env.PUBLISH_SECRET || ''))) {
+    return json({ error: '下载或发布口令不正确' }, 401, corsHeaders(request));
+  }
+
+  if (request.method === 'GET') {
+    const [meta, file] = await Promise.all([
+      env.FIXED_PLAN_DATA.get(EXPORT_META_KEY, 'json'),
+      env.FIXED_PLAN_DATA.get(EXPORT_DATA_KEY, 'arrayBuffer'),
+    ]);
+    if (!meta || !file) return json({ error: '暂无云端统计结果，请先重新发布数据' }, 404, corsHeaders(request));
+    return new Response(file, {
+      status: 200,
+      headers: {
+        ...exportEndpointHeaders(request),
+        'Content-Type': meta.contentType || 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'Content-Disposition': contentDisposition(meta.name),
+        'Content-Length': String(file.byteLength),
+        'Cache-Control': 'no-store',
+        'X-Content-Type-Options': 'nosniff',
+        'X-Fixed-Plan-Filename': encodeURIComponent(meta.name),
+        'X-Fixed-Plan-Source-As-Of': meta.sourceAsOf,
+      },
+    });
+  }
+
+  const contentLength = Number(request.headers.get('Content-Length') || 0);
+  if (contentLength > MAX_EXPORT_BYTES) return json({ error: '统计结果文件超过20MB限制' }, 413, corsHeaders(request));
+  try {
+    const filename = exportFilename(request.headers.get('X-Fixed-Plan-Filename'));
+    const sourceAsOf = safeString(request.headers.get('X-Fixed-Plan-Source-As-Of'), '数据日期', 10);
+    if (!/^20\d{2}-(0[1-9]|1[0-2])-([012]\d|3[01])$/.test(sourceAsOf)) throw new Error('数据日期格式应为YYYY-MM-DD');
+    const latest = await env.FIXED_PLAN_DATA.get(DATA_KEY, 'json');
+    if (!latest || latest.source_as_of !== sourceAsOf) throw new Error('统计结果日期与最新公共看板不一致');
+    const file = await request.arrayBuffer();
+    if (!file.byteLength) throw new Error('统计结果文件为空');
+    if (file.byteLength > MAX_EXPORT_BYTES) throw new Error('统计结果文件超过20MB限制');
+    const contentType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+    const meta = { name: filename, sourceAsOf, contentType, size: file.byteLength, savedAt: new Date().toISOString() };
+    await env.FIXED_PLAN_DATA.put(EXPORT_DATA_KEY, file);
+    await env.FIXED_PLAN_DATA.put(EXPORT_META_KEY, JSON.stringify(meta));
+    return json({ ok: true, data: meta }, 200, corsHeaders(request));
+  } catch (error) {
+    return json({ error: error instanceof Error ? error.message : '统计结果上传失败' }, 400, corsHeaders(request));
+  }
 }
 
 function sanitizeFavoritesPayload(input, previous) {
@@ -277,7 +353,9 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === '/api/favorites/latest') return handleFavoritesRequest(request, env);
-    if (url.pathname !== '/api/fixed-plan/latest') return json({ error: 'Not found' }, 404);
+    const isLatestEndpoint = url.pathname === '/api/fixed-plan/latest';
+    const isExportEndpoint = url.pathname === '/api/fixed-plan/export';
+    if (!isLatestEndpoint && !isExportEndpoint) return json({ error: 'Not found' }, 404);
 
     if (request.method === 'OPTIONS') {
       const origin = corsOrigin(request);
@@ -287,12 +365,14 @@ export default {
         headers: {
           'Access-Control-Allow-Origin': origin,
           'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type, X-Fixed-Plan-Key',
+          'Access-Control-Allow-Headers': 'Content-Type, X-Fixed-Plan-Key, X-Fixed-Plan-Filename, X-Fixed-Plan-Source-As-Of',
           'Access-Control-Max-Age': '86400',
           Vary: 'Origin',
         },
       });
     }
+
+    if (isExportEndpoint) return handleExportRequest(request, env);
 
     if (request.method === 'GET') {
       const data = await env.FIXED_PLAN_DATA.get(DATA_KEY, 'json');

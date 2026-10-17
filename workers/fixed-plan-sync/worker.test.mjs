@@ -30,6 +30,25 @@ function request(method, body, key = 'correct-key', origin = 'https://shiyun217.
   });
 }
 
+function exportRequest(method, body, options = {}) {
+  const {
+    key = 'correct-key',
+    origin = 'https://shiyun217.github.io',
+    filename = '固定计划统计结果.xlsx',
+    sourceAsOf = '2026-09-04',
+  } = options;
+  return new Request('https://worker.example/api/fixed-plan/export', {
+    method,
+    headers: {
+      Origin: origin,
+      ...(body ? { 'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' } : {}),
+      ...(key ? { 'X-Fixed-Plan-Key': key } : {}),
+      ...(body ? { 'X-Fixed-Plan-Filename': encodeURIComponent(filename), 'X-Fixed-Plan-Source-As-Of': sourceAsOf } : {}),
+    },
+    body,
+  });
+}
+
 function favoritesRequest(method, body, key = 'correct-key', origin = 'https://shiyun217.github.io') {
   return new Request('https://worker.example/api/favorites/latest', {
     method,
@@ -107,6 +126,33 @@ test('rejects unknown origins and older snapshots', async () => {
   const rollback = await worker.fetch(request('POST', data), env);
   assert.equal(rollback.status, 400);
   assert.match((await rollback.json()).error, /早于当前公共版本/);
+});
+
+test('stores and downloads a password-protected Excel export', async () => {
+  const env = { FIXED_PLAN_DATA: new MemoryKv(), PUBLISH_SECRET: 'correct-key' };
+  assert.equal((await worker.fetch(request('POST', await fixture()), env)).status, 200);
+  const file = new Uint8Array([0x50, 0x4b, 0x03, 0x04]);
+
+  const deniedUpload = await worker.fetch(exportRequest('POST', file, { key: 'wrong-key' }), env);
+  assert.equal(deniedUpload.status, 401);
+
+  const mismatch = await worker.fetch(exportRequest('POST', file, { sourceAsOf: '2026-09-03' }), env);
+  assert.equal(mismatch.status, 400);
+  assert.match((await mismatch.json()).error, /日期与最新公共看板不一致/);
+
+  const uploaded = await worker.fetch(exportRequest('POST', file), env);
+  assert.equal(uploaded.status, 200);
+  assert.equal((await uploaded.json()).data.size, file.byteLength);
+
+  const deniedDownload = await worker.fetch(exportRequest('GET', null, { key: 'wrong-key' }), env);
+  assert.equal(deniedDownload.status, 401);
+
+  const downloaded = await worker.fetch(exportRequest('GET'), env);
+  assert.equal(downloaded.status, 200);
+  assert.equal(downloaded.headers.get('X-Fixed-Plan-Filename'), encodeURIComponent('固定计划统计结果.xlsx'));
+  assert.equal(downloaded.headers.get('X-Fixed-Plan-Source-As-Of'), '2026-09-04');
+  assert.match(downloaded.headers.get('Content-Disposition'), /attachment/);
+  assert.deepEqual(new Uint8Array(await downloaded.arrayBuffer()), file);
 });
 
 test('locks favorites targets and carries the prior day forward', async () => {

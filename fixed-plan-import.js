@@ -14,6 +14,7 @@
   const FIXED_REQUIRED = ['student_id', 'bind_add_time', 'bind_operator_name', 'bind_operator_group_type', 'unbind_time'];
   const PAYMENT_REQUIRED = ['stdt_id', 'first_1v1_nml_pay_date', 'last_cc_group_name', 'last_ss_group_name', 'last_lp_group_name'];
   const SYNC_ENDPOINT = String(window.FIXED_PLAN_SYNC_CONFIG?.endpoint || '').replace(/\/$/, '');
+  const EXPORT_ENDPOINT = SYNC_ENDPOINT.replace(/\/latest$/, '/export');
 
   function normalizeDashboardTargets(data) {
     if (!data || !Array.isArray(data.metrics) || !Array.isArray(data.groups)) return data;
@@ -82,6 +83,24 @@
     if (!response.ok) throw new Error(result?.error || `公共看板发布失败（${response.status}）`);
     if (!result?.data) throw new Error('后台未返回已发布的数据。');
     return normalizeDashboardTargets(result.data);
+  }
+
+  async function publishExport(exported, sourceAsOf, publishKey) {
+    if (!EXPORT_ENDPOINT || EXPORT_ENDPOINT === SYNC_ENDPOINT) throw new Error('统计结果云端存储尚未配置。');
+    const response = await fetch(EXPORT_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': exported.blob.type || 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'X-Fixed-Plan-Key': publishKey,
+        'X-Fixed-Plan-Filename': encodeURIComponent(exported.name),
+        'X-Fixed-Plan-Source-As-Of': sourceAsOf,
+      },
+      body: exported.blob,
+    });
+    let result = null;
+    try { result = await response.json(); } catch (_) {}
+    if (!response.ok) throw new Error(result?.error || `统计结果上传失败（${response.status}）`);
+    return result?.data || null;
   }
 
   function openDb() {
@@ -220,8 +239,10 @@
 
   function updateRunButton() {
     const button = document.getElementById('fpRunImport');
+    const downloadButton = document.getElementById('fpModalDownload');
     const publishKey = text(document.getElementById('fpPublishKey')?.value);
     if (button) button.disabled = state.busy || !state.fixed || !state.payment || !publishKey || !SYNC_ENDPOINT;
+    if (downloadButton) downloadButton.disabled = state.busy || !SYNC_ENDPOINT;
   }
 
   function mostCommon(counter) {
@@ -474,6 +495,8 @@
       state.priorData = published;
       localStorage.setItem(STORAGE_KEY, JSON.stringify(published));
       window.dispatchEvent(new CustomEvent('fixed-plan-data-updated', { detail: published }));
+      setProgress('working', '正在保存统计结果', '正在将受口令保护的 Excel 保存到云端，供其他浏览器下载...');
+      await publishExport(exported, published.source_as_of, publishKey);
       setProgress('success', '公共看板已更新', `${published.period} · 整体明细计算 ${pct(analysis.calculatedOverallRate)} · 已生成 ${exported.name}`);
     } catch (error) {
       console.error(error);
@@ -496,14 +519,39 @@
   }
 
   async function downloadExport() {
+    let cached = null;
+    try { cached = await getCachedExport(); } catch (_) {}
     try {
-      const cached = await getCachedExport();
-      if (!cached?.blob) {
-        openModal();
-        setProgress('error', '暂无可下载文件', '请先选择当天两份源表并完成更新。');
+      if (cached?.blob) {
+        triggerDownload(cached.blob, cached.name || '固定计划绑定人明细_统计结果.xlsx');
         return;
       }
-      triggerDownload(cached.blob, cached.name || '固定计划绑定人明细_统计结果.xlsx');
+      openModal();
+      const publishKey = text(document.getElementById('fpPublishKey')?.value);
+      if (!publishKey) {
+        setProgress('error', '请输入下载口令', '当前浏览器没有本地文件，请输入发布口令后下载云端统计结果。');
+        document.getElementById('fpPublishKey')?.focus();
+        return;
+      }
+      if (!EXPORT_ENDPOINT || EXPORT_ENDPOINT === SYNC_ENDPOINT) throw new Error('统计结果云端存储尚未配置。');
+      setProgress('working', '正在下载统计结果', '正在验证口令并读取云端 Excel...');
+      const response = await fetch(EXPORT_ENDPOINT, { headers: { 'X-Fixed-Plan-Key': publishKey } });
+      if (!response.ok) {
+        let result = null;
+        try { result = await response.json(); } catch (_) {}
+        throw new Error(result?.error || `统计结果下载失败（${response.status}）`);
+      }
+      const blob = await response.blob();
+      let name = '固定计划绑定人明细_统计结果.xlsx';
+      try { name = decodeURIComponent(response.headers.get('X-Fixed-Plan-Filename') || '') || name; } catch (_) {}
+      try {
+        await setCachedExport({ blob, name, sourceAsOf: response.headers.get('X-Fixed-Plan-Source-As-Of') || '', savedAt: Date.now() });
+      } catch (_) {}
+      state.exportReady = true;
+      state.exportName = name;
+      bindPageActions();
+      triggerDownload(blob, name);
+      setProgress('success', '统计结果已下载', `${name} 已保存，并缓存到当前浏览器。`);
     } catch (error) {
       openModal();
       setProgress('error', '下载失败', error.message || '请重新上传并生成统计结果。');
@@ -514,7 +562,7 @@
     return `<div class="fp-import-modal" id="fpImportModal" hidden>
       <div class="fp-import-backdrop" data-close-fixed-import></div>
       <section class="fp-import-dialog" role="dialog" aria-modal="true" aria-labelledby="fpImportTitle">
-        <header class="fp-import-head"><div><span>每日数据更新</span><h2 id="fpImportTitle">更新固定计划看板</h2><p>源表只在当前浏览器中处理；后台仅接收不含姓名和学员ID的汇总指标。</p></div><button class="fp-import-close" type="button" data-close-fixed-import aria-label="关闭">×</button></header>
+        <header class="fp-import-head"><div><span>每日数据更新</span><h2 id="fpImportTitle">更新固定计划看板</h2><p>源表在当前浏览器中处理；后台保存汇总指标和受口令保护的统计结果文件。</p></div><button class="fp-import-close" type="button" data-close-fixed-import aria-label="关闭">×</button></header>
         <div class="fp-import-body">
           <div class="fp-upload-grid">
             <label class="fp-upload-file"><input id="fpFixedFile" type="file" accept=".xlsx,.xls"><span class="fp-upload-file-icon">01</span><b>固定计划绑定人明细</b><small>选择当天原始固定明细</small><em data-file-status="fixed">未选择文件</em></label>
@@ -524,7 +572,7 @@
             <div><label>自动统计范围</label><b id="fpUploadScope">等待付费明细校验</b><small>以付费表中最新首单月份为本月，并自动纳入上月。</small></div>
             <div><label for="fpOverallOverride">整体固定率（可选）</label><div class="fp-percent-input"><input id="fpOverallOverride" type="number" min="0" max="100" step="0.01" placeholder="按明细自动计算"><span>%</span></div><small>若业务平台有最终确认值可填写；留空则使用明细计算值。</small></div>
           </div>
-          <div class="fp-publish-setting"><div><label for="fpPublishKey">公共看板发布口令</label><input id="fpPublishKey" type="password" autocomplete="off" placeholder="输入实习生更新口令"><small>口令仅在点击发布时发送，不写入网页、不保存在浏览器中。</small></div><span class="fp-sync-badge ${SYNC_ENDPOINT ? 'ready' : 'offline'}">${SYNC_ENDPOINT ? '公共同步已连接' : '公共同步待配置'}</span></div>
+          <div class="fp-publish-setting"><div><label for="fpPublishKey">公共看板发布 / 下载口令</label><input id="fpPublishKey" type="password" autocomplete="off" placeholder="输入实习生更新口令"><small>口令仅在点击发布或下载时发送，不写入网页、不保存在浏览器中。</small></div><span class="fp-sync-badge ${SYNC_ENDPOINT ? 'ready' : 'offline'}">${SYNC_ENDPOINT ? '公共同步已连接' : '公共同步待配置'}</span></div>
           <div class="fp-import-progress" id="fpImportProgress"><b>等待上传</b><span>两份文件校验通过后即可更新看板。</span></div>
         </div>
         <footer class="fp-import-footer"><button class="fp-import-secondary" type="button" id="fpModalDownload">下载已有统计结果</button><button class="fp-import-primary" type="button" id="fpRunImport" disabled>发布并更新公共看板</button></footer>
@@ -565,11 +613,11 @@
     if (openButton) openButton.onclick = openModal;
     if (downloadButton) {
       downloadButton.onclick = downloadExport;
-      downloadButton.disabled = !state.exportReady;
-      downloadButton.title = state.exportReady ? `下载 ${state.exportName}` : '首次使用请先上传两份源表';
+      downloadButton.disabled = false;
+      downloadButton.title = state.exportReady ? `下载 ${state.exportName}` : '输入发布口令下载云端统计结果';
     }
     const modalDownload = document.getElementById('fpModalDownload');
-    if (modalDownload) modalDownload.disabled = !state.exportReady;
+    if (modalDownload) modalDownload.disabled = state.busy || !SYNC_ENDPOINT;
   }
 
   restoreSavedDashboard();
@@ -579,7 +627,7 @@
     state.exportReady = Boolean(cached?.blob);
     state.exportName = cached?.name || '';
     bindPageActions();
-  }).catch(() => {});
+  }).catch(() => { bindPageActions(); });
 
   window.FixedPlanImporter = { open: openModal, download: downloadExport, bindPageActions };
 })();
