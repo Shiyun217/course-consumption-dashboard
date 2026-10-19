@@ -1355,7 +1355,7 @@ function exportPersonTableImage(){
   let y=titleHeight; let x=0;
   ctx.fillStyle='#eef6ff'; ctx.fillRect(0,y,width,headerHeight);
   values[0].forEach((value,index)=>{ drawCell(value,x,y,widths[index],headerHeight,{fill:'#4d6b8e',font:`700 12px ${font}`,align:'center'}); x+=widths[index]; });
-  values.slice(1).forEach((row,rowIndex)=>{ y+=headerHeight; ctx.fillStyle=rowIndex%2?'#ffffff':'#f9fcff'; ctx.fillRect(0,y,width,rowHeight); x=0; row.forEach((value,index)=>{ const align=index===0||index===3||index===4||index===5||index===6||index===7?'center':'left'; const color=index===4?'#2f7dda':(index===5||index===6?(String(value).startsWith('-')?'#c65463':'#2e9570'):'#2c3c55'); drawCell(value,x,y,widths[index],rowHeight,{fill:color,font:index===2?`700 14px ${font}`:`14px ${font}`,align}); x+=widths[index]; }); ctx.fillStyle='#d6e6f7'; ctx.fillRect(0,y+rowHeight-1,width,1); });
+  values.slice(1).forEach((row,rowIndex)=>{ y=titleHeight+headerHeight+rowIndex*rowHeight; ctx.fillStyle=rowIndex%2?'#ffffff':'#f9fcff'; ctx.fillRect(0,y,width,rowHeight); x=0; row.forEach((value,index)=>{ const align=index===0||index===3||index===4||index===5||index===6||index===7?'center':'left'; const color=index===4?'#2f7dda':(index===5||index===6?(String(value).startsWith('-')?'#c65463':'#2e9570'):'#2c3c55'); drawCell(value,x,y,widths[index],rowHeight,{fill:color,font:index===2?`700 14px ${font}`:`14px ${font}`,align}); x+=widths[index]; }); ctx.fillStyle='#d6e6f7'; ctx.fillRect(0,y+rowHeight-1,width,1); });
   ctx.fillStyle='#9aaec7'; ctx.font=`12px ${font}`; ctx.textAlign='right'; ctx.fillText(`共 ${values.length-1} 位 SS`,width-24,height-18);
   canvas.toBlob(blob=>{ if(!blob) return; const link=document.createElement('a'); link.download=`个人明细风险表-${DATA.currentDate}.png`; link.href=URL.createObjectURL(blob); link.click(); setTimeout(()=>URL.revokeObjectURL(link.href),1000); },'image/png');
 }
@@ -1408,6 +1408,9 @@ renderShell(); renderMain();
 </html>
 """
     html = html.replace("__PAYLOAD__", payload)
+    html = html.replace("个人明细风险表", "课耗个人明细表")
+    html = html.replace("RISK DETAIL", "COURSE DETAIL")
+    html = html.replace(r"\u4e2a\u4eba\u660e\u7ec6\u98ce\u9669\u8868", r"\u8bfe\u8017\u4e2a\u4eba\u660e\u7ec6\u8868")
     output_path.write_text(html, encoding="utf-8")
 
 def main():
