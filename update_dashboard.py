@@ -784,6 +784,8 @@ def build_dashboard_data(history, diagnostics, report_date):
                     if account in name_map and name_map[account] != name:
                         raise ValueError(f'人员名单姓名冲突: {account}')
                     name_map[account] = name
+    # User-confirmed names take precedence over roster display names.
+    name_map.update({'yangyuna': '杨玉娜', 'yangyuna01': '杨玉娜'})
     current_date = latest_date(history, "groups") or report_date.isoformat()
     prior_date = previous_date(history, "groups", current_date)
     target = stage_target_for_date(current_date)
