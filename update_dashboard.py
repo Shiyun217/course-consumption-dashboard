@@ -1,4 +1,5 @@
 import argparse
+import csv
 import json
 import math
 import re
@@ -772,6 +773,17 @@ def seed_month_benchmarks(history):
 
 
 def build_dashboard_data(history, diagnostics, report_date):
+    roster_path = Path(__file__).resolve().parent.parent / 'reference' / '港澳人员名单_20261019.csv'
+    name_map = {}
+    if roster_path.exists():
+        with roster_path.open(encoding='utf-8-sig', newline='') as roster:
+            for person in csv.DictReader(roster):
+                account = (person.get('crm_name') or '').strip()
+                name = (person.get('name_cn') or '').strip()
+                if account and name and name != '\\N':
+                    if account in name_map and name_map[account] != name:
+                        raise ValueError(f'人员名单姓名冲突: {account}')
+                    name_map[account] = name
     current_date = latest_date(history, "groups") or report_date.isoformat()
     prior_date = previous_date(history, "groups", current_date)
     target = stage_target_for_date(current_date)
@@ -830,6 +842,9 @@ def build_dashboard_data(history, diagnostics, report_date):
             }
         )
     person_rows.sort(key=lambda item: (-item["rate"], item["group"], item["ss"]))
+    for person in person_rows:
+        person['ss_account'] = person['ss']
+        person['ss'] = name_map.get(person['ss'], person['ss'])
 
     trend = []
     for date in sorted({row["date"] for row in history["groups"]}):
