@@ -950,7 +950,7 @@ def render_html(data, output_path):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>51Talk 学科运营智能驾驶舱</title>
-  <link rel="stylesheet" href="fixed-plan.css?v=20260909-import-fix">
+  <link rel="stylesheet" href="fixed-plan.css?v=20261020-sticky-header">
   <link rel="stylesheet" href="course-history.css">
   <link rel="stylesheet" href="core-overview.css">
   <link rel="stylesheet" href="dashboard-large-type.css?v=20260826">

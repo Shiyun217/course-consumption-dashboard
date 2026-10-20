@@ -254,7 +254,7 @@
 .fp-latest-table th { padding: 14px 16px; color: #485b72; background: #f4f8fc; text-align: right; font-size: 13px; }
 .fp-latest-table thead th {
   position: sticky;
-  top: var(--toolbar-h);
+  top: var(--toolbar-h, 68px);
   z-index: 8;
   box-shadow: 0 1px 0 #d6e6f7, 0 8px 14px rgba(39,76,115,.09);
 }
@@ -325,5 +325,11 @@
   .fp-latest-overview,.fp-latest-analysis,.fp-action-grid { grid-template-columns: 1fr; }
   .fp-latest-kpi { min-height: 290px; }
   .fp-latest-hero h1 { font-size: 30px; }
-  .fp-latest-groups .table-wrap { overflow-x: auto; }
+  /* Keep the column labels in the table's scroll area on narrow screens. */
+  .fp-latest-groups .table-wrap {
+    max-height: calc(100vh - var(--toolbar-h, 68px) - 16px);
+    max-height: calc(100dvh - var(--toolbar-h, 68px) - 16px);
+    overflow: auto;
+  }
+  .fp-latest-table thead th { top: 0; }
 }
