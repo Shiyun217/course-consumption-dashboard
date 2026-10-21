@@ -633,12 +633,13 @@ def stage_target_for_date(date_text):
 
 def stage_target_label(date_text):
     current = datetime.strptime(date_text, "%Y-%m-%d").date() if isinstance(date_text, str) else date_text
-    label_suffix = "\u53f7\u9636\u6bb5\u76ee\u6807"
+    if current.year == 2026 and current.month == 10 and 20 <= current.day <= 25:
+        return "10月三阶段（10.20-10.25）目标 52%"
     for milestone in STAGE_TARGETS:
         if current.day <= milestone["day"]:
-            return f"{milestone['day']}{label_suffix} {milestone['target'] * 100:.0f}%"
+            return f"{milestone['day']}号阶段目标 {milestone['target'] * 100:.0f}%"
     milestone = STAGE_TARGETS[-1]
-    return f"{milestone['day']}{label_suffix} {milestone['target'] * 100:.0f}%"
+    return f"{milestone['day']}号阶段目标 {milestone['target'] * 100:.0f}%"
 
 
 def same_day_previous_month(date_text):
@@ -785,7 +786,7 @@ def build_dashboard_data(history, diagnostics, report_date):
                         raise ValueError(f'人员名单姓名冲突: {account}')
                     name_map[account] = name
     # User-confirmed names take precedence over roster display names.
-    name_map.update({'yangyuna': '杨玉娜', 'yangyuna01': '杨玉娜'})
+    name_map.update({'yangyuna': '杨玉娜', 'yangyuna01': '杨玉娜', 'chenwenjian': '陈文建'})
     current_date = latest_date(history, "groups") or report_date.isoformat()
     prior_date = previous_date(history, "groups", current_date)
     target = stage_target_for_date(current_date)
