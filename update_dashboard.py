@@ -774,7 +774,7 @@ def seed_month_benchmarks(history):
 
 
 def build_dashboard_data(history, diagnostics, report_date):
-    roster_path = Path(__file__).resolve().parent.parent / 'reference' / '港澳人员名单_20261019.csv'
+    roster_path = Path(__file__).resolve().parent.parent / 'reference' / '港澳人员名单_20261028.csv'
     name_map = {}
     if roster_path.exists():
         with roster_path.open(encoding='utf-8-sig', newline='') as roster:
