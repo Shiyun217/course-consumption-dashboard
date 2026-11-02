@@ -29,20 +29,22 @@ STAGE_TARGETS = [
 HISTORICAL_DISTRIBUTION_MONTHS = [
     "2501", "2502", "2503", "2504", "2505", "2506", "2507", "2508", "2509", "2510",
     "2511", "2512", "2601", "2602", "2603", "2604", "2605", "2606", "2607", "2608",
+    "2609", "2610",
 ]
 HISTORICAL_DISTRIBUTION_BUCKETS = [
-    {"label": ">=15", "values": [0.2982, 0.3395, 0.3999, 0.3743, 0.3741, 0.3611, 0.3999, 0.3837, 0.3628, 0.3322, 0.3119, 0.3267, 0.3306, 0.2516, 0.3321, 0.3091, 0.3176, 0.3230, 0.3542, 0.3498]},
-    {"label": "12<=x<15", "values": [0.2349, 0.2244, 0.2292, 0.2450, 0.2475, 0.2530, 0.2402, 0.2423, 0.2713, 0.2737, 0.2861, 0.3002, 0.3118, 0.3038, 0.3250, 0.3329, 0.3250, 0.3372, 0.3317, 0.3365]},
-    {"label": "10<=x<12", "values": [0.1258, 0.1107, 0.1050, 0.1069, 0.1040, 0.1106, 0.0987, 0.0937, 0.0985, 0.1018, 0.1009, 0.0992, 0.0904, 0.1058, 0.0940, 0.1063, 0.0970, 0.0988, 0.0840, 0.0815]},
-    {"label": "8<=x<10", "values": [0.0722, 0.0655, 0.0488, 0.0547, 0.0519, 0.0519, 0.0473, 0.0462, 0.0567, 0.0561, 0.0574, 0.0527, 0.0502, 0.0615, 0.0465, 0.0506, 0.0480, 0.0452, 0.0430, 0.0418]},
-    {"label": "0<x<8", "values": [0.1509, 0.1450, 0.1162, 0.1194, 0.1188, 0.1188, 0.1132, 0.1132, 0.1170, 0.1325, 0.1405, 0.1244, 0.1229, 0.1650, 0.1126, 0.1113, 0.1140, 0.1096, 0.1033, 0.0934]},
-    {"label": "x=0", "values": [0.1180, 0.1152, 0.1011, 0.0890, 0.1040, 0.1040, 0.1000, 0.1210, 0.0930, 0.1047, 0.1030, 0.0960, 0.0940, 0.1122, 0.0890, 0.0830, 0.0910, 0.0900, 0.0830, 0.0970]},
+    {"label": ">=15", "values": [0.2982, 0.3395, 0.3999, 0.3743, 0.3741, 0.3611, 0.3999, 0.3837, 0.3628, 0.3322, 0.3119, 0.3267, 0.3306, 0.2516, 0.3321, 0.3091, 0.3176, 0.3230, 0.3542, 0.3498, 0.2732, 0.2802]},
+    {"label": "12<=x<15", "values": [0.2349, 0.2244, 0.2292, 0.2450, 0.2475, 0.2530, 0.2402, 0.2423, 0.2713, 0.2737, 0.2861, 0.3002, 0.3118, 0.3038, 0.3250, 0.3329, 0.3250, 0.3372, 0.3317, 0.3365, 0.3683, 0.3825]},
+    {"label": "10<=x<12", "values": [0.1258, 0.1107, 0.1050, 0.1069, 0.1040, 0.1106, 0.0987, 0.0937, 0.0985, 0.1018, 0.1009, 0.0992, 0.0904, 0.1058, 0.0940, 0.1063, 0.0970, 0.0988, 0.0840, 0.0815, 0.1037, 0.0981]},
+    {"label": "8<=x<10", "values": [0.0722, 0.0655, 0.0488, 0.0547, 0.0519, 0.0519, 0.0473, 0.0462, 0.0567, 0.0561, 0.0574, 0.0527, 0.0502, 0.0615, 0.0465, 0.0506, 0.0480, 0.0452, 0.0430, 0.0418, 0.0500, 0.0445]},
+    {"label": "0<x<8", "values": [0.1509, 0.1450, 0.1162, 0.1194, 0.1188, 0.1188, 0.1132, 0.1132, 0.1170, 0.1325, 0.1405, 0.1244, 0.1229, 0.1650, 0.1126, 0.1113, 0.1140, 0.1096, 0.1033, 0.0934, 0.1210, 0.1110]},
+    {"label": "x=0", "values": [0.1180, 0.1152, 0.1011, 0.0890, 0.1040, 0.1040, 0.1000, 0.1210, 0.0930, 0.1047, 0.1030, 0.0960, 0.0940, 0.1122, 0.0890, 0.0830, 0.0910, 0.0900, 0.0830, 0.0970, 0.0838, 0.0836]},
 ]
 HISTORICAL_AVG_COMPLETION = {
     "months": HISTORICAL_DISTRIBUTION_MONTHS,
     "values": [
         10.7334, 10.8909, 11.8686, 11.6095, 11.6787, 11.5761, 12.3370, 12.0261, 11.8916, 11.3197,
         11.0966, 11.4964, 11.6286, 10.4880, 11.6537, 11.2705, 11.4885, 11.8806, 12.7408, 12.6807,
+        11.6317, 11.7680,
     ],
 }
 LIFECYCLE_COLUMNS = ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M12+", "overall"]
@@ -68,6 +70,7 @@ LIFECYCLE_PERFORMANCE = [
     {"month": "2607", "values": [0.9005, 0.8387, 0.8088, 0.7686, 0.7139, 0.7253, 0.6554, 0.6804, 0.6091, 0.6229, 0.6221, 0.5945, 0.6122, 0.6740]},
     {"month": "2608", "values": [0.9132, 0.8578, 0.8308, 0.7900, 0.7491, 0.7309, 0.7025, 0.6806, 0.6535, 0.6289, 0.6339, 0.6378, 0.6044, 0.6732]},
     {"month": "2609", "values": [0.8248, 0.7948, 0.7547, 0.7585, 0.7263, 0.7105, 0.5882, 0.6132, 0.5647, 0.5876, 0.5730, 0.6120, 0.5576, 0.6213]},
+    {"month": "2610", "values": [0.8713, 0.8189, 0.7710, 0.7664, 0.7614, 0.7521, 0.7081, 0.6159, 0.5977, 0.6183, 0.6313, 0.5840, 0.5786, 0.6475]},
 ]
 
 
@@ -507,6 +510,7 @@ def read_source_summary(path, report_date):
     lifecycle_m0_excluded = 0
     days_in_month = monthrange(report_date.year, report_date.month)[1]
     month_progress = report_date.day / days_in_month
+    is_settlement = report_date.day == days_in_month
     excluded_core = defaultdict(int)
 
     for row in sheet.iter_rows(min_row=2, max_col=64, values_only=True):
@@ -532,7 +536,7 @@ def read_source_summary(path, report_date):
 
         ss = row[index["当前SS"]] or "空白"
         booked = clean_number(row[index["当月已约未上课次"]])
-        expected = completed + booked
+        expected = completed if is_settlement else completed + booked
         target = 12 if low_min == 0 else low_min
         qualified = 1 if expected >= target else 0
         core_completed_total += completed
@@ -608,6 +612,7 @@ def read_source_summary(path, report_date):
             "missing_first_payment": lifecycle_missing_first_payment,
             "m0_excluded": lifecycle_m0_excluded,
         },
+        "is_settlement": is_settlement,
         "excluded_groups": dict(excluded_core),
     }
     return upsert_payload, diagnostics
@@ -905,6 +910,7 @@ def build_dashboard_data(history, diagnostics, report_date):
 
     return {
         "currentDate": current_date,
+        "isSettlement": diagnostics.get("is_settlement", False),
         "priorDate": prior_date,
         "lastMonthDate": last_month_date,
         "target": target,
@@ -1088,7 +1094,7 @@ def render_html(data, output_path):
     .history-summary-item { padding: 12px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-2); }
     .history-summary-item span { display: block; color: var(--muted); font-size: 12px; margin-bottom: 6px; }
     .history-summary-item b { font-size: 20px; color: var(--brand); }
-    .stacked-chart { display: grid; grid-template-columns: repeat(20,minmax(34px,1fr)); align-items: end; gap: 8px; min-width: 820px; height: 260px; padding: 8px 0 0; }
+    .stacked-chart { display: grid; grid-template-columns: repeat(22,minmax(34px,1fr)); align-items: end; gap: 8px; min-width: 940px; height: 260px; padding: 8px 0 0; }
     .stack-month { display: grid; grid-template-rows: 1fr 22px; gap: 6px; height: 100%; text-align: center; color: var(--muted); font-size: 11px; }
     .stack-bar { align-self: end; height: 220px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; border-radius: 8px 8px 4px 4px; background: var(--surface-3); border: 1px solid var(--line); }
     .stack-segment { min-height: 1px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.92); font-size: 10px; font-weight: 760; line-height: 1; text-shadow: 0 1px 2px rgba(0,0,0,.28); }
@@ -1162,6 +1168,11 @@ function esc(v){ return String(v??'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'
 function groups(){ return DATA.groupRows.filter(r=>r.group!=='\u603b\u8ba1'); }
 function total(){ return DATA.groupRows.find(r=>r.group==='\u603b\u8ba1') || {}; }
 function currentTarget(){ return DATA.target || target || .66; }
+function completionLabel(){ return DATA.isSettlement?'\u5b9e\u9645\u5b8c\u8bfe\u8fbe\u6807\u7387':'\u9884\u8ba1\u5b8c\u8bfe\u7387'; }
+function monthLabel(code){ const value=String(code||''); return value.length===4?`20${value.slice(0,2)}\u5e74${Number(value.slice(2))}\u6708`:value; }
+function yoyIndex(months,current){ const value=String(current||''); const candidate=String(Number(value.slice(0,2))-1).padStart(2,'0')+value.slice(2); const index=months.indexOf(candidate); return index>=0?index:0; }
+const GROUP_LABELS={'BJ-JWSS01\u5c0f\u7ec4':'\u5317\u4eac1\u7ec4','BJ-JWSS02\u5c0f\u7ec4':'\u5317\u4eac2\u7ec4','BJ-JWSS04\u5c0f\u7ec4':'\u5317\u4eac4\u7ec4','BJ-JWSS07\u5c0f\u7ec4':'\u5317\u4eac7\u7ec4','GZ-SS01\u5c0f\u7ec4':'\u5e7f\u5dde1\u7ec4','GZ-SS04\u5c0f\u7ec4':'\u5e7f\u5dde4\u7ec4'};
+function shortGroup(group){ return GROUP_LABELS[group]||group||'-'; }
 function status(row){ const t=currentTarget(); if(row.rate>=t) return ['\u5df2\u8fbe\u6807','tag-ok']; if(row.rate>=t-.02) return ['\u63a5\u8fd1\u76ee\u6807','tag-neutral']; if(row.rate>=Math.max(0,t-.06)) return ['\u5f85\u63d0\u5347','tag-warn']; return ['\u91cd\u70b9\u8ddf\u8fdb','tag-risk']; }
 function riskLevel(row){ const t=currentTarget(); if(row.rate>=t) return ['\u4f4e','tag-ok']; if(row.rate>=t-.02) return ['\u4e2d','tag-neutral']; if(row.rate>=Math.max(0,t-.06)) return ['\u9ad8','tag-warn']; return ['\u7d27\u6025','tag-risk']; }
 function metricCard(name, value, type, metric, icon, goalText){
@@ -1173,7 +1184,8 @@ function metricCard(name, value, type, metric, icon, goalText){
 function primaryKpiCard(){
   const c=DATA.completionRate, t=total();
   const completionWidth=Math.max(0,Math.min((c.current||0)*100,100));
-  return `<section class="kpi kpi-primary"><div class="kpi-head"><span>\u9884\u8ba1\u5b8c\u8bfe\u7387</span><span class="kpi-icon">\u25c9</span></div><div class="kpi-primary-grid"><div class="kpi-primary-metric"><span>\u9884\u8ba1\u5b8c\u8bfe\u7387</span><b>${pct(c.current)}</b></div><div class="kpi-primary-metric secondary"><span>\u8ddd ${DATA.targetLabel||'\u9636\u6bb5\u76ee\u6807'}</span><b>${pct(t.gap_rate)}</b></div></div><div class="progress"><span style="width:${completionWidth}%"></span></div><div class="kpi-meta"><div class="kpi-meta-row"><span>\u6628\u65e5 ${pct(c.prior)}</span><b class="${cls(c.delta)}">${signedPct(c.delta)}</b></div><div class="kpi-meta-row"><span>\u4e0a\u6708\u540c\u65e5 ${pct(c.last_month)}</span><b class="${cls(c.last_month_delta)}">${signedPct(c.last_month_delta)}</b></div></div></section>`;
+  const gap=t.rate-currentTarget();
+  return `<section class="kpi kpi-primary"><div class="kpi-head"><span>${completionLabel()}</span><span class="kpi-icon">\u25c9</span></div><div class="kpi-primary-grid"><div class="kpi-primary-metric"><span>${completionLabel()}</span><b>${pct(c.current)}</b></div><div class="kpi-primary-metric secondary"><span>${gap>=0?'\u8d85\u51fa':'\u8ddd'} ${DATA.targetLabel||'\u9636\u6bb5\u76ee\u6807'}</span><b>${pct(Math.abs(gap))}</b></div></div><div class="progress"><span style="width:${completionWidth}%"></span></div><div class="kpi-meta"><div class="kpi-meta-row"><span>${DATA.isSettlement?'\u7ed3\u7b97\u524d\u4e00\u65e5':'\u6628\u65e5'} ${pct(c.prior)}</span><b class="${cls(c.delta)}">${signedPct(c.delta)}</b></div><div class="kpi-meta-row"><span>\u4e0a\u6708\u540c\u65e5 ${pct(c.last_month)}</span><b class="${cls(c.last_month_delta)}">${signedPct(c.last_month_delta)}</b></div></div></section>`;
 }
 function buildInsights(){
   const t=total(), gs=groups();
@@ -1184,7 +1196,7 @@ function buildInsights(){
   const below=gs.filter(g=>g.rate < t.rate).map(g=>g.group).slice(0,2).join('\u3001') || '\u6682\u65e0';
   const gapStudents=Math.max(t.gap_students||0,0);
   return {best,fastest,weakest,below,stageLabel,
-    core:`\u5f53\u524d\u9884\u8ba1\u5b8c\u8bfe\u7387 ${pct(t.rate)}\uff0c\u8f83\u6628\u65e5 ${signedPct(t.lift)}\uff1b\u5bf9\u7167${stageLabel}\uff0c${gapStudents>0?`\u8fd8\u5dee\u7ea6 ${num(gapStudents,0)} \u4eba`:'\u5df2\u8d85\u8fc7\u9636\u6bb5\u76ee\u6807'}\u3002`,
+    core:`\u5f53\u524d${completionLabel()} ${pct(t.rate)}\uff0c\u8f83${DATA.isSettlement?'\u7ed3\u7b97\u524d\u4e00\u65e5':'\u6628\u65e5'} ${signedPct(t.lift)}\uff1b\u5bf9\u7167${stageLabel}\uff0c${gapStudents>0?`\u8fd8\u5dee\u7ea6 ${num(gapStudents,0)} \u4eba`:'\u5df2\u8d85\u8fc7\u9636\u6bb5\u76ee\u6807'}\u3002`,
     bright:`${best.group||'-'} \u5f53\u524d\u6700\u9ad8 ${pct(best.rate)}\uff1b${fastest.group||'-'} \u65e5\u73af\u6bd4\u63d0\u5347\u6700\u5feb ${signedPct(fastest.lift)}\uff0c\u5efa\u8bae\u6c89\u6dc0\u4e3a\u6807\u6746\u52a8\u4f5c\u3002`,
     risk:`${weakest.group||'-'} \u5f53\u524d ${pct(weakest.rate)}\uff0c\u4f4e\u4e8e\u6574\u4f53\u6c34\u5e73\u7684\u5c0f\u7ec4\uff1a${below}\u3002\u7ed3\u5408\u5468\u62a5\u65b9\u5411\uff0c\u4f18\u5148\u770b\u56fa\u5b9a\u8ba1\u5212\u30010\u8bfe\u8017\u548c\u95ed\u73af\u8ddf\u8fdb\u3002`
   };
@@ -1201,11 +1213,13 @@ function renderShell(){
 }
 function renderHero(){
   const d=DATA, t=total(), ins=buildInsights();
-  return `<section class="section-card"><div class="section-head"><div class="section-title-wrap"><div class="section-index">01</div><div><h2 class="section-title">\u8bfe\u8017\u8fd0\u8425\u603b\u89c8</h2><div class="section-sub">\u4ec5\u5c55\u793a\u6e2f\u6fb3 SS \u00b7 \u5f53\u6708\u8fc7\u7a0b\u6307\u6807\u4e0e\u4e0a\u6708\u540c\u65e5\u5bf9\u6bd4</div></div></div><div class="section-mark">COURSE COMMAND</div></div><div class="hero"><div class="date-card"><div class="date-row"><span>\u5f53\u524d\u65e5\u671f</span><b>${d.currentDate}</b></div><div class="date-row"><span>\u5bf9\u6bd4\u65e5\u671f</span><b>${d.priorDate||'-'}</b></div><div class="date-row"><span>\u4e0a\u6708\u540c\u65e5</span><b>${d.lastMonthDate||'-'}</b></div></div></div><section class="insight-strip"><div class="insight-card"><div class="label">\u6838\u5fc3\u7ed3\u8bba</div><strong>${pct(t.rate)} / ${signedPct(t.lift)}</strong><p>${ins.core}</p></div><div class="insight-card"><div class="label">\u8868\u73b0\u4eae\u70b9</div><strong>${ins.best.group||'-'}</strong><p>${ins.bright}</p></div><div class="insight-card"><div class="label">\u9996\u8981\u98ce\u9669</div><strong>${ins.weakest.group||'-'}</strong><p>${ins.risk}</p></div></section></section>`;
+  return `<section class="section-card"><div class="section-head"><div class="section-title-wrap"><div class="section-index">01</div><div><h2 class="section-title">\u8bfe\u8017\u8fd0\u8425\u603b\u89c8</h2><div class="section-sub">\u4ec5\u5c55\u793a\u6e2f\u6fb3 SS \u00b7 ${d.isSettlement?'\u6708\u672b\u7ed3\u7b97\u7ed3\u679c\u4e0e\u5386\u53f2\u5bf9\u6bd4':'\u5f53\u6708\u8fc7\u7a0b\u6307\u6807\u4e0e\u4e0a\u6708\u540c\u65e5\u5bf9\u6bd4'}</div></div></div><div class="section-mark">COURSE COMMAND</div></div><div class="hero"><div class="date-card"><div class="date-row"><span>${d.isSettlement?'\u7ed3\u7b97\u65e5\u671f':'\u5f53\u524d\u65e5\u671f'}</span><b>${d.currentDate}</b></div><div class="date-row"><span>\u5bf9\u6bd4\u65e5\u671f</span><b>${d.priorDate||'-'}</b></div><div class="date-row"><span>\u4e0a\u6708\u540c\u65e5</span><b>${d.lastMonthDate||'-'}</b></div></div></div><section class="insight-strip"><div class="insight-card"><div class="label">\u6838\u5fc3\u7ed3\u8bba</div><strong>${pct(t.rate)} / ${signedPct(t.lift)}</strong><p>${ins.core}</p></div><div class="insight-card"><div class="label">\u8868\u73b0\u4eae\u70b9</div><strong>${ins.best.group||'-'}</strong><p>${ins.bright}</p></div><div class="insight-card"><div class="label">\u9996\u8981\u98ce\u9669</div><strong>${ins.weakest.group||'-'}</strong><p>${ins.risk}</p></div></section></section>`;
 }
 function renderKpis(){
   const c=DATA.completionRate, m=DATA.overallMetrics, t=total();
-  return `<section class="section-card"><div class="section-head"><div class="section-title-wrap"><div class="section-index">02</div><div><h2 class="section-title">\u6838\u5fc3 KPI \u533a</h2><div class="section-sub">\u4e3b\u6307\u6807\u653e\u5927\uff0c\u8f85\u52a9\u6307\u6807\u7d27\u51d1\u5bf9\u6bd4</div></div></div><div class="section-mark">KPI MONITOR</div></div><section class="kpis">${primaryKpiCard()}${metricCard('\u8fc7\u7a0b\u6027\u9ad8\u8bfe\u8017\u5360\u6bd4', m.process_high_ratio.current, 'pct', m.process_high_ratio, '\u25a6', '\u8fc7\u7a0b\u6027\u5148\u884c\u6307\u6807')}${metricCard('\u4eba\u5747\u8bfe\u8017', m.avg_consumption.current, 'num', m.avg_consumption, '\u25b5', '\u53c2\u8003\u503c 12')}${metricCard('0\u8bfe\u8017\u5360\u6bd4', m.zero_consumption_ratio.current, 'pct', m.zero_consumption_ratio, '\u25cb', '\u8003\u6838\u5b66\u5458\u4e2d\u5b8c\u8bfe\u91cf\u4e3a0')}${metricCard('\u597d\u5b66\u751f\u7387', m.good_student_rate.current, 'pct1', m.good_student_rate, '\u2605', '\u9ad8\u8d28\u91cf\u5b66\u5458\u589e\u957f')}</section></section>`;
+  const highLabel=DATA.isSettlement?'\u5b9e\u9645\u9ad8\u8bfe\u8017\u8fbe\u6807\u7387':'\u8fc7\u7a0b\u6027\u9ad8\u8bfe\u8017\u5360\u6bd4';
+  const highNote=DATA.isSettlement?'\u6708\u672b\u5b9e\u9645\u7ed3\u7b97\u53e3\u5f84':'\u8fc7\u7a0b\u6027\u5148\u884c\u6307\u6807';
+  return `<section class="section-card"><div class="section-head"><div class="section-title-wrap"><div class="section-index">02</div><div><h2 class="section-title">\u6838\u5fc3 KPI \u533a</h2><div class="section-sub">\u4e3b\u6307\u6807\u653e\u5927\uff0c\u8f85\u52a9\u6307\u6807\u7d27\u51d1\u5bf9\u6bd4</div></div></div><div class="section-mark">KPI MONITOR</div></div><section class="kpis">${primaryKpiCard()}${metricCard(highLabel, m.process_high_ratio.current, 'pct', m.process_high_ratio, '\u25a6', highNote)}${metricCard('\u4eba\u5747\u8bfe\u8017', m.avg_consumption.current, 'num', m.avg_consumption, '\u25b5', '\u53c2\u8003\u503c 12')}${metricCard('0\u8bfe\u8017\u5360\u6bd4', m.zero_consumption_ratio.current, 'pct', m.zero_consumption_ratio, '\u25cb', '\u8003\u6838\u5b66\u5458\u4e2d\u5b8c\u8bfe\u91cf\u4e3a0')}${metricCard('\u597d\u5b66\u751f\u7387', m.good_student_rate.current, 'pct1', m.good_student_rate, '\u2605', '\u9ad8\u8d28\u91cf\u5b66\u5458\u589e\u957f')}</section></section>`;
 }
 function renderTrendChart(){
   const rows=(DATA.trend||[]).slice(-30); const w=760,h=280,pad=34;
@@ -1221,12 +1235,12 @@ function renderBars(){
   return `<div class="bars">${sorted.map(g=>`<div class="bar-row" data-group="${g.group}"><b>${g.group.replace('\u5c0f\u7ec4','')}</b><div class="bar-track"><span class="bar-fill" style="width:${Math.min(g.rate,1)*100}%"></span><i class="avg-line" style="left:${Math.min(t.rate,1)*100}%"></i><i class="target-line" style="left:${target*100}%"></i></div><span class="${g.rate<target?'risk':''}">${pct(g.rate)}</span></div>`).join('')}</div>`;
 }
 function renderAnalysis(){
-  return `<section class="grid-2"><div class="panel"><div class="panel-head"><div><div class="panel-title">\u9884\u8ba1\u5b8c\u8bfe\u7387\u8d8b\u52bf</div><div class="panel-sub">\u6700\u8fd1 30 \u5929 / ${DATA.targetLabel||'\u9636\u6bb5\u76ee\u6807'}\u7ebf</div></div></div><div class="panel-body">${renderTrendChart()}</div></div><div class="panel"><div class="panel-head"><div><div class="panel-title">SS \u5c0f\u7ec4\u8868\u73b0\u6392\u540d</div><div class="panel-sub">\u6a2a\u5411\u6761\u5f62\u56fe\uff0c\u53ef\u70b9\u51fb\u8054\u52a8\u8868\u683c</div></div></div><div class="panel-body">${renderBars()}</div></div></section>`;
+  return `<section class="grid-2"><div class="panel"><div class="panel-head"><div><div class="panel-title">${completionLabel()}\u8d8b\u52bf</div><div class="panel-sub">\u6700\u8fd1 30 \u5929 / ${DATA.targetLabel||'\u9636\u6bb5\u76ee\u6807'}\u7ebf</div></div></div><div class="panel-body">${renderTrendChart()}</div></div><div class="panel"><div class="panel-head"><div><div class="panel-title">SS \u5c0f\u7ec4\u8868\u73b0\u6392\u540d</div><div class="panel-sub">\u6a2a\u5411\u6761\u5f62\u56fe\uff0c\u53ef\u70b9\u51fb\u8054\u52a8\u8868\u683c</div></div></div><div class="panel-body">${renderBars()}</div></div></section>`;
 }
 function historyData(){ return DATA.historicalAnalysis || {distribution:{months:[],buckets:[]}, avgCompletion:{months:[],values:[]}, lifecycle:{columns:[],rows:[]}}; }
 function distBucket(label){ return historyData().distribution.buckets.find(b=>b.label===label) || {values:[]}; }
 function latestDistributionSummary(){
-  const d=historyData().distribution, i=d.months.length-1, p=i-1, yoy=d.months.indexOf('2507');
+  const d=historyData().distribution, i=d.months.length-1, p=Math.max(0,i-1), yoy=yoyIndex(d.months,d.months[i]);
   const val=(label,idx)=>distBucket(label).values[idx]||0;
   const highAt=idx=>val('>=15',idx)+val('12<=x<15',idx);
   const lowAt=idx=>val('0<x<8',idx)+val('x=0',idx);
@@ -1238,14 +1252,16 @@ function latestDistributionSummary(){
 }
 function latestAvgSummary(){
   const a=historyData().avgCompletion || {months:[],values:[]};
-  const i=a.months.length-1, p=i-1, yoy=a.months.indexOf('2507');
+  const i=a.months.length-1, p=Math.max(0,i-1), yoy=yoyIndex(a.months,a.months[i]);
   const current=a.values[i], prior=a.values[p], yoyValue=a.values[yoy];
   const allRows=a.months.map((m,idx)=>({month:m,value:a.values[idx]}));
   const recent=[allRows[yoy], ...allRows.slice(-8)].filter(Boolean);
   return {month:a.months[i], prior:a.months[p], yoyMonth:a.months[yoy], current, priorValue:prior, yoyValue, delta:current-prior, yoyDelta:current-yoyValue, recent};
 }
 function latestLifecycleSummary(){
-  const l=historyData().lifecycle, row=l.rows[l.rows.length-1]||{values:[]}, prior=l.rows[l.rows.length-2]||{values:[]}, yoy=l.rows.find(r=>r.month==='2507')||{values:[]};
+  const l=historyData().lifecycle, row=l.rows[l.rows.length-1]||{values:[]}, prior=l.rows[l.rows.length-2]||{values:[]};
+  const yoyMonth=String(Number(String(row.month||'').slice(0,2))-1).padStart(2,'0')+String(row.month||'').slice(2);
+  const yoy=l.rows.find(r=>r.month===yoyMonth)||l.rows[0]||{values:[]};
   const cols=l.columns.slice(0,-1);
   const cells=cols.map((c,i)=>({col:c, value:row.values[i]}));
   const priorCells=cols.map((c,i)=>({col:c, value:prior.values[i]}));
@@ -1288,23 +1304,41 @@ function renderAvgCompletionChart(){
   const rows=a.recent || [];
   const max=Math.max(...rows.map(r=>r.value), 13), min=Math.min(...rows.map(r=>r.value), 10);
   const bars=rows.map(r=>{ const height=18+((r.value-min)/(max-min||1))*78; const isLatest=r.month===a.month, isYoy=r.month===a.yoyMonth; return `<div class="avg-bar-item"><div class="avg-value">${num(r.value,2)}</div><div class="avg-bar ${isLatest?'is-latest':isYoy?'is-yoy':''}" style="height:${height}%"></div><span>${esc(r.month)}</span></div>`; }).join('');
-  return `<div class="avg-chart">${bars}</div><div class="dist-legend"><span><i class="legend-dot" style="background:#168a5b"></i>${a.month} 8月实际</span><span><i class="legend-dot" style="background:#152b52"></i>近月人均完课量</span></div>`;
+  return `<div class="avg-chart">${bars}</div><div class="dist-legend"><span><i class="legend-dot" style="background:#168a5b"></i>${a.month} 月度结算</span><span><i class="legend-dot" style="background:#152b52"></i>近月人均完课量</span></div>`;
 }
 function renderHistoryInsights(){
   const dist=latestDistributionSummary(), life=latestLifecycleSummary(), avg=latestAvgSummary();
   return `<div class="history-summary"><div class="history-summary-item"><span>\u9ad8\u8bfe\u8017\u5c42\u5360\u6bd4\uff08>=12\uff09</span><b>${pct(dist.high)}</b><div class="${cls(dist.highDelta)}">\u8f83 ${dist.prior} ${signedPct(dist.highDelta)}</div></div><div class="history-summary-item"><span>\u540c\u671f\u4eba\u5747\u5b8c\u8bfe\u91cf</span><b>${num(avg.current,2)}</b><div class="${cls(avg.yoyDelta)}">\u8f83 ${avg.yoyMonth} ${avg.yoyDelta>=0?'+':''}${num(avg.yoyDelta,2)}</div></div><div class="history-summary-item"><span>0\u8bfe\u8017\u5360\u6bd4</span><b>${pct(dist.zero)}</b><div class="${cls(-dist.zeroDelta)}">\u8f83 ${dist.prior} ${signedPct(dist.zeroDelta)}</div></div><div class="history-summary-item"><span>\u751f\u547d\u5468\u671f\u6574\u4f53\u8fbe\u6210</span><b>${pct(life.overall)}</b><div class="${cls(life.overallDelta)}">\u8f83 ${life.prior} ${signedPct(life.overallDelta)}</div></div></div>`;
 }
-function renderDistributionAnalysis(){
+function renderDistributionAnalysisLegacy(){
   const d=latestDistributionSummary();
   return `<div class="analysis-block"><h3>\u4e00\u3001\u8bfe\u8017\u533a\u95f4\u7ed3\u6784\u5206\u6790</h3><ul class="analysis-list"><li><b>8\u6708\u5b9e\u9645\u7ed3\u6784\uff1a</b>${d.month} \u9ad8\u8bfe\u8017\u5c42\uff08>=12\uff09\u5360\u6bd4 ${pct(d.high)}\uff0c\u5176\u4e2d >=15 \u9876\u90e8\u5c42 ${pct(d.top15)}\uff0c12-15 \u4e2d\u9ad8\u8bfe\u8017\u5c42 ${pct(d.high-d.top15)}\uff1b0\u8bfe\u8017 ${pct(d.zero)}\uff0c0-8\u8bfe\u8017\u542b0\u8bfe\u8017\u5408\u8ba1 ${pct(d.low)}\u3002\u8fd9\u8bf4\u660e 8\u6708\u5df2\u7ecf\u5b88\u4f4f\u9ad8\u8bfe\u8017\u57fa\u672c\u76d8\uff0c\u4f46\u672a\u542f\u52a8\u548c\u4f4e\u8bfe\u8017\u6c60\u4ecd\u7136\u662f\u62d6\u4f4e\u6700\u7ec8\u5b8c\u8bfe\u7387\u7684\u5173\u952e\u98ce\u9669\u3002</li><li><b>\u5bf9\u6bd4 7\u6708\uff08${d.prior}\uff09\uff1a</b>>=12 \u9ad8\u8bfe\u8017\u5c42 ${signedPct(d.highDelta)}\uff0c\u57fa\u672c\u6301\u5e73\uff1b>=15 \u9876\u90e8\u5c42 ${signedPct(d.top15Delta)}\uff0c12-15 \u4e2d\u9ad8\u5c42\u8865\u4f4d\uff1b0\u8bfe\u8017 ${signedPct(d.zeroDelta)}\u3002\u7ed3\u8bba\uff1a8\u6708\u4e0d\u662f\u201c\u9ad8\u8bfe\u8017\u4eba\u7fa4\u5927\u5e45\u6269\u5f20\u201d\uff0c\u800c\u662f\u201c\u9ad8\u8bfe\u8017\u5927\u76d8\u7a33\u4f4f\uff0c\u9876\u90e8\u5411\u4e2d\u9ad8\u5c42\u8fc1\u79fb\u201d\u3002\u5bf9\u8001\u677f\u6c47\u62a5\u65f6\u53ef\u4ee5\u76f4\u63a5\u8bf4\uff1a\u76ee\u6807\u8fbe\u6210\u80fd\u529b\u8fd8\u5728\uff0c\u4f46\u8bfe\u8017\u8d28\u91cf\u6ca1\u6709\u6bd47\u6708\u66f4\u5c16\uff0c\u9700\u8981\u628a 12-15 \u5b66\u5458\u518d\u63a8\u4e00\u6b65\u3002</li><li><b>\u5bf9\u6bd4 25\u5e747\u6708\uff08${d.yoyMonth}\uff09\uff1a</b>>=12 \u9ad8\u8bfe\u8017\u5c42 ${signedPct(d.yoyHighDelta)}\uff0c0-8\u4f4e\u8bfe\u8017\u6c60 ${signedPct(d.yoyLowDelta)}\uff0c0\u8bfe\u8017 ${signedPct(d.yoyZeroDelta)}\uff0c\u4f46 >=15 \u9876\u90e8\u5c42 ${signedPct(d.yoyTop15Delta)}\u3002\u7ed3\u8bba\uff1a\u540c\u6bd4\u770b\uff0c\u4eca\u5e74\u7684\u4f4e\u8bfe\u8017\u63a7\u5236\u66f4\u597d\uff0c\u9ad8\u8bfe\u8017\u5e95\u76d8\u66f4\u539a\uff1b\u4f46\u8d85\u9ad8\u8bfe\u8017\u5b66\u5458\u6bd4\u53bb\u5e74\u5c11\uff0c\u8bf4\u660e\u4eca\u5e74\u66f4\u50cf\u201c\u5e7f\u8986\u76d6\u8fbe\u6210\u201d\uff0c\u800c\u4e0d\u662f\u201c\u5c16\u5b50\u5b66\u5458\u62c9\u52a8\u201d\u3002</li><li><b>\u52a8\u4f5c\u65b9\u6848\uff1a</b>\u7b2c\u4e00\uff0c\u628a 10-12 \u548c 12-15 \u4e24\u4e2a\u4e34\u754c\u5c42\u5206\u5f00\u7ba1\uff1a10-12 \u8ffd\u52a012\u8282\u8fbe\u6807\uff0c12-15 \u8ffd\u52a015\u8282\u9ad8\u8d28\u91cf\u6807\u6746\uff1b\u7b2c\u4e8c\uff0c0\u8bfe\u8017\u5b66\u5458\u5355\u72ec\u5efa\u6c60\uff0c\u6309\u672a\u7ea6\u8bfe\u3001\u5bb6\u957f\u65e0\u54cd\u5e94\u3001\u8ba1\u5212\u65ad\u6863\u4e09\u7c7b\u62c6\u89e3\u8ddf\u8fdb\uff1b\u7b2c\u4e09\uff0c>=15 \u5b66\u5458\u505a\u6807\u6746\u6848\u4f8b\u548c\u5c0f\u7ec4\u590d\u76d8\uff0c\u8ba9\u4f18\u79c0 SS \u7684\u9884\u7ea6\u8282\u594f\u3001\u5bb6\u957f\u8bdd\u672f\u548c\u6fc0\u52b1\u70b9\u53d8\u6210\u53ef\u590d\u5236\u52a8\u4f5c\u3002</li></ul></div>`;
 }
-function renderAvgCompletionAnalysis(){
+function renderAvgCompletionAnalysisLegacy(){
   const a=latestAvgSummary();
   return `<div class="analysis-block"><h3>\u4e8c\u3001\u540c\u671f\u4eba\u5747\u5b8c\u8bfe\u91cf\u5206\u6790</h3><ul class="analysis-list"><li><b>8\u6708\u7ed3\u679c\uff1a</b>${a.month} \u4eba\u5747\u5b8c\u8bfe\u91cf ${num(a.current,2)} \u8282\uff0c\u5bf9\u6bd4 7\u6708 ${num(a.priorValue,2)} \u8282\uff0c\u53d8\u5316 ${a.delta>=0?'+':''}${num(a.delta,2)} \u8282\uff1b\u5bf9\u6bd4 25\u5e747\u6708 ${num(a.yoyValue,2)} \u8282\uff0c\u63d0\u5347 ${a.yoyDelta>=0?'+':''}${num(a.yoyDelta,2)} \u8282\u3002</li><li><b>\u7ba1\u7406\u7ed3\u8bba\uff1a</b>8\u6708\u4eba\u5747\u5b8c\u8bfe\u91cf\u548c7\u6708\u57fa\u672c\u6301\u5e73\uff0c\u8bf4\u660e\u6574\u4f53\u8bfe\u8017\u80fd\u529b\u6ca1\u6709\u5931\u901f\uff1b\u4f46\u5728 0\u8bfe\u8017\u5360\u6bd4\u4e0a\u5347\u7684\u60c5\u51b5\u4e0b\uff0c\u4eba\u5747\u503c\u80fd\u7a33\u4f4f\uff0c\u610f\u5473\u7740\u5df2\u5f00\u52a8\u5b66\u5458\u7684\u4e0a\u8bfe\u5f3a\u5ea6\u5728\u6258\u4f4f\u5927\u76d8\u3002</li><li><b>\u5bf9\u8001\u677f\u6c47\u62a5\u53ef\u8bb2\uff1a</b>\u4eca\u5e74 8\u6708\u6bd425\u5e747\u6708\u9ad8 ${num(a.yoyDelta,2)} \u8282\uff0c\u8bf4\u660e\u8bfe\u8017\u8fd0\u8425\u5df2\u7ecf\u4ece\u201c\u8986\u76d6\u5b66\u5458\u201d\u8fdb\u9636\u5230\u201c\u63d0\u5347\u5355\u4f4d\u5b66\u5458\u5b8c\u8bfe\u5f3a\u5ea6\u201d\uff1b\u4e0b\u4e00\u6b65\u4e0d\u662f\u5355\u7eaf\u62c9\u5927\u76d8\u6d3b\u52a8\uff0c\u800c\u662f\u964d\u4f4e 0\u8bfe\u8017\u5e76\u628a\u4e2d\u9ad8\u5c42\u63a8\u5230 15 \u8282\u4ee5\u4e0a\u3002</li><li><b>\u52a8\u4f5c\u65b9\u6848\uff1a</b>\u6bcf\u6708\u4e0a\u65ec\u5efa\u7acb\u201c0\u8bfe\u8017\u542f\u52a8\u7387\u201d\u65e5\u76d1\u63a7\uff0c\u4e2d\u65ec\u628a 8-12 \u8282\u5b66\u5458\u4f5c\u4e3a\u51b2\u523a\u540d\u5355\uff0c\u4e0b\u65ec\u5bf9 12-15 \u8282\u505a\u9ad8\u8bfe\u8017\u51b2\u523a\uff1b\u8fd9\u6837\u624d\u80fd\u540c\u65f6\u62c9\u9ad8\u4eba\u5747\u8bfe\u8017\u548c\u9ad8\u8bfe\u8017\u5360\u6bd4\u3002</li></ul></div>`;
 }
-function renderLifecycleAnalysis(){
+function renderLifecycleAnalysisLegacy(){
   const l=latestLifecycleSummary();
   return `<div class="analysis-block"><h3>\u4e09\u3001\u751f\u547d\u5468\u671f\u8bfe\u8017\u8868\u73b0\u5206\u6790</h3><ul class="analysis-list"><li><b>8\u6708\u5b9e\u9645\u8868\u73b0\uff1a</b>${l.month} \u751f\u547d\u5468\u671f\u6574\u4f53\u9ad8\u8bfe\u8017\u8fbe\u6210 ${pct(l.overall)}\uff0c\u6700\u5f3a\u4e3a ${l.strongest.col} ${pct(l.strongest.value)}\uff0c\u6700\u5f31\u4e3a ${l.weakest.col} ${pct(l.weakest.value)}\u3002M2-M4 \u5df2\u7ecf\u5168\u90e8\u8d85\u8fc7 83%\uff0c\u8bf4\u660e\u65b0\u751f\u542f\u52a8\u8d28\u91cf\u5f88\u5f3a\uff1bM10-M12+ \u57fa\u672c\u843d\u5728 63%-66% \u9644\u8fd1\uff0c\u662f\u4e0b\u4e2a\u6708\u6700\u5e94\u4f18\u5148\u76ef\u7684\u4eba\u7fa4\u3002</li><li><b>\u5bf9\u6bd4 7\u6708\uff08${l.prior}\uff09\uff1a</b>\u6574\u4f53 ${signedPct(l.overallDelta)}\uff0cM1-M3 \u65b0\u751f\u671f ${signedPct(l.earlyDelta)}\uff0cM9-M12+ \u6210\u719f\u671f ${signedPct(l.matureDelta)}\u3002\u7ed3\u8bba\uff1a8\u6708\u6574\u4f53\u6bd47\u6708\u66f4\u9ad8\uff0c\u4e3b\u8981\u4ef7\u503c\u5728\u65b0\u751f\u548c\u4e2d\u524d\u6bb5\u7684\u8bfe\u8017\u8d28\u91cf\u63d0\u5347\uff1b\u4f46\u6210\u719f\u671f\u63d0\u5347\u5e45\u5ea6\u6709\u9650\uff0c\u9700\u8981\u5355\u72ec\u4ece\u201c\u7eed\u8bfe\u610f\u613f\u3001\u7ea6\u8bfe\u60ef\u6027\u3001\u5bb6\u957f\u4f53\u611f\u201d\u4e09\u4e2a\u65b9\u5411\u62c6\u89e3\u3002</li><li><b>\u5bf9\u6bd4 25\u5e747\u6708\uff08${l.yoyMonth}\uff09\uff1a</b>\u6574\u4f53 ${signedPct(l.yoyOverallDelta)}\uff0cM1-M3 \u65b0\u751f\u671f ${signedPct(l.yoyEarlyDelta)}\uff0cM9-M12+ \u6210\u719f\u671f ${signedPct(l.yoyMatureDelta)}\u3002\u7ed3\u8bba\uff1a\u540c\u6bd4\u770b\uff0c\u4eca\u5e74\u751f\u547d\u5468\u671f\u5927\u76d8\u660e\u663e\u66f4\u5f3a\uff0c\u5c24\u5176\u524d\u4e2d\u671f\u5b66\u5458\u7684\u8bfe\u8017\u5df2\u7ecf\u88ab\u62c9\u5230\u8f83\u9ad8\u6c34\u4f4d\uff1b\u98ce\u9669\u5728\u4e8e M11/M12/M12+ \u8001\u751f\u540e\u6bb5\u4ecd\u7136\u4f4e\u4e8e66%\u76ee\u6807\u7ebf\uff0c\u5bb9\u6613\u5728\u6708\u5e95\u6210\u4e3a\u62d6\u540e\u817f\u4eba\u7fa4\u3002</li><li><b>\u52a8\u4f5c\u65b9\u6848\uff1a</b>\u56fa\u5b9a\u8ba1\u5212\u53ea\u9002\u5408\u653e\u5728\u65b0\u751f\u671f\uff0c\u56e0\u6b64 M2-M4 \u8981\u628a\u56fa\u5b9a\u8ba1\u5212\u7684\u8986\u76d6\u548c\u6267\u884c\u7a33\u4f4f\uff1bM5-M9 \u8981\u505a\u8282\u70b9\u8ffd\u8e2a\uff0c\u9632\u6b62\u4ece\u9ad8\u4f4d\u56de\u843d\uff1bM10-M12+ \u4e0d\u5efa\u8bae\u518d\u4ee5\u56fa\u5b9a\u8ba1\u5212\u4e3a\u4e3b\u6293\u624b\uff0c\u5efa\u8bae\u5728 SCRM \u5355\u72ec\u5efa\u7acb\u201c\u6210\u719f\u671f\u4f4e\u8bfe\u8017\u201d\u5206\u7ec4\uff0c\u4e0b\u4e2a\u6708\u8ba9 SS \u6309\u65ad\u6863\u9884\u7ea6\u3001\u5bb6\u957f\u4f53\u611f\u3001\u5b66\u5458\u5174\u8da3\u8870\u51cf\u4e09\u7c7b\u8fdb\u884c\u8ddf\u8fdb\u548c\u5524\u9192\u3002</li></ul></div>`;
+}
+function renderDistributionAnalysis(){
+  const d=latestDistributionSummary();
+  const current=monthLabel(d.month), prior=monthLabel(d.prior), yoy=monthLabel(d.yoyMonth);
+  const structure=d.highDelta>=0?'高课耗基本盘继续扩大':'高课耗基本盘有所回落';
+  const activation=d.zeroDelta<=0?'未启动学员控制改善':'未启动学员占比回升';
+  return `<div class="analysis-block"><h3>一、课耗区间结构分析</h3><ul class="analysis-list"><li><b>${current}结算结构：</b>高课耗层（>=12）占比 ${pct(d.high)}，其中 >=15 顶部层 ${pct(d.top15)}、12-15 中高层 ${pct(d.high-d.top15)}；0课耗 ${pct(d.zero)}，0-8课耗合计 ${pct(d.low)}。</li><li><b>环比 ${prior}：</b>>=12 高课耗层 ${signedPct(d.highDelta)}，>=15 顶部层 ${signedPct(d.top15Delta)}，0课耗 ${signedPct(d.zeroDelta)}。整体判断为“${structure}，${activation}”。</li><li><b>同比 ${yoy}：</b>>=12 高课耗层 ${signedPct(d.yoyHighDelta)}，>=15 顶部层 ${signedPct(d.yoyTop15Delta)}，0-8低课耗池 ${signedPct(d.yoyLowDelta)}，0课耗 ${signedPct(d.yoyZeroDelta)}。</li><li><b>管理重点：</b>继续把10-12节临界学员推至12节达标，同时将12-15节学员作为高质量提升池；0课耗学员单独建池，按未约课、计划断档和家长无响应拆分跟进。</li></ul></div>`;
+}
+function renderAvgCompletionAnalysis(){
+  const a=latestAvgSummary();
+  const current=monthLabel(a.month), prior=monthLabel(a.prior), yoy=monthLabel(a.yoyMonth);
+  const momentum=a.delta>=0?'人均完课强度环比提升':'人均完课强度环比承压';
+  return `<div class="analysis-block"><h3>二、人均完课量分析</h3><ul class="analysis-list"><li><b>${current}结果：</b>人均完课量 ${num(a.current,2)} 节，较 ${prior} ${a.delta>=0?'+':''}${num(a.delta,2)} 节，较 ${yoy} ${a.yoyDelta>=0?'+':''}${num(a.yoyDelta,2)} 节。</li><li><b>管理判断：</b>${momentum}；结合高课耗占比 ${pct(latestDistributionSummary().high)}，当前提升既来自达标覆盖，也来自已启动学员的持续上课强度。</li><li><b>下月动作：</b>上旬先压降0课耗，中旬集中推动8-12节学员，月末对12-15节做高课耗冲刺，避免只靠少数高课耗学员托住均值。</li></ul></div>`;
+}
+function renderLifecycleAnalysis(){
+  const l=latestLifecycleSummary();
+  const current=monthLabel(l.month), prior=monthLabel(l.prior), yoy=monthLabel(l.yoyMonth);
+  return `<div class="analysis-block"><h3>三、生命周期课耗表现分析</h3><ul class="analysis-list"><li><b>${current}实际表现：</b>生命周期整体达成 ${pct(l.overall)}，最强为 ${l.strongest.col} ${pct(l.strongest.value)}，最弱为 ${l.weakest.col} ${pct(l.weakest.value)}；M1-M3均值 ${pct(l.early)}，M9-M12+成熟期均值 ${pct(l.mature)}。</li><li><b>环比 ${prior}：</b>整体 ${signedPct(l.overallDelta)}，M1-M3新生期 ${signedPct(l.earlyDelta)}，M9-M12+成熟期 ${signedPct(l.matureDelta)}。</li><li><b>同比 ${yoy}：</b>整体 ${signedPct(l.yoyOverallDelta)}，M1-M3新生期 ${signedPct(l.yoyEarlyDelta)}，M9-M12+成熟期 ${signedPct(l.yoyMatureDelta)}。</li><li><b>管理重点：</b>M1-M3继续稳住固定计划覆盖；M4-M8关注高位回落；${l.weakest.col}作为下月重点唤醒人群，按预约断档、家长体感和学习兴趣衰减三类推进。</li></ul></div>`;
 }
 function renderLayerStrategies(){
   const dist=latestDistributionSummary(), life=latestLifecycleSummary();
@@ -1315,6 +1349,14 @@ function renderLayerStrategies(){
     ['\u751f\u547d\u5468\u671f\u5c42', `${life.weakest.col || 'M12'}\u91cd\u70b9\u5173\u6ce8`, `${life.month} \u6700\u5f31\u751f\u547d\u5468\u671f\u4e3a ${life.weakest.col || '-'}\uff08${pct(life.weakest.value)}\uff09\uff0c\u5efa\u8bae\u5728 SCRM \u91cc\u5355\u72ec\u5efa\u7ec4\uff0c\u4e0b\u4e2a\u6708\u8ba9SS\u91cd\u70b9\u5173\u6ce8\u548c\u5524\u9192\u3002`],
   ];
   return `<div class="strategy-grid">${cards.map(c=>`<div class="strategy-card"><b>${c[0]}</b><span class="tag tag-neutral">${c[1]}</span><p>${c[2]}</p></div>`).join('')}</div>`;
+}
+function renderSettlementReview(){
+  if(!DATA.isSettlement) return '';
+  const t=total(), d=latestDistributionSummary(), a=latestAvgSummary(), l=latestLifecycleSummary();
+  const ranked=groups().slice().sort((x,y)=>y.rate-x.rate), best=ranked[0]||{}, weakest=ranked[ranked.length-1]||{};
+  const met=ranked.filter(row=>row.rate>=currentTarget()).length;
+  const targetDelta=t.rate-currentTarget();
+  return `<section class="panel" id="settlementReview"><div class="panel-head"><div><div class="panel-title">10月课耗结算整体分析</div><div class="panel-sub">截至 ${DATA.currentDate} · 结算值 · 对比9月及2025年10月</div></div></div><div class="panel-body"><div class="history-summary"><div class="history-summary-item"><span>实际完课达标率</span><b>${pct(t.rate)}</b><div class="${cls(targetDelta)}">较63%目标 ${signedPct(targetDelta)}</div></div><div class="history-summary-item"><span>环比9月</span><b class="${cls(DATA.completionRate.last_month_delta)}">${signedPct(DATA.completionRate.last_month_delta)}</b><div>9月 ${pct(DATA.completionRate.last_month)}</div></div><div class="history-summary-item"><span>高课耗层（>=12）</span><b>${pct(d.high)}</b><div class="${cls(d.highDelta)}">环比 ${signedPct(d.highDelta)}</div></div><div class="history-summary-item"><span>人均完课量</span><b>${num(a.current,2)}节</b><div class="${cls(a.delta)}">环比 ${signedNum(a.delta,2)}节</div></div></div><div class="analysis-block"><h3>结算结论</h3><ul class="analysis-list"><li><b>目标结果：</b>${num(t.qualified,0)} / ${num(t.assessed,0)} 名考核学员达标，实际达标率 ${pct(t.rate)}，${targetDelta>=0?'超过':'低于'}63%目标 ${pct(Math.abs(targetDelta))}。</li><li><b>增长质量：</b>较9月提升 ${signedPct(DATA.completionRate.last_month_delta)}，较2025年10月提升 ${signedPct(l.yoyOverallDelta)}；高课耗层环比 ${signedPct(d.highDelta)}，人均完课量环比 ${signedNum(a.delta,2)} 节。</li><li><b>小组表现：</b>${met}/6 个小组达到63%目标；${shortGroup(best.group)}最高 ${pct(best.rate)}，${shortGroup(weakest.group)}最低 ${pct(weakest.rate)}，两组相差 ${pct(best.rate-weakest.rate)}。</li><li><b>结构风险：</b>0课耗仍占 ${pct(d.zero)}，生命周期最弱为 ${l.weakest.col} ${pct(l.weakest.value)}。下月应继续压降未启动学员，并对成熟期低课耗学员建立单独唤醒池。</li></ul></div></div></section>`;
 }
 function renderCurrentLifecycle(){
   const source=DATA.currentLifecycle || {rows:[]};
@@ -1330,20 +1372,26 @@ function renderCurrentLifecycle(){
   const status=row=>row.completion_rate>=DATA.target?['\u8fbe\u6807','tag-good']:row.completion_rate>=.55?['\u5173\u6ce8','tag-warn']:['\u91cd\u70b9\u8ddf\u8fdb','tag-risk'];
   const body=rows.map(row=>{ const s=status(row); return `<tr><td><b>${row.lifecycle}</b></td><td>${num(row.students,0)}</td><td>${pct(row.completion_rate)}</td><td>${num(row.avg_completed,2)}</td><td>${num(row.avg_expected,2)}</td><td>${pct(row.zero_consumption_rate)}</td><td><span class="tag ${s[1]}">${s[0]}</span></td></tr>`; }).join('');
   const slowText=slowThree.map(row=>`${row.lifecycle} ${pct(row.completion_rate)}`).join('\u3001');
+  if(DATA.isSettlement) return `<section class="panel" id="currentLifecycle"><div class="panel-head"><div><div class="panel-title">${reportMonth}月不同生命周期结算结果</div><div class="panel-sub">截至 ${DATA.currentDate} · 核心6个SS小组 · M1为首付次月，M12+为首付满13个月及以上</div></div></div><div class="panel-body"><div class="history-summary"><div class="history-summary-item"><span>实际完课达标率</span><b>${pct(totalQualified/totalStudents)}</b><div>覆盖 ${num(totalStudents,0)} 名考核学员</div></div><div class="history-summary-item"><span>达标率最低</span><b>${slowest.lifecycle} ${pct(slowest.completion_rate)}</b><div>实际达标 ${num(slowest.qualified,0)} / ${num(slowest.students,0)}</div></div><div class="history-summary-item"><span>人均完课最低</span><b>${lowestActual.lifecycle} ${num(lowestActual.avg_completed,2)}节</b></div><div class="history-summary-item"><span>0课耗率最高</span><b>${highestZero.lifecycle} ${pct(highestZero.zero_consumption_rate)}</b><div>${num(highestZero.zero_consumption_count,0)} 名0课耗学员</div></div></div><div class="table-wrap"><table><thead><tr><th>生命周期</th><th>考核学员</th><th>实际完课达标率</th><th>人均已完课</th><th>人均结算课量</th><th>0课耗率</th><th>状态</th></tr></thead><tbody>${body}</tbody></table></div><div class="analysis-block"><h3>${reportMonth}月生命周期判断</h3><ul class="analysis-list"><li><b>重点改善人群：</b>${slowText}，下月应按预约断档、家长响应和学习兴趣分类唤醒。</li><li><b>课量风险：</b>${lowestActual.lifecycle} 人均完课 ${num(lowestActual.avg_completed,2)} 节；${highestZero.lifecycle} 的0课耗率最高，为 ${pct(highestZero.zero_consumption_rate)}。</li><li><b>结算口径：</b>只按当月实际完课量判断是否达到套餐低消要求；低消为0时按12节，不计已约未上课次。</li></ul></div></div></section>`;
   return `<section class="panel" id="currentLifecycle"><div class="panel-head"><div><div class="panel-title">${reportMonth}\u6708\u4e0d\u540c\u751f\u547d\u5468\u671f\u8bfe\u8017\u8fdb\u5ea6</div><div class="panel-sub">\u622a\u81f3 ${DATA.currentDate} \u00b7 \u6838\u5fc36\u4e2aSS\u5c0f\u7ec4 \u00b7 M1\u4e3a\u9996\u4ed8\u6b21\u6708\uff0cM12+\u4e3a\u9996\u4ed8\u6ee113\u4e2a\u6708\u53ca\u4ee5\u4e0a</div></div></div><div class="panel-body"><div class="history-summary"><div class="history-summary-item"><span>\u751f\u547d\u5468\u671f\u603b\u4f53\u9884\u8ba1\u5b8c\u8bfe\u7387</span><b>${pct(totalQualified/totalStudents)}</b><div>\u8986\u76d6 ${num(totalStudents,0)} \u540d\u8003\u6838\u5b66\u5458</div></div><div class="history-summary-item"><span>\u9884\u8ba1\u5b8c\u8bfe\u7387\u6700\u6162</span><b>${slowest.lifecycle} ${pct(slowest.completion_rate)}</b><div>\u9884\u8ba1\u8fbe\u6807 ${num(slowest.qualified,0)} / ${num(slowest.students,0)}</div></div><div class="history-summary-item"><span>\u5b9e\u9645\u4eba\u5747\u5b8c\u8bfe\u91cf\u6700\u4f4e</span><b>${lowestActual.lifecycle} ${num(lowestActual.avg_completed,2)}\u8282</b><div>\u4eba\u5747\u9884\u8ba1 ${num(lowestActual.avg_expected,2)} \u8282</div></div><div class="history-summary-item"><span>0\u8bfe\u8017\u7387\u6700\u9ad8</span><b>${highestZero.lifecycle} ${pct(highestZero.zero_consumption_rate)}</b><div>${num(highestZero.zero_consumption_count,0)} \u540d0\u8bfe\u8017\u5b66\u5458</div></div></div><div class="table-wrap"><table><thead><tr><th>\u751f\u547d\u5468\u671f</th><th>\u8003\u6838\u5b66\u5458</th><th>\u9884\u8ba1\u5b8c\u8bfe\u7387</th><th>\u4eba\u5747\u5df2\u5b8c\u8bfe</th><th>\u4eba\u5747\u9884\u8ba1\u8bfe\u91cf</th><th>0\u8bfe\u8017\u7387</th><th>\u72b6\u6001</th></tr></thead><tbody>${body}</tbody></table></div><div class="analysis-block"><h3>${reportMonth}\u6708\u751f\u547d\u5468\u671f\u5224\u65ad</h3><ul class="analysis-list"><li><b>\u9884\u8ba1\u5b8c\u8bfe\u7387\u504f\u6162\uff1a</b>${slowText}\uff0c\u5e94\u4f18\u5148\u6392\u67e5\u672a\u9884\u7ea6\u3001\u9884\u7ea6\u4e0d\u8db3\u548c\u56fa\u5b9a\u8ba1\u5212\u65ad\u6863\u3002</li><li><b>\u5b9e\u9645\u8bfe\u91cf\u504f\u6162\uff1a</b>${lowestActual.lifecycle} \u4eba\u5747\u4ec5 ${num(lowestActual.avg_completed,2)} \u8282\uff1b\u5373\u4f7f\u5df2\u6709\u9884\u7ea6\uff0c\u4e5f\u8981\u786e\u8ba4\u6708\u5e95\u524d\u80fd\u5426\u5b9e\u9645\u5b8c\u8bfe\u3002</li><li><b>\u672a\u542f\u52a8\u98ce\u9669\uff1a</b>${highestZero.lifecycle} \u76840\u8bfe\u8017\u7387\u6700\u9ad8\uff0c\u4e3a ${pct(highestZero.zero_consumption_rate)}\uff1b\u5efa\u8bae\u6309\u751f\u547d\u5468\u671f\u5355\u72ec\u5efa\u6c60\u8ddf\u8fdb\u3002</li><li><b>\u53e3\u5f84\uff1a</b>\u9884\u8ba1\u5b8c\u8bfe\u91cf\u4e3a\u5f53\u6708\u5b8c\u8bfe\u91cf\u52a0\u5f53\u6708\u5df2\u7ea6\u672a\u4e0a\u8bfe\u6b21\uff1b\u9884\u8ba1\u8fbe\u5230\u5957\u9910\u4f4e\u6d88\u8981\u6c42\u5373\u8ba1\u4e3a\u8fbe\u6807\uff0c\u4f4e\u6d88\u4e3a0\u65f6\u630912\u8282\u3002</li></ul></div></div></section>`;
+}
+function renderHistoricalAnalysisLegacy(){
+  const dist=latestDistributionSummary(), life=latestLifecycleSummary(), avg=latestAvgSummary();
+  return `<section class="panel" id="historyAnalysis"><div class="panel-head"><div><div class="panel-title">\u5386\u53f2\u8bfe\u8017\u7ed3\u6784\u4e0e\u751f\u547d\u5468\u671f\u5206\u6790</div><div class="panel-sub">\u9875\u9762\u6700\u540e\u7684\u6838\u5fc3\u590d\u76d8\u677f\u5757\uff1a\u805a\u7126 8\u6708\u5b9e\u9645\uff0c\u5bf9\u6bd4 7\u6708\u548c25\u5e747\u6708</div></div></div><div class="panel-body">${renderHistoryInsights()}<section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u4e0d\u540c\u8bfe\u8017\u533a\u95f4\u5360\u6bd4</div><div class="panel-sub" style="margin-bottom:10px">${dist.month} \u9ad8\u8bfe\u8017\u5c42 ${pct(dist.high)}\uff0c0\u8bfe\u8017 ${pct(dist.zero)}\uff1b\u6bcf\u4e2a\u6708\u4efd\u7684\u4e3b\u8981\u533a\u95f4\u5df2\u76f4\u63a5\u6807\u6ce8\u5360\u6bd4</div>${renderDistributionChart()}</section><div style="height:14px"></div>${renderDistributionAnalysis()}<div style="height:18px"></div><section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u540c\u671f\u4eba\u5747\u5b8c\u8bfe\u91cf</div><div class="panel-sub" style="margin-bottom:10px">${avg.month} \u4eba\u5747 ${num(avg.current,2)} \u8282\uff0c\u8f83 ${avg.prior} ${avg.delta>=0?'+':''}${num(avg.delta,2)} \u8282\uff0c\u8f83 ${avg.yoyMonth} ${avg.yoyDelta>=0?'+':''}${num(avg.yoyDelta,2)} \u8282</div><div class="table-wrap">${renderAvgCompletionChart()}</div></section><div style="height:14px"></div>${renderAvgCompletionAnalysis()}<div style="height:18px"></div><section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u4e0d\u540c\u751f\u547d\u5468\u671f\u8bfe\u8017\u8868\u73b0</div><div class="panel-sub" style="margin-bottom:10px">${life.month} \u6574\u4f53 ${pct(life.overall)}\uff0c\u6700\u5f3a ${life.strongest.col} ${pct(life.strongest.value)}\uff0c\u6700\u5f31 ${life.weakest.col} ${pct(life.weakest.value)}\uff1b\u70ed\u529b\u56fe\u6bcf\u4e2a\u683c\u5b50\u5747\u5c55\u793a\u5177\u4f53\u6570\u503c</div>${renderLifecycleHeatmap()}</section><div style="height:14px"></div>${renderLifecycleAnalysis()}<div style="height:14px"></div>${renderLayerStrategies()}</div></section>`;
 }
 function renderHistoricalAnalysis(){
   const dist=latestDistributionSummary(), life=latestLifecycleSummary(), avg=latestAvgSummary();
-  return `<section class="panel" id="historyAnalysis"><div class="panel-head"><div><div class="panel-title">\u5386\u53f2\u8bfe\u8017\u7ed3\u6784\u4e0e\u751f\u547d\u5468\u671f\u5206\u6790</div><div class="panel-sub">\u9875\u9762\u6700\u540e\u7684\u6838\u5fc3\u590d\u76d8\u677f\u5757\uff1a\u805a\u7126 8\u6708\u5b9e\u9645\uff0c\u5bf9\u6bd4 7\u6708\u548c25\u5e747\u6708</div></div></div><div class="panel-body">${renderHistoryInsights()}<section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u4e0d\u540c\u8bfe\u8017\u533a\u95f4\u5360\u6bd4</div><div class="panel-sub" style="margin-bottom:10px">${dist.month} \u9ad8\u8bfe\u8017\u5c42 ${pct(dist.high)}\uff0c0\u8bfe\u8017 ${pct(dist.zero)}\uff1b\u6bcf\u4e2a\u6708\u4efd\u7684\u4e3b\u8981\u533a\u95f4\u5df2\u76f4\u63a5\u6807\u6ce8\u5360\u6bd4</div>${renderDistributionChart()}</section><div style="height:14px"></div>${renderDistributionAnalysis()}<div style="height:18px"></div><section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u540c\u671f\u4eba\u5747\u5b8c\u8bfe\u91cf</div><div class="panel-sub" style="margin-bottom:10px">${avg.month} \u4eba\u5747 ${num(avg.current,2)} \u8282\uff0c\u8f83 ${avg.prior} ${avg.delta>=0?'+':''}${num(avg.delta,2)} \u8282\uff0c\u8f83 ${avg.yoyMonth} ${avg.yoyDelta>=0?'+':''}${num(avg.yoyDelta,2)} \u8282</div><div class="table-wrap">${renderAvgCompletionChart()}</div></section><div style="height:14px"></div>${renderAvgCompletionAnalysis()}<div style="height:18px"></div><section><div class="panel-title" style="font-size:16px;margin-bottom:4px">\u4e0d\u540c\u751f\u547d\u5468\u671f\u8bfe\u8017\u8868\u73b0</div><div class="panel-sub" style="margin-bottom:10px">${life.month} \u6574\u4f53 ${pct(life.overall)}\uff0c\u6700\u5f3a ${life.strongest.col} ${pct(life.strongest.value)}\uff0c\u6700\u5f31 ${life.weakest.col} ${pct(life.weakest.value)}\uff1b\u70ed\u529b\u56fe\u6bcf\u4e2a\u683c\u5b50\u5747\u5c55\u793a\u5177\u4f53\u6570\u503c</div>${renderLifecycleHeatmap()}</section><div style="height:14px"></div>${renderLifecycleAnalysis()}<div style="height:14px"></div>${renderLayerStrategies()}</div></section>`;
+  return `<section class="panel" id="historyAnalysis"><div class="panel-head"><div><div class="panel-title">历史课耗结构与生命周期分析</div><div class="panel-sub">聚焦 ${monthLabel(dist.month)} 结算，对比 ${monthLabel(dist.prior)} 和 ${monthLabel(dist.yoyMonth)}</div></div></div><div class="panel-body">${renderHistoryInsights()}<section><div class="panel-title" style="font-size:16px;margin-bottom:4px">不同课耗区间占比</div><div class="panel-sub" style="margin-bottom:10px">${dist.month} 高课耗层 ${pct(dist.high)}，0课耗 ${pct(dist.zero)}；已补齐至最新结算月份</div>${renderDistributionChart()}</section><div style="height:14px"></div>${renderDistributionAnalysis()}<div style="height:18px"></div><section><div class="panel-title" style="font-size:16px;margin-bottom:4px">同期人均完课量</div><div class="panel-sub" style="margin-bottom:10px">${avg.month} 人均 ${num(avg.current,2)} 节，较 ${avg.prior} ${avg.delta>=0?'+':''}${num(avg.delta,2)} 节，较 ${avg.yoyMonth} ${avg.yoyDelta>=0?'+':''}${num(avg.yoyDelta,2)} 节</div><div class="table-wrap">${renderAvgCompletionChart()}</div></section><div style="height:14px"></div>${renderAvgCompletionAnalysis()}<div style="height:18px"></div><section><div class="panel-title" style="font-size:16px;margin-bottom:4px">不同生命周期课耗表现</div><div class="panel-sub" style="margin-bottom:10px">${life.month} 整体 ${pct(life.overall)}，最强 ${life.strongest.col} ${pct(life.strongest.value)}，最弱 ${life.weakest.col} ${pct(life.weakest.value)}</div>${renderLifecycleHeatmap()}</section><div style="height:14px"></div>${renderLifecycleAnalysis()}<div style="height:14px"></div>${renderLayerStrategies()}</div></section>`;
 }
 function sortGroups(rows){
   return rows.slice().sort((a,b)=>{ const av=a[groupSort.key]??0, bv=b[groupSort.key]??0; return groupSort.dir==='asc'?av-bv:bv-av; });
 }
 function renderGroupTable(){
   const rows=sortGroups(groups()); const t=total();
+  const headers=DATA.isSettlement?['SS \u5c0f\u7ec4','\u7ed3\u7b97\u524d\u4e00\u65e5\u9884\u8ba1\u5b8c\u8bfe\u7387','\u7ed3\u7b97\u5b9e\u9645\u5b8c\u8bfe\u8fbe\u6807\u7387','\u7ed3\u7b97\u65e5\u63d0\u5347','\u8ddd\u76ee\u6807\u5dee\u503c','\u98ce\u9669\u5b66\u5458\u6570','\u98ce\u9669\u7b49\u7ea7','\u8fd0\u8425\u72b6\u6001','\u64cd\u4f5c']:['SS \u5c0f\u7ec4','\u6628\u65e5\u9884\u8ba1\u5b8c\u8bfe\u7387','\u5f53\u524d\u9884\u8ba1\u5b8c\u8bfe\u7387','\u65e5\u73af\u6bd4','\u8ddd\u76ee\u6807\u5dee\u503c','\u98ce\u9669\u5b66\u5458\u6570','\u98ce\u9669\u7b49\u7ea7','\u8fd0\u8425\u72b6\u6001','\u64cd\u4f5c'];
   const body=rows.map(r=>{ const st=status(r), rk=riskLevel(r); const topPeople=DATA.personRows.filter(p=>p.group===r.group).slice(0,6); return `<tr data-group="${r.group}"><td><b>${r.group}</b></td><td class="muted">${pct(r.prior_rate)}</td><td><span class="value-strong">${pct(r.rate)}</span></td><td class="${cls(r.lift)}">${signedPct(r.lift)}</td><td>${signedPct(-r.gap_rate)}</td><td>${num(Math.max(r.gap_students,0),0)}</td><td><span class="tag ${rk[1]}">${rk[0]}</span></td><td><span class="tag ${st[1]}">${st[0]}</span></td><td><button class="btn row-toggle" data-group="${r.group}">\u5c55\u5f00</button></td></tr>${expandedGroup===r.group?`<tr class="detail-row"><td colspan="9"><div class="mini-people">${topPeople.map(p=>`<span>${p.ss} \u00b7 ${pct(p.rate)}</span>`).join('')}</div></td></tr>`:''}`; }).join('');
   const totalRow=`<tr class="total-row"><td>\u603b\u8ba1</td><td>${pct(t.prior_rate)}</td><td>${pct(t.rate)}</td><td class="${cls(t.lift)}">${signedPct(t.lift)}</td><td>${signedPct(-t.gap_rate)}</td><td>${num(Math.max(t.gap_students,0),0)}</td><td colspan="3">\u6838\u5fc3 6 \u4e2a SS \u5c0f\u7ec4\u6c47\u603b</td></tr>`;
-  return `<section class="section-card" id="groupPanel"><div class="section-head"><div class="section-title-wrap"><div class="section-index">03</div><div><h2 class="section-title">\u5c0f\u7ec4\u6c47\u603b</h2><div class="section-sub">\u5f53\u6708\u8bfe\u8017\u8fdb\u5ea6 \u00b7 \u5c0f\u7ec4\u76ee\u6807\u5dee\u8ddd \u00b7 \u70b9\u51fb\u5c55\u5f00\u5173\u952e SS</div></div></div><div class="section-mark">TEAM SUMMARY</div></div><div class="table-wrap"><table><thead><tr>${['SS \u5c0f\u7ec4','\u6628\u65e5\u9884\u8ba1\u5b8c\u8bfe\u7387','\u5f53\u524d\u9884\u8ba1\u5b8c\u8bfe\u7387','\u65e5\u73af\u6bd4','\u8ddd\u76ee\u6807\u5dee\u503c','\u98ce\u9669\u5b66\u5458\u6570','\u98ce\u9669\u7b49\u7ea7','\u8fd0\u8425\u72b6\u6001','\u64cd\u4f5c'].map((h,i)=>`<th data-sort="${['group','prior_rate','rate','lift','gap_rate','gap_students','rate','rate',''][i]}">${h}</th>`).join('')}</tr></thead><tbody>${body}${totalRow}</tbody></table></div></section>`;
+  return `<section class="section-card" id="groupPanel"><div class="section-head"><div class="section-title-wrap"><div class="section-index">03</div><div><h2 class="section-title">\u5c0f\u7ec4\u6c47\u603b</h2><div class="section-sub">\u5f53\u6708\u8bfe\u8017\u8fdb\u5ea6 \u00b7 \u5c0f\u7ec4\u76ee\u6807\u5dee\u8ddd \u00b7 \u70b9\u51fb\u5c55\u5f00\u5173\u952e SS</div></div></div><div class="section-mark">TEAM SUMMARY</div></div><div class="table-wrap"><table><thead><tr>${headers.map((h,i)=>`<th data-sort="${['group','prior_rate','rate','lift','gap_rate','gap_students','rate','rate',''][i]}">${h}</th>`).join('')}</tr></thead><tbody>${body}${totalRow}</tbody></table></div></section>`;
 }
 function renderPersonTable(){
   const opts=['all',...groups().map(g=>g.group)];
@@ -1351,7 +1399,10 @@ function renderPersonTable(){
   let rows=DATA.personRows.filter(r=>current==='all'||r.group===current);
   const term=(document.getElementById('personSearch')?.value||'').toLowerCase(); if(term) rows=rows.filter(r=>String(r.ss).toLowerCase().includes(term));
   rows=rows.slice().sort((a,b)=>(b.rate??0)-(a.rate??0)).slice(0,80);
-  return `<section class="section-card"><div class="section-head" id="filters"><div class="section-title-wrap"><div class="section-index">04</div><div><h2 class="section-title">\u4e2a\u4eba\u660e\u7ec6\u98ce\u9669\u8868</h2><div class="section-sub">\u6309\u5f53\u524d\u9884\u8ba1\u5b8c\u8bfe\u7387\u6392\u5e8f \u00b7 \u805a\u7126 SS \u4e2a\u4eba\u5dee\u8ddd\u548c\u5f85\u8ddf\u8fdb\u5b66\u5458</div></div></div><div class="section-actions"><button class="btn" id="exportPersonImage" title="\u5bfc\u51fa\u5f53\u524d\u7b5b\u9009\u7684\u4e2a\u4eba\u660e\u7ec6\u8868\u56fe\u7247"><span aria-hidden="true">\u21e9</span><span>\u5bfc\u51fa\u56fe\u7247</span></button><div class="section-mark">RISK DETAIL</div></div></div><div class="filter-row"><select id="groupFilter">${opts.map(o=>`<option value="${o}" ${o===current?'selected':''}>${o==='all'?'\u5168\u90e8\u5c0f\u7ec4':o}</option>`).join('')}</select><input id="personSearch" placeholder="\u641c\u7d22 SS" value="${term}"></div><div class="table-wrap"><table><thead><tr><th>TOP</th><th>SS \u5c0f\u7ec4</th><th>SS</th><th>\u8003\u6838\u5b66\u5458</th><th>\u5f53\u524d\u9884\u8ba1\u5b8c\u8bfe\u7387</th><th>\u65e5\u73af\u6bd4</th><th>\u8ddd\u76ee\u6807\u5dee\u503c</th><th>\u79bb\u8fbe\u6807\u76f8\u5dee\u5b66\u5458\u6570</th><th>\u72b6\u6001</th></tr></thead><tbody>${rows.map((r,i)=>{const st=status(r); return `<tr><td>${i+1}</td><td>${r.group}</td><td><b>${r.ss}</b></td><td>${num(r.assessed,0)}</td><td><span class="value-strong">${pct(r.rate)}</span></td><td class="${cls(r.lift)}">${signedPct(r.lift)}</td><td class="${cls(-r.gap_rate)}">${signedPct(-r.gap_rate)}</td><td>${num(Math.max(r.gap_students,0),0)}</td><td><span class="tag ${st[1]}">${st[0]}</span></td></tr>`;}).join('')}</tbody></table></div></section>`;
+  const rateHeader=DATA.isSettlement?'\u5b9e\u9645\u5b8c\u8bfe\u8fbe\u6807\u7387':'\u5f53\u524d\u9884\u8ba1\u5b8c\u8bfe\u7387';
+  const liftHeader=DATA.isSettlement?'\u8f8310.30\u63d0\u5347':'\u65e5\u73af\u6bd4';
+  const subtitle=DATA.isSettlement?'\u6309\u5b9e\u9645\u5b8c\u8bfe\u8fbe\u6807\u7387\u6392\u5e8f \u00b7 \u805a\u7126 SS \u4e2a\u4eba\u7ed3\u7b97\u7ed3\u679c':'\u6309\u5f53\u524d\u9884\u8ba1\u5b8c\u8bfe\u7387\u6392\u5e8f \u00b7 \u805a\u7126 SS \u4e2a\u4eba\u5dee\u8ddd\u548c\u5f85\u8ddf\u8fdb\u5b66\u5458';
+  return `<section class="section-card"><div class="section-head" id="filters"><div class="section-title-wrap"><div class="section-index">04</div><div><h2 class="section-title">\u4e2a\u4eba\u660e\u7ec6\u98ce\u9669\u8868</h2><div class="section-sub">${subtitle}</div></div></div><div class="section-actions"><button class="btn" id="exportPersonImage" title="\u5bfc\u51fa\u5f53\u524d\u7b5b\u9009\u7684\u4e2a\u4eba\u660e\u7ec6\u8868\u56fe\u7247"><span aria-hidden="true">\u21e9</span><span>\u5bfc\u51fa\u56fe\u7247</span></button><div class="section-mark">RISK DETAIL</div></div></div><div class="filter-row"><select id="groupFilter">${opts.map(o=>`<option value="${o}" ${o===current?'selected':''}>${o==='all'?'\u5168\u90e8\u5c0f\u7ec4':o}</option>`).join('')}</select><input id="personSearch" placeholder="\u641c\u7d22 SS" value="${term}"></div><div class="table-wrap"><table><thead><tr><th>TOP</th><th>SS \u5c0f\u7ec4</th><th>SS</th><th>\u8003\u6838\u5b66\u5458</th><th>${rateHeader}</th><th>${liftHeader}</th><th>\u8ddd\u76ee\u6807\u5dee\u503c</th><th>\u79bb\u8fbe\u6807\u76f8\u5dee\u5b66\u5458\u6570</th><th>\u72b6\u6001</th></tr></thead><tbody>${rows.map((r,i)=>{const st=status(r); return `<tr><td>${i+1}</td><td>${r.group}</td><td><b>${r.ss}</b></td><td>${num(r.assessed,0)}</td><td><span class="value-strong">${pct(r.rate)}</span></td><td class="${cls(r.lift)}">${signedPct(r.lift)}</td><td class="${cls(-r.gap_rate)}">${signedPct(-r.gap_rate)}</td><td>${num(Math.max(r.gap_students,0),0)}</td><td><span class="tag ${st[1]}">${st[0]}</span></td></tr>`;}).join('')}</tbody></table></div></section>`;
 }
 function exportPersonTableImage(){
   const section=document.querySelector('#filters')?.closest('.section-card');
@@ -1393,7 +1444,17 @@ function renderRecommendations(){
   } else if (goodDelta !== null && goodDelta !== undefined && goodDelta > 0) {
     recs[2]=['P1','\u6c89\u6dc0\u597d\u5b66\u751f\u6848\u4f8b\uff0c\u5f3a\u5316\u6210\u679c\u5916\u5316', '\u597d\u5b66\u751f/\u9ad8\u8bfe\u8017\u5b66\u5458', `\u597d\u5b66\u751f\u7387\u8f83\u6628\u65e5 ${signedPct(goodDelta)}\uff0c\u5efa\u8bae\u6536\u96c6\u9ad8\u8bfe\u8017\u5b66\u5458\u6848\u4f8b\uff0c\u8ba9\u66f4\u591a\u7528\u6237\u770b\u5230\u591a\u4e0a\u8bfe\u7684\u4ef7\u503c\u3002`];
   }
-  return `<section class="panel" id="recommendations"><div class="panel-head"><div><div class="panel-title">\u4eca\u65e5\u8fd0\u8425\u5efa\u8bae</div><div class="panel-sub">\u7ed3\u5408\u5f53\u65e5\u6570\u636e + \u5468\u62a5\u65b9\u5411\u52a8\u6001\u751f\u6210</div></div></div><div class="panel-body"><div class="recommendations">${recs.slice(0,3).map(r=>`<div class="rec"><span class="tag ${r[0]==='P0'?'tag-risk':'tag-warn'} priority">${r[0]}</span><b>${r[1]}</b><span class="muted">${r[2]}</span><p class="footer-note">${r[3]}</p></div>`).join('')}</div></div></section>`;
+  if(DATA.isSettlement){
+    const life=latestLifecycleSummary();
+    recs.splice(0,recs.length,
+      ['P0','弱势小组专项提升',shortGroup(weak.group),`${shortGroup(weak.group)}结算达标率 ${pct(weak.rate)}，${weakGap>0?`距离目标仍差 ${num(weakGap,0)} 人`:'已达目标'}。下月上旬优先激活0课耗学员，中旬推动8-12节临界学员。`],
+      ['P0','成熟期低课耗唤醒',life.weakest.col,`${life.weakest.col}结算达标率 ${pct(life.weakest.value)}。按预约断档、家长响应和兴趣衰减分类跟进，建立周复盘。`],
+      ['P1','复制标杆并提升完课质量',shortGroup(ins.best.group),`${shortGroup(ins.best.group)}结算达标率 ${pct(ins.best.rate)}。复盘稳定预约和家长沟通做法；将12-15节学员纳入高课耗提升池。`]
+    );
+  }
+  const title=DATA.isSettlement?'\u4e0b\u6708\u8fd0\u8425\u5efa\u8bae':'\u4eca\u65e5\u8fd0\u8425\u5efa\u8bae';
+  const subtitle=DATA.isSettlement?'\u7ed3\u540810\u6708\u7ed3\u7b97\u7ed3\u679c\u548c\u5386\u53f2\u7ed3\u6784\u751f\u6210':'\u7ed3\u5408\u5f53\u65e5\u6570\u636e + \u5468\u62a5\u65b9\u5411\u52a8\u6001\u751f\u6210';
+  return `<section class="panel" id="recommendations"><div class="panel-head"><div><div class="panel-title">${title}</div><div class="panel-sub">${subtitle}</div></div></div><div class="panel-body"><div class="recommendations">${recs.slice(0,3).map(r=>`<div class="rec"><span class="tag ${r[0]==='P0'?'tag-risk':'tag-warn'} priority">${r[0]}</span><b>${r[1]}</b><span class="muted">${r[2]}</span><p class="footer-note">${r[3]}</p></div>`).join('')}</div></div></section>`;
 }
 function bindInteractions(){
   document.querySelectorAll('[data-sort]').forEach(th=>th.onclick=()=>{ const key=th.dataset.sort; if(!key) return; groupSort={key,dir:groupSort.key===key&&groupSort.dir==='desc'?'asc':'desc'}; renderMain(); });
@@ -1404,7 +1465,7 @@ function bindInteractions(){
   const exportBtn=document.getElementById('exportPersonImage'); if(exportBtn) exportBtn.onclick=exportPersonTableImage;
 }
 function renderMain(){
-  document.getElementById('content').innerHTML = renderHero()+renderKpis()+renderGroupTable()+renderPersonTable()+`<div style="height:16px"></div>`+renderAnalysis()+`<div style="height:16px"></div>`+renderRecommendations()+`<div style="height:16px"></div>`+renderCurrentLifecycle()+`<div style="height:16px"></div>`+renderHistoricalAnalysis()+`<div class="footer-note">\u6570\u636e\u6e90\uff1a\u6838\u5fc3 6 \u4e2a SS \u5c0f\u7ec4\uff0c\u672c\u6b21\u6e90\u8868\u8003\u6838\u5b66\u5458 ${num(DATA.diagnostics.source_rows_assessed,0)} \u4eba\uff0c\u6838\u5fc3 6 \u7ec4 ${num(DATA.diagnostics.core_rows_assessed,0)} \u4eba\u3002</div>`;
+  document.getElementById('content').innerHTML = renderHero()+renderKpis()+renderGroupTable()+renderPersonTable()+`<div style="height:16px"></div>`+renderAnalysis()+`<div style="height:16px"></div>`+renderRecommendations()+`<div style="height:16px"></div>`+renderSettlementReview()+`<div style="height:16px"></div>`+renderCurrentLifecycle()+`<div style="height:16px"></div>`+renderHistoricalAnalysis()+`<div class="footer-note">\u6570\u636e\u6e90\uff1a\u6838\u5fc3 6 \u4e2a SS \u5c0f\u7ec4\uff0c\u672c\u6b21\u6e90\u8868\u8003\u6838\u5b66\u5458 ${num(DATA.diagnostics.source_rows_assessed,0)} \u4eba\uff0c\u6838\u5fc3 6 \u7ec4 ${num(DATA.diagnostics.core_rows_assessed,0)} \u4eba\u3002</div>`;
   bindInteractions();
 }
 renderShell(); renderMain();
@@ -1429,6 +1490,20 @@ renderShell(); renderMain();
     html = html.replace("个人明细风险表", "课耗个人明细表")
     html = html.replace("RISK DETAIL", "COURSE DETAIL")
     html = html.replace(r"\u4e2a\u4eba\u660e\u7ec6\u98ce\u9669\u8868", r"\u8bfe\u8017\u4e2a\u4eba\u660e\u7ec6\u8868")
+    if data.get("isSettlement"):
+        html = html.replace("预计完课率", "实际完课达标率")
+        html = html.replace(r"\u9884\u8ba1\u5b8c\u8bfe\u7387", r"\u5b9e\u9645\u5b8c\u8bfe\u8fbe\u6807\u7387")
+        html = html.replace("结算前一日实际完课达标率", "结算前一日预计完课率")
+        html = html.replace(
+            r"\u7ed3\u7b97\u524d\u4e00\u65e5\u5b9e\u9645\u5b8c\u8bfe\u8fbe\u6807\u7387",
+            r"\u7ed3\u7b97\u524d\u4e00\u65e5\u9884\u8ba1\u5b8c\u8bfe\u7387",
+        )
+        html = html.replace("预计达标", "实际达标")
+        html = html.replace(r"\u9884\u8ba1\u8fbe\u6807", r"\u5b9e\u9645\u8fbe\u6807")
+        html = html.replace("人均预计课量", "人均结算课量")
+        html = html.replace(r"\u4eba\u5747\u9884\u8ba1\u8bfe\u91cf", r"\u4eba\u5747\u7ed3\u7b97\u8bfe\u91cf")
+        html = html.replace("生命周期课耗进度", "生命周期课耗结算")
+        html = html.replace(r"\u751f\u547d\u5468\u671f\u8bfe\u8017\u8fdb\u5ea6", r"\u751f\u547d\u5468\u671f\u8bfe\u8017\u7ed3\u7b97")
     output_path.write_text(html, encoding="utf-8")
 
 def main():
