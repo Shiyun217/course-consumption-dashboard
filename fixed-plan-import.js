@@ -5,7 +5,7 @@
   const DB_NAME = 'fixed-plan-dashboard-files';
   const DB_STORE = 'exports';
   const EXPORT_KEY = 'latest-statistics';
-  const TARGETS = { overall: 0.60, cc: 0.29, ss: 0.31, lp: 0.16 };
+  const TARGETS = { overall: 0.62, cc: 0.30, ss: 0.32, lp: 0.17 };
   const GROUPS = {
     cc: ['GZ-CC01小组', 'GZ-CC06小组', 'GZ-CC07小组', 'GZ-CC09小组', 'GZ-CC11小组', 'GZ-CC14小组'],
     ss: ['BJ-JWSS01小组', 'BJ-JWSS02小组', 'BJ-JWSS04小组', 'BJ-JWSS07小组', 'GZ-SS01小组', 'GZ-SS04小组'],

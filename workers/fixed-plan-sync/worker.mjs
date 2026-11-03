@@ -9,7 +9,7 @@ const ALLOWED_ORIGINS = new Set([
   'http://127.0.0.1:8000',
   'http://localhost:8000',
 ]);
-const TARGETS = { overall: 0.60, CC: 0.29, SS: 0.31, LP: 0.16 };
+const TARGETS = { overall: 0.62, CC: 0.30, SS: 0.32, LP: 0.17 };
 const GROUPS = {
   CC: ['GZ-CC01小组', 'GZ-CC06小组', 'GZ-CC07小组', 'GZ-CC09小组', 'GZ-CC11小组', 'GZ-CC14小组'],
   SS: ['BJ-JWSS01小组', 'BJ-JWSS02小组', 'BJ-JWSS04小组', 'BJ-JWSS07小组', 'GZ-SS01小组', 'GZ-SS04小组'],

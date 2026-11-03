@@ -91,8 +91,8 @@ test('publishes sanitized aggregates and exposes them publicly', async () => {
   assert.equal(result.data.groups.length, 14);
   assert.equal(result.data.metrics.length, 4);
   assert.equal(result.data.metrics.find(item => item.key === 'overall').rate, 0.451);
-  assert.deepEqual(result.data.metrics.map(item => item.target), [0.60, 0.29, 0.31, 0.16]);
-  assert.deepEqual(result.data.totals.map(item => item.gap_students), [62, 61, 27]);
+  assert.deepEqual(result.data.metrics.map(item => item.target), [0.62, 0.30, 0.32, 0.17]);
+  assert.deepEqual(result.data.totals.map(item => item.gap_students), [70, 68, 34]);
   assert.equal(result.data.metrics.find(item => item.key === 'overall').yesterday_rate, 0.41702127659574467);
   assert.equal(result.data.comparison_as_of, '2026-09-01');
   assert.equal(JSON.stringify(result.data).includes('student_id'), false);
@@ -110,9 +110,9 @@ test('applies current targets when reading a legacy stored snapshot', async () =
   const response = await worker.fetch(request('GET'), env);
   assert.equal(response.status, 200);
   const data = await response.json();
-  assert.deepEqual(data.metrics.map(item => item.target), [0.60, 0.29, 0.31, 0.16]);
-  assert.deepEqual(data.groups.filter(item => item.port === 'LP').map(item => item.gap_students), [19, 8]);
-  assert.deepEqual(data.totals.map(item => item.gap_students), [62, 61, 27]);
+  assert.deepEqual(data.metrics.map(item => item.target), [0.62, 0.30, 0.32, 0.17]);
+  assert.deepEqual(data.groups.filter(item => item.port === 'LP').map(item => item.gap_students), [23, 11]);
+  assert.deepEqual(data.totals.map(item => item.gap_students), [70, 68, 34]);
 });
 
 test('rejects unknown origins and older snapshots', async () => {
