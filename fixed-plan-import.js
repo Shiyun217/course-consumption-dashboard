@@ -219,22 +219,20 @@
     updateRunButton();
   }
 
-  function latestPaymentMonth() {
-    if (!state.payment) return '';
-    const col = state.payment.index.first_1v1_nml_pay_date;
-    let latest = '';
-    for (const row of state.payment.rows) {
-      const key = monthKey(row[col]);
-      if (key > latest) latest = key;
-    }
-    return latest;
+  function currentMonthKey(now = new Date()) {
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+  }
+
+  function currentScopeMonths(now = new Date()) {
+    const current = currentMonthKey(now);
+    return [priorMonth(current), current];
   }
 
   function updateScopePreview() {
     const scope = document.getElementById('fpUploadScope');
     if (!scope) return;
-    const latest = latestPaymentMonth();
-    scope.textContent = latest ? `${priorMonth(latest).slice(5)}月 + ${latest.slice(5)}月新生` : '等待付费明细校验';
+    const [previous, current] = currentScopeMonths();
+    scope.textContent = state.payment ? `${Number(previous.slice(5))}月 + ${Number(current.slice(5))}月新生` : '等待付费明细校验';
   }
 
   function updateRunButton() {
@@ -257,9 +255,7 @@
   function analyzeFiles() {
     const fixed = state.fixed;
     const payment = state.payment;
-    const latestMonth = latestPaymentMonth();
-    if (!latestMonth) throw new Error('付费明细中未找到有效首单日期。');
-    const scopeMonths = [priorMonth(latestMonth), latestMonth];
+    const scopeMonths = currentScopeMonths();
     const scope = new Set(scopeMonths);
     const fi = fixed.index;
     const pi = payment.index;
@@ -278,12 +274,13 @@
       const name = text(row[fi.bind_operator_name]);
       if (studentBindings.get(sid)[port] && name && !studentBindings.get(sid)[port].includes(name)) studentBindings.get(sid)[port].push(name);
     }
-    sourceAsOf = dateFromFileName(fixed.file.name, Number(latestMonth.slice(0, 4))) || sourceAsOf;
+    sourceAsOf = dateFromFileName(fixed.file.name, Number(scopeMonths[1].slice(0, 4))) || sourceAsOf;
 
     const payById = new Map();
     const studentGroupCounts = new Map();
     const newGroupIds = Object.fromEntries(Object.entries(GROUPS).map(([port, groups]) => [port, Object.fromEntries(groups.map(group => [group, new Set()]))]));
     const overallScopeIds = new Set();
+    let scopedPaymentRows = 0;
     for (const sid of studentBindings.keys()) studentGroupCounts.set(sid, { cc: new Map(), ss: new Map(), lp: new Map() });
 
     for (const row of payment.rows) {
@@ -304,12 +301,14 @@
         }
       }
       if (scope.has(monthKey(payDate))) {
+        scopedPaymentRows += 1;
         if (GROUPS.lp.includes(groups.lp)) overallScopeIds.add(sid);
         for (const port of Object.keys(GROUPS)) {
           if (newGroupIds[port][groups[port]]) newGroupIds[port][groups[port]].add(sid);
         }
       }
     }
+    if (!scopedPaymentRows) throw new Error(`付费明细中未找到首单日期在${scopeMonths[0]}至${scopeMonths[1]}的学员。`);
 
     const summaryRows = [];
     for (const [sid, names] of studentBindings) {
@@ -379,7 +378,7 @@
       comparison_as_of: comparisonAsOf,
       comparison_label: comparisonAsOf ? `较上次（${comparisonAsOf.slice(5)}）` : '较上次',
       period: `${Number(scopeMonths[0].slice(5))}月 + ${Number(scopeMonths[1].slice(5))}月新生`,
-      scope_note: '端口及小组数据按滚动双月新生口径；同一学员在同一端口仅计1人。',
+      scope_note: `仅统计首单日期在${scopeMonths[0]}至${scopeMonths[1]}的学员；端口及小组内同一学员仅计1人。`,
       metrics, groups, totals: totalRows,
     };
     return { payload, summaryRows, payById, fixedGroupCounts, newGroupCounts, calculatedOverallRate, scopeMonths };
@@ -478,7 +477,7 @@
     }
     state.busy = true;
     updateRunButton();
-    setProgress('working', '正在计算数据', '正在按双月新生口径计算 14 个组，请稍候...');
+    setProgress('working', '正在计算数据', '正在按首单日期属于上月或本月的口径计算 14 个组，请稍候...');
     try {
       await new Promise(resolve => setTimeout(resolve, 40));
       const analysis = analyzeFiles();
@@ -569,7 +568,7 @@
             <label class="fp-upload-file"><input id="fpPaymentFile" type="file" accept=".xlsx,.xls"><span class="fp-upload-file-icon">02</span><b>学员付费明细</b><small>用于匹配首单时间和端口组别</small><em data-file-status="payment">未选择文件</em></label>
           </div>
           <div class="fp-import-settings">
-            <div><label>自动统计范围</label><b id="fpUploadScope">等待付费明细校验</b><small>以付费表中最新首单月份为本月，并自动纳入上月。</small></div>
+            <div><label>自动统计范围</label><b id="fpUploadScope">等待付费明细校验</b><small>按本机当前自然月，筛选上月及本月首单学员；不受付费表最新首单月份影响。</small></div>
             <div><label for="fpOverallOverride">整体固定率（可选）</label><div class="fp-percent-input"><input id="fpOverallOverride" type="number" min="0" max="100" step="0.01" placeholder="按明细自动计算"><span>%</span></div><small>若业务平台有最终确认值可填写；留空则使用明细计算值。</small></div>
           </div>
           <div class="fp-publish-setting"><div><label for="fpPublishKey">公共看板发布 / 下载口令</label><input id="fpPublishKey" type="password" autocomplete="off" placeholder="输入实习生更新口令"><small>口令仅在点击发布或下载时发送，不写入网页、不保存在浏览器中。</small></div><span class="fp-sync-badge ${SYNC_ENDPOINT ? 'ready' : 'offline'}">${SYNC_ENDPOINT ? '公共同步已连接' : '公共同步待配置'}</span></div>

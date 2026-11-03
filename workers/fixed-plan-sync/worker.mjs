@@ -341,7 +341,7 @@ function sanitizePayload(input, previous) {
     comparison_as_of: comparisonAsOf,
     comparison_label: comparisonAsOf ? `较上次（${comparisonAsOf.slice(5)}）` : '较上次',
     period: safeString(input.period, '统计周期', 60),
-    scope_note: '端口及小组数据按滚动双月新生口径；同一学员在同一端口仅计1人。',
+    scope_note: `仅统计首单日期属于${safeString(input.period, '统计周期', 60)}的学员；同一学员在同一端口仅计1人。`,
     metrics,
     groups,
     totals,
