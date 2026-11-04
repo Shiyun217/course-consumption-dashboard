@@ -26,6 +26,12 @@ STAGE_TARGETS = [
     {"day": 25, "target": 0.52},
     {"day": 31, "target": 0.63},
 ]
+NOVEMBER_2026_TARGETS = [
+    {"day": 11, "target": 0.26},
+    {"day": 17, "target": 0.44},
+    {"day": 23, "target": 0.52},
+    {"day": 30, "target": 0.63},
+]
 HISTORICAL_DISTRIBUTION_MONTHS = [
     "2501", "2502", "2503", "2504", "2505", "2506", "2507", "2508", "2509", "2510",
     "2511", "2512", "2601", "2602", "2603", "2604", "2605", "2606", "2607", "2608",
@@ -628,22 +634,34 @@ def previous_date(history, kind, current_date):
     return dates[-1] if dates else None
 
 
+def stage_targets_for_date(date_text):
+    current = datetime.strptime(date_text, "%Y-%m-%d").date() if isinstance(date_text, str) else date_text
+    if current.year == 2026 and current.month == 11:
+        return NOVEMBER_2026_TARGETS
+    return STAGE_TARGETS
+
+
 def stage_target_for_date(date_text):
     current = datetime.strptime(date_text, "%Y-%m-%d").date() if isinstance(date_text, str) else date_text
-    for milestone in STAGE_TARGETS:
+    targets = stage_targets_for_date(current)
+    for milestone in targets:
         if current.day <= milestone["day"]:
             return milestone["target"]
-    return STAGE_TARGETS[-1]["target"]
+    return targets[-1]["target"]
 
 
 def stage_target_label(date_text):
     current = datetime.strptime(date_text, "%Y-%m-%d").date() if isinstance(date_text, str) else date_text
     if current.year == 2026 and current.month == 10 and 20 <= current.day <= 25:
         return "10月三阶段（10.20-10.25）目标 52%"
-    for milestone in STAGE_TARGETS:
+    targets = stage_targets_for_date(current)
+    for index, milestone in enumerate(targets):
         if current.day <= milestone["day"]:
+            if current.year == 2026 and current.month == 11:
+                start_day = 1 if index == 0 else targets[index - 1]["day"] + 1
+                return f"11月{['一','二','三','四'][index]}阶段（11.{start_day}-11.{milestone['day']}）目标 {milestone['target'] * 100:.0f}%"
             return f"{milestone['day']}号阶段目标 {milestone['target'] * 100:.0f}%"
-    milestone = STAGE_TARGETS[-1]
+    milestone = targets[-1]
     return f"{milestone['day']}号阶段目标 {milestone['target'] * 100:.0f}%"
 
 
@@ -915,7 +933,7 @@ def build_dashboard_data(history, diagnostics, report_date):
         "lastMonthDate": last_month_date,
         "target": target,
         "targetLabel": stage_target_label(current_date),
-        "targetMilestones": STAGE_TARGETS,
+        "targetMilestones": stage_targets_for_date(current_date),
         "completionRate": completion_rate,
         "overallMetrics": overall_metrics,
         "groupRows": group_rows,
