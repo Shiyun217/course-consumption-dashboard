@@ -223,6 +223,38 @@ function priorMetric(previous, key) {
   return previous?.metrics?.find(metric => metric.key === key) || null;
 }
 
+function sanitizeTeacherDistribution(input, metrics, totals) {
+  if (input == null) return undefined;
+  if (typeof input !== 'object' || Array.isArray(input)) throw new Error('外教绑定分布格式不正确');
+  const denominators = {
+    overall: metrics.find(metric => metric.key === 'overall')?.new_students,
+    CC: totals.find(row => row.port === 'CC')?.new_students,
+    SS: totals.find(row => row.port === 'SS')?.new_students,
+    LP: totals.find(row => row.port === 'LP')?.new_students,
+  };
+  const result = {};
+  for (const scope of ['overall', 'CC', 'SS', 'LP']) {
+    const source = input[scope];
+    if (!source || typeof source !== 'object' || Array.isArray(source)) throw new Error(`缺少${scope}外教绑定分布`);
+    const counts = {
+      one: safeCount(source.counts?.one, `${scope}绑定1位外教人数`),
+      two: safeCount(source.counts?.two, `${scope}绑定2位外教人数`),
+      three: safeCount(source.counts?.three, `${scope}绑定3位外教人数`),
+      four_plus: safeCount(source.counts?.four_plus, `${scope}绑定4位及以上外教人数`),
+    };
+    const denominator = denominators[scope];
+    const boundStudents = Object.values(counts).reduce((sum, value) => sum + value, 0);
+    if (boundStudents > denominator) throw new Error(`${scope}外教绑定分布人数不能大于新生数`);
+    result[scope] = {
+      denominator,
+      bound_students: boundStudents,
+      counts,
+      rates: Object.fromEntries(Object.entries(counts).map(([key, value]) => [key, denominator ? value / denominator : 0])),
+    };
+  }
+  return result;
+}
+
 function applyCurrentTargets(data) {
   return {
     ...data,
@@ -336,6 +368,8 @@ function sanitizePayload(input, previous) {
     });
   }
 
+  const teacherDistribution = sanitizeTeacherDistribution(input.teacher_distribution, metrics, totals);
+
   return {
     source_as_of: sourceAsOf,
     comparison_as_of: comparisonAsOf,
@@ -345,6 +379,7 @@ function sanitizePayload(input, previous) {
     metrics,
     groups,
     totals,
+    ...(teacherDistribution ? { teacher_distribution: teacherDistribution } : {}),
     published_at: new Date().toISOString(),
   };
 }

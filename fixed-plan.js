@@ -65,6 +65,23 @@
     }).join('')}<tr class="fp-latest-total"><td><b>${total.group}</b></td><td>${num(total.new_students)}</td><td>${num(total.fixed_students)}</td><td><b>${pct(total.rate, 2)}</b></td><td><b>${pct(total.target, 0)}</b></td><td><strong>${num(total.gap_students)}</strong></td><td><span class="fp-status ${latestStatus(total)[1]}">${latestStatus(total)[0]}</span></td></tr>`;
   }
 
+  function teacherDistributionMarkup() {
+    const distribution = latestData.teacher_distribution;
+    if (!distribution) return '';
+    const cells = row => ['one', 'two', 'three', 'four_plus'].map(key => `<td><b>${pct(row.rates[key], 2)}</b><small>${num(row.counts[key])} 人</small></td>`).join('');
+    const rows = [
+      ['整体', 'overall'],
+      ['CC', 'CC'],
+      ['SS', 'SS'],
+      ['LP', 'LP'],
+    ].map(([label, key]) => {
+      const row = distribution[key];
+      const boundRate = row.denominator ? row.bound_students / row.denominator : 0;
+      return `<tr><th scope="row"><b>${label}</b><small>共 ${num(row.denominator)} 人</small></th>${cells(row)}<td class="fp-teacher-bound"><b>${pct(boundRate, 2)}</b><small>${num(row.bound_students)} 人</small></td></tr>`;
+    }).join('');
+    return `<section class="panel fp-teacher-distribution" aria-labelledby="fpTeacherDistributionTitle"><div class="panel-head"><div><div class="panel-title" id="fpTeacherDistributionTitle">当前有效绑定外教数分布</div><div class="panel-sub">按各范围全部新生计算；仅统计未解绑记录，同一学员与同一外教去重</div></div><span class="fp-latest-scope">${latestData.period}</span></div><div class="fp-teacher-table-wrap"><table><thead><tr><th>范围</th><th>1 位外教</th><th>2 位外教</th><th>3 位外教</th><th>4 位及以上</th><th>至少 1 位</th></tr></thead><tbody>${rows}</tbody></table></div></section>`;
+  }
+
   function renderLatest() {
     if (!latestData) return renderEmpty('M0-1固定计划绑定-最新');
     const cohortMonths = latestData.period.replace(/(\d+月) \+ (\d+月)新生/, '$1和$2');
@@ -81,6 +98,7 @@
     return `${navMarkup()}<section class="fp-latest-hero"><div><div class="kicker">LATEST FIXED PLAN PULSE</div><h1>M0-1固定计划绑定-最新</h1><p>聚焦当前整体进度、三端口目标差距与14个固定小组的补齐优先级</p></div><div class="fp-latest-hero-side"><div class="fp-latest-date"><span>数据更新</span><b>${latestData.source_as_of}</b><small>${latestData.period}</small></div><div class="fp-latest-hero-actions"><button class="fp-import-primary" id="openFixedImport" type="button"><span aria-hidden="true">↑</span> 更新数据</button><button class="fp-import-secondary" id="downloadFixedResult" type="button"><span aria-hidden="true">↓</span> 下载统计结果</button></div></div></section>
       <section class="fp-latest-overview" aria-label="核心固定计划指标">${latestData.metrics.map(latestKpiCard).join('')}</section>
       <div class="fp-latest-source-note"><b>统计口径：</b>仅统计首单日期在${cohortMonths}的学员；端口及小组内同一学员仅计1人。整体与 CC / SS / LP 均已按 ${latestData.source_as_of} 明细口径更新；对比值为 ${latestData.comparison_as_of || '上一快照'} 按相同新生范围重算结果。上月同期因当前数据源未提供历史快照，暂不展示差值。</div>
+      ${teacherDistributionMarkup()}
       <section class="panel fp-latest-groups" id="latestGroupSection"><div class="panel-head"><div><div class="panel-title">14个固定小组目标进度</div><div class="panel-sub">固定率 = 该组固定学员数 / 该组${latestData.period}；固定差额按目标人数四舍五入后计算</div></div><span class="fp-latest-scope">仅统计指定14组</span></div><div class="table-wrap"><table class="fp-latest-table"><thead><tr><th>组别</th><th>新生数</th><th>固定人数</th><th>固定率</th><th>目标</th><th>固定差额</th><th>状态</th></tr></thead><tbody><tr class="fp-port-divider"><td colspan="7"><span class="cc">CC</span> 目标 ${pct(metrics.CC.target,0)}</td></tr>${latestGroupRows('CC')}<tr class="fp-port-divider"><td colspan="7"><span class="ss">SS</span> 目标 ${pct(metrics.SS.target,0)}</td></tr>${latestGroupRows('SS')}<tr class="fp-port-divider"><td colspan="7"><span class="lp">LP</span> 目标 ${pct(metrics.LP.target,0)}</td></tr>${latestGroupRows('LP')}</tbody></table></div></section>
       <section class="fp-latest-analysis" id="latestAnalysis"><article class="summary"><span>当前判断</span><h2>整体距离${pct(metrics.overall.target,0)}目标仍差 ${pp(metrics.overall.rate-metrics.overall.target,2).replace('-','')}</h2><p>整体固定率为${pct(metrics.overall.rate,2)}。${reachedText}；${nearestText}，${largestGapText}。</p><div class="fp-analysis-pills"><span>CC ${latestData.comparison_label || '较昨日'} ${pp(metrics.CC.rate-metrics.CC.yesterday_rate,2)}</span><span>SS ${latestData.comparison_label || '较昨日'} ${pp(metrics.SS.rate-metrics.SS.yesterday_rate,2)}</span><span>LP ${latestData.comparison_label || '较昨日'} ${pp(metrics.LP.rate-metrics.LP.yesterday_rate,2)}</span></div></article>
       <article><span>优先级 P0</span><b>先抓 ${priorityGroups.map(row=>row.group).join(' 与 ')}</b><p>${priorityGroups.map(row=>`${row.group}还差${num(row.gap_students)}人`).join('；')}。两组合计补齐${num(priorityGroups.reduce((sum,row)=>sum+row.gap_students,0))}人，可最快压缩小组缺口。</p></article>

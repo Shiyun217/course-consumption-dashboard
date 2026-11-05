@@ -11,7 +11,7 @@
     ss: ['BJ-JWSS01小组', 'BJ-JWSS02小组', 'BJ-JWSS04小组', 'BJ-JWSS07小组', 'GZ-SS01小组', 'GZ-SS04小组'],
     lp: ['HK-GZLP01小组', 'HK-GZLP02小组'],
   };
-  const FIXED_REQUIRED = ['student_id', 'bind_add_time', 'bind_operator_name', 'bind_operator_group_type', 'unbind_time'];
+  const FIXED_REQUIRED = ['student_id', 'teacher_id', 'bind_add_time', 'bind_operator_name', 'bind_operator_group_type', 'unbind_time'];
   const PAYMENT_REQUIRED = ['stdt_id', 'first_1v1_nml_pay_date', 'last_cc_group_name', 'last_ss_group_name', 'last_lp_group_name'];
   const SYNC_ENDPOINT = String(window.FIXED_PLAN_SYNC_CONFIG?.endpoint || '').replace(/\/$/, '');
   const EXPORT_ENDPOINT = SYNC_ENDPOINT.replace(/\/latest$/, '/export');
@@ -252,6 +252,25 @@
     return selected;
   }
 
+  function teacherDistribution(denominatorIds, teacherMap) {
+    const counts = { one: 0, two: 0, three: 0, four_plus: 0 };
+    for (const sid of denominatorIds) {
+      const teacherCount = teacherMap.get(sid)?.size || 0;
+      if (teacherCount === 1) counts.one += 1;
+      else if (teacherCount === 2) counts.two += 1;
+      else if (teacherCount === 3) counts.three += 1;
+      else if (teacherCount >= 4) counts.four_plus += 1;
+    }
+    const denominator = denominatorIds.size;
+    const boundStudents = Object.values(counts).reduce((sum, value) => sum + value, 0);
+    return {
+      denominator,
+      bound_students: boundStudents,
+      counts,
+      rates: Object.fromEntries(Object.entries(counts).map(([key, value]) => [key, denominator ? value / denominator : 0])),
+    };
+  }
+
   function analyzeFiles() {
     const fixed = state.fixed;
     const payment = state.payment;
@@ -261,6 +280,7 @@
     const pi = payment.index;
     const studentBindings = new Map();
     const activeFixedIds = new Set();
+    const activeTeachers = { overall: new Map(), cc: new Map(), ss: new Map(), lp: new Map() };
     let sourceAsOf = '';
 
     for (const row of fixed.rows) {
@@ -268,7 +288,20 @@
       if (!sid) continue;
       const bindDate = isoDate(row[fi.bind_add_time]);
       if (bindDate > sourceAsOf) sourceAsOf = bindDate;
-      if (row[fi.unbind_time] == null || text(row[fi.unbind_time]) === '') activeFixedIds.add(sid);
+      const isActive = row[fi.unbind_time] == null || text(row[fi.unbind_time]) === '';
+      if (isActive) {
+        activeFixedIds.add(sid);
+        const teacherId = normalizeId(row[fi.teacher_id]);
+        const port = text(row[fi.bind_operator_group_type]).toLowerCase();
+        if (teacherId) {
+          if (!activeTeachers.overall.has(sid)) activeTeachers.overall.set(sid, new Set());
+          activeTeachers.overall.get(sid).add(teacherId);
+          if (activeTeachers[port]) {
+            if (!activeTeachers[port].has(sid)) activeTeachers[port].set(sid, new Set());
+            activeTeachers[port].get(sid).add(teacherId);
+          }
+        }
+      }
       if (!studentBindings.has(sid)) studentBindings.set(sid, { cc: [], ss: [], lp: [] });
       const port = text(row[fi.bind_operator_group_type]).toLowerCase();
       const name = text(row[fi.bind_operator_name]);
@@ -342,6 +375,17 @@
     const override = overrideRaw === '' ? null : Number(overrideRaw) / 100;
     if (override != null && (!Number.isFinite(override) || override < 0 || override > 1)) throw new Error('整体固定率请输入 0 到 100 之间的数字。');
     const overallRate = override == null ? calculatedOverallRate : override;
+    const portScopeIds = Object.fromEntries(Object.entries(newGroupIds).map(([port, groups]) => {
+      const ids = new Set();
+      for (const groupIds of Object.values(groups)) for (const sid of groupIds) ids.add(sid);
+      return [port, ids];
+    }));
+    const teacherDistributionPayload = {
+      overall: teacherDistribution(overallScopeIds, activeTeachers.overall),
+      CC: teacherDistribution(portScopeIds.cc, activeTeachers.cc),
+      SS: teacherDistribution(portScopeIds.ss, activeTeachers.ss),
+      LP: teacherDistribution(portScopeIds.lp, activeTeachers.lp),
+    };
     const prior = state.priorData || window.FIXED_PLAN_LATEST_DATA || null;
     const sameDate = prior && prior.source_as_of === sourceAsOf;
     const baselineFor = key => {
@@ -379,7 +423,7 @@
       comparison_label: comparisonAsOf ? `较上次（${comparisonAsOf.slice(5)}）` : '较上次',
       period: `${Number(scopeMonths[0].slice(5))}月 + ${Number(scopeMonths[1].slice(5))}月新生`,
       scope_note: `仅统计首单日期在${scopeMonths[0]}至${scopeMonths[1]}的学员；端口及小组内同一学员仅计1人。`,
-      metrics, groups, totals: totalRows,
+      metrics, groups, totals: totalRows, teacher_distribution: teacherDistributionPayload,
     };
     return { payload, summaryRows, payById, fixedGroupCounts, newGroupCounts, calculatedOverallRate, scopeMonths };
   }
@@ -564,8 +608,8 @@
         <header class="fp-import-head"><div><span>每日数据更新</span><h2 id="fpImportTitle">更新固定计划看板</h2><p>源表在当前浏览器中处理；后台保存汇总指标和受口令保护的统计结果文件。</p></div><button class="fp-import-close" type="button" data-close-fixed-import aria-label="关闭">×</button></header>
         <div class="fp-import-body">
           <div class="fp-upload-grid">
-            <label class="fp-upload-file"><input id="fpFixedFile" type="file" accept=".xlsx,.xls"><span class="fp-upload-file-icon">01</span><b>固定计划绑定人明细</b><small>选择当天原始固定明细</small><em data-file-status="fixed">未选择文件</em></label>
-            <label class="fp-upload-file"><input id="fpPaymentFile" type="file" accept=".xlsx,.xls"><span class="fp-upload-file-icon">02</span><b>学员付费明细</b><small>用于匹配首单时间和端口组别</small><em data-file-status="payment">未选择文件</em></label>
+            <label class="fp-upload-file"><input id="fpFixedFile" type="file" accept=".xlsx,.xls,.csv"><span class="fp-upload-file-icon">01</span><b>固定计划绑定人明细</b><small>选择当天原始固定明细</small><em data-file-status="fixed">未选择文件</em></label>
+            <label class="fp-upload-file"><input id="fpPaymentFile" type="file" accept=".xlsx,.xls,.csv"><span class="fp-upload-file-icon">02</span><b>学员付费明细</b><small>用于匹配首单时间和端口组别</small><em data-file-status="payment">未选择文件</em></label>
           </div>
           <div class="fp-import-settings">
             <div><label>自动统计范围</label><b id="fpUploadScope">等待付费明细校验</b><small>按本机当前自然月，筛选上月及本月首单学员；不受付费表最新首单月份影响。</small></div>

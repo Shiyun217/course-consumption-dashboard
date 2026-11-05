@@ -246,6 +246,19 @@
 .is-positive { color: #087f5b !important; }
 .is-negative { color: #c2413b !important; }
 .fp-latest-source-note { margin-top: 12px; padding: 12px 15px; color: #4e6075; background: #f5f8fc; border-left: 3px solid #7aa8d5; font-size: 13px; line-height: 1.6; }
+.panel.fp-teacher-distribution { margin-top: 16px; overflow: hidden; }
+.fp-teacher-distribution .panel-title { font-size: 21px; }
+.fp-teacher-distribution .panel-sub { margin-top: 5px; font-size: 13px; }
+.fp-teacher-table-wrap { overflow-x: auto; }
+.fp-teacher-distribution table { width: 100%; min-width: 760px; border-collapse: collapse; table-layout: fixed; }
+.fp-teacher-distribution th,.fp-teacher-distribution td { padding: 14px 16px; border-top: 1px solid #e6edf3; text-align: right; font-variant-numeric: tabular-nums; }
+.fp-teacher-distribution thead th { color: #5b6d82; background: #f6f8fb; border-top: 0; font-size: 12px; font-weight: 720; }
+.fp-teacher-distribution thead th:first-child,.fp-teacher-distribution tbody th { text-align: left; }
+.fp-teacher-distribution tbody th { color: #203a59; background: #fbfcfd; font-size: 14px; }
+.fp-teacher-distribution tbody td b { display: block; color: #253d59; font-size: 16px; }
+.fp-teacher-distribution tbody small { display: block; margin-top: 4px; color: #7a8999; font-size: 12px; font-weight: 500; }
+.fp-teacher-distribution .fp-teacher-bound { background: #edf5fb; }
+.fp-teacher-distribution .fp-teacher-bound b { color: #2463a8; }
 .panel.fp-latest-groups { margin-top: 16px; overflow: visible; }
 .fp-latest-groups .panel-title { font-size: 21px; }
 .fp-latest-groups .panel-sub { margin-top: 5px; font-size: 13px; }
@@ -314,6 +327,8 @@
   .fp-latest-hero { align-items: flex-start; flex-direction: column; }
   .fp-latest-hero-side { min-width: 0; width: 100%; }
   .fp-latest-date { min-width: 0; width: 100%; }
+  .fp-teacher-distribution .panel-head { align-items: flex-start; flex-direction: column; }
+  .fp-teacher-distribution .fp-latest-scope { white-space: nowrap; }
   .fp-upload-grid,.fp-import-settings { grid-template-columns: 1fr; }
   .fp-publish-setting { align-items: stretch; flex-direction: column; }
   .fp-sync-badge { align-self: flex-start; }

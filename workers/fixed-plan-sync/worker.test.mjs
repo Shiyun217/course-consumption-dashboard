@@ -85,7 +85,14 @@ test('publishes sanitized aggregates and exposes them publicly', async () => {
   const denied = await worker.fetch(request('POST', await fixture(), 'wrong-key'), env);
   assert.equal(denied.status, 401);
 
-  const published = await worker.fetch(request('POST', await fixture()), env);
+  const payload = await fixture();
+  payload.teacher_distribution = {
+    overall: { denominator: 1, bound_students: 999, counts: { one: 100, two: 70, three: 40, four_plus: 20 }, rates: { one: 1, two: 1, three: 1, four_plus: 1 } },
+    CC: { denominator: 1, counts: { one: 50, two: 30, three: 20, four_plus: 10 } },
+    SS: { denominator: 1, counts: { one: 40, two: 35, three: 25, four_plus: 10 } },
+    LP: { denominator: 1, counts: { one: 20, two: 10, three: 5, four_plus: 2 } },
+  };
+  const published = await worker.fetch(request('POST', payload), env);
   assert.equal(published.status, 200);
   const result = await published.json();
   assert.equal(result.data.groups.length, 14);
@@ -95,11 +102,31 @@ test('publishes sanitized aggregates and exposes them publicly', async () => {
   assert.deepEqual(result.data.totals.map(item => item.gap_students), [70, 68, 34]);
   assert.equal(result.data.metrics.find(item => item.key === 'overall').yesterday_rate, 0.41702127659574467);
   assert.equal(result.data.comparison_as_of, '2026-09-01');
+  assert.equal(result.data.teacher_distribution.overall.denominator, result.data.metrics[0].new_students);
+  assert.equal(result.data.teacher_distribution.overall.bound_students, 230);
+  assert.equal(result.data.teacher_distribution.overall.rates.one, 100 / result.data.metrics[0].new_students);
+  assert.deepEqual(result.data.teacher_distribution.CC.counts, { one: 50, two: 30, three: 20, four_plus: 10 });
+  assert.equal(result.data.teacher_distribution.CC.denominator, result.data.totals.find(row => row.port === 'CC').new_students);
   assert.equal(JSON.stringify(result.data).includes('student_id'), false);
 
   const publicRead = await worker.fetch(new Request('https://worker.example/api/fixed-plan/latest'), env);
   assert.equal(publicRead.status, 200);
   assert.equal(publicRead.headers.get('Access-Control-Allow-Origin'), '*');
+});
+
+test('rejects a teacher distribution larger than its cohort', async () => {
+  const env = { FIXED_PLAN_DATA: new MemoryKv(), PUBLISH_SECRET: 'correct-key' };
+  const payload = await fixture();
+  const oversized = payload.metrics.find(metric => metric.key === 'overall').new_students + 1;
+  payload.teacher_distribution = {
+    overall: { counts: { one: oversized, two: 0, three: 0, four_plus: 0 } },
+    CC: { counts: { one: 0, two: 0, three: 0, four_plus: 0 } },
+    SS: { counts: { one: 0, two: 0, three: 0, four_plus: 0 } },
+    LP: { counts: { one: 0, two: 0, three: 0, four_plus: 0 } },
+  };
+  const response = await worker.fetch(request('POST', payload), env);
+  assert.equal(response.status, 400);
+  assert.match((await response.json()).error, /不能大于新生数/);
 });
 
 test('applies current targets when reading a legacy stored snapshot', async () => {
