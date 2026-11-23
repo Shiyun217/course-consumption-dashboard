@@ -1438,7 +1438,7 @@ function exportPersonTableImage(){
   const drawCell=(text,x,y,w,h,options={})=>{ ctx.fillStyle=options.fill||'#2c3c55'; ctx.font=options.font||`14px ${font}`; ctx.textAlign=options.align||'left'; ctx.textBaseline='middle'; const pad=options.align==='center'?0:12; ctx.fillText(fit(text,w-pad*2),options.align==='center'?x+w/2:x+pad,y+h/2); };
   ctx.fillStyle='#2f7dda'; ctx.font=`700 22px ${font}`; ctx.fillText('个人明细风险表',24,31);
   const groupLabel=document.getElementById('groupFilter')?.selectedOptions?.[0]?.textContent||'全部小组'; const search=document.getElementById('personSearch')?.value?.trim();
-  ctx.fillStyle='#71839c'; ctx.font=`13px ${font}`; ctx.fillText(`截至 ${DATA.currentDate} · ${groupLabel}${search?` · 搜索：${search}`:''}`,24,60);
+  ctx.fillStyle='#71839c'; ctx.font=`13px ${font}`; ctx.fillText(`截至 ${DATA.currentDate} · 对比 ${DATA.priorDate||'-'} · ${groupLabel}${search?` · 搜索：${search}`:''}`,24,60);
   let y=titleHeight; let x=0;
   ctx.fillStyle='#eef6ff'; ctx.fillRect(0,y,width,headerHeight);
   values[0].forEach((value,index)=>{ drawCell(value,x,y,widths[index],headerHeight,{fill:'#4d6b8e',font:`700 12px ${font}`,align:'center'}); x+=widths[index]; });
@@ -1504,6 +1504,21 @@ renderShell(); renderMain();
 </body>
 </html>
 """
+    if data.get("priorDate") and not data.get("isSettlement"):
+        current = datetime.fromisoformat(data["currentDate"])
+        prior = datetime.fromisoformat(data["priorDate"])
+        if (current - prior).days > 1:
+            prior_label = prior.strftime("%m.%d")
+            current_label = current.strftime("%m.%d")
+            replacements = {
+                "昨日": prior_label,
+                "日环比": "区间拉动",
+                "当月课耗进度": f"截至{current_label} · 对比{prior_label}",
+                "按当前预计完课率排序": f"截至{current_label} · 对比{prior_label} · 按当前预计完课率排序",
+            }
+            for old, new in replacements.items():
+                html = html.replace(old, new)
+                html = html.replace(old.encode("unicode_escape").decode("ascii"), new)
     html = html.replace("__PAYLOAD__", payload)
     html = html.replace("个人明细风险表", "课耗个人明细表")
     html = html.replace("RISK DETAIL", "COURSE DETAIL")
