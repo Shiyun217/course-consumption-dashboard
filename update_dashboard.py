@@ -30,7 +30,7 @@ NOVEMBER_2026_TARGETS = [
     {"day": 11, "target": 0.26},
     {"day": 17, "target": 0.44},
     {"day": 23, "target": 0.52},
-    {"day": 30, "target": 0.63},
+    {"day": 30, "target": 0.64},
 ]
 HISTORICAL_DISTRIBUTION_MONTHS = [
     "2501", "2502", "2503", "2504", "2505", "2506", "2507", "2508", "2509", "2510",
